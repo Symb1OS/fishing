@@ -19,9 +19,10 @@ import com.fazecast.jSerialComm.SerialPort;
 public class Gui extends JFrame{
 	
 	private static final String YESNO = "Да/Нет";
-	private static final String COM_PORT = "ttyACM0";
+	//private static final String COM_PORT = "ttyACM0";
+	private static final String COM_PORT = "COM7";
 	private static final int WINDOW_WIDTH = 300;
-	private static final int WINDOW_HEIGHT = 180;
+	private static final int WINDOW_HEIGHT = 200;
 
 	private static final long serialVersionUID = 1L;
 	
@@ -96,7 +97,7 @@ public class Gui extends JFrame{
 
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("start");
-			tText.requestFocus();
+			//tText.requestFocus();
 			transfer.run();
 		}
 	}

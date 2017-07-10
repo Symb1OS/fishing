@@ -55,7 +55,24 @@ public class Screen {
 		screenShot = robot.createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
 	}
 	
-	public void getSubImage(ImageType type) throws Exception{
+	public Screen(ImageType type) throws Exception{
+		Robot robot = new Robot();
+		screenShot = robot.createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
+		
+		File fexport = new File(PATH_EXPORT + "test.jpg");
+		switch (type) {
+			case SPACE:	    screenShot = screenShot.getSubimage(SPACE_X, SPACE_Y, SPASE_W, SPACE_H); 			         break; 
+			case LINE:	    screenShot = screenShot.getSubimage(LINE_X, LINE_Y, LINE_W, LINE_H); 				         break;
+			case SUBLINE:   screenShot = screenShot.getSubimage(SUB_LINE_X, SUB_LINE_Y, SUB_LINE_W, SUB_LINE_H);         break;
+			case KAPCHA:    screenShot = screenShot.getSubimage(KAPCHA_X, KAPCHA_Y, KAPCHA_W, KAPCHA_H);                 break;
+			case SUB_KAPCHA:screenShot = screenShot.getSubimage(SUB_KAPCHA_X, SUB_KAPCHA_Y, SUB_KAPCHA_W, SUB_KAPCHA_H); break;
+			default:	    throw new Exception("Unknow ImageType");
+		}
+		
+		ImageIO.write(screenShot, "JPG", fexport );
+	}
+	
+	/*public void getSubImage(ImageType type) throws Exception{
 		File fimport = new File(PATH_IMPORT + filename);
 		File fexport = new File(PATH_EXPORT + filename);
 		
@@ -70,13 +87,13 @@ public class Screen {
 		}
 		
 		ImageIO.write(screenShot, "JPG", fexport);
-	}
+	}*/
 	
 	public BufferedImage getImage(){
 		return this.screenShot;
 	}
 
-	public void parseFolder(String folderName) throws Exception{
+	/*public void parseFolder(String folderName) throws Exception{
 		File folder = new File(folderName);
 		
 		File[] files = folder.listFiles();
@@ -93,5 +110,5 @@ public class Screen {
 	public static void main(String[] args) throws Exception {
 		
 		
-	}
+	}*/
 }

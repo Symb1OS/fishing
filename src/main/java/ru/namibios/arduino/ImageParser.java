@@ -3,6 +3,7 @@ package ru.namibios.arduino;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ImageParser {
@@ -55,6 +56,7 @@ public class ImageParser {
 				Color color = new Color(screen.getRGB(j, i));
 				switch (imageType) {
 					case SPACE:	  isKey = color.getRed() > WHITE_R && color.getGreen() > WHITE_G && color.getBlue() > WHITE_B; break; 
+					case LINE: isKey = (color.getRed() < BLACK_R && color.getGreen() < BLACK_G && color.getBlue() < BLACK_B); break;
 					case SUBLINE: isKey = !(color.getRed() < BLACK_R && color.getGreen() < BLACK_G && color.getBlue() < BLACK_B); break;
 					case KAPCHA:  break;
 					default: break;
@@ -64,7 +66,7 @@ public class ImageParser {
 			}
 		}
 		
-		//printMatrix(tmp, row, column);
+		printMatrix(tmp, row, column);
 		keyWordListList.add(tmp);
 }
 
@@ -90,6 +92,10 @@ public class ImageParser {
 		}
 	}
 	
+	private int getLength(int[][] tmp){
+		return Arrays.toString(tmp).length();
+	}
+	
 	private int equalsMatrix(int[][] numberMatrix) {
 		int rezultIndex = -1;
 		
@@ -104,7 +110,13 @@ public class ImageParser {
 			
 			List<int[][]> templateNumber = Chars.values()[index].getTemplates();
 			for (int[][] template : templateNumber) {
+				
+				int tempateLength = getLength(template);
+				int numberLength= getLength(numberMatrix);
 			
+				System.out.println("template" + tempateLength);
+				System.out.println("numberMatrix" + numberLength);
+				
 				//TODO разница в размерности массива, возможны ошибки
 				if(calcKoef > MIN_KOEF) break;
 				
@@ -144,13 +156,13 @@ public class ImageParser {
 			rezult.append(equalsMatrix(numberMatrix));
 		}
 		System.out.println("REZULT = " + rezult.toString().replace("-1", "?"));
-		return rezult.toString().replace("-1", "?");
+		return rezult.toString();//.replace("-1", "?");
 		
 	}
 	
 	public static void main(String[] args) throws Exception {
 		
-		Screen screenLine = new Screen("20170705_215907.jpg");
+		/*Screen screenLine = new Screen("20170705_215907.jpg");
 		ImageType type = ImageType.SUBLINE;
 		screenLine.getSubImage(type);
 		
@@ -158,7 +170,7 @@ public class ImageParser {
 		
 		ImageParser parser = new ImageParser(type, img);
 		parser.getMatrix();
-		parser.getkeyFromTemlate();
+		parser.getkeyFromTemlate();*/
 		
 	}
 }
