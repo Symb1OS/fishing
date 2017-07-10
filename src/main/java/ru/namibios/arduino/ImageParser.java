@@ -2,12 +2,14 @@ package ru.namibios.arduino;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class ImageParser {
 
+	private static final boolean INFO = true;
 	private static final boolean DEBUG = true;
 	
 	private static final double MIN_KOEF = 0.88;
@@ -54,11 +56,13 @@ public class ImageParser {
 		for (int i = 0; i < row; i++) {
 			for (int j = 0; j < column; j++) {
 				Color color = new Color(screen.getRGB(j, i));
+				boolean isWhite = color.getRed() > WHITE_R && color.getGreen() > WHITE_G && color.getBlue() > WHITE_B;
+				boolean isBlack = (color.getRed() < BLACK_R && color.getGreen() < BLACK_G && color.getBlue() < BLACK_B);
 				switch (imageType) {
-					case SPACE:	  isKey = color.getRed() > WHITE_R && color.getGreen() > WHITE_G && color.getBlue() > WHITE_B; break; 
-					case LINE: isKey = (color.getRed() < BLACK_R && color.getGreen() < BLACK_G && color.getBlue() < BLACK_B); break;
-					case SUBLINE: isKey = !(color.getRed() < BLACK_R && color.getGreen() < BLACK_G && color.getBlue() < BLACK_B); break;
-					case KAPCHA:  break;
+					case SPACE:	  isKey = isWhite; break; 
+					case LINE:    isKey = isBlack; break;
+					case SUBLINE: isKey = !isBlack; break;
+					case KAPCHA:  isKey = !isBlack;  break;
 					default: break;
 				}	
 				
@@ -70,11 +74,10 @@ public class ImageParser {
 		keyWordListList.add(tmp);
 }
 
-	@SuppressWarnings("unused")
 	private void printMatrix(int[][] tmp, int row, int column){
 		for (int i = 0; i < row; i++) {
 			for (int j = 0; j < column; j++) {
-				System.out.print(tmp[i][j] + " ");
+				System.out.print(tmp[i][j] == 1 ? "1 " :"  ");
 			}
 			System.out.println();
 		}
@@ -111,19 +114,21 @@ public class ImageParser {
 			List<int[][]> templateNumber = Chars.values()[index].getTemplates();
 			for (int[][] template : templateNumber) {
 				
-				int tempateLength = getLength(template);
-				int numberLength= getLength(numberMatrix);
-			
-				System.out.println("template" + tempateLength);
-				System.out.println("numberMatrix" + numberLength);
-				
-				//TODO разница в размерности массива, возможны ошибки
 				if(calcKoef > MIN_KOEF) break;
+				
+				if (DEBUG) {
+					int tempateLength = getLength(template);
+					int numberLength= getLength(numberMatrix);
+				
+					System.out.println("template" + tempateLength);
+					System.out.println("numberMatrix" + numberLength);
+				}
 				
 				templateKoef=0; koef = 0;
 				for (int i = 0; i < row; i++) {
 					for (int j = 0; j < column; j++) {
-						boolean isValue = (template[i][j] == 1); 
+						boolean isValue;
+						try{ isValue = (template[i][j] == 1); }catch(ArrayIndexOutOfBoundsException e){if(DEBUG)System.out.println("ArrayIndexOutOfBoundsException"); break;}
 						if(isValue) templateKoef++;
 						
 						boolean valuesEqual = numberMatrix[i][j] == template[i][j] && template[i][j] != 0; 
@@ -141,8 +146,11 @@ public class ImageParser {
 				boolean isUndefined = maxCalcKoef < MIN_KOEF;
 				if( isUndefined ) rezultIndex = -1;
 				
-				System.out.println("index= " + index + " |templateKoef= " + templateKoef + " | koef= " + koef + " | " + calcKoef );
-				System.out.println("========================================");
+				if(INFO){
+					System.out.println("index= " + index + " |templateKoef= " + templateKoef + " | koef= " + koef + " | " + calcKoef );
+					System.out.println("========================================");
+				}
+				
 			}
 			index++;
 		}
@@ -155,22 +163,31 @@ public class ImageParser {
 		for (int[][] numberMatrix : keyWordListList) {
 			rezult.append(equalsMatrix(numberMatrix));
 		}
-		System.out.println("REZULT = " + rezult.toString().replace("-1", "?"));
-		return rezult.toString();//.replace("-1", "?");
+		if(INFO) System.out.println("REZULT = " + rezult.toString().replace("-1", "?"));
+		return rezult.toString();
 		
 	}
 	
 	public static void main(String[] args) throws Exception {
+
+		File dir = new File("resources/kapcha");
+		File[] files = dir.listFiles();
+		//20170705_215909.jpg
+		/*for (File file : files) { 
+			Screen screen = new Screen(file.getName(), ImageType.KAPCHA);
+			
+			BufferedImage img = screen.getImage();
+			
+			ImageParser parser = new ImageParser(ImageType.SPACE, img);
+			parser.getMatrix();
+			parser.getkeyFromTemlate();
+		}*/
 		
-		/*Screen screenLine = new Screen("20170705_215907.jpg");
-		ImageType type = ImageType.SUBLINE;
-		screenLine.getSubImage(type);
+		Screen screen = new Screen("20170705_220021.jpg", ImageType.KAPCHA);
+		BufferedImage img = screen.getImage();
 		
-		BufferedImage img = screenLine.getImage();
-		
-		ImageParser parser = new ImageParser(type, img);
+		ImageParser parser = new ImageParser(ImageType.KAPCHA, img);
 		parser.getMatrix();
-		parser.getkeyFromTemlate();*/
-		
+		parser.getkeyFromTemlate();
 	}
 }
