@@ -2,6 +2,7 @@ package ru.namibios.arduino;
 
 import com.fazecast.jSerialComm.SerialPort;
 
+import ru.namibios.arduino.model.Kapcha;
 import ru.namibios.arduino.model.Shape;
 
 public class Transfer implements Runnable{ 
@@ -46,6 +47,9 @@ public class Transfer implements Runnable{
 						if(isSend){	isSubLine = false; isKapcha=true;}
 						
 					}else if(isKapcha){
+						Kapcha kapcha = new Kapcha();
+						kapcha.clearNoises(15);
+						kapcha.send(port);
 						break;
 					} 
 					

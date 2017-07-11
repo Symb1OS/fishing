@@ -19,7 +19,6 @@ import com.fazecast.jSerialComm.SerialPort;
 public class Gui extends JFrame{
 	
 	private static final String YESNO = "Да/Нет";
-	//private static final String COM_PORT = "ttyACM0";
 	private static final String COM_PORT = "COM7";
 	private static final int WINDOW_WIDTH = 300;
 	private static final int WINDOW_HEIGHT = 200;

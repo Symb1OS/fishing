@@ -58,15 +58,17 @@ public class ImageParser {
 				Color color = new Color(screen.getRGB(j, i));
 				boolean isWhite = color.getRed() > WHITE_R && color.getGreen() > WHITE_G && color.getBlue() > WHITE_B;
 				boolean isBlack = (color.getRed() < BLACK_R && color.getGreen() < BLACK_G && color.getBlue() < BLACK_B);
+				boolean isGray = (color.getRed() > 120 && color.getGreen() > 120 && color.getBlue() > 120) && (color.getRed() < 135 && color.getGreen() < 135 && color.getBlue() < 135);
+				
 				switch (imageType) {
-					case SPACE:	  isKey = isWhite; break; 
-					case LINE:    isKey = isBlack; break;
+					case SPACE:	  isKey = isWhite;  break; 
+					case LINE:    isKey = isBlack;  break;
 					case SUBLINE: isKey = !isBlack; break;
-					case KAPCHA:  isKey = !isBlack;  break;
+					case KAPCHA:  isKey = isGray;   break;
 					default: break;
 				}	
 				
-				tmp[i][j] = isKey ? 1 : 0; 
+				tmp[i][j] = isKey ? 1 : 0;
 			}
 		}
 		
@@ -168,12 +170,12 @@ public class ImageParser {
 		
 	}
 	
-	public static void main(String[] args) throws Exception {
+	/*public static void main(String[] args) throws Exception {
 
 		File dir = new File("resources/kapcha");
 		File[] files = dir.listFiles();
 		//20170705_215909.jpg
-		/*for (File file : files) { 
+		for (File file : files) { 
 			Screen screen = new Screen(file.getName(), ImageType.KAPCHA);
 			
 			BufferedImage img = screen.getImage();
@@ -181,13 +183,16 @@ public class ImageParser {
 			ImageParser parser = new ImageParser(ImageType.SPACE, img);
 			parser.getMatrix();
 			parser.getkeyFromTemlate();
-		}*/
+		}
 		
-		Screen screen = new Screen("20170705_220021.jpg", ImageType.KAPCHA);
+		//20170705_215909.jpg
+		//20170705_215910.jpg
+		
+		Screen screen = new Screen("20170705_215910.jpg", ImageType.KAPCHA);
 		BufferedImage img = screen.getImage();
 		
 		ImageParser parser = new ImageParser(ImageType.KAPCHA, img);
 		parser.getMatrix();
-		parser.getkeyFromTemlate();
-	}
+		//parser.getkeyFromTemlate();
+	}*/
 }
