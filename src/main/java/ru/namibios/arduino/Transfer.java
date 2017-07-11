@@ -1,5 +1,7 @@
 package ru.namibios.arduino;
 
+import java.io.PrintWriter;
+
 import com.fazecast.jSerialComm.SerialPort;
 
 import ru.namibios.arduino.model.Kapcha;
@@ -30,11 +32,11 @@ public class Transfer implements Runnable{
 	public void run() {
 		System.out.println("Thread start...");
 		isRun = true;
-	
+		
 		try{
-			
+			Thread.sleep(3000);
 			if(port.openPort()) {
-			
+				
 				while(isRun){
 					
 					if(isBegin){
@@ -43,13 +45,20 @@ public class Transfer implements Runnable{
 						if(isSend){ isBegin= false; isSubLine= true; }
 						
 					}else if(isSubLine){
-						boolean isSend = new Shape(ImageType.SUBLINE).send(port);
-						if(isSend){	isSubLine = false; isKapcha=true;}
+						Thread.sleep(1700);
+						//boolean isSend = new Shape(ImageType.SUBLINE).send(port);
+						//if(isSend){	isSubLine = false; isKapcha=true;}
+						PrintWriter output = new PrintWriter(port.getOutputStream());
+						output.println("4");
+						output.flush();
+						isSubLine=false;
+						isKapcha=true;
 						
 					}else if(isKapcha){
+						Thread.sleep(3150);
+						System.out.println("isrun");
 						Kapcha kapcha = new Kapcha();
-						kapcha.clearNoises(15);
-						kapcha.send(port);
+						kapcha.clearNoises(50);
 						break;
 					} 
 					

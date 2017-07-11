@@ -78,6 +78,7 @@ public class Screen {
 			case SUB_KAPCHA:screenShot = screenShot.getSubimage(SUB_KAPCHA_X, SUB_KAPCHA_Y, SUB_KAPCHA_W, SUB_KAPCHA_H); break;
 			default:	    throw new Exception("Unknow ImageType");
 		}
+		makeGray();
 		noise = new Noise(screenShot);
 		ImageIO.write(screenShot, "JPG", fexport );
 	}

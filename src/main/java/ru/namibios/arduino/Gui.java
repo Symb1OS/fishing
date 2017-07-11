@@ -8,25 +8,19 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
-
-import com.fazecast.jSerialComm.SerialPort;
 
 public class Gui extends JFrame{
 	
 	private static final String YESNO = "Да/Нет";
 	private static final String COM_PORT = "COM7";
 	private static final int WINDOW_WIDTH = 300;
-	private static final int WINDOW_HEIGHT = 200;
+	private static final int WINDOW_HEIGHT = 180;
 
 	private static final long serialVersionUID = 1L;
-	
-	private JLabel lPort = new JLabel("Порт");
-	private JComboBox<String> cPortList = new JComboBox<String>();
 	
 	private JLabel lGarbage = new JLabel("Выбрасывать мусор?");
 	private JCheckBox jGarbage = new JCheckBox(YESNO);
@@ -61,14 +55,6 @@ public class Gui extends JFrame{
 
 		Container paramContainer = new Container();
 	    paramContainer.setLayout(new GridLayout(7, 2));
-	    
-	    // инициализация доступных портов
-	    SerialPort[] portNames = SerialPort.getCommPorts();
-		for(int i = 0; i < portNames.length; i++)
-			cPortList.addItem(portNames[i].getSystemPortName());
-		
-	    paramContainer.add(lPort);
-	    paramContainer.add(cPortList);
 	    
 	    paramContainer.add(lText);
 	    paramContainer.add(tText);
