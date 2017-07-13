@@ -29,6 +29,12 @@ public class Transfer implements Runnable{
 		this.port.setComPortTimeouts(SerialPort.TIMEOUT_SCANNER, 0, 0);
 	}
 	
+	public void send(String message){
+		PrintWriter output = new PrintWriter(port.getOutputStream());
+		output.println(message);
+		output.flush();
+	}
+	
 	public void run() {
 		System.out.println("Thread start...");
 		isRun = true;
@@ -46,17 +52,12 @@ public class Transfer implements Runnable{
 						
 					}else if(isSubLine){
 						Thread.sleep(1700);
-						//boolean isSend = new Shape(ImageType.SUBLINE).send(port);
-						//if(isSend){	isSubLine = false; isKapcha=true;}
-						PrintWriter output = new PrintWriter(port.getOutputStream());
-						output.println("4");
-						output.flush();
+						send(ImageType.SPACE.toString());
 						isSubLine=false;
 						isKapcha=true;
 						
 					}else if(isKapcha){
 						Thread.sleep(3150);
-						System.out.println("isrun");
 						Kapcha kapcha = new Kapcha();
 						kapcha.clearNoises(50);
 						break;

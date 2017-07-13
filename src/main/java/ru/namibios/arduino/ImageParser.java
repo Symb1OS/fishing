@@ -7,8 +7,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.imageio.ImageIO;
+
 public class ImageParser {
 
+	private static final int VALUE = 1;
+	private static final int GRAY = 45;
 	private static final boolean INFO = true;
 	private static final boolean DEBUG = true;
 	
@@ -58,7 +62,7 @@ public class ImageParser {
 				Color color = new Color(screen.getRGB(j, i));
 				boolean isWhite = color.getRed() > WHITE_R && color.getGreen() > WHITE_G && color.getBlue() > WHITE_B;
 				boolean isBlack = (color.getRed() < BLACK_R && color.getGreen() < BLACK_G && color.getBlue() < BLACK_B);
-				boolean isGray = (color.getRed() > 120 && color.getGreen() > 120 && color.getBlue() > 120) && (color.getRed() < 135 && color.getGreen() < 135 && color.getBlue() < 135);
+				boolean isGray = (color.getRed() > GRAY && color.getGreen() > GRAY && color.getBlue() > GRAY);
 				
 				switch (imageType) {
 					case SPACE:	  isKey = isWhite;  break; 
@@ -68,18 +72,35 @@ public class ImageParser {
 					default: break;
 				}	
 				
-				tmp[i][j] = isKey ? 1 : 0;
+				tmp[i][j] = isGray ? 1 : 0;
 			}
 		}
 		
+		FillMatrix fillMatrix = new FillMatrix(tmp, row, column);
+		fillMatrix.markupMatrix();
+		fillMatrix.cleanOfBounds(45, 100);
+		tmp = fillMatrix.getMatrix();
+		
 		printMatrix(tmp, row, column);
-		keyWordListList.add(tmp);
+		
+		List<int[][]> list = fillMatrix.toListMatrix();
+		
+		for (int[][] is : list) {
+			for (int i = 0; i < FillMatrix.SYMBOL_ROW; i++) {
+				for (int j = 0; j < FillMatrix.SYMBOL_COLUMN; j++) {
+					System.out.print(is[i][j] != 0 ? "1" : " ");
+				}
+				System.out.println();
+			}
+		}
+		/*keyWordListList.add(tmp);*/
 }
-
+	
+	@SuppressWarnings("unused")
 	private void printMatrix(int[][] tmp, int row, int column){
 		for (int i = 0; i < row; i++) {
 			for (int j = 0; j < column; j++) {
-				System.out.print(tmp[i][j] == 1 ? "1 " :"  ");
+				System.out.print(tmp[i][j]!= 0 ? 1 : " ");
 			}
 			System.out.println();
 		}
@@ -170,29 +191,20 @@ public class ImageParser {
 		
 	}
 	
-	/*public static void main(String[] args) throws Exception {
+	public static void main(String[] args) throws Exception {
 
 		File dir = new File("resources/kapcha");
 		File[] files = dir.listFiles();
-		//20170705_215909.jpg
-		for (File file : files) { 
-			Screen screen = new Screen(file.getName(), ImageType.KAPCHA);
-			
-			BufferedImage img = screen.getImage();
-			
-			ImageParser parser = new ImageParser(ImageType.SPACE, img);
-			parser.getMatrix();
-			parser.getkeyFromTemlate();
-		}
 		
-		//20170705_215909.jpg
-		//20170705_215910.jpg
+		// 3/20170711_223643_686.jpg
+		// 4/20170711_224313_115.jpg   
+		// 6/20170711_235951_232.jpg   
+		File file  = new File("resources/debug/6/20170711_235951_232.jpg");
+		BufferedImage image = ImageIO.read(file);
 		
-		Screen screen = new Screen("20170705_215910.jpg", ImageType.KAPCHA);
-		BufferedImage img = screen.getImage();
-		
-		ImageParser parser = new ImageParser(ImageType.KAPCHA, img);
+		ImageParser parser = new ImageParser(ImageType.KAPCHA, image);
 		parser.getMatrix();
-		//parser.getkeyFromTemlate();
-	}*/
+		
+	}
 }
+

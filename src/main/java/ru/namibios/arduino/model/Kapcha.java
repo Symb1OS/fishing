@@ -43,6 +43,7 @@ public class Kapcha {
 			
 			System.out.println("Sended message: " + message);
 			status = true;
+			
 		}
 		return status;
 	}

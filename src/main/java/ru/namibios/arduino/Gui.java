@@ -11,7 +11,6 @@ import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
 
 public class Gui extends JFrame{
 	
@@ -94,7 +93,7 @@ public class Gui extends JFrame{
 		}
 	}
 	
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 	
 		SwingUtilities.invokeLater(new Runnable() {
 		    public void run() {
@@ -103,6 +102,6 @@ public class Gui extends JFrame{
 		    }
 		});
 
-	}
+	}*/
 
 }
