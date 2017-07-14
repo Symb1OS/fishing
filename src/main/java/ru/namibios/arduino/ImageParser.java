@@ -9,12 +9,13 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 
+import ru.namibios.arduino.model.Chars;
+
 public class ImageParser {
 
-	private static final int VALUE = 1;
 	private static final int GRAY = 45;
 	private static final boolean INFO = true;
-	private static final boolean DEBUG = true;
+	private static final boolean DEBUG = false;
 	
 	private static final double MIN_KOEF = 0.88;
 	
@@ -66,37 +67,37 @@ public class ImageParser {
 				
 				switch (imageType) {
 					case SPACE:	  isKey = isWhite;  break; 
-					case LINE:    isKey = isBlack;  break;
-					case SUBLINE: isKey = !isBlack; break;
 					case KAPCHA:  isKey = isGray;   break;
 					default: break;
 				}	
 				
-				tmp[i][j] = isGray ? 1 : 0;
+				tmp[i][j] = isKey ? 1 : 0;
 			}
 		}
 		
-		FillMatrix fillMatrix = new FillMatrix(tmp, row, column);
-		fillMatrix.markupMatrix();
-		fillMatrix.cleanOfBounds(45, 100);
-		tmp = fillMatrix.getMatrix();
-		
-		printMatrix(tmp, row, column);
-		
-		List<int[][]> list = fillMatrix.toListMatrix();
-		
-		for (int[][] is : list) {
-			for (int i = 0; i < FillMatrix.SYMBOL_ROW; i++) {
-				for (int j = 0; j < FillMatrix.SYMBOL_COLUMN; j++) {
-					System.out.print(is[i][j] != 0 ? "1" : " ");
+		switch (imageType) {
+			case KAPCHA:
+				FillMatrix fillMatrix = new FillMatrix(tmp, row, column);
+				fillMatrix.markupMatrix();
+				fillMatrix.cleanOfBounds(45, 100);
+				tmp = fillMatrix.getMatrix();
+				
+				printMatrix(tmp, row, column);
+				
+				keyWordListList = new ArrayList<>(fillMatrix.toListMatrix());
+				
+				List<int[][]> list = fillMatrix.toListMatrix();
+				for (int[][] is : list) {
+					printTemplate(is, FillMatrix.SYMBOL_ROW, FillMatrix.SYMBOL_COLUMN);
 				}
-				System.out.println();
+				
+				break;	
+				
+			default: keyWordListList.add(tmp); break;
+				
 			}
 		}
-		/*keyWordListList.add(tmp);*/
-}
-	
-	@SuppressWarnings("unused")
+			
 	private void printMatrix(int[][] tmp, int row, int column){
 		for (int i = 0; i < row; i++) {
 			for (int j = 0; j < column; j++) {
@@ -106,16 +107,18 @@ public class ImageParser {
 		}
 	}
 	
-	@SuppressWarnings("unused")
 	private void printTemplate(int[][] tmp, int row, int column){
+		System.out.println("new int[][]{");
 		for (int i = 0; i < row; i++) {
 			System.out.print("{");
 			for (int j = 0; j < column; j++) {
-				System.out.print(tmp[i][j] + ", ");
+				System.out.print((tmp[i][j] == 0 ? "0" : "1") + ", ");
 			}
 			System.out.print("},");
 			System.out.println();
 		}
+		System.out.println("}");
+		System.out.println();
 	}
 	
 	private int getLength(int[][] tmp){
@@ -130,6 +133,7 @@ public class ImageParser {
 		double calcKoef = 0;
 		double maxCalcKoef = 0;
 
+		
 		int index = 0;
 		int size = Chars.values().length;
 		while(index < size){
@@ -138,7 +142,8 @@ public class ImageParser {
 			for (int[][] template : templateNumber) {
 				
 				if(calcKoef > MIN_KOEF) break;
-				
+				if(template.length != numberMatrix.length ) continue;
+					
 				if (DEBUG) {
 					int tempateLength = getLength(template);
 					int numberLength= getLength(numberMatrix);
@@ -187,24 +192,26 @@ public class ImageParser {
 			rezult.append(equalsMatrix(numberMatrix));
 		}
 		if(INFO) System.out.println("REZULT = " + rezult.toString().replace("-1", "?"));
-		return rezult.toString();
+		return rezult.toString().replace("-1", "");
 		
 	}
 	
 	public static void main(String[] args) throws Exception {
 
-		File dir = new File("resources/kapcha");
-		File[] files = dir.listFiles();
-		
+		// 1/20170711_222631_327.jpg
+		// 2/20170711_222802_871.jpg
 		// 3/20170711_223643_686.jpg
 		// 4/20170711_224313_115.jpg   
+		// 5/20170711_231756_162.jpg
 		// 6/20170711_235951_232.jpg   
+		// 7/20170712_000451_976.jpg
 		File file  = new File("resources/debug/6/20170711_235951_232.jpg");
 		BufferedImage image = ImageIO.read(file);
 		
 		ImageParser parser = new ImageParser(ImageType.KAPCHA, image);
 		parser.getMatrix();
+		String key = parser.getkeyFromTemlate();
+		System.out.println("key " + key);
 		
 	}
 }
-

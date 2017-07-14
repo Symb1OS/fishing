@@ -5,24 +5,25 @@ import java.io.PrintWriter;
 import com.fazecast.jSerialComm.SerialPort;
 
 import ru.namibios.arduino.model.Kapcha;
-import ru.namibios.arduino.model.Shape;
+import ru.namibios.arduino.model.Region;
 
 public class Transfer implements Runnable{ 
 
-	private static SerialPort port;
+	private SerialPort port;
 	
 	private boolean isRun;
 	
+	private boolean isStart;
 	private boolean isBegin;
-	private boolean isLine;
 	private boolean isSubLine;
 	private boolean isKapcha;
+	private boolean isLootFilter;
 
 	public Transfer(String port) {
 		
+		isStart = false;
 		isBegin = true;
 		isSubLine = false;
-		isLine = false;
 		isKapcha = false;
 		
 		this.port = SerialPort.getCommPort(port);
@@ -45,9 +46,14 @@ public class Transfer implements Runnable{
 				
 				while(isRun){
 					
-					if(isBegin){
+					if(isStart){
+						Thread.sleep(3000);
+						send(ImageType.SPACE.toString());
+						isStart=false; isBegin=true;
+						
+					}else if(isBegin){
 						Thread.sleep(5000);
-						boolean isSend =  new Shape(ImageType.SPACE).send(port);
+						boolean isSend =  new Region(ImageType.SPACE).send(port);
 						if(isSend){ isBegin= false; isSubLine= true; }
 						
 					}else if(isSubLine){
@@ -60,8 +66,14 @@ public class Transfer implements Runnable{
 						Thread.sleep(3150);
 						Kapcha kapcha = new Kapcha();
 						kapcha.clearNoises(50);
+						kapcha.send(port);
+						
 						break;
-					} 
+					}else if(isLootFilter){
+						Thread.sleep(3000);
+						isLootFilter=false; isStart= true;
+						break;
+					}
 					
 				}
 				

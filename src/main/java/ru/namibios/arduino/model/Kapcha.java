@@ -36,7 +36,7 @@ public class Kapcha {
 		String message = getKey();
 		boolean status = false;
 		String key = imageParser.getkeyFromTemlate();
-		if(!key.equals("-1")){
+		if(!key.isEmpty()){
 			PrintWriter output = new PrintWriter(port.getOutputStream());
 			output.println(message);
 			output.flush();
@@ -58,15 +58,6 @@ public class Kapcha {
 		}
 		screen.clear();
 		screen.saveImage();
-	}
-	
-	public static void main(String[] args) throws Exception {
-		long start = System.currentTimeMillis();
-		Kapcha kapcha = new Kapcha();
-		kapcha.clearNoises(20);
-		long end =  System.currentTimeMillis() - start ;
-		System.out.println("end " + end );
-		
 	}
 	
 }

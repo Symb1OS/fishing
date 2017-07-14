@@ -9,13 +9,15 @@ import ru.namibios.arduino.ImageParser;
 import ru.namibios.arduino.ImageType;
 import ru.namibios.arduino.Screen;
 
-public class Shape {
+public class Region {
 
 	private Screen screen;
 	
 	private ImageParser imageParser;
 	
-	public Shape(ImageType type) throws Exception {
+	public Region() {}
+	
+	public Region(ImageType type) throws Exception {
 		this.screen = new Screen(type);
 	
 		BufferedImage image = screen.getImage();
@@ -31,7 +33,7 @@ public class Shape {
 		String message = getKey();
 		boolean status = false;
 		String key = imageParser.getkeyFromTemlate();
-		if(!key.equals("-1")){
+		if(!key.isEmpty()){
 			PrintWriter output = new PrintWriter(port.getOutputStream());
 			output.println(message);
 			output.flush();

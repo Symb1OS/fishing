@@ -129,12 +129,14 @@ public class FillMatrix {
 			for (int i = element.getMinRow(); i <= element.getMaxRow(); i++) {
 				column=0;
 				for (int j = element.getMinColumn(); j <= element.getMaxColumn(); j++) {
-					symbol[row][column] = matrix[i][j];
+					symbol[row][column] = matrix[i][j] > 0 ? 1: 0;
+					//System.out.print(i + " > " + row + " | " + j + " > " + column + " ||  ");
 					column++;
 				}
-				System.out.println();
+				//System.out.println();
 				row++;
 			}
+			//System.out.println();
 			rezult.add(symbol);
 		}
 
