@@ -48,31 +48,35 @@ public class Transfer implements Runnable{
 					
 					if(isStart){
 						Thread.sleep(3000);
-						send(ImageType.SPACE.toString());
+						System.out.println("isStart");
+						send("4");
 						isStart=false; isBegin=true;
+						Thread.sleep(5000);
 						
 					}else if(isBegin){
-						Thread.sleep(5000);
+						System.out.println("isBegin");
+						Thread.sleep(3000);
 						boolean isSend =  new Region(ImageType.SPACE).send(port);
 						if(isSend){ isBegin= false; isSubLine= true; }
 						
 					}else if(isSubLine){
-						Thread.sleep(1700);
+						System.out.println("isSubLine");
+						Thread.sleep(1200);
 						send(ImageType.SPACE.toString());
 						isSubLine=false;
 						isKapcha=true;
 						
 					}else if(isKapcha){
-						Thread.sleep(3150);
+						Thread.sleep(3920);
 						Kapcha kapcha = new Kapcha();
-						kapcha.clearNoises(50);
+						kapcha.clearNoises(40);
 						kapcha.send(port);
-						
-						break;
+						isKapcha=false; isLootFilter=true;
 					}else if(isLootFilter){
-						Thread.sleep(3000);
+						Thread.sleep(5000);
+						System.out.println("isLootFilter");
+						send("9");
 						isLootFilter=false; isStart= true;
-						break;
 					}
 					
 				}

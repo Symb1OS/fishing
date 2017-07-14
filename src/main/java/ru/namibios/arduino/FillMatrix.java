@@ -1,6 +1,7 @@
 package ru.namibios.arduino;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -101,9 +102,11 @@ public class FillMatrix {
 					} 
 				}
 			}
+			int maxRow = maxIndexRow - minIndexRow;
+			int maxColumn = maxIndexColumn - minIndexColumn;
 			
 			boolean isIntervalOk = sum < minCnt || sum > maxCnt;
-			boolean isDimensionOk = maxIndexRow - minIndexRow < 5 || maxIndexColumn - minIndexColumn < 5;
+			boolean isDimensionOk = maxRow < 5 || maxColumn < 5 || maxRow > SYMBOL_ROW || maxColumn > SYMBOL_COLUMN;
 			boolean isMinIndexOk = minIndexRow < MIN_ROW_INDEX;
 			if(isIntervalOk || isDimensionOk || isMinIndexOk){
 				clear(objCnt);
@@ -118,9 +121,63 @@ public class FillMatrix {
 		
 	}
 	
+	private Map<Integer, MatrixElement> getMinMAtrix(Map<Integer, MatrixElement> elements){
+		System.out.println("getMinMAtrix");
+		
+		Map<Integer, MatrixElement> rezultMap = new HashMap<>();
+		
+		int avg = 0;
+		int count=0;
+		int sumIndexRow=0;
+		for (int key: elements.keySet()) {
+			 MatrixElement element = elements.get(key);
+			 sumIndexRow += element.getMaxRow();
+			 count++;
+		}
+		
+		List<Integer> sortIndex = new ArrayList<>();
+		
+		for (int key: elements.keySet()) {
+			 MatrixElement element = elements.get(key);
+			 if(element.getMaxRow() > avg){
+				sortIndex.add(element.getMinColumn());
+			 }
+			 
+		}
+		
+		Object[] sort = sortIndex.toArray();
+		for (int i = 0; i < sort.length; i++) {
+			System.out.print(sort[i] + " ");
+		}
+		
+		System.out.println();
+		Arrays.sort(sort);
+		
+		for (int i = 0; i < sort.length; i++) {
+			System.out.print(sort[i] + " ");
+		}
+		System.out.println();
+		
+		for (int i = 0; i < sort.length; i++) {
+			for (int key: elements.keySet()) {
+				 MatrixElement element = elements.get(key);
+				 if(element.getMinColumn() == (int)sort[i]){
+					 rezultMap.put(i, element);
+				 }
+			}
+		}
+		
+		System.out.println("count " + count);
+		System.out.println("sumIndexRow " + sumIndexRow);
+		System.out.println("avg " + sumIndexRow /count);
+		
+		return rezultMap;
+	}
+	
 	public List<int[][]> toListMatrix(){
 		List<int[][]> rezult = new ArrayList<>();
-		
+		elements = getMinMAtrix(elements);
+		//System.out.println("elements.keySet() " + elements.keySet());
 		for (int key : elements.keySet()) {
 			MatrixElement element = elements.get(key);
 			int[][] symbol = new int[SYMBOL_ROW][SYMBOL_COLUMN];

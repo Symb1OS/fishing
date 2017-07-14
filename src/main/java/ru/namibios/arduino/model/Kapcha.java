@@ -49,6 +49,7 @@ public class Kapcha {
 	}
 	
 	public void clearNoises(int iteration) throws Exception{
+		System.out.println("start clear nois");
 		int cnt = 0;
 		while(cnt < iteration){
 			BufferedImage noiseImage = new Screen(ImageType.KAPCHA).getImage();

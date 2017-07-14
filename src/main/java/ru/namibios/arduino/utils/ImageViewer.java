@@ -36,7 +36,7 @@ public class ImageViewer extends JFrame{
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    
 	    container.setLayout(new FlowLayout());
-	    ImageIcon icon = new ImageIcon(ImageIO.read(new File("resources/debug/2/20170711_222802_871.jpg")));
+	    ImageIcon icon = new ImageIcon(ImageIO.read(new File("resources/debug/8/20170714_223632_860.jpg")));
 	    image.setIcon(icon);
 	    container.addMouseListener(new MouseListener());
 	    container.add(image);

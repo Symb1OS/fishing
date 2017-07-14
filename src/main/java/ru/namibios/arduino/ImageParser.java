@@ -13,7 +13,7 @@ import ru.namibios.arduino.model.Chars;
 
 public class ImageParser {
 
-	private static final int GRAY = 45;
+	private static final int GRAY = 40;
 	private static final boolean INFO = true;
 	private static final boolean DEBUG = false;
 	
@@ -84,9 +84,10 @@ public class ImageParser {
 				
 				printMatrix(tmp, row, column);
 				
-				keyWordListList = new ArrayList<>(fillMatrix.toListMatrix());
-				
 				List<int[][]> list = fillMatrix.toListMatrix();
+				
+				keyWordListList = new ArrayList<>(list);
+				
 				for (int[][] is : list) {
 					printTemplate(is, FillMatrix.SYMBOL_ROW, FillMatrix.SYMBOL_COLUMN);
 				}
@@ -205,7 +206,7 @@ public class ImageParser {
 		// 5/20170711_231756_162.jpg
 		// 6/20170711_235951_232.jpg   
 		// 7/20170712_000451_976.jpg
-		File file  = new File("resources/debug/6/20170711_235951_232.jpg");
+		File file  = new File("resources/debug/11/20170714_230537_164.jpg");
 		BufferedImage image = ImageIO.read(file);
 		
 		ImageParser parser = new ImageParser(ImageType.KAPCHA, image);
