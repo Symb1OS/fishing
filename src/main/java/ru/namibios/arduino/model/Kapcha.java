@@ -27,7 +27,7 @@ public class Kapcha {
 		
 		BufferedImage image = screen.getImage();
 		this.imageParser = new ImageParser(ImageType.KAPCHA, image);
-		imageParser.getMatrix();
+		imageParser.getCodes();
 		
 		return imageParser.getkeyFromTemlate();
 	}

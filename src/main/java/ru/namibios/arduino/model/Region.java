@@ -22,7 +22,7 @@ public class Region {
 	
 		BufferedImage image = screen.getImage();
 		this.imageParser = new ImageParser(type, image);
-		imageParser.getMatrix();
+		imageParser.getCodes();
 	}
 	
 	private String getKey(){
@@ -43,4 +43,5 @@ public class Region {
 		}
 		return status;
 	}
+	
 }

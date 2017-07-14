@@ -49,7 +49,7 @@ public class ImageParser {
 		this.keyWordListList = new ArrayList<int[][]>();
 	}
 	
-	public void getMatrix(){
+	public void getCodes(){
 
 		if(DEBUG){
 			System.out.println("row: " + row);
@@ -62,7 +62,7 @@ public class ImageParser {
 			for (int j = 0; j < column; j++) {
 				Color color = new Color(screen.getRGB(j, i));
 				boolean isWhite = color.getRed() > WHITE_R && color.getGreen() > WHITE_G && color.getBlue() > WHITE_B;
-				boolean isBlack = (color.getRed() < BLACK_R && color.getGreen() < BLACK_G && color.getBlue() < BLACK_B);
+			//	boolean isBlack = (color.getRed() < BLACK_R && color.getGreen() < BLACK_G && color.getBlue() < BLACK_B);
 				boolean isGray = (color.getRed() > GRAY && color.getGreen() > GRAY && color.getBlue() > GRAY);
 				
 				switch (imageType) {
@@ -209,7 +209,7 @@ public class ImageParser {
 		BufferedImage image = ImageIO.read(file);
 		
 		ImageParser parser = new ImageParser(ImageType.KAPCHA, image);
-		parser.getMatrix();
+		parser.getCodes();
 		String key = parser.getkeyFromTemlate();
 		System.out.println("key " + key);
 		
