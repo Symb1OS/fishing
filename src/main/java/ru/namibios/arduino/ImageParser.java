@@ -19,7 +19,6 @@ public class ImageParser {
 	private static final boolean DEBUG = false;
 	
 	private static final double CHARS_MIN_KOEF = 0.88;
-	private static final double FISH_MIN_KOEF = 0.97;
 	
 	private static final int WHITE_R = 120;
 	private static final int WHITE_G = 120;

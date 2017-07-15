@@ -1,17 +1,13 @@
 package ru.namibios.arduino.model;
 
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.PrintWriter;
-
-import javax.imageio.ImageIO;
 
 import com.fazecast.jSerialComm.SerialPort;
 
 import ru.namibios.arduino.ImageParser;
 import ru.namibios.arduino.ImageType;
 import ru.namibios.arduino.Screen;
-import ru.namibios.arduino.utils.DateUtils;
 
 public class Kapcha {
 
@@ -54,7 +50,7 @@ public class Kapcha {
 		while(cnt < iteration){
 			BufferedImage noiseImage = new Screen(ImageType.KAPCHA).getImage();
 			screen.addNoise(noiseImage);
-			ImageIO.write(noiseImage, "jpg", new File("resources/debug/" + DateUtils.getYYYY_MM_DD_HH_MM_SS_S() + ".jpg"));
+//			screen.saveImage();
 			cnt++;
 		}
 		screen.clear();

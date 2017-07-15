@@ -83,7 +83,7 @@ public class Gui extends JFrame{
 
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("start");
-			transfer.run(); 
+			transfer.run();
 		}
 	}
 	
@@ -91,7 +91,7 @@ public class Gui extends JFrame{
 
 		public void actionPerformed(ActionEvent e) {
 			transfer.pause();
-		} 
+		}
 	}
 	
 	public static void main(String[] args) {
