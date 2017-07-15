@@ -30,13 +30,13 @@ public class ImageViewer extends JFrame{
 	    
 	    setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
 	    setLocationRelativeTo(null);  
-	    
+	    setUndecorated(true);
+	    setExtendedState(JFrame.MAXIMIZED_BOTH);
 	    setAlwaysOnTop(true);
-	    this.setResizable(false);
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    
 	    container.setLayout(new FlowLayout());
-	    ImageIcon icon = new ImageIcon(ImageIO.read(new File("resources/debug/8/20170714_223632_860.jpg")));
+	    ImageIcon icon = new ImageIcon(ImageIO.read(new File("resources/debug/20170715_170820_932.jpg")));
 	    image.setIcon(icon);
 	    container.addMouseListener(new MouseListener());
 	    container.add(image);
@@ -50,13 +50,17 @@ public class ImageViewer extends JFrame{
 			super.mousePressed(e);
 			BufferedImage image=null;
 			try {
-				image= ImageIO.read(new File("resources/debug/2/20170711_222802_871.jpg"));
+				image= ImageIO.read(new File("resources/debug/20170715_170820_932.jpg"));
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
 			
+			int x = e.getX();
+			int y = e.getY();
+			
 			Color color = new Color(image.getRGB(e.getX(), e.getY()));
 			System.out.println("R= " + color.getRed() + " G= " + color.getGreen() + " B= " + color.getBlue());
+			System.out.println("X= " + x + "	| 	Y=" + y);
 		}
 	}
 	

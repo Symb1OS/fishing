@@ -25,7 +25,7 @@ public class Region {
 		imageParser.getCodes();
 	}
 	
-	private String getKey(){
+	public String getKey(){
 		return imageParser.getkeyFromTemlate();
 	}
 	

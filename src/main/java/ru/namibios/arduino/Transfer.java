@@ -4,10 +4,13 @@ import java.io.PrintWriter;
 
 import com.fazecast.jSerialComm.SerialPort;
 
+import ru.namibios.arduino.model.FishLoot;
 import ru.namibios.arduino.model.Kapcha;
 import ru.namibios.arduino.model.Region;
 
 public class Transfer implements Runnable{ 
+
+	private static final String SPACE = "4";
 
 	private SerialPort port;
 	
@@ -49,7 +52,7 @@ public class Transfer implements Runnable{
 					if(isStart){
 						Thread.sleep(3000);
 						System.out.println("isStart");
-						send("4");
+						send(SPACE);
 						isStart=false; isBegin=true;
 						Thread.sleep(5000);
 						
@@ -68,14 +71,19 @@ public class Transfer implements Runnable{
 						
 					}else if(isKapcha){
 						Thread.sleep(3920);
-						Kapcha kapcha = new Kapcha();
-						kapcha.clearNoises(40);
-						kapcha.send(port);
+						try{
+							Kapcha kapcha = new Kapcha();
+							kapcha.clearNoises(40);
+							kapcha.send(port);
+						}catch (Exception e){ 
+							isStart=true; isKapcha=false;
+						}
+						
 						isKapcha=false; isLootFilter=true;
 					}else if(isLootFilter){
 						Thread.sleep(5000);
 						System.out.println("isLootFilter");
-						send("9");
+						new FishLoot().send(port);
 						isLootFilter=false; isStart= true;
 					}
 					

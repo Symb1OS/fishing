@@ -10,6 +10,7 @@ import java.util.List;
 import javax.imageio.ImageIO;
 
 import ru.namibios.arduino.model.Chars;
+import ru.namibios.arduino.model.Loot;
 
 public class ImageParser {
 
@@ -17,15 +18,12 @@ public class ImageParser {
 	private static final boolean INFO = true;
 	private static final boolean DEBUG = false;
 	
-	private static final double MIN_KOEF = 0.88;
+	private static final double CHARS_MIN_KOEF = 0.88;
+	private static final double FISH_MIN_KOEF = 0.97;
 	
 	private static final int WHITE_R = 120;
 	private static final int WHITE_G = 120;
 	private static final int WHITE_B = 120;
-	
-	private static final int BLACK_R = 100;
-	private static final int BLACK_G = 100;
-	private static final int BLACK_B = 100;
 	
 	private BufferedImage screen;
 	private ImageType imageType;
@@ -62,12 +60,12 @@ public class ImageParser {
 			for (int j = 0; j < column; j++) {
 				Color color = new Color(screen.getRGB(j, i));
 				boolean isWhite = color.getRed() > WHITE_R && color.getGreen() > WHITE_G && color.getBlue() > WHITE_B;
-			//	boolean isBlack = (color.getRed() < BLACK_R && color.getGreen() < BLACK_G && color.getBlue() < BLACK_B);
 				boolean isGray = (color.getRed() > GRAY && color.getGreen() > GRAY && color.getBlue() > GRAY);
 				
 				switch (imageType) {
-					case SPACE:	  isKey = isWhite;  break; 
-					case KAPCHA:  isKey = isGray;   break;
+					case SPACE:	    isKey = isWhite;  break; 
+					case KAPCHA:    isKey = isGray;   break;
+					case FISH_LOOT: isKey = isGray;   break;
 					default: break;
 				}	
 				
@@ -93,10 +91,17 @@ public class ImageParser {
 				}
 				
 				break;	
-				
+		
+			case FISH_LOOT: {
+				printTemplate(tmp, row, column); 
+				keyWordListList.add(tmp);
+				break;
+			}
+			
 			default: keyWordListList.add(tmp); break;
 				
 			}
+		
 		}
 			
 	private void printMatrix(int[][] tmp, int row, int column){
@@ -126,6 +131,22 @@ public class ImageParser {
 		return Arrays.toString(tmp).length();
 	}
 	
+	private List<int[][]> getTemplates(int index){
+		List<int[][]> templateNumber = null; 
+		
+		switch (imageType) {
+		case FISH_LOOT:
+			templateNumber = Loot.values()[index].getTemplates();
+			break;
+
+		default:
+			templateNumber = Chars.values()[index].getTemplates();
+			break;
+		}
+		
+		return templateNumber;
+	}
+	
 	private int equalsMatrix(int[][] numberMatrix) {
 		int rezultIndex = -1;
 		
@@ -134,15 +155,14 @@ public class ImageParser {
 		double calcKoef = 0;
 		double maxCalcKoef = 0;
 
-		
 		int index = 0;
-		int size = Chars.values().length;
+		int size = (imageType == ImageType.FISH_LOOT ? Loot.values().length : Chars.values().length);
 		while(index < size){
 			
-			List<int[][]> templateNumber = Chars.values()[index].getTemplates();
+			List<int[][]> templateNumber = getTemplates(index); 
 			for (int[][] template : templateNumber) {
 				
-				if(calcKoef > MIN_KOEF) break;
+				if(calcKoef > CHARS_MIN_KOEF) break;
 				if(template.length != numberMatrix.length ) continue;
 					
 				if (DEBUG) {
@@ -172,7 +192,7 @@ public class ImageParser {
 					maxCalcKoef = calcKoef;
 				}
 				
-				boolean isUndefined = maxCalcKoef < MIN_KOEF;
+				boolean isUndefined = maxCalcKoef < CHARS_MIN_KOEF;
 				if( isUndefined ) rezultIndex = -1;
 				
 				if(INFO){
@@ -194,7 +214,6 @@ public class ImageParser {
 		}
 		if(INFO) System.out.println("REZULT = " + rezult.toString().replace("-1", "?"));
 		return rezult.toString().replace("-1", "");
-		
 	}
 	
 	public static void main(String[] args) throws Exception {
@@ -206,13 +225,15 @@ public class ImageParser {
 		// 5/20170711_231756_162.jpg
 		// 6/20170711_235951_232.jpg   
 		// 7/20170712_000451_976.jpg
-		File file  = new File("resources/debug/11/20170714_230537_164.jpg");
+		File file  = new File("resources/loot/trash/podkamenshik.jpg");
 		BufferedImage image = ImageIO.read(file);
 		
-		ImageParser parser = new ImageParser(ImageType.KAPCHA, image);
+		ImageParser parser = new ImageParser(ImageType.FISH_LOOT, image);
 		parser.getCodes();
-		String key = parser.getkeyFromTemlate();
-		System.out.println("key " + key);
+		parser.getkeyFromTemlate();
+		
+		//String key = parser.getkeyFromTemlate();
+		//System.out.println("key " + key);
 		
 	}
 }
