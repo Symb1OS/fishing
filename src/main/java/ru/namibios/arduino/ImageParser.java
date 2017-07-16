@@ -224,7 +224,7 @@ public class ImageParser {
 		// 5/20170711_231756_162.jpg
 		// 6/20170711_235951_232.jpg   
 		// 7/20170712_000451_976.jpg
-		File file  = new File("resources/loot/trash/podkamenshik.jpg");
+		File file  = new File("resources/loot/trash/rope.jpg");
 		BufferedImage image = ImageIO.read(file);
 		
 		ImageParser parser = new ImageParser(ImageType.FISH_LOOT, image);

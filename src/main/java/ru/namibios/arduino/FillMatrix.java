@@ -10,7 +10,7 @@ import ru.namibios.arduino.model.MatrixElement;
 
 public class FillMatrix {
 
-	private static final int OVERFLAW = 15000;
+	private static final int OVERFLAW = 10000;
 
 	private static final int MIN_ROW_INDEX = 20;
 	
@@ -44,7 +44,7 @@ public class FillMatrix {
 	private void fill(int row, int column){
 		
 		if(iteration > OVERFLAW) return;
-		
+		iteration++;
 		//up
 		if(row > 0 && matrix[row - 1][column] == VALUE){
 			matrix[row - 1][column] = counter;

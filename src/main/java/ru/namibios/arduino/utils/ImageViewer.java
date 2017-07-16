@@ -36,7 +36,7 @@ public class ImageViewer extends JFrame{
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    
 	    container.setLayout(new FlowLayout());
-	    ImageIcon icon = new ImageIcon(ImageIO.read(new File("resources/debug/20170715_170820_932.jpg")));
+	    ImageIcon icon = new ImageIcon(ImageIO.read(new File("resources/debug/20170716_185848_762.jpg")));
 	    image.setIcon(icon);
 	    container.addMouseListener(new MouseListener());
 	    container.add(image);
@@ -50,7 +50,7 @@ public class ImageViewer extends JFrame{
 			super.mousePressed(e);
 			BufferedImage image=null;
 			try {
-				image= ImageIO.read(new File("resources/debug/20170715_170820_932.jpg"));
+				image= ImageIO.read(new File("resources/debug/20170716_185848_762.jpg"));
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}

@@ -136,8 +136,9 @@ public class Screen {
 	
 	public static void main(String[] args) throws Exception {
 		
-		Screen screen = new Screen(ImageType.FISH_LOOT_ONE);
-		screen.saveImage("loot");
-		
+		/*Screen screen = new Screen(ImageType.FISH_LOOT_ONE);
+		screen.saveImage("loot");*/
+		Screen screen = new Screen();
+		screen.saveImage();
 	}
 }

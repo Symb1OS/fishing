@@ -10,6 +10,8 @@ import ru.namibios.arduino.model.Region;
 
 public class Transfer implements Runnable{ 
 
+	private static final int EVERY_HOUR = 1000 * 60 * 60;
+
 	private static final String SPACE = "4";
 
 	private SerialPort port;
@@ -22,8 +24,11 @@ public class Transfer implements Runnable{
 	private boolean isKapcha;
 	private boolean isLootFilter;
 
+	private long startTime;
+
 	public Transfer(String port) {
-		
+
+		startTime = System.currentTimeMillis();
 		isStart = false;
 		isBegin = true;
 		isSubLine = false;
@@ -37,6 +42,15 @@ public class Transfer implements Runnable{
 		PrintWriter output = new PrintWriter(port.getOutputStream());
 		output.println(message);
 		output.flush();
+	}
+	
+	private void useBear(){
+		long time = System.currentTimeMillis();
+		boolean needFeed = time - startTime > EVERY_HOUR;
+		if(needFeed){
+			send("bear");
+			startTime = System.currentTimeMillis();
+		}
 	}
 	
 	public void run() {
@@ -55,6 +69,7 @@ public class Transfer implements Runnable{
 						send(SPACE);
 						isStart=false; isBegin=true;
 						Thread.sleep(5000);
+						useBear();
 						
 					}else if(isBegin){
 						System.out.println("isBegin");
@@ -86,9 +101,7 @@ public class Transfer implements Runnable{
 						new FishLoot().send(port);
 						isLootFilter=false; isStart= true;
 					}
-					
 				}
-				
 			}
 			
 			} catch (Exception e) {
@@ -111,5 +124,7 @@ public class Transfer implements Runnable{
 	public static void main(String[] args) {
 		Transfer transfer = new Transfer("ttyACM0");
 		transfer.run();
+		
 	}
+
 }
