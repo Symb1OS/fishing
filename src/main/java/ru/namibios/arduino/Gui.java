@@ -90,7 +90,7 @@ public class Gui extends JFrame{
 	class StopListener implements ActionListener{
 
 		public void actionPerformed(ActionEvent e) {
-			transfer.pause();
+			transfer.pause(); 
 		}
 	}
 	

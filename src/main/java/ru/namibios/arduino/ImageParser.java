@@ -29,6 +29,7 @@ public class ImageParser {
 	private int row;
 	private int column;
 	
+	private int[][] imageMatrix;
 	private ArrayList<int[][]> keyWordListList;
 	
 	public ImageParser(BufferedImage screen){
@@ -36,6 +37,7 @@ public class ImageParser {
 		this.row = screen.getHeight();
 		this.column = screen.getWidth();
 		this.keyWordListList = new ArrayList<int[][]>();
+		this.imageMatrix = new int[row][column];
 	}
 	
 	public ImageParser(ImageType type, BufferedImage screen){
@@ -44,6 +46,7 @@ public class ImageParser {
 		this.row = screen.getHeight();
 		this.column = screen.getWidth();
 		this.keyWordListList = new ArrayList<int[][]>();
+		this.imageMatrix = new int[row][column];
 	}
 	
 	public void getCodes(){
@@ -54,7 +57,6 @@ public class ImageParser {
 		}
 		
 		boolean isKey = false;
-		int tmp[][] = new int[row][column];
 		for (int i = 0; i < row; i++) {
 			for (int j = 0; j < column; j++) {
 				Color color = new Color(screen.getRGB(j, i));
@@ -67,19 +69,18 @@ public class ImageParser {
 					case FISH_LOOT: isKey = isGray;   break;
 					default: break;
 				}	
-				
-				tmp[i][j] = isKey ? 1 : 0;
+				imageMatrix[i][j] = isKey ? 1 : 0;
 			}
 		}
 		
 		switch (imageType) {
 			case KAPCHA:
-				FillMatrix fillMatrix = new FillMatrix(tmp, row, column);
+				FillMatrix fillMatrix = new FillMatrix(imageMatrix, row, column);
 				fillMatrix.markupMatrix();
 				fillMatrix.cleanOfBounds(45, 100);
-				tmp = fillMatrix.getMatrix();
+				imageMatrix = fillMatrix.getMatrix();
 				
-				printMatrix(tmp, row, column);
+				printMatrix(imageMatrix, row, column);
 				
 				List<int[][]> list = fillMatrix.toListMatrix();
 				
@@ -92,16 +93,20 @@ public class ImageParser {
 				break;	
 		
 			case FISH_LOOT: {
-				printTemplate(tmp, row, column); 
-				keyWordListList.add(tmp);
+				printTemplate(imageMatrix, row, column); 
+				keyWordListList.add(imageMatrix);
 				break;
 			}
 			
-			default: keyWordListList.add(tmp); break;
+			default: keyWordListList.add(imageMatrix); break;
 				
 			}
 		
 		}
+	
+	public int[][] getImageMatrix(){
+		return imageMatrix;
+	}
 			
 	private void printMatrix(int[][] tmp, int row, int column){
 		for (int i = 0; i < row; i++) {
@@ -224,12 +229,18 @@ public class ImageParser {
 		// 5/20170711_231756_162.jpg
 		// 6/20170711_235951_232.jpg   
 		// 7/20170712_000451_976.jpg
-		File file  = new File("resources/loot/trash/rope.jpg");
-		BufferedImage image = ImageIO.read(file);
 		
-		ImageParser parser = new ImageParser(ImageType.FISH_LOOT, image);
-		parser.getCodes();
-		parser.getkeyFromTemlate();
+		String filename= "resources/loot/ok/new";
+		File folder = new File(filename);
+		for (File file: folder.listFiles()) {
+			//File file  = new File("resources/loot/trash/rope.jpg");
+			BufferedImage image = ImageIO.read(file);
+			
+			ImageParser parser = new ImageParser(ImageType.FISH_LOOT, image);
+			parser.getCodes();
+			parser.getkeyFromTemlate();
+		}
+	
 		
 		//String key = parser.getkeyFromTemlate();
 		//System.out.println("key " + key);
