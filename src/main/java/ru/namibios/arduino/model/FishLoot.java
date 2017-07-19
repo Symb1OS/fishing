@@ -47,11 +47,17 @@ public class FishLoot {
 		char[] array = loots.toCharArray();
 		int length = array.length;
 		boolean unknown = length == 0; 
-		if(unknown) return TAKE;
+		if(unknown){
+			System.out.println("Loot is not recognized... Take.");
+			return TAKE;
+		} 
 		
 		for (int i = 0; i < length; i++) {
 			isOk = isOk || array[i] == '0' || array[i] == '1' || array[i] == '2' || array[i] == '4';
 		}
+		
+		if(isOk) System.out.println("Loot ok."); else System.out.println("Trash. Throw out.");
+		
 		return isOk ? TAKE : "";
 	}
 	

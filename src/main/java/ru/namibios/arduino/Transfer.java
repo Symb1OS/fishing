@@ -65,20 +65,20 @@ public class Transfer implements Runnable{
 					
 					if(isStart){
 						Thread.sleep(3000);
-						System.out.println("isStart");
+						System.out.println("Starting fish... ");
 						send(SPACE);
 						isStart=false; isBegin=true;
 						Thread.sleep(5000);
 						useBear();
 						
 					}else if(isBegin){
-						System.out.println("isBegin");
+						System.out.println("Wait fish...");
 						Thread.sleep(3000);
 						boolean isSend =  new Region(ImageType.SPACE).send(port);
 						if(isSend){ isBegin= false; isSubLine= true; }
 						
 					}else if(isSubLine){
-						System.out.println("isSubLine");
+						System.out.println("Cut the fish...");
 						Thread.sleep(1200);
 						send(ImageType.SPACE.toString());
 						isSubLine=false;
@@ -87,8 +87,9 @@ public class Transfer implements Runnable{
 					}else if(isKapcha){
 						Thread.sleep(3920);
 						try{
+							System.out.println("Start parsing kapcha...");
 							Kapcha kapcha = new Kapcha();
-							kapcha.clearNoises(40);
+							kapcha.clearNoises(20);
 							kapcha.send(port);
 						}catch (Exception e){ 
 							isStart=true; isKapcha=false;
@@ -97,7 +98,7 @@ public class Transfer implements Runnable{
 						isKapcha=false; isLootFilter=true;
 					}else if(isLootFilter){
 						Thread.sleep(5000);
-						System.out.println("isLootFilter");
+						System.out.println("Check loot...");
 						new FishLoot().send(port);
 						isLootFilter=false; isStart= true;
 					}

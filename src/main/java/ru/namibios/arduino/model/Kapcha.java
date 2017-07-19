@@ -54,7 +54,7 @@ public class Kapcha {
 			cnt++;
 		}
 		screen.clear();
-		//screen.saveImage();
+		screen.saveImage();
 	}
 	
 }
