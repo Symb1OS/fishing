@@ -41,6 +41,8 @@ public class Gui extends JFrame{
 	
 	private Transfer transfer = new Transfer(COM_PORT);
 	
+	private Thread threadTransfer = new Thread(new Transfer(COM_PORT));
+	
 	public Gui() {
 	    super("Fishbot");
 	    
@@ -83,6 +85,7 @@ public class Gui extends JFrame{
 
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("start");
+			//threadTransfer.start();
 			transfer.run();
 		}
 	}

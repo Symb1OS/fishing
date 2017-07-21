@@ -6,9 +6,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
+
 import ru.namibios.arduino.model.MatrixElement;
 
 public class FillMatrix {
+	
+	final static Logger logger = Logger.getLogger(FillMatrix.class);
 
 	private static final int OVERFLAW = 10000;
 
@@ -45,6 +49,7 @@ public class FillMatrix {
 		
 		if(iteration > OVERFLAW) return;
 		iteration++;
+		
 		//up
 		if(row > 0 && matrix[row - 1][column] == VALUE){
 			matrix[row - 1][column] = counter;
@@ -149,7 +154,6 @@ public class FillMatrix {
 			 if(element.getMaxRow() > avg){
 				sortIndex.add(element.getMinColumn());
 			 }
-			 
 		}
 		
 		Object[] sort = sortIndex.toArray();
@@ -174,9 +178,9 @@ public class FillMatrix {
 			}
 		}
 		
-		System.out.println("count " + count);
-		System.out.println("sumIndexRow " + sumIndexRow);
-		System.out.println("avg " + sumIndexRow /count);
+		logger.info("count " + count);
+		logger.info("sumIndexRow " + sumIndexRow);
+		logger.info("avg " + sumIndexRow /count);
 		
 		return rezultMap;
 	}

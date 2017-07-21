@@ -9,10 +9,14 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 
+import org.apache.log4j.Logger;
+
 import ru.namibios.arduino.model.Chars;
 import ru.namibios.arduino.model.Loot;
 
 public class ImageParser {
+	
+	final static Logger logger = Logger.getLogger(ImageParser.class);
 
 	private static final int GRAY = 40;
 	private static final boolean INFO = true;
@@ -51,9 +55,9 @@ public class ImageParser {
 	
 	public void getCodes(){
 
-		if(DEBUG){
-			System.out.println("row: " + row);
-			System.out.println("column: " + column);
+		if(logger.isDebugEnabled()){
+			logger.debug("row: " + row);
+			logger.debug("column: " + column);
 		}
 		
 		boolean isKey = false;
@@ -169,7 +173,8 @@ public class ImageParser {
 				if(calcKoef > CHARS_MIN_KOEF) break;
 				if(template.length != numberMatrix.length ) continue;
 					
-				if (DEBUG) {
+				if (logger.isDebugEnabled()) {
+				
 					int tempateLength = getLength(template);
 					int numberLength= getLength(numberMatrix);
 				
@@ -200,8 +205,8 @@ public class ImageParser {
 				if( isUndefined ) rezultIndex = -1;
 				
 				if(INFO){
-					System.out.println("index= " + index + " |templateKoef= " + templateKoef + " | koef= " + koef + " | " + calcKoef );
-					System.out.println("========================================");
+					logger.info("index= " + index + " |templateKoef= " + templateKoef + " | koef= " + koef + " | " + calcKoef );
+					logger.info("========================================");
 				}
 				
 			}
@@ -216,7 +221,7 @@ public class ImageParser {
 		for (int[][] numberMatrix : keyWordListList) {
 			rezult.append(equalsMatrix(numberMatrix));
 		}
-		if(INFO) System.out.println("REZULT = " + rezult.toString().replace("-1", "?"));
+		logger.info("REZULT = " + rezult.toString().replace("-1", "?"));
 		return rezult.toString().replace("-1", "");
 	}
 	

@@ -3,6 +3,8 @@ package ru.namibios.arduino.model;
 import java.awt.image.BufferedImage;
 import java.io.PrintWriter;
 
+import org.apache.log4j.Logger;
+
 import com.fazecast.jSerialComm.SerialPort;
 
 import ru.namibios.arduino.ImageParser;
@@ -11,6 +13,8 @@ import ru.namibios.arduino.Screen;
 
 public class Kapcha {
 
+	final static Logger logger = Logger.getLogger(Kapcha.class);
+	
 	private Screen screen;
 	
 	private ImageParser imageParser;
@@ -37,7 +41,7 @@ public class Kapcha {
 			output.println(message);
 			output.flush();
 			
-			System.out.println("Sended message: " + message);
+			logger.info("Sended message: " + message);
 			status = true;
 			
 		}
@@ -45,16 +49,17 @@ public class Kapcha {
 	}
 	
 	public void clearNoises(int iteration) throws Exception{
-		System.out.println("start clear nois");
+		logger.info("Clean the noise...");
 		int cnt = 0;
 		while(cnt < iteration){
 			BufferedImage noiseImage = new Screen(ImageType.KAPCHA).getImage();
 			screen.addNoise(noiseImage);
-//			screen.saveImage();
+			//screen.saveDebugImage();
 			cnt++;
 		}
 		screen.clear();
-		screen.saveImage();
+		screen.saveDebugImage();
+		logger.info("Clean ended...");
 	}
 	
 }

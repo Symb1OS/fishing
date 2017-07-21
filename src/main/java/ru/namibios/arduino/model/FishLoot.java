@@ -4,6 +4,8 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.fazecast.jSerialComm.SerialPort;
 
 import ru.namibios.arduino.ImageParser;
@@ -11,6 +13,8 @@ import ru.namibios.arduino.ImageType;
 import ru.namibios.arduino.Screen;
 
 public class FishLoot {
+	
+	final static Logger logger = Logger.getLogger(FishLoot.class);
 
 	private static final String TAKE = "9";
 	
@@ -48,7 +52,7 @@ public class FishLoot {
 		int length = array.length;
 		boolean unknown = length == 0; 
 		if(unknown){
-			System.out.println("Loot is not recognized... Take.");
+			logger.info("Loot is not recognized... Take.");
 			return TAKE;
 		} 
 		
@@ -56,7 +60,7 @@ public class FishLoot {
 			isOk = isOk || array[i] == '0' || array[i] == '1' || array[i] == '2' || array[i] == '4';
 		}
 		
-		if(isOk) System.out.println("Loot ok."); else System.out.println("Trash. Throw out.");
+		if(isOk) logger.info("Loot ok."); else logger.info("Trash. Throw out.");
 		
 		return isOk ? TAKE : "";
 	}
@@ -69,7 +73,7 @@ public class FishLoot {
 			output.println(key);
 			output.flush();
 			
-			System.out.println("Sended message: " + key);
+			logger.info("Sended message: " + key);
 		}
 	}
 	

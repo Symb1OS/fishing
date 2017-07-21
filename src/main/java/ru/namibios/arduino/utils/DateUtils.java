@@ -17,7 +17,4 @@ public class DateUtils {
 		return format.format(new Date());
 	}
 
-	public static void main(String[] args) {
-		System.out.println(DateUtils.getYYYY_MM_DD_HH_MM_SS_S());
-	}
 }

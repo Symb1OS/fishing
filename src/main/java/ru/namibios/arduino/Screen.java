@@ -107,7 +107,7 @@ public class Screen {
 		screenShot = noise.clear();
 	}
 	
-	public void saveImage() throws IOException{
+	public void saveDebugImage() throws IOException{
 		ImageIO.write(screenShot, "jpg", new File("resources/debug/" + DateUtils.getYYYY_MM_DD_HH_MM_SS_S() + ".jpg"));
 	}
 	
@@ -139,6 +139,6 @@ public class Screen {
 		/*Screen screen = new Screen(ImageType.FISH_LOOT_ONE);
 		screen.saveImage("loot");*/
 		Screen screen = new Screen();
-		screen.saveImage();
+		screen.saveDebugImage();
 	}
 }

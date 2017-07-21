@@ -3,6 +3,8 @@ package ru.namibios.arduino.model;
 import java.awt.image.BufferedImage;
 import java.io.PrintWriter;
 
+import org.apache.log4j.Logger;
+
 import com.fazecast.jSerialComm.SerialPort;
 
 import ru.namibios.arduino.ImageParser;
@@ -10,6 +12,8 @@ import ru.namibios.arduino.ImageType;
 import ru.namibios.arduino.Screen;
 
 public class Region {
+	
+	final static Logger logger = Logger.getLogger(Region.class);
 
 	private Screen screen;
 	
@@ -38,7 +42,7 @@ public class Region {
 			output.println(message);
 			output.flush();
 			
-			System.out.println("Sended message: " + message);
+			logger.info("Sended message: " + message);
 			status = true;
 		}
 		return status;

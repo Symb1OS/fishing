@@ -2,6 +2,8 @@ package ru.namibios.arduino;
 
 import java.io.PrintWriter;
 
+import org.apache.log4j.Logger;
+
 import com.fazecast.jSerialComm.SerialPort;
 
 import ru.namibios.arduino.model.FishLoot;
@@ -9,6 +11,8 @@ import ru.namibios.arduino.model.Kapcha;
 import ru.namibios.arduino.model.Region;
 
 public class Transfer implements Runnable{ 
+	
+	final static Logger logger = Logger.getLogger(Transfer.class);
 
 	private static final int EVERY_HOUR = 1000 * 60 * 60;
 
@@ -48,37 +52,38 @@ public class Transfer implements Runnable{
 		long time = System.currentTimeMillis();
 		boolean needFeed = time - startTime > EVERY_HOUR;
 		if(needFeed){
+			logger.info("Using bear...");
 			send("bear");
 			startTime = System.currentTimeMillis();
 		}
 	}
 	
 	public void run() {
-		System.out.println("Thread start...");
+		logger.info("Start...");
 		isRun = true;
 		
 		try{
 			Thread.sleep(3000);
 			if(port.openPort()) {
-				
+				logger.info("Port is open...");
 				while(isRun){
 					
 					if(isStart){
 						Thread.sleep(3000);
-						System.out.println("Starting fish... ");
+						logger.info("Starting fish... ");
 						send(SPACE);
 						isStart=false; isBegin=true;
 						Thread.sleep(5000);
 						useBear();
 						
 					}else if(isBegin){
-						System.out.println("Wait fish...");
+						logger.info("Wait fish...");
 						Thread.sleep(3000);
 						boolean isSend =  new Region(ImageType.SPACE).send(port);
 						if(isSend){ isBegin= false; isSubLine= true; }
 						
 					}else if(isSubLine){
-						System.out.println("Cut the fish...");
+						logger.info("Cut the fish...");
 						Thread.sleep(1200);
 						send(ImageType.SPACE.toString());
 						isSubLine=false;
@@ -87,18 +92,19 @@ public class Transfer implements Runnable{
 					}else if(isKapcha){
 						Thread.sleep(3920);
 						try{
-							System.out.println("Start parsing kapcha...");
+							logger.info("Start parsing kapcha...");
 							Kapcha kapcha = new Kapcha();
-							kapcha.clearNoises(20);
+							kapcha.clearNoises(30);
 							kapcha.send(port);
-						}catch (Exception e){ 
+						}catch (Exception e){
+							logger.error("Exception " + e);
 							isStart=true; isKapcha=false;
 						}
 						
 						isKapcha=false; isLootFilter=true;
 					}else if(isLootFilter){
 						Thread.sleep(5000);
-						System.out.println("Check loot...");
+						logger.info("Check loot...");
 						new FishLoot().send(port);
 						isLootFilter=false; isStart= true;
 					}
@@ -106,12 +112,14 @@ public class Transfer implements Runnable{
 			}
 			
 			} catch (Exception e) {
+				logger.error("Exception " + e);
 				e.printStackTrace();
 				port.closePort();
 			}
 			
 			port.closePort();
-			System.out.println("Thread stopped...");
+			logger.info("Port closed...");
+			logger.info("Thread stop.");
 		}
 	
 	void restart(){
