@@ -8,6 +8,7 @@ import com.fazecast.jSerialComm.SerialPort;
 
 import ru.namibios.arduino.model.FishLoot;
 import ru.namibios.arduino.model.Kapcha;
+import ru.namibios.arduino.model.Property;
 import ru.namibios.arduino.model.Region;
 
 public class Transfer implements Runnable{ 
@@ -28,6 +29,12 @@ public class Transfer implements Runnable{
 	private boolean isKapcha;
 	private boolean isLootFilter;
 
+	private boolean bear;
+	private boolean minigame;
+	private boolean dinner1;
+	private boolean dinner2;
+	private boolean dinner3;
+	
 	private long startTime;
 
 	public Transfer(String port) {
@@ -42,10 +49,26 @@ public class Transfer implements Runnable{
 		this.port.setComPortTimeouts(SerialPort.TIMEOUT_SCANNER, 0, 0);
 	}
 	
+	public void setProperty(Property property) {
+		this.bear = property.isBear();
+		this.minigame = property.isMinigame();
+		this.dinner1 = property.isDinner1();
+		this.dinner2 = property.isDinner2();
+		this.dinner3 = property.isDinner3();
+		
+	}
+	
 	public void send(String message){
 		PrintWriter output = new PrintWriter(port.getOutputStream());
 		output.println(message);
 		output.flush();
+	}
+	
+	@SuppressWarnings("unused")
+	private void use(String method, long sleep){
+		logger.info("Using " + method);
+		send(method);
+		try{Thread.sleep(sleep);}catch(InterruptedException e){}
 	}
 	
 	private void useBear(){
@@ -92,7 +115,7 @@ public class Transfer implements Runnable{
 					}else if(isKapcha){
 						Thread.sleep(3920);
 						try{
-							logger.info("Start parsing kapcha...");
+							logger.info("Parsing kapcha...");
 							Kapcha kapcha = new Kapcha();
 							kapcha.clearNoises(30);
 							kapcha.send(port);
@@ -100,7 +123,6 @@ public class Transfer implements Runnable{
 							logger.error("Exception " + e);
 							isStart=true; isKapcha=false;
 						}
-						
 						isKapcha=false; isLootFilter=true;
 					}else if(isLootFilter){
 						Thread.sleep(5000);
@@ -118,6 +140,7 @@ public class Transfer implements Runnable{
 			}
 			
 			port.closePort();
+			
 			logger.info("Port closed...");
 			logger.info("Thread stop.");
 		}

@@ -10,38 +10,44 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+
+import org.apache.log4j.Logger;
+
+import ru.namibios.arduino.model.Property;
 
 public class Gui extends JFrame{
 	
+	final static Logger logger = Logger.getLogger(Gui.class);
+	
 	private static final String YESNO = "Да/Нет";
 	private static final String COM_PORT = "COM7";
-	private static final int WINDOW_WIDTH = 300;
-	private static final int WINDOW_HEIGHT = 180;
+	private static final int WINDOW_WIDTH = 180;
+	private static final int WINDOW_HEIGHT = 185;
 
 	private static final long serialVersionUID = 1L;
 	
-	private JLabel lGarbage = new JLabel("Выбрасывать мусор?");
-	private JCheckBox jGarbage = new JCheckBox(YESNO);
+	private JLabel lBear = new JLabel("Пиво");
+	private JCheckBox jBear = new JCheckBox(YESNO);
 	
-	private JLabel lWorder = new JLabel("Пиво");
-	private JCheckBox jWorker = new JCheckBox(YESNO);
+	private JLabel lMinigame = new JLabel("Мини-игра");
+	private JCheckBox jMinigame = new JCheckBox(YESNO);
 	
-	private JLabel lFood = new JLabel("Обеды");
-	private JCheckBox jFood = new JCheckBox(YESNO);
+	private JLabel lFood1 = new JLabel("Обед 1");
+	private JCheckBox jFood1 = new JCheckBox(YESNO);
+	
+	private JLabel lFood2 = new JLabel("Обед 2 ");
+	private JCheckBox jFood2 = new JCheckBox(YESNO);
+	
+	private JLabel lFood3 = new JLabel("Обед 3");
+	private JCheckBox jFood3 = new JCheckBox(YESNO);
 	
 	private JButton startButton = new JButton("Старт");
 	private JButton stopButton = new JButton("Стоп");
 	
-	private JLabel lText = new JLabel("Тестовое поле");
-	private JTextField tText = new JTextField();
-	
 	private Container container = this.getContentPane();
 	
 	private Transfer transfer = new Transfer(COM_PORT);
-	
-	private Thread threadTransfer = new Thread(new Transfer(COM_PORT));
 	
 	public Gui() {
 	    super("Fishbot");
@@ -58,18 +64,20 @@ public class Gui extends JFrame{
 		Container paramContainer = new Container();
 	    paramContainer.setLayout(new GridLayout(7, 2));
 	    
-	    paramContainer.add(lText);
-	    paramContainer.add(tText);
+	    paramContainer.add(lBear);
+	    paramContainer.add(jBear);
 	    
-	    paramContainer.add(lGarbage);
-	    paramContainer.add(jGarbage);
-
-	    paramContainer.add(lFood);
-	    paramContainer.add(jFood);
+	    paramContainer.add(lMinigame);
+	    paramContainer.add(jMinigame);
 	    
+	    paramContainer.add(lFood1);
+	    paramContainer.add(jFood1);
 	    
-	    paramContainer.add(lWorder);
-	    paramContainer.add(jWorker);
+	    paramContainer.add(lFood2);
+	    paramContainer.add(jFood2);
+	    
+	    paramContainer.add(lFood3);
+	    paramContainer.add(jFood3);
 	    
 	    startButton.addActionListener(new StartListener());
 	    paramContainer.add(startButton);
@@ -84,8 +92,16 @@ public class Gui extends JFrame{
 	class StartListener implements ActionListener{
 
 		public void actionPerformed(ActionEvent e) {
-			System.out.println("start");
-			//threadTransfer.start();
+			logger.info("Programm start...");
+			
+			Property property = new Property();
+			property.setBear(jBear.isSelected());
+			property.setMinigame(jMinigame.isSelected());
+			property.setDinner1(jFood1.isSelected());
+			property.setDinner2(jFood2.isSelected());
+			property.setDinner3(jFood3.isSelected());
+			
+			transfer.setProperty(property);
 			transfer.run();
 		}
 	}

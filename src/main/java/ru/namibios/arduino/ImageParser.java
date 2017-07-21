@@ -178,8 +178,8 @@ public class ImageParser {
 					int tempateLength = getLength(template);
 					int numberLength= getLength(numberMatrix);
 				
-					System.out.println("template" + tempateLength);
-					System.out.println("numberMatrix" + numberLength);
+					logger.debug("template" + tempateLength);
+					logger.debug("numberMatrix" + numberLength);
 				}
 				
 				templateKoef=0; koef = 0;
@@ -218,6 +218,8 @@ public class ImageParser {
 	
 	public String getkeyFromTemlate() {
 		StringBuilder rezult = new StringBuilder();
+		
+		//TODO  Chars[] chars = Chars.values();
 		for (int[][] numberMatrix : keyWordListList) {
 			rezult.append(equalsMatrix(numberMatrix));
 		}
@@ -245,7 +247,6 @@ public class ImageParser {
 			parser.getCodes();
 			parser.getkeyFromTemlate();
 		}
-	
 		
 		//String key = parser.getkeyFromTemlate();
 		//System.out.println("key " + key);

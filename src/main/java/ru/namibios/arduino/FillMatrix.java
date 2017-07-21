@@ -125,16 +125,15 @@ public class FillMatrix {
 			} else{
 				MatrixElement element = new MatrixElement(minIndexRow, maxIndexRow, minIndexColumn, maxIndexColumn);
 				elements.put(objCnt, element);
-				System.out.print("Object " + objCnt + " sum= " + sum + " | ");
-				System.out.println(element);
+				logger.info("Object " + objCnt + " sum= " + sum + " | ");
+				logger.info(element);
 			}
 			objCnt++;
 		}
 		
 	}
 	
-	private Map<Integer, MatrixElement> getMinMAtrix(Map<Integer, MatrixElement> elements){
-		System.out.println("getMinMAtrix");
+	private Map<Integer, MatrixElement> getMinMatrix(Map<Integer, MatrixElement> elements){
 		
 		Map<Integer, MatrixElement> rezultMap = new HashMap<>();
 		
@@ -157,6 +156,8 @@ public class FillMatrix {
 		}
 		
 		Object[] sort = sortIndex.toArray();
+		
+		logger.info("Unsorted array of columns (from left to right)");
 		for (int i = 0; i < sort.length; i++) {
 			System.out.print(sort[i] + " ");
 		}
@@ -164,9 +165,11 @@ public class FillMatrix {
 		System.out.println();
 		Arrays.sort(sort);
 		
+		logger.info("Sort massif");
 		for (int i = 0; i < sort.length; i++) {
 			System.out.print(sort[i] + " ");
 		}
+		
 		System.out.println();
 		
 		for (int i = 0; i < sort.length; i++) {
@@ -187,8 +190,7 @@ public class FillMatrix {
 	
 	public List<int[][]> toListMatrix(){
 		List<int[][]> rezult = new ArrayList<>();
-		elements = getMinMAtrix(elements);
-		//System.out.println("elements.keySet() " + elements.keySet());
+		elements = getMinMatrix(elements);
 		for (int key : elements.keySet()) {
 			MatrixElement element = elements.get(key);
 			int[][] symbol = new int[SYMBOL_ROW][SYMBOL_COLUMN];
@@ -198,13 +200,10 @@ public class FillMatrix {
 				column=0;
 				for (int j = element.getMinColumn(); j <= element.getMaxColumn(); j++) {
 					symbol[row][column] = matrix[i][j] > 0 ? 1: 0;
-					//System.out.print(i + " > " + row + " | " + j + " > " + column + " ||  ");
 					column++;
 				}
-				//System.out.println();
 				row++;
 			}
-			//System.out.println();
 			rezult.add(symbol);
 		}
 
