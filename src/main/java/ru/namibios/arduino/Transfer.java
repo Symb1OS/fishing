@@ -6,6 +6,7 @@ import org.apache.log4j.Logger;
 
 import com.fazecast.jSerialComm.SerialPort;
 
+import ru.namibios.arduino.model.Chars;
 import ru.namibios.arduino.model.FishLoot;
 import ru.namibios.arduino.model.Kapcha;
 import ru.namibios.arduino.model.Property;
@@ -106,22 +107,30 @@ public class Transfer implements Runnable{
 						if(isSend){ isBegin= false; isSubLine= true; }
 						
 					}else if(isSubLine){
-						logger.info("Cut the fish...");
-						Thread.sleep(1200);
-						send(ImageType.SPACE.toString());
-						isSubLine=false;
-						isKapcha=true;
-						
+						String key= new Region(ImageType.SUBLINE).getKey();
+						if(key.equals(String.valueOf(Chars.SPACE.ordinal()))) {
+							logger.info("Cut the fish...");
+							Thread.sleep(550);
+							send(ImageType.SPACE.toString());
+							isSubLine=false;
+							isKapcha=true;
+						}
 					}else if(isKapcha){
 						Thread.sleep(3920);
 						try{
 							logger.info("Parsing kapcha...");
 							Kapcha kapcha = new Kapcha();
 							kapcha.clearNoises(30);
-							kapcha.send(port);
+							boolean isDefined = kapcha.send(port);
+							if(!isDefined){
+								logger.info("Kaptcha undefuned");
+								Thread.sleep(10000);
+								isStart=true; isKapcha=false;
+							}
 						}catch (Exception e){
 							logger.error("Exception " + e);
 							isStart=true; isKapcha=false;
+							Thread.sleep(7000);
 						}
 						isKapcha=false; isLootFilter=true;
 					}else if(isLootFilter){
@@ -154,8 +163,8 @@ public class Transfer implements Runnable{
 	}
 	
 	public static void main(String[] args) {
-		Transfer transfer = new Transfer("ttyACM0");
-		transfer.run();
+	
+		System.out.println(Chars.SPACE.ordinal());
 		
 	}
 

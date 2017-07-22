@@ -21,16 +21,16 @@ public class Screen {
 	private static final int SPASE_W = 63;
 	private static final int SPACE_H = 25;
 	
-/*	private static final int LINE_X = 820;
+	private static final int LINE_X = 820;
 	private static final int LINE_Y = 402;
 	private static final int LINE_W = 278;
 	private static final int LINE_H = 25;
-	
+
 	private static final int SUB_LINE_X = 997;
 	private static final int SUB_LINE_Y = 402;
 	private static final int SUB_LINE_W = 10;
 	private static final int SUB_LINE_H = 25;
-	
+	/*		
 	private static final int SUB_KAPCHA_X = 780;
 	private static final int SUB_KAPCHA_Y = 360;
 	private static final int SUB_KAPCHA_W = 372;
@@ -61,7 +61,8 @@ public class Screen {
 		File fexport = new File(PATH_EXPORT + filename);
 		BufferedImage img = ImageIO.read(fimport);
 		switch (type) {
-			case SPACE:	    	screenShot = img.getSubimage(SPACE_X, SPACE_Y, SPASE_W, SPACE_H); 			   break; 
+			case SPACE:	    	screenShot = img.getSubimage(SPACE_X, SPACE_Y, SPASE_W, SPACE_H); 			   break;
+			case LINE:	    	screenShot = img.getSubimage(LINE_X, LINE_Y, LINE_W, LINE_H); 			       break;
 			case KAPCHA:    	screenShot = img.getSubimage(KAPCHA_X, KAPCHA_Y, KAPCHA_W, KAPCHA_H);          break;
 			case FISH_LOOT_ONE: screenShot = img.getSubimage(LOOT_X, LOOT_Y, LOOT_W, LOOT_H);                  break;
 			case FISH_LOOT_TWO: screenShot = img.getSubimage(LOOT_TWO_X, LOOT_TWO_Y, LOOT_TWO_W, LOOT_TWO_H);  break;
@@ -81,9 +82,11 @@ public class Screen {
 		Robot robot = new Robot();
 		screenShot = robot.createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
 		
-		File fexport = new File(PATH_EXPORT + "test.jpg");
+	//	File fexport = new File(PATH_EXPORT + "test.jpg");
 		switch (type) {
 			case SPACE:	    	screenShot = screenShot.getSubimage(SPACE_X, SPACE_Y, SPASE_W, SPACE_H); 			         break; 
+			case LINE:	    	screenShot = screenShot.getSubimage(LINE_X, LINE_Y, LINE_W, LINE_H); 			       	     break;
+			case SUBLINE:	    screenShot = screenShot.getSubimage(SUB_LINE_X, SUB_LINE_Y, SUB_LINE_W, SUB_LINE_H); 	     break;
 			case KAPCHA:        screenShot = screenShot.getSubimage(KAPCHA_X, KAPCHA_Y, KAPCHA_W, KAPCHA_H);                 break;
 			case FISH_LOOT_ONE: screenShot = screenShot.getSubimage(LOOT_X, LOOT_Y, LOOT_W, LOOT_H);                		 break;
 			case FISH_LOOT_TWO: screenShot = screenShot.getSubimage(LOOT_TWO_X, LOOT_TWO_Y, LOOT_TWO_W, LOOT_TWO_H);         break;
@@ -91,7 +94,7 @@ public class Screen {
 		}
 		makeGray();
 		noise = new Noise(screenShot);
-		ImageIO.write(screenShot, "JPG", fexport );
+		//ImageIO.write(screenShot, "JPG", fexport );
 	}
 	
 	public Screen() throws AWTException{
@@ -138,7 +141,9 @@ public class Screen {
 		
 		/*Screen screen = new Screen(ImageType.FISH_LOOT_ONE);
 		screen.saveImage("loot");*/
+		
 		Screen screen = new Screen();
-		screen.saveDebugImage();
+		//screen.saveDebugImage();
+		screen.saveImage("weapon");
 	}
 }

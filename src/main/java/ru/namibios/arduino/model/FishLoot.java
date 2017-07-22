@@ -32,7 +32,7 @@ public class FishLoot {
 		one.saveImage("loot");
 		
 		two = new Screen(ImageType.FISH_LOOT_TWO);
-		two.saveImage("loot");
+		//two.saveImage("loot");
 		
 		scrins.add(one);
 		scrins.add(two);

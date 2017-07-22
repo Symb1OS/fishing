@@ -2,12 +2,8 @@ package ru.namibios.arduino;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
-import javax.imageio.ImageIO;
 
 import org.apache.log4j.Logger;
 
@@ -19,7 +15,6 @@ public class ImageParser {
 	final static Logger logger = Logger.getLogger(ImageParser.class);
 
 	private static final int GRAY = 40;
-	private static final boolean INFO = true;
 	private static final boolean DEBUG = false;
 	
 	private static final double CHARS_MIN_KOEF = 0.88;
@@ -55,7 +50,7 @@ public class ImageParser {
 	
 	public void getCodes(){
 
-		if(logger.isDebugEnabled()){
+		if(DEBUG){
 			logger.debug("row: " + row);
 			logger.debug("column: " + column);
 		}
@@ -70,6 +65,7 @@ public class ImageParser {
 				switch (imageType) {
 					case SPACE:	    isKey = isWhite;  break; 
 					case KAPCHA:    isKey = isGray;   break;
+					case SUBLINE:   isKey = isGray;   break;
 					case FISH_LOOT: isKey = isGray;   break;
 					default: break;
 				}	
@@ -77,11 +73,13 @@ public class ImageParser {
 			}
 		}
 		
+		//printMatrix(imageMatrix, row, column);
+		
 		switch (imageType) {
 			case KAPCHA:
 				FillMatrix fillMatrix = new FillMatrix(imageMatrix, row, column);
 				fillMatrix.markupMatrix();
-				fillMatrix.cleanOfBounds(45, 100);
+				fillMatrix.cleanOfBounds(40, 100);
 				imageMatrix = fillMatrix.getMatrix();
 				
 				printMatrix(imageMatrix, row, column);
@@ -94,10 +92,14 @@ public class ImageParser {
 					printTemplate(is, FillMatrix.SYMBOL_ROW, FillMatrix.SYMBOL_COLUMN);
 				}
 				
-				break;	
+				break;	      
 		
 			case FISH_LOOT: {
-				printTemplate(imageMatrix, row, column); 
+				keyWordListList.add(imageMatrix);
+				break;
+			}
+			
+			case SUBLINE:{
 				keyWordListList.add(imageMatrix);
 				break;
 			}
@@ -135,10 +137,6 @@ public class ImageParser {
 		System.out.println();
 	}
 	
-	private int getLength(int[][] tmp){
-		return Arrays.toString(tmp).length();
-	}
-	
 	private List<int[][]> getTemplates(int index){
 		List<int[][]> templateNumber = null; 
 		
@@ -173,15 +171,6 @@ public class ImageParser {
 				if(calcKoef > CHARS_MIN_KOEF) break;
 				if(template.length != numberMatrix.length ) continue;
 					
-				if (logger.isDebugEnabled()) {
-				
-					int tempateLength = getLength(template);
-					int numberLength= getLength(numberMatrix);
-				
-					logger.debug("template" + tempateLength);
-					logger.debug("numberMatrix" + numberLength);
-				}
-				
 				templateKoef=0; koef = 0;
 				for (int i = 0; i < row; i++) {
 					for (int j = 0; j < column; j++) {
@@ -204,9 +193,9 @@ public class ImageParser {
 				boolean isUndefined = maxCalcKoef < CHARS_MIN_KOEF;
 				if( isUndefined ) rezultIndex = -1;
 				
-				if(INFO){
-					logger.info("index= " + index + " |templateKoef= " + templateKoef + " | koef= " + koef + " | " + calcKoef );
-					logger.info("========================================");
+				if(DEBUG){
+					logger.debug("index= " + index + " |templateKoef= " + templateKoef + " | koef= " + koef + " | " + calcKoef );
+					logger.debug("========================================");
 				}
 				
 			}
@@ -219,11 +208,9 @@ public class ImageParser {
 	public String getkeyFromTemlate() {
 		StringBuilder rezult = new StringBuilder();
 		
-		//TODO  Chars[] chars = Chars.values();
 		for (int[][] numberMatrix : keyWordListList) {
 			rezult.append(equalsMatrix(numberMatrix));
-		}
-		logger.info("REZULT = " + rezult.toString().replace("-1", "?"));
+		}	
 		return rezult.toString().replace("-1", "");
 	}
 	
@@ -237,7 +224,7 @@ public class ImageParser {
 		// 6/20170711_235951_232.jpg   
 		// 7/20170712_000451_976.jpg
 		
-		String filename= "resources/loot/ok/new";
+	/*	String filename= "resources/loot/ok/new";
 		File folder = new File(filename);
 		for (File file: folder.listFiles()) {
 			//File file  = new File("resources/loot/trash/rope.jpg");
@@ -246,7 +233,13 @@ public class ImageParser {
 			ImageParser parser = new ImageParser(ImageType.FISH_LOOT, image);
 			parser.getCodes();
 			parser.getkeyFromTemlate();
-		}
+		}*/
+		
+		Screen screen = new Screen("resources/debug/-1/20170722_012605_63.jpg");
+	
+		ImageParser imageParser = new ImageParser(ImageType.KAPCHA, screen.getImage());
+		imageParser.getCodes();
+		imageParser.getkeyFromTemlate();
 		
 		//String key = parser.getkeyFromTemlate();
 		//System.out.println("key " + key);

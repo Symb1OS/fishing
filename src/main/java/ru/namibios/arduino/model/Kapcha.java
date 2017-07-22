@@ -35,8 +35,7 @@ public class Kapcha {
 	public boolean send(SerialPort port){
 		String message = getKey();
 		boolean status = false;
-		String key = imageParser.getkeyFromTemlate();
-		if(!key.isEmpty()){
+		if(!message.isEmpty()){
 			PrintWriter output = new PrintWriter(port.getOutputStream());
 			output.println(message);
 			output.flush();

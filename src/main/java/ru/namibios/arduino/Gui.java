@@ -22,8 +22,8 @@ public class Gui extends JFrame{
 	
 	private static final String YESNO = "Да/Нет";
 	private static final String COM_PORT = "COM7";
-	private static final int WINDOW_WIDTH = 180;
-	private static final int WINDOW_HEIGHT = 185;
+	private static final int WINDOW_WIDTH = 200;
+	private static final int WINDOW_HEIGHT = 200;
 
 	private static final long serialVersionUID = 1L;
 	
@@ -49,6 +49,8 @@ public class Gui extends JFrame{
 	
 	private Transfer transfer = new Transfer(COM_PORT);
 	
+	private Thread threadTransfer;
+	
 	public Gui() {
 	    super("Fishbot");
 	    
@@ -61,6 +63,8 @@ public class Gui extends JFrame{
 	    
 	    container.setLayout(new FlowLayout());
 
+	    jBear.setSelected(true);
+	    
 		Container paramContainer = new Container();
 	    paramContainer.setLayout(new GridLayout(7, 2));
 	    
@@ -102,14 +106,18 @@ public class Gui extends JFrame{
 			property.setDinner3(jFood3.isSelected());
 			
 			transfer.setProperty(property);
-			transfer.run();
+			
+			threadTransfer = new Thread(transfer);
+			threadTransfer.start();
+			//transfer.run();
 		}
 	}
 	
 	class StopListener implements ActionListener{
 
 		public void actionPerformed(ActionEvent e) {
-			transfer.pause(); 
+			//transfer.pause(); 
+			threadTransfer.interrupt();
 		}
 	}
 	

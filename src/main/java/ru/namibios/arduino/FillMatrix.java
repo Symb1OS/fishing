@@ -122,11 +122,12 @@ public class FillMatrix {
 			boolean isMinIndexOk = minIndexRow < MIN_ROW_INDEX;
 			if(isIntervalOk || isDimensionOk || isMinIndexOk){
 				clear(objCnt);
+				logger.debug("Clear object=" + objCnt + "| sum= " + sum + " | " + "isIntervalOk " + isIntervalOk + "| isDimensionOk " + isDimensionOk + "| isDimensionOk " + isDimensionOk);
 			} else{
 				MatrixElement element = new MatrixElement(minIndexRow, maxIndexRow, minIndexColumn, maxIndexColumn);
 				elements.put(objCnt, element);
-				logger.info("Object " + objCnt + " sum= " + sum + " | ");
-				logger.info(element);
+				logger.debug("Object " + objCnt + " sum= " + sum + " | ");
+				logger.debug(element);
 			}
 			objCnt++;
 		}
@@ -156,21 +157,7 @@ public class FillMatrix {
 		}
 		
 		Object[] sort = sortIndex.toArray();
-		
-		logger.info("Unsorted array of columns (from left to right)");
-		for (int i = 0; i < sort.length; i++) {
-			System.out.print(sort[i] + " ");
-		}
-		
-		System.out.println();
 		Arrays.sort(sort);
-		
-		logger.info("Sort massif");
-		for (int i = 0; i < sort.length; i++) {
-			System.out.print(sort[i] + " ");
-		}
-		
-		System.out.println();
 		
 		for (int i = 0; i < sort.length; i++) {
 			for (int key: elements.keySet()) {
@@ -181,9 +168,9 @@ public class FillMatrix {
 			}
 		}
 		
-		logger.info("count " + count);
-		logger.info("sumIndexRow " + sumIndexRow);
-		logger.info("avg " + sumIndexRow /count);
+		logger.debug("count " + count);
+		logger.debug("sumIndexRow " + sumIndexRow);
+		logger.debug("avg " + sumIndexRow /count);
 		
 		return rezultMap;
 	}
