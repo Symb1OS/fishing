@@ -1,5 +1,6 @@
 package ru.namibios.arduino.model;
 
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +33,6 @@ public class FishLoot {
 		one.saveImage("loot");
 		
 		two = new Screen(ImageType.FISH_LOOT_TWO);
-		//two.saveImage("loot");
 		
 		scrins.add(one);
 		scrins.add(two);
@@ -50,9 +50,10 @@ public class FishLoot {
 		
 		char[] array = loots.toCharArray();
 		int length = array.length;
-		boolean unknown = length == 0; 
+		boolean unknown = (length == 0); 
 		if(unknown){
 			logger.info("Loot is not recognized... Take.");
+			try{one.saveImage("unknown");} catch(IOException i){logger.error("Exception: " + i);}
 			return TAKE;
 		} 
 		

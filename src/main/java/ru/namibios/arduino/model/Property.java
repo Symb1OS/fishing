@@ -2,13 +2,15 @@ package ru.namibios.arduino.model;
 
 public class Property {
 
+	private String hash;
+	
 	private boolean bear;
-
 	private boolean minigame;
 
-	private boolean dinner1;
-	private boolean dinner2;
-	private boolean dinner3;
+	private boolean rock;
+	private boolean fish;
+	private boolean keys;
+	private boolean event;
 
 	public boolean isBear() {
 		return bear;
@@ -26,28 +28,44 @@ public class Property {
 		this.minigame = minigame;
 	}
 
-	public boolean isDinner1() {
-		return dinner1;
+	public String getHash() {
+		return hash;
 	}
 
-	public void setDinner1(boolean dinner1) {
-		this.dinner1 = dinner1;
+	public void setHash(String hash) {
+		this.hash = hash;
 	}
 
-	public boolean isDinner2() {
-		return dinner2;
+	public boolean isRock() {
+		return rock;
 	}
 
-	public void setDinner2(boolean dinner2) {
-		this.dinner2 = dinner2;
+	public void setRock(boolean rock) {
+		this.rock = rock;
 	}
 
-	public boolean isDinner3() {
-		return dinner3;
+	public boolean isFish() {
+		return fish;
 	}
 
-	public void setDinner3(boolean dinner3) {
-		this.dinner3 = dinner3;
+	public void setFish(boolean fish) {
+		this.fish = fish;
 	}
 
+	public boolean isKeys() {
+		return keys;
+	}
+
+	public void setKeys(boolean keys) {
+		this.keys = keys;
+	}
+
+	public boolean isEvent() {
+		return event;
+	}
+
+	public void setEvent(boolean event) {
+		this.event = event;
+	}
+	
 }

@@ -1,20 +1,30 @@
 package ru.namibios.arduino;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 import javax.swing.SwingUtilities;
+import javax.xml.ws.spi.http.HttpHandler;
 
 import org.apache.log4j.Logger;
 
 import ru.namibios.arduino.model.Property;
+import ru.namibios.arduino.utils.Message;
 
 public class Gui extends JFrame{
 	
@@ -22,10 +32,14 @@ public class Gui extends JFrame{
 	
 	private static final String YESNO = "Да/Нет";
 	private static final String COM_PORT = "COM7";
-	private static final int WINDOW_WIDTH = 200;
-	private static final int WINDOW_HEIGHT = 200;
+	private static final int WINDOW_WIDTH = 250;
+	private static final int WINDOW_HEIGHT = 250;
 
 	private static final long serialVersionUID = 1L;
+	
+	JTabbedPane tabPane = new JTabbedPane();
+	
+	private JLabel lAutoUse = new JLabel("Автоюз:");
 	
 	private JLabel lBear = new JLabel("Пиво");
 	private JCheckBox jBear = new JCheckBox(YESNO);
@@ -33,15 +47,21 @@ public class Gui extends JFrame{
 	private JLabel lMinigame = new JLabel("Мини-игра");
 	private JCheckBox jMinigame = new JCheckBox(YESNO);
 	
-	private JLabel lFood1 = new JLabel("Обед 1");
-	private JCheckBox jFood1 = new JCheckBox(YESNO);
 	
-	private JLabel lFood2 = new JLabel("Обед 2 ");
-	private JCheckBox jFood2 = new JCheckBox(YESNO);
+	private JLabel lFilter = new JLabel("Фильтр лута:");
 	
-	private JLabel lFood3 = new JLabel("Обед 3");
-	private JCheckBox jFood3 = new JCheckBox(YESNO);
+	private JLabel lRock = new JLabel("Камни");
+	private JCheckBox jRock = new JCheckBox(YESNO);
 	
+	private JLabel lFish = new JLabel("Рыба");
+	private JCheckBox jFish = new JCheckBox(YESNO);
+	
+	private JLabel lKey = new JLabel("Ключи");
+	private JCheckBox jKey = new JCheckBox(YESNO);
+	
+	private JLabel lEvent = new JLabel("Ивент");
+	private JCheckBox jEvent= new JCheckBox(YESNO);
+
 	private JButton startButton = new JButton("Старт");
 	private JButton stopButton = new JButton("Стоп");
 	
@@ -50,6 +70,7 @@ public class Gui extends JFrame{
 	private Transfer transfer = new Transfer(COM_PORT);
 	
 	private Thread threadTransfer;
+
 	
 	public Gui() {
 	    super("Fishbot");
@@ -58,39 +79,68 @@ public class Gui extends JFrame{
 	    setLocationRelativeTo(null);  
 	    
 	    setAlwaysOnTop(true);
+	    setLayout(new BorderLayout());
 	    this.setResizable(false);
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    
-	    container.setLayout(new FlowLayout());
-
 	    jBear.setSelected(true);
 	    
-		Container paramContainer = new Container();
-	    paramContainer.setLayout(new GridLayout(7, 2));
+		JPanel fishContainer = new JPanel();
+	    fishContainer.setLayout(new GridLayout(3, 2));
+	    fishContainer.setBorder(BorderFactory.createLineBorder(Color.GRAY, 2));
 	    
-	    paramContainer.add(lBear);
-	    paramContainer.add(jBear);
+	    fishContainer.add(lAutoUse);
+	    fishContainer.add(new JLabel());
 	    
-	    paramContainer.add(lMinigame);
-	    paramContainer.add(jMinigame);
+	    fishContainer.add(lBear);
+	    fishContainer.add(jBear);
 	    
-	    paramContainer.add(lFood1);
-	    paramContainer.add(jFood1);
+	    fishContainer.add(lMinigame);
+	    fishContainer.add(jMinigame);
 	    
-	    paramContainer.add(lFood2);
-	    paramContainer.add(jFood2);
+	    JPanel filterContainer = new JPanel();
+	    filterContainer.setLayout(new GridLayout(7, 2));
 	    
-	    paramContainer.add(lFood3);
-	    paramContainer.add(jFood3);
+	    filterContainer.add(lFilter);
+	    filterContainer.add(new JLabel());
+	
+	    filterContainer.add(lRock);
+	    filterContainer.add(jRock);
+	    
+	    filterContainer.add(lKey);
+	    filterContainer.add(jKey);
+	    
+	    filterContainer.add(lEvent);
+	    filterContainer.add(jEvent);
+	    
+	    filterContainer.add(lFish);
+	    filterContainer.add(jFish);
 	    
 	    startButton.addActionListener(new StartListener());
-	    paramContainer.add(startButton);
+	    filterContainer.add(startButton);
 	    
 	    stopButton.addActionListener(new StopListener());
-	    paramContainer.add(stopButton);
+	    filterContainer.add(stopButton);
 	    
-	    container.add(paramContainer);
-	    
+	    container.add(fishContainer, BorderLayout.NORTH);
+	    container.add(filterContainer, BorderLayout.CENTER);
+	}
+	
+	private String getAuthKey(){
+		String key = null;
+		try {
+			key = new String(Files.readAllBytes(Paths.get("resources/key")));
+			logger.info("key=  " + key);
+			if(key.isEmpty()){
+				JOptionPane.showMessageDialog(this, Message.KEY_EMPTY);
+			}
+			
+		} catch (IOException e) {
+			JOptionPane.showMessageDialog(this, Message.KEY_NOT_FOUND);
+			logger.error("Exception: " + e);
+			System.exit(1);
+		}
+		return key;
 	}
 	
 	class StartListener implements ActionListener{
@@ -99,24 +149,24 @@ public class Gui extends JFrame{
 			logger.info("Programm start...");
 			
 			Property property = new Property();
+			property.setHash(getAuthKey());
 			property.setBear(jBear.isSelected());
 			property.setMinigame(jMinigame.isSelected());
-			property.setDinner1(jFood1.isSelected());
-			property.setDinner2(jFood2.isSelected());
-			property.setDinner3(jFood3.isSelected());
+			property.setRock(jRock.isSelected());
+			property.setFish(jFish.isSelected());
+			property.setKeys(jKey.isSelected());
+			property.setEvent(jEvent.isSelected());
 			
 			transfer.setProperty(property);
 			
 			threadTransfer = new Thread(transfer);
 			threadTransfer.start();
-			//transfer.run();
 		}
 	}
 	
 	class StopListener implements ActionListener{
 
 		public void actionPerformed(ActionEvent e) {
-			//transfer.pause(); 
 			threadTransfer.interrupt();
 		}
 	}

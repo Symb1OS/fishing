@@ -30,11 +30,7 @@ public class Transfer implements Runnable{
 	private boolean isKapcha;
 	private boolean isLootFilter;
 
-	private boolean bear;
-	private boolean minigame;
-	private boolean dinner1;
-	private boolean dinner2;
-	private boolean dinner3;
+	private Property property;
 	
 	private long startTime;
 
@@ -51,11 +47,7 @@ public class Transfer implements Runnable{
 	}
 	
 	public void setProperty(Property property) {
-		this.bear = property.isBear();
-		this.minigame = property.isMinigame();
-		this.dinner1 = property.isDinner1();
-		this.dinner2 = property.isDinner2();
-		this.dinner3 = property.isDinner3();
+		this.property = property;
 		
 	}
 	
@@ -65,16 +57,9 @@ public class Transfer implements Runnable{
 		output.flush();
 	}
 	
-	@SuppressWarnings("unused")
-	private void use(String method, long sleep){
-		logger.info("Using " + method);
-		send(method);
-		try{Thread.sleep(sleep);}catch(InterruptedException e){}
-	}
-	
 	private void useBear(){
 		long time = System.currentTimeMillis();
-		boolean needFeed = time - startTime > EVERY_HOUR;
+		boolean needFeed = (property.isBear() && (time - startTime > EVERY_HOUR));
 		if(needFeed){
 			logger.info("Using bear...");
 			send("bear");
