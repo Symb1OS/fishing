@@ -53,7 +53,7 @@ public class Kapcha {
 		String keys = "";
 		try {
 			keys = http.parseKapcha(hash, mapper.writeValueAsString(matrix));
-		} catch (IOException e) {logger.error("Exception: " + e); }
+		} catch (IOException e) {logger.error("Exception: " + e); } 
 
 		return keys;
 	}
