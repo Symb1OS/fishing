@@ -74,25 +74,7 @@ public class ImageParser {
 		}
 		
 		//printMatrix(imageMatrix, row, column);
-		
 		switch (imageType) {
-			case KAPCHA:
-				FillMatrix fillMatrix = new FillMatrix(imageMatrix, row, column);
-				fillMatrix.markupMatrix();
-				fillMatrix.cleanOfBounds(40, 100);
-				imageMatrix = fillMatrix.getMatrix();
-				
-				printMatrix(imageMatrix, row, column);
-				
-				List<int[][]> list = fillMatrix.toListMatrix();
-				
-				keyWordListList = new ArrayList<>(list);
-				
-				for (int[][] is : list) {
-					printTemplate(is, FillMatrix.SYMBOL_ROW, FillMatrix.SYMBOL_COLUMN);
-				}
-				
-				break;	      
 		
 			case FISH_LOOT: {
 				keyWordListList.add(imageMatrix);

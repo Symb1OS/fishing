@@ -106,7 +106,7 @@ public class Transfer implements Runnable{
 							logger.info("Parsing kapcha...");
 							Kapcha kapcha = new Kapcha();
 							kapcha.clearNoises(30);
-							boolean isDefined = kapcha.send(port);
+							boolean isDefined = kapcha.send(property.getHash(), port);
 							if(!isDefined){
 								logger.info("Kaptcha undefuned");
 								Thread.sleep(10000);

@@ -19,7 +19,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.SwingUtilities;
-import javax.xml.ws.spi.http.HttpHandler;
 
 import org.apache.log4j.Logger;
 
