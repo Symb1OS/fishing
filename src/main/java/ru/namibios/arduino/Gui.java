@@ -23,6 +23,7 @@ import javax.swing.SwingUtilities;
 import org.apache.log4j.Logger;
 
 import ru.namibios.arduino.model.Property;
+import ru.namibios.arduino.utils.Http;
 import ru.namibios.arduino.utils.Message;
 
 public class Gui extends JFrame{
@@ -132,6 +133,12 @@ public class Gui extends JFrame{
 			logger.info("key=  " + key);
 			if(key.isEmpty()){
 				JOptionPane.showMessageDialog(this, Message.KEY_EMPTY);
+			}
+			Http http = new Http();
+			int code = Integer.valueOf(http.authorized(key));
+			if(code != Message.AUTH_OK){
+				JOptionPane.showMessageDialog(this, Message.KEY_INVALID);
+				System.exit(1);
 			}
 			
 		} catch (IOException e) {
