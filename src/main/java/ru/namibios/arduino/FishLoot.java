@@ -51,7 +51,7 @@ public class FishLoot {
 		boolean unknown = (length == 0); 
 		if(unknown){
 			logger.info("Loot is not recognized... Take.");
-			try{one.saveImage("unknown");} catch(IOException i){logger.error("Exception: " + i);}
+			try{one.saveImage("loot/unknow");} catch(IOException i){logger.error("Exception: " + i);}
 			return TAKE;
 		} 
 		

@@ -18,30 +18,22 @@ public class Kapcha {
 
 	private Screen screen;
 
-	private int[][] matrix;
-	
 	public Kapcha() throws Exception {
 		this.screen = new Screen(ImageType.KAPCHA);
-		ImageParser imageParser = new ImageParser(ImageType.KAPCHA, screen.getImage());
-		imageParser.getCodes();
-		matrix = imageParser.getImageMatrix();
-		
-	}
-	
-	public Kapcha(String filename) throws Exception {
-		this.screen = new Screen(filename);
-		ImageParser imageParser = new ImageParser(ImageType.KAPCHA, screen.getImage());
-		imageParser.getCodes();
-		matrix = imageParser.getImageMatrix();
 		
 	}
 	
 	private String getKey(String hash){
 		
+		ImageParser imageParser = new ImageParser(ImageType.KAPCHA, screen.getImage());
+		imageParser.getCodes();
+		
+		int[][] matrix = imageParser.getImageMatrix();
+		
 		ObjectMapper mapper= new ObjectMapper();
-		//int[][] matrix = getMatrix();
 
 		Http http = new Http();
+		
 		String keys = "";
 		try {
 			keys = http.parseKapcha(hash, mapper.writeValueAsString(matrix));
@@ -74,13 +66,13 @@ public class Kapcha {
 			cnt++;
 		}
 		screen.clear();
-		screen.saveDebugImage();
+	 	//screen.saveDebugImage();
 		logger.info("Clean ended...");
 	}
 	
 	public static void main(String[] args) throws Exception {
-		Kapcha kapcha = new Kapcha("resources/debug/6/20170711_235951_232.jpg");
-		System.out.println("Key + " + kapcha.getKey("bef1c08eedddbe9f9d83a0f07d0d26ce9b360a55"));
+		/*Kapcha kapcha = new Kapcha("resources/debug/6/20170711_235951_232.jpg");
+		System.out.println("Key + " + kapcha.getKey("bef1c08eedddbe9f9d83a0f07d0d26ce9b360a55"));*/
 	}
 	
 }

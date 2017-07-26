@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public enum Chars {
-	
+	CTRL(),
+	SHIFT(),
+	ALT(),
+	DELETE(),
 	SPACE(
 	new int[][]{
 		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, },
