@@ -9,6 +9,7 @@ import org.apache.log4j.Logger;
 
 import ru.namibios.arduino.model.Chars;
 import ru.namibios.arduino.model.ImageType;
+import ru.namibios.arduino.model.Loot;
 
 public class ImageParser {
 	

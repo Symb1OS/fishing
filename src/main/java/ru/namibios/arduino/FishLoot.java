@@ -1,4 +1,4 @@
-package ru.namibios.arduino.model;
+package ru.namibios.arduino;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,8 +9,7 @@ import org.apache.log4j.Logger;
 
 import com.fazecast.jSerialComm.SerialPort;
 
-import ru.namibios.arduino.ImageParser;
-import ru.namibios.arduino.Screen;
+import ru.namibios.arduino.model.ImageType;
 
 public class FishLoot {
 	

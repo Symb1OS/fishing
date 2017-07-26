@@ -7,7 +7,6 @@ import org.apache.log4j.Logger;
 import com.fazecast.jSerialComm.SerialPort;
 
 import ru.namibios.arduino.model.Chars;
-import ru.namibios.arduino.model.FishLoot;
 import ru.namibios.arduino.model.ImageType;
 import ru.namibios.arduino.model.Property;
 
