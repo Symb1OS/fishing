@@ -9,6 +9,8 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 
+import ru.namibios.arduino.model.ImageType;
+
 public class Noise {
 	
 	private BufferedImage image;

@@ -1,4 +1,4 @@
-package ru.namibios.arduino.model;
+package ru.namibios.arduino;
 
 import java.awt.image.BufferedImage;
 import java.io.PrintWriter;
@@ -7,9 +7,7 @@ import org.apache.log4j.Logger;
 
 import com.fazecast.jSerialComm.SerialPort;
 
-import ru.namibios.arduino.ImageParser;
-import ru.namibios.arduino.ImageType;
-import ru.namibios.arduino.Screen;
+import ru.namibios.arduino.model.ImageType;
 
 public class Region {
 	

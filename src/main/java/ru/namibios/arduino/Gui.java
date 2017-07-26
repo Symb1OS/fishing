@@ -20,6 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.SwingUtilities;
 
+import org.apache.http.conn.HttpHostConnectException;
 import org.apache.log4j.Logger;
 
 import ru.namibios.arduino.model.Property;
@@ -135,13 +136,19 @@ public class Gui extends JFrame{
 				JOptionPane.showMessageDialog(this, Message.KEY_EMPTY);
 			}
 			Http http = new Http();
-			int code = Integer.valueOf(http.authorized(key));
+			int code = Integer.valueOf(http.authorized(key).trim());
 			if(code != Message.AUTH_OK){
 				JOptionPane.showMessageDialog(this, Message.KEY_INVALID);
 				System.exit(1);
 			}
 			
-		} catch (IOException e) {
+		} 
+		catch(HttpHostConnectException e){
+			JOptionPane.showMessageDialog(this, Message.SERVER_NOT_RESPONDING);
+			logger.error("Exception: " + e);
+			System.exit(1);
+		}
+		catch (IOException e) {
 			JOptionPane.showMessageDialog(this, Message.KEY_NOT_FOUND);
 			logger.error("Exception: " + e);
 			System.exit(1);

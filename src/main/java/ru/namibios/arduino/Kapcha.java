@@ -1,6 +1,5 @@
-package ru.namibios.arduino.model;
+package ru.namibios.arduino;
 
-import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -10,44 +9,37 @@ import org.codehaus.jackson.map.ObjectMapper;
 
 import com.fazecast.jSerialComm.SerialPort;
 
-import ru.namibios.arduino.ImageType;
-import ru.namibios.arduino.Screen;
+import ru.namibios.arduino.model.ImageType;
 import ru.namibios.arduino.utils.Http;
 
 public class Kapcha {
 
 	final static Logger logger = Logger.getLogger(Kapcha.class);
 
-	private static final int GRAY = 40;
-	
 	private Screen screen;
+
+	private int[][] matrix;
 	
 	public Kapcha() throws Exception {
 		this.screen = new Screen(ImageType.KAPCHA);
+		ImageParser imageParser = new ImageParser(ImageType.KAPCHA, screen.getImage());
+		imageParser.getCodes();
+		matrix = imageParser.getImageMatrix();
+		
 	}
 	
-	private int[][] getMatrix(){
+	public Kapcha(String filename) throws Exception {
+		this.screen = new Screen(filename);
+		ImageParser imageParser = new ImageParser(ImageType.KAPCHA, screen.getImage());
+		imageParser.getCodes();
+		matrix = imageParser.getImageMatrix();
 		
-		BufferedImage image = screen.getImage();
-		int row = image.getHeight();
-		int column = image.getWidth();
-		int[][]imageMatrix = new int[row][column];
-		
-		for (int i = 0; i < row; i++) {
-			for (int j = 0; j < column; j++) {
-				Color color = new Color(image.getRGB(j, i));
-				boolean isGray = (color.getRed() > GRAY && color.getGreen() > GRAY && color.getBlue() > GRAY);
-				
-				imageMatrix[i][j] = isGray ? 1 : 0;
-			}
-		}
-		return imageMatrix;
 	}
 	
 	private String getKey(String hash){
 		
 		ObjectMapper mapper= new ObjectMapper();
-		int[][] matrix = getMatrix();
+		//int[][] matrix = getMatrix();
 
 		Http http = new Http();
 		String keys = "";
@@ -84,6 +76,11 @@ public class Kapcha {
 		screen.clear();
 		screen.saveDebugImage();
 		logger.info("Clean ended...");
+	}
+	
+	public static void main(String[] args) throws Exception {
+		Kapcha kapcha = new Kapcha("resources/debug/6/20170711_235951_232.jpg");
+		System.out.println("Key + " + kapcha.getKey("bef1c08eedddbe9f9d83a0f07d0d26ce9b360a55"));
 	}
 	
 }

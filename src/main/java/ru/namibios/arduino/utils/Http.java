@@ -15,9 +15,11 @@ import org.apache.http.util.EntityUtils;
 
 public class Http {
 	
-	private static final String AUTH_URL = "http://localhost:8080/fishingserver/authorized";
+	// localhost:5050 - проброс на сервак 
 	
-	private static final String KAPCHA_URL = "http://localhost:8080/fishingserver/kapcha";
+	private static final String AUTH_URL = "http://localhost:5050/fishingserver/authorized";
+	
+	private static final String KAPCHA_URL = "http://localhost:5050/fishingserver/kapcha";
 	
 	private HttpClient httpClient;
 	

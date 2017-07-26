@@ -10,6 +10,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import ru.namibios.arduino.model.ImageType;
 import ru.namibios.arduino.utils.DateUtils;
 
 public class Screen { 

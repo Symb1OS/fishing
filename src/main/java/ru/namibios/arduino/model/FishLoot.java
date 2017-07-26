@@ -10,7 +10,6 @@ import org.apache.log4j.Logger;
 import com.fazecast.jSerialComm.SerialPort;
 
 import ru.namibios.arduino.ImageParser;
-import ru.namibios.arduino.ImageType;
 import ru.namibios.arduino.Screen;
 
 public class FishLoot {

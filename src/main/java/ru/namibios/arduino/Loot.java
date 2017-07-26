@@ -1,4 +1,4 @@
-package ru.namibios.arduino.model;
+package ru.namibios.arduino;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -8,8 +8,7 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 
-import ru.namibios.arduino.ImageParser;
-import ru.namibios.arduino.ImageType;
+import ru.namibios.arduino.model.ImageType;
 
 public enum Loot {
 	

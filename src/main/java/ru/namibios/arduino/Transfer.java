@@ -8,9 +8,8 @@ import com.fazecast.jSerialComm.SerialPort;
 
 import ru.namibios.arduino.model.Chars;
 import ru.namibios.arduino.model.FishLoot;
-import ru.namibios.arduino.model.Kapcha;
+import ru.namibios.arduino.model.ImageType;
 import ru.namibios.arduino.model.Property;
-import ru.namibios.arduino.model.Region;
 
 public class Transfer implements Runnable{ 
 	
