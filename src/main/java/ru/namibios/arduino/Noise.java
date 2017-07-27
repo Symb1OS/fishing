@@ -9,8 +9,6 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 
-import ru.namibios.arduino.model.ImageType;
-
 public class Noise {
 	
 	private BufferedImage image;
@@ -56,25 +54,4 @@ public class Noise {
 		ImageIO.write(image, "jpg", new File("resources/changes/test.jpg"));
 	}
 	
-	public static void main(String[] args) throws Exception {
-		
-		Screen screen = new Screen("20170705_220527.jpg", ImageType.KAPCHA);
-		BufferedImage img = screen.getImage();
-		Noise noise = new Noise(img);
-		
-		int i = 28;
-		while(true){
-			Screen newscreen = new Screen("20170705_2205" + i +".jpg", ImageType.KAPCHA);
-			BufferedImage newimg = newscreen.getImage();
-			noise.addNois(newimg);
-			i++;
-			
-			if(i==32){
-				noise.clear();
-				noise.save();
-				break;
-			} 
-		}
-	}
-
 }
