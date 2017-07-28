@@ -16,7 +16,7 @@ public class ImageParser {
 	final static Logger logger = Logger.getLogger(ImageParser.class);
 
 	private static final int GRAY = 40;
-	private static final boolean DEBUG = false;
+	private static final boolean DEBUG = true;
 	
 	private static final double CHARS_MIN_KOEF = 0.88;
 	
@@ -74,22 +74,8 @@ public class ImageParser {
 			}
 		}
 		
-		//printMatrix(imageMatrix, row, column);
-		switch (imageType) {
-		
-			case FISH_LOOT: {
-				keyWordListList.add(imageMatrix);
-				break;
-			}
-			
-			case SUBLINE:{
-				keyWordListList.add(imageMatrix);
-				break;
-			}
-			
-			default: keyWordListList.add(imageMatrix); break;
-				
-			}
+			//printMatrix(imageMatrix, row, column);
+			keyWordListList.add(imageMatrix);
 		
 		}
 	
@@ -195,6 +181,21 @@ public class ImageParser {
 			rezult.append(equalsMatrix(numberMatrix));
 		}	
 		return rezult.toString().replace("-1", "");
+	}
+	
+	public String getNumberkeyFromTemlate() {
+		StringBuilder rezult = new StringBuilder();
+		
+		for (int[][] numberMatrix : keyWordListList) {
+			int rezultIndex = equalsMatrix(numberMatrix);
+			if(rezultIndex != -1){
+				rezult.append(equalsMatrix(numberMatrix));
+			} else{
+				logger.info("Undefined symbol: ");
+				printMatrix(numberMatrix, row, column);
+			}
+		}	
+		return rezult.toString();
 	}
 	
 	public static void main(String[] args) throws Exception {

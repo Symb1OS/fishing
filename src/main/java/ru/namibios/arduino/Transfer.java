@@ -16,8 +16,6 @@ public class Transfer implements Runnable{
 
 	private static final int EVERY_HOUR = 1000 * 60 * 60;
 
-	private static final String SPACE = "4";
-
 	private SerialPort port;
 	
 	private boolean isRun;
@@ -78,7 +76,7 @@ public class Transfer implements Runnable{
 					if(isStart){
 						Thread.sleep(3000);
 						logger.info("Starting fish... ");
-						send(SPACE);
+						send(Chars.space.name());
 						isStart=false; isBegin=true;
 						Thread.sleep(5000);
 						useBear();
@@ -91,10 +89,10 @@ public class Transfer implements Runnable{
 						
 					}else if(isSubLine){
 						String key= new Region(ImageType.SUBLINE).getKey();
-						if(key.equals(String.valueOf(Chars.SPACE.ordinal()))) {
+						if(key.equals(String.valueOf(Chars.space.name()))) {
 							logger.info("Cut the fish...");
 							Thread.sleep(550);
-							send(ImageType.SPACE.toString());
+							send(Chars.space.name());
 							isSubLine=false;
 							isKapcha=true;
 						}
@@ -147,7 +145,7 @@ public class Transfer implements Runnable{
 	
 	public static void main(String[] args) {
 	
-		System.out.println(Chars.SPACE.ordinal());
+		System.out.println(Chars.space.ordinal());
 		
 	}
 

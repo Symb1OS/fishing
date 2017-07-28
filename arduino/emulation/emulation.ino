@@ -6,7 +6,6 @@ const char W = '0';
 const char S = '1';
 const char A = '2';
 const char D = '3';
-const char SPACE = '4';
 const char R = '9';
 
 // BEAR
@@ -94,30 +93,37 @@ char getKey(char key){
       if(A == key) return 'a';
       if(D == key) return 'd';
       if(R == key) return 'r';
-      if(SPACE == key) return (char) 0x20;     
+
 }
 
 void loop() {
   
-  String text = Serial.readString();
+  String input = Serial.readString();
+  int length = input.length();
 
-  if(text.startsWith("bear")){
-      bear();
-  } else if(text.startsWith("minigame")){
-      miniGame();
-  } else if(text.startsWith("dinner1")){
-      dinner1();
-  } else if(text.startsWith("dinner2")){
-      dinner2();
-  } else{
-      int length = text.length();
-      if(text.length() != 0 ){
-        for(int i = 0; i < length; i++){
-          delay(random(130, 210));
-          char symbol = text[i];
-          char key = getKey(symbol);
-          pressKey(key);
-        }
-      }
+  if(length != 0){
+    
+          if(input.startsWith("bear")){
+              bear();
+          } else if(input.startsWith("minigame")){
+              miniGame();
+          } else if(input.startsWith("dinner1")){
+              dinner1();
+          } else if(input.startsWith("dinner2")){
+              dinner2();
+          } else if(input.startsWith("space")){
+              pressKey(0x20);
+          } else{
+           
+              for(int i = 0; i < length; i++){
+                delay(random(130, 210));
+                char symbol = input[i];
+                char key = getKey(symbol);
+                pressKey(key);
+              }
+              
+          }
+
   }
+  
   }

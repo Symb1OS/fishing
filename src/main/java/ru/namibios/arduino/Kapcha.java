@@ -28,7 +28,7 @@ public class Kapcha {
 				
 	}
 	
-	private String getKey(String hash){
+	public String getKey(String hash){
 		
 		ImageParser imageParser = new ImageParser(ImageType.KAPCHA, screen.getImage());
 		imageParser.getCodes();
@@ -76,7 +76,7 @@ public class Kapcha {
 	}
 	
 	public static void main(String[] args) throws Exception {
-		Kapcha kapcha = new Kapcha("resources/debug/6/20170711_235951_232.jpg");
+		Kapcha kapcha = new Kapcha("resources/debug/incorrect/20170712_000451_976.jpg");
 		System.out.println("Key + " + kapcha.getKey("bef1c08eedddbe9f9d83a0f07d0d26ce9b360a55"));
 	}
 	
