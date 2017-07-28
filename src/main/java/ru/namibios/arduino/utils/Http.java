@@ -16,10 +16,11 @@ import org.apache.http.util.EntityUtils;
 public class Http {
 	
 	// localhost:5050 - проброс на сервак 
+	// 192.168.0.220:9090
 	
-	private static final String AUTH_URL = "http://192.168.0.220:9090/fishingserver/authorized";
+	private static final String AUTH_URL = "http://localhost:5050/fishingserver/authorized";
 	
-	private static final String KAPCHA_URL = "http://192.168.0.220:9090/fishingserver/kapcha";
+	private static final String KAPCHA_URL = "http://localhost:5050/fishingserver/kapcha";
 	
 	private HttpClient httpClient;
 	
