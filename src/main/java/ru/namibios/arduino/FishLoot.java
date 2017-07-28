@@ -10,6 +10,8 @@ import org.apache.log4j.Logger;
 import com.fazecast.jSerialComm.SerialPort;
 
 import ru.namibios.arduino.model.ImageType;
+import ru.namibios.arduino.model.Loot;
+import ru.namibios.arduino.model.Property;
 
 public class FishLoot {
 	
@@ -23,22 +25,29 @@ public class FishLoot {
 	
 	private ImageParser imageParser;
 	
-	public FishLoot() throws Exception {
+	private List<Integer> userLootOk;
+	
+	public FishLoot(Property property) throws Exception {
 		
-		scrins = new ArrayList<>();
+		this.scrins = new ArrayList<>();
 		
-		one = new Screen(ImageType.FISH_LOOT_ONE);
-		one.saveImage("loot");
+		this.one = new Screen(ImageType.FISH_LOOT_ONE);
+		this.one.saveImage("loot");
 		
-		two = new Screen(ImageType.FISH_LOOT_TWO);
+		this.two = new Screen(ImageType.FISH_LOOT_TWO);
 		
-		scrins.add(one);
-		scrins.add(two);
+		this.scrins.add(one);
+		this.scrins.add(two);
+		
+		this.userLootOk = new ArrayList<Integer>();
+		if(property.isRock())  userLootOk.add(Loot.SCALA.ordinal());
+		if(property.isKeys())  userLootOk.add(Loot.KEY.ordinal());
+		if(property.isFish())  userLootOk.add(Loot.FISH.ordinal());
+		if(property.isEvent()) userLootOk.add(Loot.EVENT.ordinal());
 	}
 	
 	private String getKey(){
 		
-		boolean isOk= false;
 		String loots= new String();
 		for (Screen screen : scrins) {
 			imageParser = new ImageParser(ImageType.FISH_LOOT, screen.getImage());
@@ -55,8 +64,13 @@ public class FishLoot {
 			return TAKE;
 		} 
 		
-		for (int i = 0; i < length; i++) {
-			isOk = isOk || array[i] == '0' || array[i] == '1' || array[i] == '2' || array[i] == '4';
+		boolean isOk= false;
+		for (int okIndex : userLootOk) {
+			
+			for (int i = 0; i < array.length; i++) {
+				int lootIndex = Character.getNumericValue(array[i]);
+				isOk = isOk || okIndex == lootIndex;
+			}
 		}
 		
 		if(isOk) logger.info("Loot ok."); else logger.info("Trash. Throw out.");

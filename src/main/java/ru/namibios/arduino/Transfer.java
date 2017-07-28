@@ -119,7 +119,7 @@ public class Transfer implements Runnable{
 					}else if(isLootFilter){
 						Thread.sleep(5000);
 						logger.info("Check loot...");
-						new FishLoot().send(port);
+						new FishLoot(property).send(port);
 						isLootFilter=false; isStart= true;
 					}
 				}

@@ -86,6 +86,11 @@ public class Gui extends JFrame{
 	    
 	    jBear.setSelected(true);
 	    
+	    jRock.setSelected(true);
+	    jFish.setSelected(true);
+	    jKey.setSelected(true);
+	    jEvent.setSelected(true);
+	    
 		JPanel fishContainer = new JPanel();
 	    fishContainer.setLayout(new GridLayout(3, 2));
 	    fishContainer.setBorder(BorderFactory.createLineBorder(Color.GRAY, 2));
