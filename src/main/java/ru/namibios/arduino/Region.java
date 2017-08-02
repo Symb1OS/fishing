@@ -32,7 +32,7 @@ public class Region {
 	}
 	
 	public boolean send(SerialPort port){
-		String message = getKey();
+		String message = getKey().trim();
 		boolean status = false;
 		if(!message.isEmpty()){
 			PrintWriter output = new PrintWriter(port.getOutputStream());

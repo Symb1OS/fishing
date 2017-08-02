@@ -2,12 +2,6 @@
 #include <Mouse.h>
 #include <MouseTo.h>
 
-const char W = '0';
-const char S = '1';
-const char A = '2';
-const char D = '3';
-const char R = '9';
-
 // BEAR
 const int SLAVE_ICON_X = 1162;
 const int SLAVE_ICON_Y = 519;
@@ -82,18 +76,13 @@ void dinner1(){
 }
 
 void dinner2(){
-  pressKey(0xB1);
+  pressKey(0xB1); 
   moveTo(DINNER_SLOT_2_X, DINNER_SLOT_2_Y, true);
   pressKey(0xB1);
 }
 
 char getKey(char key){
-      if(W == key) return 'w';
-      if(S == key) return 's';
-      if(A == key) return 'a';
-      if(D == key) return 'd';
-      if(R == key) return 'r';
-
+  if(key == 'w' || key == 'a' || key == 's' || key == 'd' || key == 'r') return key;
 }
 
 void loop() {
@@ -102,7 +91,7 @@ void loop() {
   int length = input.length();
 
   if(length != 0){
-    
+    Serial.print(input);
           if(input.startsWith("bear")){
               bear();
           } else if(input.startsWith("minigame")){
@@ -114,16 +103,13 @@ void loop() {
           } else if(input.startsWith("space")){
               pressKey(0x20);
           } else{
-           
               for(int i = 0; i < length; i++){
                 delay(random(130, 210));
                 char symbol = input[i];
-                char key = getKey(symbol);
-                pressKey(key);
+                pressKey(getKey(symbol));
               }
               
           }
-
   }
   
   }

@@ -51,6 +51,7 @@ public class Transfer implements Runnable{
 		PrintWriter output = new PrintWriter(port.getOutputStream());
 		output.println(message);
 		output.flush();
+		logger.info("Sended message: " + message);
 	}
 	
 	private void useBear(){
@@ -91,7 +92,7 @@ public class Transfer implements Runnable{
 						String key= new Region(ImageType.SUBLINE).getKey();
 						if(key.equals(String.valueOf(Chars.space.name()))) {
 							logger.info("Cut the fish...");
-							Thread.sleep(550);
+							Thread.sleep(680);
 							send(Chars.space.name());
 							isSubLine=false;
 							isKapcha=true;

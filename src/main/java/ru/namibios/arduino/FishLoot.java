@@ -17,7 +17,7 @@ public class FishLoot {
 	
 	final static Logger logger = Logger.getLogger(FishLoot.class);
 
-	private static final String TAKE = "9";
+	private static final String TAKE = "r";
 	
 	private List<Screen> scrins;
 	private Screen one;

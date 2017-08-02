@@ -44,13 +44,13 @@ public class Kapcha {
 			keys = http.parseKapcha(hash, mapper.writeValueAsString(matrix));
 		} catch (IOException e) {logger.error("Exception: " + e); } 
 
-		return keys;
+		return keys.replace("\n", "");
 	}
 	
 	public boolean send(String hash, SerialPort port){
 		String message = getKey(hash);
 		boolean status = false;
-		if(!message.isEmpty()){
+		if(!message.equals("")){
 			PrintWriter output = new PrintWriter(port.getOutputStream());
 			output.println(message);
 			output.flush();

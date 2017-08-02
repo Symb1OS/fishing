@@ -16,7 +16,7 @@ public class ImageParser {
 	final static Logger logger = Logger.getLogger(ImageParser.class);
 
 	private static final int GRAY = 40;
-	private static final boolean DEBUG = true;
+	private static final boolean DEBUG = false;
 	
 	private static final double CHARS_MIN_KOEF = 0.88;
 	
@@ -189,11 +189,11 @@ public class ImageParser {
 		for (int[][] numberMatrix : keyWordListList) {
 			int rezultIndex = equalsMatrix(numberMatrix);
 			if(rezultIndex != -1){
-				rezult.append(equalsMatrix(numberMatrix));
-			} else{
+				rezult.append(Chars.values()[equalsMatrix(numberMatrix)]);
+			} /*else{
 				logger.info("Undefined symbol: ");
 				printMatrix(numberMatrix, row, column);
-			}
+			}*/
 		}	
 		return rezult.toString();
 	}
