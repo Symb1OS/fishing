@@ -9,6 +9,8 @@ import com.fazecast.jSerialComm.SerialPort;
 import ru.namibios.arduino.model.Chars;
 import ru.namibios.arduino.model.ImageType;
 import ru.namibios.arduino.model.Property;
+import ru.namibios.arduino.utils.DelayUtils;
+import ru.namibios.arduino.utils.Process;
 
 public class Transfer implements Runnable{ 
 	
@@ -38,6 +40,7 @@ public class Transfer implements Runnable{
 		isSubLine = false;
 		isKapcha = false;
 		
+		Process.initStart();
 		this.port = SerialPort.getCommPort(port);
 		this.port.setComPortTimeouts(SerialPort.TIMEOUT_SCANNER, 0, 0);
 	}
@@ -65,76 +68,145 @@ public class Transfer implements Runnable{
 	}
 	
 	public void run() {
-		logger.info("Start...");
-		isRun = true;
 		
-		try{
-			Thread.sleep(3000);
-			if(port.openPort()) {
-				logger.info("Port is open...");
-				while(isRun){
+		isRun = true;
+		logger.info("Start...");
+		DelayUtils.delay(3000);
+		
+		Task task = null;
+		
+		if(!port.isOpen()) {
+			logger.info("Port is closed. Exit");
+			System.exit(1);
+		} 
+		
+		logger.info("Port is open...");
+		while(isRun){
+			
+			switch (Process.getInstance()) {
+				case START:{
+					logger.info("Starting fish... ");
 					
-					if(isStart){
-						Thread.sleep(3000);
-						logger.info("Starting fish... ");
-						send(Chars.space.name());
-						isStart=false; isBegin=true;
-						Thread.sleep(5000);
-						useBear();
-						
-					}else if(isBegin){
-						logger.info("Wait fish...");
-						Thread.sleep(3000);
-						boolean isSend =  new Region(ImageType.SPACE).send(port);
-						if(isSend){ isBegin= false; isSubLine= true; }
-						
-					}else if(isSubLine){
-						String key= new Region(ImageType.SUBLINE).getKey();
-						if(key.equals(String.valueOf(Chars.space.name()))) {
-							logger.info("Cut the fish...");
-							Thread.sleep(680);
-							send(Chars.space.name());
-							isSubLine=false;
-							isKapcha=true;
-						}
-					}else if(isKapcha){
-						Thread.sleep(3920);
-						try{
-							logger.info("Parsing kapcha...");
-							Kapcha kapcha = new Kapcha();
-							kapcha.clearNoises(30);
-							boolean isDefined = kapcha.send(property.getHash(), port);
-							if(!isDefined){
-								logger.info("Kaptcha undefuned");
-								Thread.sleep(10000);
-								isStart=true; isKapcha=false;
-							}
-						}catch (Exception e){
-							logger.error("Exception " + e);
-							isStart=true; isKapcha=false;
-							Thread.sleep(7000);
-						}
-						isKapcha=false; isLootFilter=true;
-					}else if(isLootFilter){
-						Thread.sleep(5000);
-						logger.info("Check loot...");
-						new FishLoot(property).send(port);
-						isLootFilter=false; isStart= true;
-					}
+					Region start = new Region();
+					
+					task = new Task(start, 3000, 5000);
+					task.run();
+					
+					break;
 				}
+				case WAIT_FISH: {
+					logger.info("Wait fish...");
+				
+					try {
+						
+						Region waitFish = new Region(ImageType.SPACE);
+						
+						task = new Task(waitFish, 3000, 0);
+						task.run();
+						
+					}catch (Exception e) {
+						 logger.error("Exception " + e);
+					}
+					
+					break;
+				}
+				
+				case PARSE_LINE:{
+					
+					try {
+						Region parseLine = new Region();
+						
+						task = new Task(parseLine);
+						task.run();
+					}catch (Exception e) {
+						logger.error("Exception " + e);
+					}
+					
+					break;
+				}
+				
+				case PARSE_KAPCHA:{
+					
+					logger.info("Parsing kapcha...");
+					
+					try{
+						Region kapcha = new Region();
+						
+						task = new Task(kapcha, 3920, 10000);
+						task.run();
+					
+					}catch (Exception e) {
+						logger.error("Exception " + e);
+					}
+					
+					break;
+				}
+				case FILTER_LOOT:{
+					logger.info("Check loot...");
+					
+					Region filter = new Region();
+					
+					task = new Task(filter, 5000, 0);
+					
+					break;
+				} 	
 			}
 			
-			} catch (Exception e) {
-				logger.error("Exception " + e);
-				e.printStackTrace();
-				port.closePort();
+			
+			/*if(isStart){
+				Thread.sleep(3000);
+				logger.info("Starting fish... ");
+				send(Chars.space.name());
+				isStart=false; isBegin=true;
+				Thread.sleep(5000);
+				useBear();
+				
+			}else if(isBegin){
+				logger.info("Wait fish...");
+				Thread.sleep(3000);
+				boolean isSend =  new Region(ImageType.SPACE).send(port);
+				if(isSend){ isBegin= false; isSubLine= true; }
+				
+			}else if(isSubLine){
+				String key= new Region(ImageType.SUBLINE).getKey();
+				if(key.equals(String.valueOf(Chars.space.name()))) {
+					logger.info("Cut the fish...");
+					Thread.sleep(680);
+					send(Chars.space.name());
+					isSubLine=false;
+					isKapcha=true;
+				}
+			}else if(isKapcha){
+				Thread.sleep(3920);
+				try{
+					logger.info("Parsing kapcha...");
+					Kapcha kapcha = new Kapcha();
+					kapcha.clearNoises(30);
+					boolean isDefined = kapcha.send(property.getHash(), port);
+					if(!isDefined){
+						logger.info("Kaptcha undefuned");
+						Thread.sleep(10000);
+						isStart=true; isKapcha=false;
+					}
+				}catch (Exception e){
+					logger.error("Exception " + e);
+					isStart=true; isKapcha=false;
+					Thread.sleep(7000);
+				}
+				isKapcha=false; isLootFilter=true;
+			}else if(isLootFilter){
+				Thread.sleep(5000);
+				logger.info("Check loot...");
+				new FishLoot(property).send(port);
+				isLootFilter=false; isStart= true;
 			}
-			
-			port.closePort();
-			
-			logger.info("Port closed...");
-			logger.info("Thread stop.");
+		}*/
 		}
+			
+		port.closePort();
+		logger.info("Port closed...");
+		logger.info("Thread stop.");
+	}
 	
 	void restart(){
 		isRun = true;
