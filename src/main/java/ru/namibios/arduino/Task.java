@@ -15,7 +15,7 @@ public class Task {
 	private Long delayAfter;
 	
 	public Task(Region region) {
-		//TODO
+		this.region = region;
 	}
 	
 	public Task(Region region, long delayBefore, long delayAfter) {
@@ -30,7 +30,7 @@ public class Task {
 	
 	public Process run(){
 		DelayUtils.delay(delayBefore);
-		//TODO 
+		
 		
 		DelayUtils.delay(delayAfter);
 		return null;

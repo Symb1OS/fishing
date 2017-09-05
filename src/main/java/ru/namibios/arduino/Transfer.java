@@ -4,8 +4,6 @@ import java.io.PrintWriter;
 
 import org.apache.log4j.Logger;
 
-import com.fazecast.jSerialComm.SerialPort;
-
 import ru.namibios.arduino.model.Chars;
 import ru.namibios.arduino.model.ImageType;
 import ru.namibios.arduino.model.Property;
@@ -18,40 +16,17 @@ public class Transfer implements Runnable{
 
 	private static final int EVERY_HOUR = 1000 * 60 * 60;
 
-	private SerialPort port;
-	
 	private boolean isRun;
-	
-	private boolean isStart;
-	private boolean isBegin;
-	private boolean isSubLine;
-	private boolean isKapcha;
-	private boolean isLootFilter;
 
-	private Property property;
-	
 	private long startTime;
 
-	public Transfer(String port) {
-
+	public Transfer() {
 		startTime = System.currentTimeMillis();
-		isStart = false;
-		isBegin = true;
-		isSubLine = false;
-		isKapcha = false;
-		
 		Process.initStart();
-		this.port = SerialPort.getCommPort(port);
-		this.port.setComPortTimeouts(SerialPort.TIMEOUT_SCANNER, 0, 0);
-	}
-	
-	public void setProperty(Property property) {
-		this.property = property;
-		
 	}
 	
 	public void send(String message){
-		PrintWriter output = new PrintWriter(port.getOutputStream());
+		PrintWriter output = new PrintWriter(Property.portInstance().getOutputStream());
 		output.println(message);
 		output.flush();
 		logger.info("Sended message: " + message);
@@ -59,7 +34,7 @@ public class Transfer implements Runnable{
 	
 	private void useBear(){
 		long time = System.currentTimeMillis();
-		boolean needFeed = (property.isBear() && (time - startTime > EVERY_HOUR));
+		boolean needFeed = (Property.isBear() && (time - startTime > EVERY_HOUR));
 		if(needFeed){
 			logger.info("Using bear...");
 			send("bear");
@@ -75,7 +50,7 @@ public class Transfer implements Runnable{
 		
 		Task task = null;
 		
-		if(!port.isOpen()) {
+		if(!Property.portInstance().isOpen()) {
 			logger.info("Port is closed. Exit");
 			System.exit(1);
 		} 
@@ -85,6 +60,9 @@ public class Transfer implements Runnable{
 			
 			switch (Process.getInstance()) {
 				case START:{
+					logger.info("Start sub-task...");
+					useBear();
+					
 					logger.info("Starting fish... ");
 					
 					Region start = new Region();
@@ -96,23 +74,17 @@ public class Transfer implements Runnable{
 				}
 				case WAIT_FISH: {
 					logger.info("Wait fish...");
-				
 					try {
-						
 						Region waitFish = new Region(ImageType.SPACE);
 						
 						task = new Task(waitFish, 3000, 0);
 						task.run();
-						
 					}catch (Exception e) {
 						 logger.error("Exception " + e);
 					}
-					
 					break;
 				}
-				
 				case PARSE_LINE:{
-					
 					try {
 						Region parseLine = new Region();
 						
@@ -124,9 +96,7 @@ public class Transfer implements Runnable{
 					
 					break;
 				}
-				
 				case PARSE_KAPCHA:{
-					
 					logger.info("Parsing kapcha...");
 					
 					try{
@@ -138,7 +108,6 @@ public class Transfer implements Runnable{
 					}catch (Exception e) {
 						logger.error("Exception " + e);
 					}
-					
 					break;
 				}
 				case FILTER_LOOT:{
@@ -147,6 +116,7 @@ public class Transfer implements Runnable{
 					Region filter = new Region();
 					
 					task = new Task(filter, 5000, 0);
+					task.run();
 					
 					break;
 				} 	
@@ -203,7 +173,7 @@ public class Transfer implements Runnable{
 		}*/
 		}
 			
-		port.closePort();
+		Property.portInstance().closePort();
 		logger.info("Port closed...");
 		logger.info("Thread stop.");
 	}

@@ -1,71 +1,86 @@
 package ru.namibios.arduino.model;
 
+import com.fazecast.jSerialComm.SerialPort;
+
 public class Property {
 
-	private String hash;
+	private Property() { }
 	
-	private boolean bear;
-	private boolean minigame;
+	private static SerialPort port;
 
-	private boolean rock;
-	private boolean fish;
-	private boolean keys;
-	private boolean event;
+	private static String hash;
 
-	public boolean isBear() {
-		return bear;
-	}
+	private static boolean bear;
+	private static boolean minigame;
 
-	public void setBear(boolean bear) {
-		this.bear = bear;
-	}
+	private static boolean rock;
+	private static boolean fish;
+	private static boolean keys;
+	private static boolean event;
 
-	public boolean isMinigame() {
-		return minigame;
-	}
-
-	public void setMinigame(boolean minigame) {
-		this.minigame = minigame;
-	}
-
-	public String getHash() {
+	public static String getHash() {
 		return hash;
 	}
 
-	public void setHash(String hash) {
-		this.hash = hash;
+	public static void setHash(String hash) {
+		Property.hash = hash;
 	}
 
-	public boolean isRock() {
+	public static boolean isBear() {
+		return bear;
+	}
+
+	public static void setBear(boolean bear) {
+		Property.bear = bear;
+	}
+
+	public static boolean isMinigame() {
+		return minigame;
+	}
+
+	public static void setMinigame(boolean minigame) {
+		Property.minigame = minigame;
+	}
+
+	public static boolean isRock() {
 		return rock;
 	}
 
-	public void setRock(boolean rock) {
-		this.rock = rock;
+	public static void setRock(boolean rock) {
+		Property.rock = rock;
 	}
 
-	public boolean isFish() {
+	public static boolean isFish() {
 		return fish;
 	}
 
-	public void setFish(boolean fish) {
-		this.fish = fish;
+	public static void setFish(boolean fish) {
+		Property.fish = fish;
 	}
 
-	public boolean isKeys() {
+	public static boolean isKeys() {
 		return keys;
 	}
 
-	public void setKeys(boolean keys) {
-		this.keys = keys;
+	public static void setKeys(boolean keys) {
+		Property.keys = keys;
 	}
 
-	public boolean isEvent() {
+	public static boolean isEvent() {
 		return event;
 	}
 
-	public void setEvent(boolean event) {
-		this.event = event;
+	public static void setEvent(boolean event) {
+		Property.event = event;
 	}
-	
+
+	public static SerialPort portInstance() {
+		return port;
+	}
+
+	public static void setPort(SerialPort port) {
+		Property.port = port;
+		
+	}
+
 }

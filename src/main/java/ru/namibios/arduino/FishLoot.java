@@ -13,7 +13,7 @@ import ru.namibios.arduino.model.ImageType;
 import ru.namibios.arduino.model.Loot;
 import ru.namibios.arduino.model.Property;
 
-public class FishLoot {
+public class FishLoot{
 	
 	final static Logger logger = Logger.getLogger(FishLoot.class);
 
@@ -40,10 +40,10 @@ public class FishLoot {
 		this.scrins.add(two);
 		
 		this.userLootOk = new ArrayList<Integer>();
-		if(property.isRock())  userLootOk.add(Loot.SCALA.ordinal());
-		if(property.isKeys())  userLootOk.add(Loot.KEY.ordinal());
-		if(property.isFish())  userLootOk.add(Loot.FISH.ordinal());
-		if(property.isEvent()) userLootOk.add(Loot.EVENT.ordinal());
+		if(Property.isRock())  userLootOk.add(Loot.SCALA.ordinal());
+		if(Property.isKeys())  userLootOk.add(Loot.KEY.ordinal());
+		if(Property.isFish())  userLootOk.add(Loot.FISH.ordinal());
+		if(Property.isEvent()) userLootOk.add(Loot.EVENT.ordinal());
 	}
 	
 	private String getKey(){

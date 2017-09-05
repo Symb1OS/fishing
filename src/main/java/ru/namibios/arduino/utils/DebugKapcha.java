@@ -3,8 +3,6 @@ package ru.namibios.arduino.utils;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.File;
 
 import javax.swing.ImageIcon;
@@ -35,6 +33,9 @@ public class DebugKapcha extends JFrame{
 	private JPanel south = new JPanel();
 	private JPanel center = new JPanel();
 	
+	private boolean isCorrect;
+	private boolean isIncorrect;
+	
 	public DebugKapcha() {
 		
 		super("Debug Kapcha");
@@ -51,9 +52,8 @@ public class DebugKapcha extends JFrame{
 	    center.add(kapchaimage);
 	    center.add(kapchaParse);
 	    
-	    correctButton.addActionListener(new CorrectListener());
-	    incorrectButton.addActionListener(new IncorrectListener());
-	   
+	    correctButton.addActionListener((e) -> isCorrect = true);
+	    incorrectButton.addActionListener((e) -> isIncorrect = true);
 	    
 	    JPanel correctButtonPanel = new JPanel();
 	    
@@ -64,89 +64,48 @@ public class DebugKapcha extends JFrame{
 	    south.setLayout(new GridLayout(2, 1));
 	    south.add(correctButtonPanel);
 	    
-	    startButton.addActionListener(new StartListener());
+	    startButton.addActionListener((e) -> {
+	    	new Thread(() -> {
+				try{
+					String filename= "resources/debug";
+					File folder = new File(filename);
+					for (File file: folder.listFiles()) {
+						if(file.isFile()){
+							
+							kapchaimage.setIcon(new ImageIcon(file.toString()));
+							
+							Kapcha kapcha = new Kapcha(file.toString());
+							String key = kapcha.getKey("bef1c08eedddbe9f9d83a0f07d0d26ce9b360a55");
+							
+							kapchaParse.setText(key);	
+							
+							while(true){
+								if(isCorrect){
+									file.renameTo(new File("resources/debug/correct/" + file.getName()));
+								} 
+								if(isIncorrect){
+									file.renameTo(new File("resources/debug/incorrect/" + file.getName()));
+								}
+								if(isCorrect || isIncorrect){
+									isCorrect = isIncorrect = false;
+									break;
+								} 
+								DelayUtils.delay(200);
+							}	
+						}
+					}
+				}catch(Exception ex){ex.printStackTrace();}
+	
+			}).start();
+	    	
+	    });
+	    
 	    south.add(startButton);
 	    
 	    container.add(center, BorderLayout.CENTER);
 	    container.add(south, BorderLayout.SOUTH);
 	    
 	}
-	
-	private boolean isCorrect;
-	private boolean isIncorrect;
-	
-	class StartListener implements ActionListener{
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			
-			new Thread(new Runnable() {
-				
-				@Override
-				public void run() {
-					
-					try{
-						
-						String filename= "resources/debug";
-						File folder = new File(filename);
-						for (File file: folder.listFiles()) {
-							System.out.println(file);
-							if(file.isFile()){
-								
-								kapchaimage.setIcon(new ImageIcon(file.toString()));
-								
-								Kapcha kapcha = new Kapcha(file.toString());
-								String key = kapcha.getKey("bef1c08eedddbe9f9d83a0f07d0d26ce9b360a55");
-								
-								kapchaParse.setText(key);	
-								
-								while(true){
-									if(isCorrect){
-										file.renameTo(new File("resources/debug/correct/" + file.getName()));
-									} 
-									
-									if(isIncorrect){
-										file.renameTo(new File("resources/debug/incorrect/" + file.getName()));
-									}
-									
-									if(isCorrect || isIncorrect){
-										isCorrect = isIncorrect = false;
-										break;
-									} 
-									Thread.sleep(200);
-									
-								}	
-							
-							}
-						}
-					
-					}catch(Exception e){e.printStackTrace();}
-					
-				}
-			}).start();;
-		}
-		
-	}
-	
-	class CorrectListener implements ActionListener{
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				isCorrect = true;
-				
-			}
-		 
-	 } 
-	 
-	 class IncorrectListener implements ActionListener{
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				isIncorrect = true;
-				
-			}
-			 
-	 } 
 	
 	public static void main(String[] args) {
 		DebugKapcha debugKapcha = new DebugKapcha();

@@ -4,8 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -21,6 +19,8 @@ import javax.swing.JTabbedPane;
 import javax.swing.SwingUtilities;
 
 import org.apache.log4j.Logger;
+
+import com.fazecast.jSerialComm.SerialPort;
 
 import ru.namibios.arduino.model.Property;
 import ru.namibios.arduino.utils.Message;
@@ -46,7 +46,6 @@ public class Gui extends JFrame{
 	private JLabel lMinigame = new JLabel("Мини-игра");
 	private JCheckBox jMinigame = new JCheckBox(YESNO);
 	
-	
 	private JLabel lFilter = new JLabel("Фильтр лута:");
 	
 	private JLabel lRock = new JLabel("Камни");
@@ -66,7 +65,7 @@ public class Gui extends JFrame{
 	
 	private Container container = this.getContentPane();
 	
-	private Transfer transfer = new Transfer(COM_PORT);
+	private Transfer transfer = new Transfer();
 	
 	private Thread threadTransfer;
 
@@ -117,16 +116,18 @@ public class Gui extends JFrame{
 	    startButton.addActionListener(e -> {
 	    	logger.info("Programm start...");
 			
-			Property property = new Property();
-			property.setHash(getAuthKey());
-			property.setBear(jBear.isSelected());
-			property.setMinigame(jMinigame.isSelected());
-			property.setRock(jRock.isSelected());
-			property.setFish(jFish.isSelected());
-			property.setKeys(jKey.isSelected());
-			property.setEvent(jEvent.isSelected());
+	    	SerialPort port = SerialPort.getCommPort(COM_PORT);
+	    	port.setComPortTimeouts(SerialPort.TIMEOUT_SCANNER, 0, 0);
+	    	
+	    	Property.setPort(port);
+			Property.setHash(getAuthKey());
 			
-			transfer.setProperty(property);
+			Property.setBear(jBear.isSelected());
+			Property.setMinigame(jMinigame.isSelected());
+			Property.setRock(jRock.isSelected());
+			Property.setFish(jFish.isSelected());
+			Property.setKeys(jKey.isSelected());
+			Property.setEvent(jEvent.isSelected());
 			
 			threadTransfer = new Thread(transfer);
 			threadTransfer.start();
@@ -156,27 +157,6 @@ public class Gui extends JFrame{
 			System.exit(1);
 		}
 		return key;
-	}
-	
-	class StartListener implements ActionListener{
-
-		public void actionPerformed(ActionEvent e) {
-			logger.info("Programm start...");
-			
-			Property property = new Property();
-			property.setHash(getAuthKey());
-			property.setBear(jBear.isSelected());
-			property.setMinigame(jMinigame.isSelected());
-			property.setRock(jRock.isSelected());
-			property.setFish(jFish.isSelected());
-			property.setKeys(jKey.isSelected());
-			property.setEvent(jEvent.isSelected());
-			
-			transfer.setProperty(property);
-			
-			threadTransfer = new Thread(transfer);
-			threadTransfer.start();
-		}
 	}
 	
 	public static void main(String[] args) {
