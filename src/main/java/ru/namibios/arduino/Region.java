@@ -5,12 +5,11 @@ import java.io.PrintWriter;
 
 import org.apache.log4j.Logger;
 
-import com.fazecast.jSerialComm.SerialPort;
-
 import ru.namibios.arduino.model.ImageType;
+import ru.namibios.arduino.model.Property;
 
 public class Region {
-	
+
 	final static Logger logger = Logger.getLogger(Region.class);
 
 	private Screen screen;
@@ -31,11 +30,11 @@ public class Region {
 		return imageParser.getNumberkeyFromTemlate();
 	}
 	
-	public boolean send(SerialPort port){
+	public boolean send(){
 		String message = getKey().trim();
 		boolean status = false;
 		if(!message.isEmpty()){
-			PrintWriter output = new PrintWriter(port.getOutputStream());
+			PrintWriter output = new PrintWriter(Property.portInstance().getOutputStream());
 			output.println(message);
 			output.flush();
 			
@@ -44,7 +43,5 @@ public class Region {
 		}
 		return status;
 	}
-	
-	
 	
 }

@@ -2,17 +2,15 @@ package ru.namibios.arduino;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import org.apache.log4j.Logger;
 import org.codehaus.jackson.map.ObjectMapper;
 
-import com.fazecast.jSerialComm.SerialPort;
-
 import ru.namibios.arduino.model.ImageType;
+import ru.namibios.arduino.model.Property;
 import ru.namibios.arduino.utils.Http;
 
-public class Kapcha {
+public class Kapcha extends Region{
 
 	final static Logger logger = Logger.getLogger(Kapcha.class);
 
@@ -20,15 +18,14 @@ public class Kapcha {
 
 	public Kapcha() throws Exception {
 		this.screen = new Screen(ImageType.KAPCHA);
-		
 	}
 	
 	public Kapcha(String file) throws Exception{
 		this.screen = new Screen(file);
-				
 	}
 	
-	public String getKey(String hash){
+	@Override
+	public String getKey(){
 		
 		ImageParser imageParser = new ImageParser(ImageType.KAPCHA, screen.getImage());
 		imageParser.getCodes();
@@ -41,25 +38,10 @@ public class Kapcha {
 		
 		String keys = "";
 		try {
-			keys = http.parseKapcha(hash, mapper.writeValueAsString(matrix));
+			keys = http.parseKapcha(Property.hashInstance(), mapper.writeValueAsString(matrix));
 		} catch (IOException e) {logger.error("Exception: " + e); } 
 
 		return keys.replace("\n", "");
-	}
-	
-	public boolean send(String hash, SerialPort port){
-		String message = getKey(hash);
-		boolean status = false;
-		if(!message.equals("")){
-			PrintWriter output = new PrintWriter(port.getOutputStream());
-			output.println(message);
-			output.flush();
-			
-			logger.info("Sended message: " + message);
-			status = true;
-			
-		}
-		return status;
 	}
 	
 	public void clearNoises(int iteration) throws Exception{
@@ -76,8 +58,6 @@ public class Kapcha {
 	}
 	
 	public static void main(String[] args) throws Exception {
-		Kapcha kapcha = new Kapcha("resources/debug/incorrect/20170712_000451_976.jpg");
-		System.out.println("Key + " + kapcha.getKey("bef1c08eedddbe9f9d83a0f07d0d26ce9b360a55"));
+		Kapcha kapcha = new Kapcha();
 	}
-	
 }

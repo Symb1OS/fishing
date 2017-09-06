@@ -18,7 +18,7 @@ public class Property {
 	private static boolean keys;
 	private static boolean event;
 
-	public static String getHash() {
+	public static String hashInstance() {
 		return hash;
 	}
 

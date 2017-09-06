@@ -10,10 +10,15 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import org.apache.log4j.Logger;
+
 import ru.namibios.arduino.model.ImageType;
 import ru.namibios.arduino.utils.DateUtils;
 
 public class Screen { 
+	
+	final static Logger logger = Logger.getLogger(Screen.class);
+	
 	private static final String PATH_IMPORT = "resources/kapcha/";
 	private static final String PATH_EXPORT = "resources/changes/";
 	
@@ -111,12 +116,21 @@ public class Screen {
 		screenShot = noise.clear();
 	}
 	
-	public void saveDebugImage() throws IOException{
-		ImageIO.write(screenShot, "jpg", new File("resources/debug/" + DateUtils.getYYYY_MM_DD_HH_MM_SS_S() + ".jpg"));
+	public void saveDebugImage(){
+		try {
+			ImageIO.write(screenShot, "jpg", new File("resources/debug/" + DateUtils.getYYYY_MM_DD_HH_MM_SS_S() + ".jpg"));
+		} catch (IOException e) {
+			logger.error("Exception " + e);
+		}
 	}
 	
-	public void saveImage(String folder) throws IOException{
-		ImageIO.write(screenShot, "jpg", new File("resources/" + folder + "/" + DateUtils.getYYYY_MM_DD_HH_MM_SS_S() + ".jpg"));
+	public void saveImage(String folder) {
+		
+		try {
+			ImageIO.write(screenShot, "jpg", new File("resources/" + folder + "/" + DateUtils.getYYYY_MM_DD_HH_MM_SS_S() + ".jpg"));
+		} catch (IOException e) {
+			logger.error("Exception " + e);
+		}
 	}
 	
 	public BufferedImage getImage(){
@@ -148,3 +162,4 @@ public class Screen {
 		screen.saveImage("weapon");
 	}
 }
+

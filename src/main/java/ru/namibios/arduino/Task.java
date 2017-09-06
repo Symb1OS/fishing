@@ -3,17 +3,17 @@ package ru.namibios.arduino;
 import org.apache.log4j.Logger;
 
 import ru.namibios.arduino.utils.DelayUtils;
-import ru.namibios.arduino.utils.Process;
 
 public class Task {
 	
 	final static Logger logger = Logger.getLogger(Task.class);
 	
 	private Region region;
+	private String key;
 	
 	private Long delayBefore;
 	private Long delayAfter;
-	
+
 	public Task(Region region) {
 		this.region = region;
 	}
@@ -22,18 +22,19 @@ public class Task {
 		this.region = region;
 	}
 	
-	public Task(long delayBefore, long delayAfter) {
+	public Task(String key, long delayBefore, long delayAfter) {
+		this.key = key;
 		this.delayBefore = delayBefore;
 		this.delayAfter = delayAfter;
 	}
 	
-	
-	public Process run(){
+	public boolean run(){
 		DelayUtils.delay(delayBefore);
 		
+		boolean isOk = region.send();
 		
 		DelayUtils.delay(delayAfter);
-		return null;
+		return isOk;
 	}
 
 	public Long getDelayBefore() {

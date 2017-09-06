@@ -1,13 +1,12 @@
 package ru.namibios.arduino;
 
-import java.io.PrintWriter;
-
 import org.apache.log4j.Logger;
 
 import ru.namibios.arduino.model.Chars;
 import ru.namibios.arduino.model.ImageType;
 import ru.namibios.arduino.model.Property;
 import ru.namibios.arduino.utils.DelayUtils;
+import ru.namibios.arduino.utils.Keyboard;
 import ru.namibios.arduino.utils.Process;
 
 public class Transfer implements Runnable{ 
@@ -25,19 +24,12 @@ public class Transfer implements Runnable{
 		Process.initStart();
 	}
 	
-	public void send(String message){
-		PrintWriter output = new PrintWriter(Property.portInstance().getOutputStream());
-		output.println(message);
-		output.flush();
-		logger.info("Sended message: " + message);
-	}
-	
 	private void useBear(){
 		long time = System.currentTimeMillis();
 		boolean needFeed = (Property.isBear() && (time - startTime > EVERY_HOUR));
 		if(needFeed){
 			logger.info("Using bear...");
-			send("bear");
+			Keyboard.send("bear");
 			startTime = System.currentTimeMillis();
 		}
 	}
@@ -60,15 +52,13 @@ public class Transfer implements Runnable{
 			
 			switch (Process.getInstance()) {
 				case START:{
-					logger.info("Start sub-task...");
-					useBear();
-					
 					logger.info("Starting fish... ");
 					
-					Region start = new Region();
-					
-					task = new Task(start, 3000, 5000);
+					task = new Task(Chars.space.name(), 3000, 5000);
 					task.run();
+					
+					logger.info("Start sub-task...");
+					useBear();
 					
 					break;
 				}
@@ -100,23 +90,30 @@ public class Transfer implements Runnable{
 					logger.info("Parsing kapcha...");
 					
 					try{
-						Region kapcha = new Region();
+						Region kapcha = new Kapcha();
 						
 						task = new Task(kapcha, 3920, 10000);
 						task.run();
-					
+						
 					}catch (Exception e) {
 						logger.error("Exception " + e);
+						DelayUtils.delay(7000);
+						Process.initStart();
 					}
 					break;
 				}
 				case FILTER_LOOT:{
 					logger.info("Check loot...");
 					
-					Region filter = new Region();
-					
-					task = new Task(filter, 5000, 0);
-					task.run();
+					try {
+						Region filter = new FishLoot();
+						
+						task = new Task(filter, 5000, 0);
+						task.run();
+						
+					}catch (Exception e) {
+						logger.error("Exception " + e);
+					}
 					
 					break;
 				} 	

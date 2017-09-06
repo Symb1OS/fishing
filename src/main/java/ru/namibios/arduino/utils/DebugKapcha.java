@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import ru.namibios.arduino.Kapcha;
+import ru.namibios.arduino.model.Property;
 
 public class DebugKapcha extends JFrame{
 	
@@ -67,6 +68,8 @@ public class DebugKapcha extends JFrame{
 	    startButton.addActionListener((e) -> {
 	    	new Thread(() -> {
 				try{
+					Property.setHash("bef1c08eedddbe9f9d83a0f07d0d26ce9b360a55");
+					
 					String filename= "resources/debug";
 					File folder = new File(filename);
 					for (File file: folder.listFiles()) {
@@ -75,7 +78,8 @@ public class DebugKapcha extends JFrame{
 							kapchaimage.setIcon(new ImageIcon(file.toString()));
 							
 							Kapcha kapcha = new Kapcha(file.toString());
-							String key = kapcha.getKey("bef1c08eedddbe9f9d83a0f07d0d26ce9b360a55");
+							
+							String key = kapcha.getKey();
 							
 							kapchaParse.setText(key);	
 							

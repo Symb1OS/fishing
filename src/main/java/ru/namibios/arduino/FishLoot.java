@@ -1,24 +1,19 @@
 package ru.namibios.arduino;
 
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.fazecast.jSerialComm.SerialPort;
-
 import ru.namibios.arduino.model.ImageType;
 import ru.namibios.arduino.model.Loot;
 import ru.namibios.arduino.model.Property;
+import ru.namibios.arduino.utils.Keyboard;
 
-public class FishLoot{
+public class FishLoot extends Region{
 	
 	final static Logger logger = Logger.getLogger(FishLoot.class);
 
-	private static final String TAKE = "r";
-	
 	private List<Screen> scrins;
 	private Screen one;
 	private Screen two;
@@ -27,8 +22,7 @@ public class FishLoot{
 	
 	private List<Integer> userLootOk;
 	
-	public FishLoot(Property property) throws Exception {
-		
+	public FishLoot() throws Exception {
 		this.scrins = new ArrayList<>();
 		
 		this.one = new Screen(ImageType.FISH_LOOT_ONE);
@@ -46,7 +40,8 @@ public class FishLoot{
 		if(Property.isEvent()) userLootOk.add(Loot.EVENT.ordinal());
 	}
 	
-	private String getKey(){
+	@Override
+	public String getKey(){
 		
 		String loots= new String();
 		for (Screen screen : scrins) {
@@ -60,8 +55,8 @@ public class FishLoot{
 		boolean unknown = (length == 0); 
 		if(unknown){
 			logger.info("Loot is not recognized... Take.");
-			try{one.saveImage("loot/unknow");} catch(IOException i){logger.error("Exception: " + i);}
-			return TAKE;
+			one.saveImage("loot/unknow");
+			return Keyboard.TAKE;
 		} 
 		
 		boolean isOk= false;
@@ -73,21 +68,12 @@ public class FishLoot{
 			}
 		}
 		
-		if(isOk) logger.info("Loot ok."); else logger.info("Trash. Throw out.");
+		if(isOk) {
+			logger.info("Loot ok."); return Keyboard.TAKE;
+		} else {
+			logger.info("Trash. Throw out."); return Keyboard.IGNORE;
+		} 
 		
-		return isOk ? TAKE : "";
-	}
-	
-	public void send(SerialPort port){
-		String key = getKey();
-		
-		if(!key.isEmpty()){
-			PrintWriter output = new PrintWriter(port.getOutputStream());
-			output.println(key);
-			output.flush();
-			
-			logger.info("Sended message: " + key);
-		}
 	}
 	
 }
