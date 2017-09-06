@@ -1,13 +1,11 @@
-package ru.namibios.arduino;
+package ru.namibios.arduino.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import ru.namibios.arduino.model.ImageType;
-import ru.namibios.arduino.model.Loot;
-import ru.namibios.arduino.model.Property;
+import ru.namibios.arduino.model.ImageParser.ImageType;
 import ru.namibios.arduino.utils.Keyboard;
 
 public class FishLoot extends Region{

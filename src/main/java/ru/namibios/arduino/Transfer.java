@@ -2,11 +2,16 @@ package ru.namibios.arduino;
 
 import org.apache.log4j.Logger;
 
-import ru.namibios.arduino.model.Chars;
-import ru.namibios.arduino.model.ImageType;
+import ru.namibios.arduino.model.FishLoot;
+import ru.namibios.arduino.model.FixedKey;
+import ru.namibios.arduino.model.ImageParser.ImageType;
+import ru.namibios.arduino.model.Kapcha;
 import ru.namibios.arduino.model.Property;
+import ru.namibios.arduino.model.Region;
+import ru.namibios.arduino.model.Task;
 import ru.namibios.arduino.utils.DelayUtils;
 import ru.namibios.arduino.utils.Keyboard;
+import ru.namibios.arduino.utils.Keyboard.ArduinoSubTask;
 import ru.namibios.arduino.utils.Process;
 
 public class Transfer implements Runnable{ 
@@ -54,7 +59,9 @@ public class Transfer implements Runnable{
 				case START:{
 					logger.info("Starting fish... ");
 					
-					task = new Task(Chars.space.name(), 3000, 5000);
+					Region fixedRegion = new FixedKey(ArduinoSubTask.space);
+					
+					task = new Task(fixedRegion, 3000, 5000);
 					task.run();
 					
 					logger.info("Start sub-task...");
@@ -75,15 +82,16 @@ public class Transfer implements Runnable{
 					break;
 				}
 				case PARSE_LINE:{
+					logger.info("Cut the fish...");
 					try {
-						Region parseLine = new Region();
+						Region parseLine = new FixedKey(ArduinoSubTask.space);
 						
-						task = new Task(parseLine);
+						task = new Task(parseLine, 1200, 0);
 						task.run();
+						
 					}catch (Exception e) {
 						logger.error("Exception " + e);
 					}
-					
 					break;
 				}
 				case PARSE_KAPCHA:{
@@ -119,55 +127,6 @@ public class Transfer implements Runnable{
 				} 	
 			}
 			
-			
-			/*if(isStart){
-				Thread.sleep(3000);
-				logger.info("Starting fish... ");
-				send(Chars.space.name());
-				isStart=false; isBegin=true;
-				Thread.sleep(5000);
-				useBear();
-				
-			}else if(isBegin){
-				logger.info("Wait fish...");
-				Thread.sleep(3000);
-				boolean isSend =  new Region(ImageType.SPACE).send(port);
-				if(isSend){ isBegin= false; isSubLine= true; }
-				
-			}else if(isSubLine){
-				String key= new Region(ImageType.SUBLINE).getKey();
-				if(key.equals(String.valueOf(Chars.space.name()))) {
-					logger.info("Cut the fish...");
-					Thread.sleep(680);
-					send(Chars.space.name());
-					isSubLine=false;
-					isKapcha=true;
-				}
-			}else if(isKapcha){
-				Thread.sleep(3920);
-				try{
-					logger.info("Parsing kapcha...");
-					Kapcha kapcha = new Kapcha();
-					kapcha.clearNoises(30);
-					boolean isDefined = kapcha.send(property.getHash(), port);
-					if(!isDefined){
-						logger.info("Kaptcha undefuned");
-						Thread.sleep(10000);
-						isStart=true; isKapcha=false;
-					}
-				}catch (Exception e){
-					logger.error("Exception " + e);
-					isStart=true; isKapcha=false;
-					Thread.sleep(7000);
-				}
-				isKapcha=false; isLootFilter=true;
-			}else if(isLootFilter){
-				Thread.sleep(5000);
-				logger.info("Check loot...");
-				new FishLoot(property).send(port);
-				isLootFilter=false; isStart= true;
-			}
-		}*/
 		}
 			
 		Property.portInstance().closePort();
@@ -183,10 +142,4 @@ public class Transfer implements Runnable{
 		isRun = false;
 	}
 	
-	public static void main(String[] args) {
-	
-		System.out.println(Chars.space.ordinal());
-		
-	}
-
 }

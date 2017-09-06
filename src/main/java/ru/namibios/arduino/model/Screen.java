@@ -1,4 +1,4 @@
-package ru.namibios.arduino;
+package ru.namibios.arduino.model;
 
 import java.awt.AWTException;
 import java.awt.Rectangle;
@@ -12,8 +12,9 @@ import javax.imageio.ImageIO;
 
 import org.apache.log4j.Logger;
 
-import ru.namibios.arduino.model.ImageType;
+import ru.namibios.arduino.model.ImageParser.ImageType;
 import ru.namibios.arduino.utils.DateUtils;
+import ru.namibios.arduino.utils.Path;
 
 public class Screen { 
 	
@@ -118,7 +119,7 @@ public class Screen {
 	
 	public void saveDebugImage(){
 		try {
-			ImageIO.write(screenShot, "jpg", new File("resources/debug/" + DateUtils.getYYYY_MM_DD_HH_MM_SS_S() + ".jpg"));
+			ImageIO.write(screenShot, "jpg", new File(Path.RESOURCES_DEBUG + DateUtils.getYYYY_MM_DD_HH_MM_SS_S() + ".jpg"));
 		} catch (IOException e) {
 			logger.error("Exception " + e);
 		}
@@ -127,7 +128,7 @@ public class Screen {
 	public void saveImage(String folder) {
 		
 		try {
-			ImageIO.write(screenShot, "jpg", new File("resources/" + folder + "/" + DateUtils.getYYYY_MM_DD_HH_MM_SS_S() + ".jpg"));
+			ImageIO.write(screenShot, "jpg", new File(Path.RESOURCES + folder + "/" + DateUtils.getYYYY_MM_DD_HH_MM_SS_S() + ".jpg"));
 		} catch (IOException e) {
 			logger.error("Exception " + e);
 		}

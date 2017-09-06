@@ -1,4 +1,4 @@
-package ru.namibios.arduino;
+package ru.namibios.arduino.model;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -6,8 +6,7 @@ import java.io.IOException;
 import org.apache.log4j.Logger;
 import org.codehaus.jackson.map.ObjectMapper;
 
-import ru.namibios.arduino.model.ImageType;
-import ru.namibios.arduino.model.Property;
+import ru.namibios.arduino.model.ImageParser.ImageType;
 import ru.namibios.arduino.utils.Http;
 
 public class Kapcha extends Region{
@@ -26,6 +25,8 @@ public class Kapcha extends Region{
 	
 	@Override
 	public String getKey(){
+		
+		try { clearNoises(30); } catch (Exception e) { logger.error("Exception " + e); }
 		
 		ImageParser imageParser = new ImageParser(ImageType.KAPCHA, screen.getImage());
 		imageParser.getCodes();
@@ -57,7 +58,4 @@ public class Kapcha extends Region{
 		logger.info("Clean ended...");
 	}
 	
-	public static void main(String[] args) throws Exception {
-		Kapcha kapcha = new Kapcha();
-	}
 }

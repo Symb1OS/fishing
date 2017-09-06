@@ -1,12 +1,11 @@
-package ru.namibios.arduino;
+package ru.namibios.arduino.model;
 
 import java.awt.image.BufferedImage;
 import java.io.PrintWriter;
 
 import org.apache.log4j.Logger;
 
-import ru.namibios.arduino.model.ImageType;
-import ru.namibios.arduino.model.Property;
+import ru.namibios.arduino.model.ImageParser.ImageType;
 
 public class Region {
 

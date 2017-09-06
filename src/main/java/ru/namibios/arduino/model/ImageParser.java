@@ -1,4 +1,4 @@
-package ru.namibios.arduino;
+package ru.namibios.arduino.model;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
@@ -7,11 +7,12 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import ru.namibios.arduino.model.Chars;
-import ru.namibios.arduino.model.ImageType;
-import ru.namibios.arduino.model.Loot;
-
 public class ImageParser {
+	
+	public enum ImageType {
+
+		SPACE, LINE, SUBLINE, KAPCHA, FISH_LOOT, FISH_LOOT_ONE, FISH_LOOT_TWO;
+	}
 	
 	final static Logger logger = Logger.getLogger(ImageParser.class);
 
@@ -83,29 +84,6 @@ public class ImageParser {
 		return imageMatrix;
 	}
 			
-	private void printMatrix(int[][] tmp, int row, int column){
-		for (int i = 0; i < row; i++) {
-			for (int j = 0; j < column; j++) {
-				System.out.print(tmp[i][j]!= 0 ? 1 : " ");
-			}
-			System.out.println();
-		}
-	}
-	
-	private void printTemplate(int[][] tmp, int row, int column){
-		System.out.println("new int[][]{");
-		for (int i = 0; i < row; i++) {
-			System.out.print("{");
-			for (int j = 0; j < column; j++) {
-				System.out.print((tmp[i][j] == 0 ? "0" : "1") + ", ");
-			}
-			System.out.print("},");
-			System.out.println();
-		}
-		System.out.println("}");
-		System.out.println();
-	}
-	
 	private List<int[][]> getTemplates(int index){
 		List<int[][]> templateNumber = null; 
 		
@@ -182,7 +160,7 @@ public class ImageParser {
 		}	
 		return rezult.toString().replace("-1", "");
 	}
-	
+	 
 	public String getNumberkeyFromTemlate() {
 		StringBuilder rezult = new StringBuilder();
 		

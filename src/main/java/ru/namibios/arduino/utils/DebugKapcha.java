@@ -12,7 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import ru.namibios.arduino.Kapcha;
+import ru.namibios.arduino.model.Kapcha;
 import ru.namibios.arduino.model.Property;
 
 public class DebugKapcha extends JFrame{

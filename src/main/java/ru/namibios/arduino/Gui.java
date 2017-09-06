@@ -24,6 +24,7 @@ import com.fazecast.jSerialComm.SerialPort;
 
 import ru.namibios.arduino.model.Property;
 import ru.namibios.arduino.utils.Message;
+import ru.namibios.arduino.utils.Path;
 
 public class Gui extends JFrame{
 	
@@ -145,7 +146,7 @@ public class Gui extends JFrame{
 	private String getAuthKey(){
 		String key = null;
 		try {
-			key = new String(Files.readAllBytes(Paths.get("resources/key")));
+			key = new String(Files.readAllBytes(Paths.get(Path.RESOURCES_KEY)));
 			logger.info("key=  " + key);
 			if(key.isEmpty()){
 				JOptionPane.showMessageDialog(this, Message.KEY_EMPTY);

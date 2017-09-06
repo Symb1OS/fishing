@@ -8,7 +8,7 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 
-import ru.namibios.arduino.ImageParser;
+import ru.namibios.arduino.model.ImageParser.ImageType;
 
 public enum Loot {
 	
