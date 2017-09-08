@@ -83,6 +83,7 @@ public class Transfer implements Runnable{
 						
 						task = new Task(line, 1200, 0);
 						task.run();
+						
 						logger.info("Cut the fish...");
 	
 					}catch (Exception e) {
