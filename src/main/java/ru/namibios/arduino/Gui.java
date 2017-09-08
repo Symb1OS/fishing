@@ -125,6 +125,7 @@ public class Gui extends JFrame{
 			
 			Property.setBear(jBear.isSelected());
 			Property.setMinigame(jMinigame.isSelected());
+			
 			Property.setRock(jRock.isSelected());
 			Property.setFish(jFish.isSelected());
 			Property.setKeys(jKey.isSelected());

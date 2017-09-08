@@ -47,7 +47,7 @@ public class FishLoot extends Region{
 			imageParser.getCodes();
 			loots+= imageParser.getkeyFromTemlate();
 		}
-		
+
 		char[] array = loots.toCharArray();
 		int length = array.length;
 		boolean unknown = (length == 0); 

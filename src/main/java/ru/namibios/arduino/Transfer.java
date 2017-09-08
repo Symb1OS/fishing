@@ -8,9 +8,10 @@ import ru.namibios.arduino.model.ImageParser.ImageType;
 import ru.namibios.arduino.model.Kapcha;
 import ru.namibios.arduino.model.Property;
 import ru.namibios.arduino.model.Region;
+import ru.namibios.arduino.model.SubTasker;
+import ru.namibios.arduino.model.SubTasker.SubTask;
 import ru.namibios.arduino.model.Task;
 import ru.namibios.arduino.utils.DelayUtils;
-import ru.namibios.arduino.utils.Keyboard;
 import ru.namibios.arduino.utils.Keyboard.ArduinoSubTask;
 import ru.namibios.arduino.utils.Process;
 
@@ -22,21 +23,15 @@ public class Transfer implements Runnable{
 
 	private boolean isRun;
 
-	private long startTime;
-
-	public Transfer() {
-		startTime = System.currentTimeMillis();
-		Process.initStart();
-	}
+	private SubTasker subTasker;
 	
-	private void useBear(){
-		long time = System.currentTimeMillis();
-		boolean needFeed = (Property.isBear() && (time - startTime > EVERY_HOUR));
-		if(needFeed){
-			logger.info("Using bear...");
-			Keyboard.send("bear");
-			startTime = System.currentTimeMillis();
-		}
+	public Transfer() {
+		
+		subTasker = new SubTasker();
+		if(Property.isBear()) subTasker.add(new SubTask("bear", EVERY_HOUR));
+
+		Process.initStart();
+		
 	}
 	
 	public void run() {
@@ -65,7 +60,7 @@ public class Transfer implements Runnable{
 					task.run();
 					
 					logger.info("Start sub-task...");
-					useBear();
+					subTasker.check();
 					
 					break;
 				}
@@ -132,10 +127,6 @@ public class Transfer implements Runnable{
 		Property.portInstance().closePort();
 		logger.info("Port closed...");
 		logger.info("Thread stop.");
-	}
-	
-	void restart(){
-		isRun = true;
 	}
 	
 	void pause(){
