@@ -59,7 +59,7 @@ public class Transfer implements Runnable{
 					task = new Task(fixedRegion, 3000, 5000);
 					task.run();
 					
-					logger.info("Start sub-task...");
+					logger.info("Check sub-task...");
 					subTasker.check();
 					
 					break;
