@@ -30,20 +30,10 @@ public class SubTasker {
 		}
 	}
 	
-	public static void main(String[] args) {
-		SubTasker tasker = new SubTasker();
-		tasker.add(new SubTask("bear", 1000 * 10));
-		
-		while(true) {
-			try{Thread.sleep(1000);}catch (Exception e) {e.printStackTrace();}
-			tasker.check();
-		}
-	}
-	
 	public static class SubTask {
 		
 		private static final String USING = "Using %s";
-		
+
 		private Long startTime;
 		
 		private String name;
