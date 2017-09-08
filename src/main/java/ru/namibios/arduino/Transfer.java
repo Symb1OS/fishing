@@ -21,8 +21,6 @@ public class Transfer implements Runnable{
 
 	private static final int EVERY_HOUR = 1000 * 60 * 60;
 
-	private boolean isRun;
-
 	private SubTasker subTasker;
 	
 	public Transfer() {
@@ -36,7 +34,6 @@ public class Transfer implements Runnable{
 	
 	public void run() {
 		
-		isRun = true;
 		logger.info("Start...");
 		DelayUtils.delay(3000);
 		
@@ -48,7 +45,6 @@ public class Transfer implements Runnable{
 		} 
 		
 		logger.info("Port is open...");
-		while(isRun){
 			
 			switch (Process.getInstance()) {
 				case START:{
@@ -122,15 +118,9 @@ public class Transfer implements Runnable{
 				} 	
 			}
 			
-		}
-			
 		Property.portInstance().closePort();
 		logger.info("Port closed...");
 		logger.info("Thread stop.");
-	}
-	
-	void pause(){
-		isRun = false;
 	}
 	
 }
