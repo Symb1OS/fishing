@@ -1,5 +1,6 @@
 package ru.namibios.arduino.model;
 
+import java.awt.AWTException;
 import java.awt.image.BufferedImage;
 import java.io.PrintWriter;
 
@@ -17,7 +18,7 @@ public class Region {
 	
 	public Region() {}
 	
-	public Region(ImageType type) throws Exception {
+	public Region(ImageType type) throws AWTException{
 		this.screen = new Screen(type);
 	
 		BufferedImage image = screen.getImage();

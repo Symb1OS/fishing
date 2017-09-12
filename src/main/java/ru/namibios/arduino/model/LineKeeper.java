@@ -1,7 +1,6 @@
 package ru.namibios.arduino.model;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.stream.Stream;
 
 import ru.namibios.arduino.model.ImageParser.ImageType;
@@ -11,11 +10,11 @@ public class LineKeeper {
 	
 	private long workTime;
 	
-	public LineKeeper(long time) throws Exception {
+	public LineKeeper(long time){
 		this.workTime = time;
 	}
 	
-	private String getNewFolderName() throws IOException {
+	private String getNewFolderName()  {
 		long count = 0;
 		
 		String path = Path.RESOURCES + Path.DEBUG_LINE;
@@ -26,7 +25,6 @@ public class LineKeeper {
 		
 		File newFolder = new File(path + String.valueOf(count + 1));
 		newFolder.mkdir();
-		
 		return newFolder.getName();
 	}
 	

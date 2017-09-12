@@ -1,5 +1,7 @@
 package ru.namibios.arduino;
 
+import java.awt.AWTException;
+
 import org.apache.log4j.Logger;
 
 import ru.namibios.arduino.model.FishLoot;
@@ -52,7 +54,6 @@ public class Transfer implements Runnable{
 					logger.info("Starting fish... ");
 					
 					Region fixedRegion = new FixedKey(ArduinoSubTask.space);
-					
 					task = new Task(fixedRegion, 3000, 5000);
 					task.run();
 					
@@ -66,29 +67,21 @@ public class Transfer implements Runnable{
 					logger.info("Wait fish...");
 					try {
 						Region waitFish = new Region(ImageType.SPACE);
-						
 						task = new Task(waitFish, 3000, 0);
 						task.run();
 						
-					}catch (Exception e) {
+					}catch (AWTException e) {
 						 logger.error("Exception " + e);
 					}
 					break;
 				}
 				
 				case PARSE_LINE:{
+					Region line = new FixedKey(ArduinoSubTask.space);
+					task = new Task(line, 1200, 0);
+					task.run();
 					
-					try {
-						Region line = new FixedKey(ArduinoSubTask.space);
-						
-						task = new Task(line, 1200, 0);
-						task.run();
-						
-						logger.info("Cut the fish...");
-	
-					}catch (Exception e) {
-						logger.error("Exception " + e);
-					}
+					logger.info("Cut the fish...");
 					break;
 				}
 			

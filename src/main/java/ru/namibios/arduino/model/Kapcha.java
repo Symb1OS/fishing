@@ -1,5 +1,6 @@
 package ru.namibios.arduino.model;
 
+import java.awt.AWTException;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -15,18 +16,18 @@ public class Kapcha extends Region{
 
 	private Screen screen;
 
-	public Kapcha() throws Exception {
+	public Kapcha() throws AWTException  {
 		this.screen = new Screen(ImageType.KAPCHA);
 	}
 	
-	public Kapcha(String file) throws Exception{
+	public Kapcha(String file) throws IOException{
 		this.screen = new Screen(file);
 	}
 	
 	@Override
 	public String getKey(){
 		
-		try { clearNoises(30); } catch (Exception e) { logger.error("Exception " + e); }
+		try { clearNoises(30); } catch (AWTException e) { logger.error("Exception " + e); }
 		
 		ImageParser imageParser = new ImageParser(ImageType.KAPCHA, screen.getImage());
 		imageParser.getCodes();
@@ -45,7 +46,7 @@ public class Kapcha extends Region{
 		return keys.replace("\n", "");
 	}
 	
-	public void clearNoises(int iteration) throws Exception{
+	public void clearNoises(int iteration) throws AWTException {
 		logger.info("Clean the noise...");
 		int cnt = 0;
 		while(cnt < iteration){

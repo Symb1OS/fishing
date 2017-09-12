@@ -88,7 +88,7 @@ public class Screen {
 		this.screenShot = ImageIO.read(new File(filename));
 	}
 	
-	public Screen(ImageType type) throws Exception{
+	public Screen(ImageType type) throws AWTException{
 		Robot robot = new Robot();
 		screenShot = robot.createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
 		
@@ -100,7 +100,7 @@ public class Screen {
 			case KAPCHA:        screenShot = screenShot.getSubimage(KAPCHA_X, KAPCHA_Y, KAPCHA_W, KAPCHA_H);                 break;
 			case FISH_LOOT_ONE: screenShot = screenShot.getSubimage(LOOT_X, LOOT_Y, LOOT_W, LOOT_H);                		 break;
 			case FISH_LOOT_TWO: screenShot = screenShot.getSubimage(LOOT_TWO_X, LOOT_TWO_Y, LOOT_TWO_W, LOOT_TWO_H);         break;
-			default:	    throw new Exception("Unknow ImageType");
+			default:	    throw new IllegalArgumentException("Unknow ImageType");
 		}
 		makeGray();
 		noise = new Noise(screenShot);

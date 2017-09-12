@@ -1,5 +1,6 @@
 package ru.namibios.arduino.model;
 
+import java.awt.AWTException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class FishLoot extends Region{
 	
 	private List<Integer> userLootOk;
 	
-	public FishLoot() throws Exception {
+	public FishLoot() throws AWTException {
 		this.scrins = new ArrayList<>();
 		
 		this.one = new Screen(ImageType.FISH_LOOT_ONE);
