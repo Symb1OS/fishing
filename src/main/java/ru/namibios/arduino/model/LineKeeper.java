@@ -1,5 +1,6 @@
 package ru.namibios.arduino.model;
 
+import java.awt.AWTException;
 import java.io.File;
 import java.util.stream.Stream;
 
@@ -28,7 +29,7 @@ public class LineKeeper {
 		return newFolder.getName();
 	}
 	
-	public void saveImages() throws Exception {
+	public void saveImages() throws AWTException  {
 		
 		String folder = getNewFolderName();
 		String imagesFolder = Path.DEBUG_LINE + folder + "/"; 
@@ -39,6 +40,10 @@ public class LineKeeper {
 			Screen screen = new Screen(ImageType.LINE);
 			screen.saveImage(imagesFolder);
 		}
-		
+	}
+	
+	public static void main(String[] args) throws AWTException {
+		LineKeeper keeper = new LineKeeper(3000);
+		keeper.saveImages();
 	}
 }

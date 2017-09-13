@@ -65,7 +65,7 @@ public class Screen {
 	
 	private Noise noise;
 	
-	public Screen(String filename, ImageType type) throws Exception{
+	public Screen(String filename, ImageType type) throws IOException {
 		
 		File fimport = new File(PATH_IMPORT + filename);
 		File fexport = new File(PATH_EXPORT + filename);
@@ -76,7 +76,7 @@ public class Screen {
 			case KAPCHA:    	screenShot = img.getSubimage(KAPCHA_X, KAPCHA_Y, KAPCHA_W, KAPCHA_H);          break;
 			case FISH_LOOT_ONE: screenShot = img.getSubimage(LOOT_X, LOOT_Y, LOOT_W, LOOT_H);                  break;
 			case FISH_LOOT_TWO: screenShot = img.getSubimage(LOOT_TWO_X, LOOT_TWO_Y, LOOT_TWO_W, LOOT_TWO_H);  break;
-			default:	    throw new Exception("Unknow ImageType");
+			default:	   logger.error("Unkow type. Exit"); System.exit(1); 
 		}
 		
 		makeGray();

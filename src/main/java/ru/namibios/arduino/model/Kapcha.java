@@ -59,4 +59,8 @@ public class Kapcha extends Region{
 		logger.info("Clean ended...");
 	}
 	
+	public static void main(String[] args) throws Exception {
+		Screen kapcha = new Screen("20170705_214741.jpg", ImageType.KAPCHA);
+		kapcha.saveDebugImage();
+	}
 }
