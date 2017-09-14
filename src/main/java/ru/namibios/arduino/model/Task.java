@@ -25,9 +25,7 @@ public class Task {
 	public void run(){
 		
 		DelayUtils.delay(delayBefore);
-		
 		boolean isOk = region.send();
-		
 		DelayUtils.delay(delayAfter);
 		
 		if(isOk) Process.next();
