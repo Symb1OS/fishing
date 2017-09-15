@@ -33,7 +33,6 @@ public class Transfer implements Runnable{
 		if(Property.isBear()) subTasker.add(new SubTask("bear", EVERY_HOUR));
 
 		Process.initStart();
-		
 	}
 	
 	public void run() {

@@ -10,10 +10,10 @@ import org.apache.log4j.Logger;
 public class ImageParser {
 	
 	public enum ImageType {
-
+		
 		SPACE, LINE, SUBLINE, KAPCHA, FISH_LOOT, FISH_LOOT_ONE, FISH_LOOT_TWO;
 	}
-	
+
 	final static Logger logger = Logger.getLogger(ImageParser.class);
 
 	private static final int GRAY = 40;

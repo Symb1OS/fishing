@@ -40,6 +40,7 @@ public class Screen {
 	private static final int SUB_LINE_Y = 402;
 	private static final int SUB_LINE_W = 10;
 	private static final int SUB_LINE_H = 25;
+
 	/*		
 	private static final int SUB_KAPCHA_X = 780;
 	private static final int SUB_KAPCHA_Y = 360;
@@ -76,7 +77,7 @@ public class Screen {
 			case KAPCHA:    	screenShot = img.getSubimage(KAPCHA_X, KAPCHA_Y, KAPCHA_W, KAPCHA_H);          break;
 			case FISH_LOOT_ONE: screenShot = img.getSubimage(LOOT_X, LOOT_Y, LOOT_W, LOOT_H);                  break;
 			case FISH_LOOT_TWO: screenShot = img.getSubimage(LOOT_TWO_X, LOOT_TWO_Y, LOOT_TWO_W, LOOT_TWO_H);  break;
-			default:	   logger.error("Unkow type. Exit"); System.exit(1); 
+			default:	   		logger.error("Unkow type. Exit"); System.exit(1); 
 		}
 		
 		makeGray();
@@ -88,23 +89,26 @@ public class Screen {
 		this.screenShot = ImageIO.read(new File(filename));
 	}
 	
+	private Rectangle getRectangle(ImageType type){
+		switch (type) {
+			case LINE: 	 		return new Rectangle(LINE_X, LINE_Y, LINE_W, LINE_H);
+			case SUBLINE:       return new Rectangle(SUB_LINE_X, SUB_LINE_Y, SUB_LINE_W, SUB_LINE_H);
+			case KAPCHA: 		return new Rectangle(LINE_X, LINE_Y, LINE_W, LINE_H);
+			case SPACE:  		return new Rectangle(SPACE_X, SPACE_Y, SPASE_W, SPACE_H);
+			case FISH_LOOT_ONE: return new Rectangle(LOOT_X, LOOT_Y, LOOT_W, LOOT_H);
+			case FISH_LOOT_TWO: return new Rectangle(LOOT_TWO_X, LOOT_TWO_Y, LOOT_TWO_W, LOOT_TWO_H);
+			default: 			logger.error("Unknow region... Exit"); System.exit(1); 		
+		}
+		return null;
+	}
+	
 	public Screen(ImageType type) throws AWTException{
 		Robot robot = new Robot();
-		screenShot = robot.createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
+		Rectangle rectangle = getRectangle(type);
+		screenShot = robot.createScreenCapture(rectangle); 
 		
-	//	File fexport = new File(PATH_EXPORT + "test.jpg");
-		switch (type) {
-			case SPACE:	    	screenShot = screenShot.getSubimage(SPACE_X, SPACE_Y, SPASE_W, SPACE_H); 			         break; 
-			case LINE:	    	screenShot = screenShot.getSubimage(LINE_X, LINE_Y, LINE_W, LINE_H); 			       	     break;
-			case SUBLINE:	    screenShot = screenShot.getSubimage(SUB_LINE_X, SUB_LINE_Y, SUB_LINE_W, SUB_LINE_H); 	     break;
-			case KAPCHA:        screenShot = screenShot.getSubimage(KAPCHA_X, KAPCHA_Y, KAPCHA_W, KAPCHA_H);                 break;
-			case FISH_LOOT_ONE: screenShot = screenShot.getSubimage(LOOT_X, LOOT_Y, LOOT_W, LOOT_H);                		 break;
-			case FISH_LOOT_TWO: screenShot = screenShot.getSubimage(LOOT_TWO_X, LOOT_TWO_Y, LOOT_TWO_W, LOOT_TWO_H);         break;
-			default:	    throw new IllegalArgumentException("Unknow ImageType");
-		}
 		makeGray();
 		noise = new Noise(screenShot);
-		//ImageIO.write(screenShot, "JPG", fexport );
 	}
 	
 	public Screen() throws AWTException{
@@ -197,10 +201,5 @@ public class Screen {
 			return image;
 		}
 		
-		public void save() throws IOException{
-			ImageIO.write(image, "jpg", new File("resources/changes/test.jpg"));
-		}
-		
 	}
-
 }

@@ -9,7 +9,6 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.LayoutManager;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -38,7 +37,7 @@ import ru.namibios.arduino.utils.Path;
 
 public class DebugGui extends JFrame{
 	
-	final static Logger logger = Logger.getLogger(Gui.class);
+	final static Logger logger = Logger.getLogger(DebugGui.class);
 	
 	private static final String COM_PORT = "COM7";
 	private static final int WINDOW_WIDTH = 600;
@@ -82,15 +81,13 @@ public class DebugGui extends JFrame{
 	    lFilterOne.setIcon(new ImageIcon("resources/loot/ok/fish/ersh.jpg"));
 	    lFilterTwo.setIcon(new ImageIcon("resources/loot/ok/fish/cherepaxa.jpg"));
 	    
-	    aStatus.append("[14.09.2017 18:18:47] - Wait fish... \n");
-	    aStatus.append("[14.09.2017 18:18:47] - Wait fish...\n");
-	    aStatus.append("[14.09.2017 18:18:47] - Wait fish...\n");
-	    aStatus.append("[14.09.2017 18:18:47] - Cut the fish...\n");
-		
+	    aStatus.setEditable(false);
 	}
 
 	public DebugGui() {
 	    super("Fishbot");
+	    
+	    new Thread(new AreaLogger()).start();
 	    
 	    logger.info("Test");
 	    setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -112,21 +109,6 @@ public class DebugGui extends JFrame{
 	    aStatus.setForeground(Color.GREEN);
 	    
 	    initTestData();
-	    
-	    Runnable readLog = () -> {
-	    	try {
-	    		
-		    	List<String> list = Files.readAllLines(Paths.get("work.log"), StandardCharsets.UTF_8);
-		    	for (String line : list) {
-					aStatus.append(line + "\n");
-				}
-	    	
-	    	}catch (IOException e) {
-				e.printStackTrace();
-			}
-	    };
-	    
-	    readLog.run();
 			
 	    JPanel debug = new JPanel();
 	    debug.setLayout(new BorderLayout());
@@ -255,6 +237,30 @@ public class DebugGui extends JFrame{
 				jPanel.add(component);
 			}
 			return jPanel;
+		}
+	}
+	
+	private class AreaLogger implements Runnable{
+
+		@Override
+		public void run() {
+			try {
+	    		long endFile = 0;
+	    		while(true) {
+	    			byte[] file = Files.readAllBytes(Paths.get("work.log"));
+					if(endFile < file.length) {
+						for (int i = 0; i < file.length; i++) {
+							aStatus.append(String.valueOf((char)file[i]));
+						}
+					}
+					aStatus.setCaretPosition(aStatus.getDocument().getLength());
+					endFile = file.length;
+				}
+			
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+			
 		}
 	}
 	
