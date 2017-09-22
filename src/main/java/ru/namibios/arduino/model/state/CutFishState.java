@@ -19,7 +19,7 @@ public class CutFishState extends State {
 	public void onNext() {
 		Command line = () -> Keyboard.Keys.SPACE;
 		Task task = new Task(line, Property.DELAY_BEFORE_CUT_FISH, Property.DELAY_AFTER_CUT_FISH);
-		boolean isOk = task.runTest();
+		boolean isOk = task.run();
 		if(isOk) {
 			logger.info("Cut the fish...");
 			fishBot.setState(new KapchaState(fishBot));

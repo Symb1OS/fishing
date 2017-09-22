@@ -22,7 +22,7 @@ public class StartFishState extends State{
 		Command command = () -> Keyboard.Keys.SPACE;
 		
 		Task task = new Task(command, Property.DELAY_BEFORE_START, Property.DELAY_AFTER_START);
-		boolean isSend = task.runTest();
+		boolean isSend = task.run();
 		
 		if(isSend) fishBot.setState(new WaitFishState(fishBot));
 	}

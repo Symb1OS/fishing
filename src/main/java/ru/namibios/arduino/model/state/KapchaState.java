@@ -24,7 +24,7 @@ public class KapchaState extends State {
 			Command kapcha = new Kapcha();
 			
 			Task task = new Task(kapcha, Property.DELAY_BEFORE_KAPCHA, Property.DELAY_AFTER_KAPCHA);
-			boolean isOk = task.runTest();
+			boolean isOk = task.run();
 			if(isOk) fishBot.setState(new FilterLootState(fishBot));
 			
 		}catch (Exception e) {

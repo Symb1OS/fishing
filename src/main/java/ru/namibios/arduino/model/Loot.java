@@ -47,7 +47,5 @@ public enum Loot {
 			templates.add(parser.getImageMatrix());
 			
 		}
-		
 	}
-
 }

@@ -25,7 +25,7 @@ public class WaitFishState extends State {
 			
 			Command waitFish = new WaitFish();
 			Task task = new Task(waitFish, Property.DELAY_BEFORE_WAIT_FISH, Property.DELAY_AFTER_WAIT_FISH);
-			boolean isOk = task.runTest();
+			boolean isOk = task.run();
 			if(isOk) fishBot.setState(new CutFishState(fishBot));
 			
 		}catch (AWTException e) {
