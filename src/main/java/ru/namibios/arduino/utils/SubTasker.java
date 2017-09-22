@@ -1,11 +1,9 @@
-package ru.namibios.arduino.model;
+package ru.namibios.arduino.utils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
-
-import ru.namibios.arduino.utils.Keyboard;
 
 public class SubTasker {
 	
@@ -55,7 +53,7 @@ public class SubTasker {
 			boolean isTimeRun = periodLastStart >  period; 
 			if( isTimeRun ) {
 				logger.info(String.format(USING, name));
-				Keyboard.send(name);
+				Keyboard.send(() -> name);
 				startTime = System.currentTimeMillis();
 				
 			}

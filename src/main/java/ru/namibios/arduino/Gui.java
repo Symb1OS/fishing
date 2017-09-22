@@ -31,13 +31,13 @@ import org.apache.log4j.Logger;
 
 import com.fazecast.jSerialComm.SerialPort;
 
-import ru.namibios.arduino.model.Property;
-import ru.namibios.arduino.utils.Message;
-import ru.namibios.arduino.utils.Path;
+import ru.namibios.arduino.config.Message;
+import ru.namibios.arduino.config.Path;
+import ru.namibios.arduino.config.Property;
 
-public class DebugGui extends JFrame{
+public class Gui extends JFrame{
 	
-	final static Logger logger = Logger.getLogger(DebugGui.class);
+	final static Logger logger = Logger.getLogger(Gui.class);
 	
 	private static final String COM_PORT = "COM7";
 	private static final int WINDOW_WIDTH = 600;
@@ -84,7 +84,7 @@ public class DebugGui extends JFrame{
 	    aStatus.setEditable(false);
 	}
 
-	public DebugGui() {
+	public Gui() {
 	    super("Fishbot");
 	    
 	    new Thread(new AreaLogger()).start();
@@ -267,7 +267,7 @@ public class DebugGui extends JFrame{
 	public static void main(String[] args) {
 	
 		SwingUtilities.invokeLater( () -> {
-		    	DebugGui app = new DebugGui();
+		    	Gui app = new Gui();
 				app.setVisible(true);
 		});
 		

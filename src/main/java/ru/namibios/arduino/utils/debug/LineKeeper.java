@@ -1,11 +1,12 @@
-package ru.namibios.arduino.model;
+package ru.namibios.arduino.utils.debug;
 
 import java.awt.AWTException;
 import java.io.File;
 import java.util.stream.Stream;
 
+import ru.namibios.arduino.config.Path;
+import ru.namibios.arduino.model.Screen;
 import ru.namibios.arduino.model.ImageParser.ImageType;
-import ru.namibios.arduino.utils.Path;
 
 public class LineKeeper {
 	
@@ -45,5 +46,6 @@ public class LineKeeper {
 	public static void main(String[] args) throws AWTException {
 		LineKeeper keeper = new LineKeeper(3000);
 		keeper.saveImages();
+		
 	}
 }

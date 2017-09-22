@@ -1,4 +1,4 @@
-package ru.namibios.arduino.utils;
+package ru.namibios.arduino.utils.debug;
 
 import java.awt.Color;
 import java.awt.Container;

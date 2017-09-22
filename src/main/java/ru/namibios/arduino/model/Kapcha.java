@@ -7,14 +7,17 @@ import java.io.IOException;
 import org.apache.log4j.Logger;
 import org.codehaus.jackson.map.ObjectMapper;
 
+import ru.namibios.arduino.config.Property;
 import ru.namibios.arduino.model.ImageParser.ImageType;
 import ru.namibios.arduino.utils.Http;
 
-public class Kapcha extends Region{
+public class Kapcha implements Command{
 
 	final static Logger logger = Logger.getLogger(Kapcha.class);
 
 	private Screen screen;
+	
+	private ObjectMapper mapper= new ObjectMapper();
 
 	public Kapcha() throws AWTException  {
 		this.screen = new Screen(ImageType.KAPCHA);
@@ -32,15 +35,11 @@ public class Kapcha extends Region{
 		ImageParser imageParser = new ImageParser(ImageType.KAPCHA, screen.getImage());
 		imageParser.getCodes();
 		
-		int[][] matrix = imageParser.getImageMatrix();
-		
-		ObjectMapper mapper= new ObjectMapper();
-
 		Http http = new Http();
 		
 		String keys = "";
 		try {
-			keys = http.parseKapcha(Property.hashInstance(), mapper.writeValueAsString(matrix));
+			keys = http.parseKapcha(Property.hashInstance(), mapper.writeValueAsString(imageParser.getImageMatrix()));
 		} catch (IOException e) {logger.error("Exception: " + e); } 
 
 		return keys.replace("\n", "");

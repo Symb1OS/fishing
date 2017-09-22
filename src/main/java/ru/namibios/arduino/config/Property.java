@@ -1,8 +1,23 @@
-package ru.namibios.arduino.model;
+package ru.namibios.arduino.config;
 
 import com.fazecast.jSerialComm.SerialPort;
 
 public class Property {
+	
+	public static final int DELAY_BEFORE_START = 3000;
+	public static final int DELAY_AFTER_START = 5000;
+
+	public static final int DELAY_BEFORE_WAIT_FISH = 3000;
+	public static final int DELAY_AFTER_WAIT_FISH = 0;
+
+	public static final int DELAY_BEFORE_CUT_FISH = 1200;
+	public static final int DELAY_AFTER_CUT_FISH = 0;
+
+	public static final int DELAY_BEFORE_KAPCHA = 3920;
+	public static final int DELAY_AFTER_KAPCHA= 10000;
+
+	public static final int DELAY_BEFORE_FILTER_LOOOT = 5000;
+	public static final int DELAY_AFTER_FILTER_LOOOT= 0;
 
 	private Property() { }
 	

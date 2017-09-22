@@ -6,10 +6,11 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import ru.namibios.arduino.config.Property;
 import ru.namibios.arduino.model.ImageParser.ImageType;
 import ru.namibios.arduino.utils.Keyboard;
 
-public class FishLoot extends Region{
+public class FishLoot implements Command{
 	
 	final static Logger logger = Logger.getLogger(FishLoot.class);
 
@@ -50,12 +51,11 @@ public class FishLoot extends Region{
 		}
 
 		char[] array = loots.toCharArray();
-		int length = array.length;
-		boolean unknown = (length == 0); 
+		boolean unknown = (array.length == 0); 
 		if(unknown){
 			logger.info("Loot is not recognized... Take.");
 			one.saveImage("loot/unknow");
-			return Keyboard.TAKE;
+			return Keyboard.Keys.TAKE;
 		} 
 		
 		boolean isOk= false;
@@ -68,9 +68,9 @@ public class FishLoot extends Region{
 		}
 		
 		if(isOk) {
-			logger.info("Loot ok."); return Keyboard.TAKE;
+			logger.info("Loot ok."); return Keyboard.Keys.TAKE;
 		} else {
-			logger.info("Trash. Throw out."); return Keyboard.IGNORE;
+			logger.info("Trash. Throw out."); return Keyboard.Keys.IGNORE;
 		} 
 		
 	}

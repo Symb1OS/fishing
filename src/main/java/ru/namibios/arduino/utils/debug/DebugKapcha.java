@@ -1,4 +1,4 @@
-package ru.namibios.arduino.utils;
+package ru.namibios.arduino.utils.debug;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
@@ -12,8 +12,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import ru.namibios.arduino.config.Property;
 import ru.namibios.arduino.model.Kapcha;
-import ru.namibios.arduino.model.Property;
+import ru.namibios.arduino.utils.DelayUtils;
 
 public class DebugKapcha extends JFrame{
 	

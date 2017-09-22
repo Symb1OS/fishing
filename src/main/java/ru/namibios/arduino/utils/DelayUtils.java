@@ -1,6 +1,5 @@
 package ru.namibios.arduino.utils;
 
-
 public class DelayUtils{
 	
 	final void DateUtils() {}
