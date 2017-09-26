@@ -8,7 +8,7 @@ import org.apache.log4j.Logger;
 
 import ru.namibios.arduino.config.Property;
 import ru.namibios.arduino.model.ImageParser;
-import ru.namibios.arduino.model.ImageParser.ImageType;
+import ru.namibios.arduino.model.Screen;
 import ru.namibios.arduino.model.template.Loot;
 import ru.namibios.arduino.utils.Keyboard;
 
@@ -27,10 +27,10 @@ public class FishLoot implements Command{
 	public FishLoot() throws AWTException {
 		this.scrins = new ArrayList<>();
 		
-		this.one = new Screen(ImageType.FISH_LOOT_ONE);
+		this.one = new Screen(Screen.LOOT_SLOT_ONE);
 		this.one.saveImage("loot");
 		
-		this.two = new Screen(ImageType.FISH_LOOT_TWO);
+		this.two = new Screen(Screen.LOOT_SLOT_TWO);
 		
 		this.scrins.add(one);
 		this.scrins.add(two);
@@ -47,9 +47,9 @@ public class FishLoot implements Command{
 		
 		String loots= new String();
 		for (Screen screen : scrins) {
-			imageParser = new ImageParser(ImageType.FISH_LOOT, screen.getImage());
-			imageParser.getCodes();
-			loots+= imageParser.getkeyFromTemlate();
+			imageParser = new ImageParser(screen, Loot.values());
+			imageParser.parse(Screen.GRAY);
+			loots+= imageParser.getkey();
 		}
 
 		char[] array = loots.toCharArray();

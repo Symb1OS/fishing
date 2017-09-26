@@ -9,7 +9,7 @@ import java.util.List;
 import javax.imageio.ImageIO;
 
 import ru.namibios.arduino.model.ImageParser;
-import ru.namibios.arduino.model.ImageParser.ImageType;
+import ru.namibios.arduino.model.Screen;
 
 public enum Loot implements MatrixTemplate{
 	
@@ -42,11 +42,11 @@ public enum Loot implements MatrixTemplate{
 				e.printStackTrace();
 			}
 			
-			ImageParser parser = new ImageParser(ImageType.FISH_LOOT, image);
-			parser.getCodes();
+			ImageParser parser = new ImageParser(image);
+			parser.parse(Screen.GRAY);
 			
 			templates.add(parser.getImageMatrix());
-			
 		}
 	}
+	
 }

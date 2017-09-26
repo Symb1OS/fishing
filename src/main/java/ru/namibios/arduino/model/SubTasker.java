@@ -1,9 +1,11 @@
-package ru.namibios.arduino.utils;
+package ru.namibios.arduino.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+
+import ru.namibios.arduino.utils.Keyboard;
 
 public class SubTasker {
 	

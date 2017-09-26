@@ -1,10 +1,9 @@
 package ru.namibios.arduino.model.command;
 
 import java.awt.AWTException;
-import java.awt.image.BufferedImage;
 
 import ru.namibios.arduino.model.ImageParser;
-import ru.namibios.arduino.model.ImageParser.ImageType;
+import ru.namibios.arduino.model.Screen;
 
 public class WaitFish implements Command{
 
@@ -13,15 +12,14 @@ public class WaitFish implements Command{
 	private ImageParser imageParser;
 	
 	public WaitFish() throws AWTException{
-		this.screen = new Screen(ImageType.SPACE);
+		this.screen = new Screen(Screen.SPACE);
 	 
-		BufferedImage image = screen.getImage();
-		this.imageParser = new ImageParser(ImageType.SPACE, image);
-		imageParser.getCodes();
+		this.imageParser = new ImageParser(screen);
+		imageParser.parse(Screen.WHITE);
 	}
 
 	@Override
 	public String getKey() {
-		return imageParser.getNumberkeyFromTemlate();
+		return imageParser.getNumber();
 	}
 }

@@ -5,105 +5,61 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
-
-import ru.namibios.arduino.model.command.Screen;
-import ru.namibios.arduino.model.template.Chars;
-import ru.namibios.arduino.model.template.Loot;
+import ru.namibios.arduino.model.template.MatrixTemplate;
 
 public class ImageParser {
 	
-	public enum ImageType {
-		
-		SPACE, LINE, SUBLINE, KAPCHA, FISH_LOOT, FISH_LOOT_ONE, FISH_LOOT_TWO;
-	}
-
-	final static Logger logger = Logger.getLogger(ImageParser.class);
-
-	private static final int GRAY = 40;
-	private static final boolean DEBUG = false;
-	
 	private static final double CHARS_MIN_KOEF = 0.88;
 	
-	private static final int WHITE_R = 120;
-	private static final int WHITE_G = 120;
-	private static final int WHITE_B = 120;
+	private int[][] imageMatrix;
+	private ArrayList<int[][]> keyWordList;
 	
-	private BufferedImage screen;
-	private ImageType imageType;
+	private BufferedImage screenShot;
+	
+	private MatrixTemplate[] collection;
+	
 	private int row;
 	private int column;
 	
-	private int[][] imageMatrix;
-	private ArrayList<int[][]> keyWordListList;
-	
-	public ImageParser(BufferedImage screen){
-		this.screen = screen;
-		this.row = screen.getHeight();
-		this.column = screen.getWidth();
-		this.keyWordListList = new ArrayList<int[][]>();
+	public ImageParser(Screen screen, MatrixTemplate[] collection) {
+		this.screenShot = screen.getScreenShot();
+		this.row = screenShot.getHeight(); 
+		this.column = screenShot.getWidth();
 		this.imageMatrix = new int[row][column];
+		this.collection = collection;
 	}
 	
-	public ImageParser(ImageType type, BufferedImage screen){
-		this.screen = screen;
-		this.imageType = type;
-		this.row = screen.getHeight();
-		this.column = screen.getWidth();
-		this.keyWordListList = new ArrayList<int[][]>();
+	public ImageParser(Screen screen){
+		this.screenShot = screen.getScreenShot();
+		this.row = screenShot.getHeight();
+		this.column = screenShot.getWidth();
 		this.imageMatrix = new int[row][column];
+		this.keyWordList = new ArrayList<int[][]>();
 	}
 	
-	public void getCodes(){
-
-		if(DEBUG){
-			logger.debug("row: " + row);
-			logger.debug("column: " + column);
-		}
-		
-		boolean isKey = false;
+	public ImageParser(BufferedImage screenShot){
+		this.screenShot = screenShot;
+		this.row = screenShot.getHeight();
+		this.column = screenShot.getWidth();
+		this.imageMatrix = new int[row][column];
+		this.keyWordList = new ArrayList<int[][]>();
+	}
+	
+	public void parse(Color identificationColor){
 		for (int i = 0; i < row; i++) {
 			for (int j = 0; j < column; j++) {
-				Color color = new Color(screen.getRGB(j, i));
-				boolean isWhite = color.getRed() > WHITE_R && color.getGreen() > WHITE_G && color.getBlue() > WHITE_B;
-				boolean isGray = (color.getRed() > GRAY && color.getGreen() > GRAY && color.getBlue() > GRAY);
+				Color color = new Color(screenShot.getRGB(j, i));
 				
-				switch (imageType) {
-					case SPACE:	    isKey = isWhite;  break; 
-					case KAPCHA:    isKey = isGray;   break;
-					case SUBLINE:   isKey = isGray;   break;
-					case FISH_LOOT: isKey = isGray;   break;
-					default: break;
-				}	
-				imageMatrix[i][j] = isKey ? 1 : 0;
+				boolean isIdentified = color.getRed()   > identificationColor.getRed()
+									&& color.getGreen() > identificationColor.getGreen()
+									&& color.getRed()   > identificationColor.getRed();
+				
+				imageMatrix[i][j] = isIdentified ? 1 : 0;
 			}
 		}
-		
-			//printMatrix(imageMatrix, row, column);
-			keyWordListList.add(imageMatrix);
-		
-		}
-	
-	public int[][] getImageMatrix(){
-		return imageMatrix;
+		keyWordList.add(imageMatrix);
 	}
-			
-	private List<int[][]> getTemplates(int index){
-		List<int[][]> templateNumber = null; 
 		
-		switch (imageType) {
-		case FISH_LOOT:
-			templateNumber = Loot.values()[index].getTemplates();
-			break;
-
-		default:
-			templateNumber = Chars.values()[index].getTemplates();
-			break;
-		}
-		
-		return templateNumber;
-	}
-	
 	private int equalsMatrix(int[][] numberMatrix) {
 		int rezultIndex = -1;
 		
@@ -113,10 +69,10 @@ public class ImageParser {
 		double maxCalcKoef = 0;
 
 		int index = 0;
-		int size = (imageType == ImageType.FISH_LOOT ? Loot.values().length : Chars.values().length);
+		int size = collection.length;
 		while(index < size){
 			
-			List<int[][]> templateNumber = getTemplates(index); 
+			List<int[][]> templateNumber = collection[index].getTemplates(); 
 			for (int[][] template : templateNumber) {
 				
 				if(calcKoef > CHARS_MIN_KOEF) break;
@@ -126,7 +82,7 @@ public class ImageParser {
 				for (int i = 0; i < row; i++) {
 					for (int j = 0; j < column; j++) {
 						boolean isValue;
-						try{ isValue = (template[i][j] == 1); }catch(ArrayIndexOutOfBoundsException e){if(DEBUG)System.out.println("ArrayIndexOutOfBoundsException"); break;}
+						try{ isValue = (template[i][j] == 1); }catch(ArrayIndexOutOfBoundsException e){break;}
 						if(isValue) templateKoef++;
 						
 						boolean valuesEqual = numberMatrix[i][j] == template[i][j] && template[i][j] != 0; 
@@ -144,11 +100,6 @@ public class ImageParser {
 				boolean isUndefined = maxCalcKoef < CHARS_MIN_KOEF;
 				if( isUndefined ) rezultIndex = -1;
 				
-				if(DEBUG){
-					logger.debug("index= " + index + " |templateKoef= " + templateKoef + " | koef= " + koef + " | " + calcKoef );
-					logger.debug("========================================");
-				}
-				
 			}
 			index++;
 		}
@@ -156,59 +107,29 @@ public class ImageParser {
 		return rezultIndex == 10 ? -1 : rezultIndex;
 	}
 	
-	public String getkeyFromTemlate() {
+	public String getkey() {
 		StringBuilder rezult = new StringBuilder();
 		
-		for (int[][] numberMatrix : keyWordListList) {
+		for (int[][] numberMatrix : keyWordList) {
 			rezult.append(equalsMatrix(numberMatrix));
 		}	
 		return rezult.toString().replace("-1", "");
 	}
 	 
-	public String getNumberkeyFromTemlate() {
+	public String getNumber() {
 		StringBuilder rezult = new StringBuilder();
 		
-		for (int[][] numberMatrix : keyWordListList) {
+		for (int[][] numberMatrix : keyWordList) {
 			int rezultIndex = equalsMatrix(numberMatrix);
 			if(rezultIndex != -1){
-				rezult.append(Chars.values()[equalsMatrix(numberMatrix)]);
-			} /*else{
-				logger.info("Undefined symbol: ");
-				printMatrix(numberMatrix, row, column);
-			}*/
+				rezult.append(collection[equalsMatrix(numberMatrix)]);
+			}
 		}	
 		return rezult.toString();
 	}
-	
-	public static void main(String[] args) throws Exception {
 
-		// 1/20170711_222631_327.jpg
-		// 2/20170711_222802_871.jpg
-		// 3/20170711_223643_686.jpg
-		// 4/20170711_224313_115.jpg   
-		// 5/20170711_231756_162.jpg
-		// 6/20170711_235951_232.jpg   
-		// 7/20170712_000451_976.jpg
-		
-	/*	String filename= "resources/loot/ok/new";
-		File folder = new File(filename);
-		for (File file: folder.listFiles()) {
-			//File file  = new File("resources/loot/trash/rope.jpg");
-			BufferedImage image = ImageIO.read(file);
-			
-			ImageParser parser = new ImageParser(ImageType.FISH_LOOT, image);
-			parser.getCodes();
-			parser.getkeyFromTemlate();
-		}*/
-		
-		Screen screen = new Screen("resources/debug/-1/20170722_012605_63.jpg");
-	
-		ImageParser imageParser = new ImageParser(ImageType.KAPCHA, screen.getImage());
-		imageParser.getCodes();
-		imageParser.getkeyFromTemlate();
-		
-		//String key = parser.getkeyFromTemlate();
-		//System.out.println("key " + key);
-		
+	public int[][] getImageMatrix() {
+		return imageMatrix;
 	}
+	
 }

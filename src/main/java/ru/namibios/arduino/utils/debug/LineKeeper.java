@@ -5,8 +5,7 @@ import java.io.File;
 import java.util.stream.Stream;
 
 import ru.namibios.arduino.config.Path;
-import ru.namibios.arduino.model.ImageParser.ImageType;
-import ru.namibios.arduino.model.command.Screen;
+import ru.namibios.arduino.model.Screen;
 
 public class LineKeeper {
 	
@@ -38,7 +37,7 @@ public class LineKeeper {
 		long start = System.currentTimeMillis();
 		
 		while(System.currentTimeMillis() - start < workTime) {
-			Screen screen = new Screen(ImageType.LINE);
+			Screen screen = new Screen(Screen.LINE);
 			screen.saveImage(imagesFolder);
 		}
 	}

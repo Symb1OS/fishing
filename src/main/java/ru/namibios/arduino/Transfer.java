@@ -3,10 +3,10 @@ package ru.namibios.arduino;
 import org.apache.log4j.Logger;
 
 import ru.namibios.arduino.config.Property;
+import ru.namibios.arduino.model.SubTasker;
+import ru.namibios.arduino.model.SubTasker.SubTask;
 import ru.namibios.arduino.model.state.FishBot;
 import ru.namibios.arduino.utils.DelayUtils;
-import ru.namibios.arduino.utils.SubTasker;
-import ru.namibios.arduino.utils.SubTasker.SubTask;
 
 public class Transfer implements Runnable{ 
 	

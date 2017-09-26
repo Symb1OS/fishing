@@ -9,7 +9,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 
 import ru.namibios.arduino.config.Property;
 import ru.namibios.arduino.model.ImageParser;
-import ru.namibios.arduino.model.ImageParser.ImageType;
+import ru.namibios.arduino.model.Screen;
 import ru.namibios.arduino.utils.Http;
 
 public class Kapcha implements Command{
@@ -21,7 +21,7 @@ public class Kapcha implements Command{
 	private ObjectMapper mapper= new ObjectMapper();
 
 	public Kapcha() throws AWTException  {
-		this.screen = new Screen(ImageType.KAPCHA);
+		this.screen = new Screen(Screen.KAPCHA);
 	}
 	
 	public Kapcha(String file) throws IOException{
@@ -33,8 +33,8 @@ public class Kapcha implements Command{
 		
 		try { clearNoises(30); } catch (AWTException e) { logger.error("Exception " + e); }
 		
-		ImageParser imageParser = new ImageParser(ImageType.KAPCHA, screen.getImage());
-		imageParser.getCodes();
+		ImageParser imageParser = new ImageParser(screen);
+		imageParser.parse(Screen.GRAY);
 		
 		Http http = new Http();
 		
@@ -50,7 +50,7 @@ public class Kapcha implements Command{
 		logger.info("Clean the noise...");
 		int cnt = 0;
 		while(cnt < iteration){
-			BufferedImage noiseImage = new Screen(ImageType.KAPCHA).getImage();
+			BufferedImage noiseImage = new Screen(Screen.KAPCHA).getScreenShot();
 			screen.addNoise(noiseImage);
 			cnt++;
 		}
@@ -59,9 +59,9 @@ public class Kapcha implements Command{
 		logger.info("Clean ended...");
 	}
 	
-	public static void main(String[] args) throws Exception {
+	/*public static void main(String[] args) throws Exception {
 		Screen kapcha = new Screen("20170705_214741.jpg", ImageType.KAPCHA);
 		kapcha.saveDebugImage();
 		
-	}
+	}*/
 }
