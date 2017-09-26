@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import ru.namibios.arduino.config.Property;
-import ru.namibios.arduino.model.Kapcha;
+import ru.namibios.arduino.model.command.Kapcha;
 import ru.namibios.arduino.utils.DelayUtils;
 
 public class DebugKapcha extends JFrame{

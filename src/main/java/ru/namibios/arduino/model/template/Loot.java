@@ -1,4 +1,4 @@
-package ru.namibios.arduino.model;
+package ru.namibios.arduino.model.template;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -8,9 +8,10 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 
+import ru.namibios.arduino.model.ImageParser;
 import ru.namibios.arduino.model.ImageParser.ImageType;
 
-public enum Loot {
+public enum Loot implements MatrixTemplate{
 	
 	SCALA("resources/loot/ok/scala"),
 	

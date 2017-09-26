@@ -7,6 +7,10 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import ru.namibios.arduino.model.command.Screen;
+import ru.namibios.arduino.model.template.Chars;
+import ru.namibios.arduino.model.template.Loot;
+
 public class ImageParser {
 	
 	public enum ImageType {

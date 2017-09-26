@@ -1,4 +1,4 @@
-package ru.namibios.arduino.model;
+package ru.namibios.arduino.model.command;
 
 import java.awt.AWTException;
 import java.awt.Color;

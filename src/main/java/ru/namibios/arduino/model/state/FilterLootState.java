@@ -3,9 +3,9 @@ package ru.namibios.arduino.model.state;
 import org.apache.log4j.Logger;
 
 import ru.namibios.arduino.config.Property;
-import ru.namibios.arduino.model.Command;
-import ru.namibios.arduino.model.FishLoot;
 import ru.namibios.arduino.model.Task;
+import ru.namibios.arduino.model.command.Command;
+import ru.namibios.arduino.model.command.FishLoot;
 
 public class FilterLootState extends State{
 

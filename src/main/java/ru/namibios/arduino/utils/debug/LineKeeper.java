@@ -6,7 +6,7 @@ import java.util.stream.Stream;
 
 import ru.namibios.arduino.config.Path;
 import ru.namibios.arduino.model.ImageParser.ImageType;
-import ru.namibios.arduino.model.Screen;
+import ru.namibios.arduino.model.command.Screen;
 
 public class LineKeeper {
 	

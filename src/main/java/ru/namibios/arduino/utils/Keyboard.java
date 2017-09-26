@@ -5,7 +5,7 @@ import java.io.PrintWriter;
 import org.apache.log4j.Logger;
 
 import ru.namibios.arduino.config.Property;
-import ru.namibios.arduino.model.Command;
+import ru.namibios.arduino.model.command.Command;
 
 public final class Keyboard {
 	

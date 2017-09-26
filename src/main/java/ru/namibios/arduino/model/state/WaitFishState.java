@@ -5,9 +5,9 @@ import java.awt.AWTException;
 import org.apache.log4j.Logger;
 
 import ru.namibios.arduino.config.Property;
-import ru.namibios.arduino.model.Command;
 import ru.namibios.arduino.model.Task;
-import ru.namibios.arduino.model.WaitFish;
+import ru.namibios.arduino.model.command.Command;
+import ru.namibios.arduino.model.command.WaitFish;
 
 public class WaitFishState extends State {
 	

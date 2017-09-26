@@ -1,4 +1,4 @@
-package ru.namibios.arduino.model;
+package ru.namibios.arduino.model.command;
 
 import java.awt.AWTException;
 import java.awt.image.BufferedImage;
@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 import org.codehaus.jackson.map.ObjectMapper;
 
 import ru.namibios.arduino.config.Property;
+import ru.namibios.arduino.model.ImageParser;
 import ru.namibios.arduino.model.ImageParser.ImageType;
 import ru.namibios.arduino.utils.Http;
 
@@ -61,5 +62,6 @@ public class Kapcha implements Command{
 	public static void main(String[] args) throws Exception {
 		Screen kapcha = new Screen("20170705_214741.jpg", ImageType.KAPCHA);
 		kapcha.saveDebugImage();
+		
 	}
 }

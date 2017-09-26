@@ -1,4 +1,4 @@
-package ru.namibios.arduino.model;
+package ru.namibios.arduino.model.command;
 
 import java.awt.AWTException;
 import java.util.ArrayList;
@@ -7,7 +7,9 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import ru.namibios.arduino.config.Property;
+import ru.namibios.arduino.model.ImageParser;
 import ru.namibios.arduino.model.ImageParser.ImageType;
+import ru.namibios.arduino.model.template.Loot;
 import ru.namibios.arduino.utils.Keyboard;
 
 public class FishLoot implements Command{

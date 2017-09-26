@@ -1,9 +1,9 @@
-package ru.namibios.arduino.model;
+package ru.namibios.arduino.model.template;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public enum Chars {
+public enum Chars implements MatrixTemplate{
 	
 	space(
 		new int[][]{

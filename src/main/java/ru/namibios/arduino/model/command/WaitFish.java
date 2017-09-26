@@ -1,8 +1,9 @@
-package ru.namibios.arduino.model;
+package ru.namibios.arduino.model.command;
 
 import java.awt.AWTException;
 import java.awt.image.BufferedImage;
 
+import ru.namibios.arduino.model.ImageParser;
 import ru.namibios.arduino.model.ImageParser.ImageType;
 
 public class WaitFish implements Command{

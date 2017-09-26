@@ -2,6 +2,7 @@ package ru.namibios.arduino.model;
 
 import org.apache.log4j.Logger;
 
+import ru.namibios.arduino.model.command.Command;
 import ru.namibios.arduino.utils.DelayUtils;
 import ru.namibios.arduino.utils.Keyboard;
 
