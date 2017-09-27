@@ -1,15 +1,13 @@
 package ru.namibios.arduino.model.template;
 
-import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.imageio.ImageIO;
+import java.util.stream.Stream;
 
 import ru.namibios.arduino.model.ImageParser;
 import ru.namibios.arduino.model.Screen;
+import ru.namibios.arduino.utils.ImageUtils;
 
 public enum Loot implements MatrixTemplate{
 	
@@ -32,21 +30,14 @@ public enum Loot implements MatrixTemplate{
 	private Loot(String fileFolderName){
 		this.templates = new ArrayList<int[][]>();
 		
-		File dir = new File(fileFolderName);
-		for (File file : dir.listFiles()) {
-			
-			BufferedImage image = null;
-			try{
-				image = ImageIO.read(file);
-			}catch(IOException e){
-				e.printStackTrace();
-			}
-			
-			ImageParser parser = new ImageParser(image);
-			parser.parse(Screen.GRAY);
-			
-			templates.add(parser.getImageMatrix());
-		}
+		Stream.of(new File(fileFolderName).listFiles())
+				.map(ImageUtils::read)
+				.forEach((image) -> {
+					ImageParser parser = new ImageParser(image);
+					parser.parse(Screen.GRAY);
+					
+					templates.add(parser.getImageMatrix());
+				});
 	}
 	
 }
