@@ -1,6 +1,7 @@
 package ru.namibios.arduino.utils;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 import org.apache.http.HttpEntity;
@@ -32,13 +33,11 @@ public class Http {
 	
 	public String parseKapcha(String key, String matrix) throws ClientProtocolException, IOException{
 
-		HttpPost post = new HttpPost(KAPCHA_URL);
-		
-		ArrayList<BasicNameValuePair> postParameters = new ArrayList<BasicNameValuePair>();
-	    postParameters.add(new BasicNameValuePair("HASH", key));
-	    postParameters.add(new BasicNameValuePair("MATRIX", matrix));
+		HttpPost post = Builder.config().setUrl(KAPCHA_URL)
+				.setParameter(new BasicNameValuePair("HASH", key))
+				.setParameter(new BasicNameValuePair("MATRIX", matrix))
+				.build();
 
-	    post.setEntity(new UrlEncodedFormEntity(postParameters, "UTF-8"));
 		response = httpClient.execute(post);
 		HttpEntity entity = response.getEntity();
 		return EntityUtils.toString(entity, "UTF-8");
@@ -46,23 +45,43 @@ public class Http {
 	
 	public String authorized(String key) throws ClientProtocolException, IOException{
 		
-		HttpPost post = new HttpPost(AUTH_URL);
-		
-		ArrayList<BasicNameValuePair> postParameters = new ArrayList<BasicNameValuePair>();
-	    postParameters.add(new BasicNameValuePair("HASH", key));
+		HttpPost post = Builder.config().setUrl(AUTH_URL)
+				.setParameter(new BasicNameValuePair("HASH", key))
+				.build();
 
-	    post.setEntity(new UrlEncodedFormEntity(postParameters, "UTF-8"));
 		response = httpClient.execute(post);
 		HttpEntity entity = response.getEntity();
 		return EntityUtils.toString(entity, "UTF-8");
 	}
 	
-	public static void main(String[] args) throws Exception {
+	private static class Builder {
 		
-		/*KapchaServer kapchaServer = new KapchaServer("resources/debug/1/20170711_222631_327.jpg");
-		String key = kapchaServer.getKey();
+		private HttpPost post;
+		private ArrayList<BasicNameValuePair> postParameters;
 		
-		System.out.println("Key " + key);*/
+		private Builder(){
+			postParameters = new ArrayList<BasicNameValuePair>();
+		}
+	
+		public static Builder config() {
+			return new Builder();
+		}
+		
+		public Builder setUrl(String url) {
+			post = new HttpPost(url);
+			return this;
+		}
+		
+		public Builder setParameter(BasicNameValuePair value) {
+			postParameters.add(value);
+			return this;
+		}
+		
+		public HttpPost build() throws UnsupportedEncodingException {
+			post.setEntity(new UrlEncodedFormEntity(postParameters, "UTF-8"));
+			return post;
+		} 
 		
 	}
+	
 }

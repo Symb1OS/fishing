@@ -1,6 +1,5 @@
 package ru.namibios.arduino.model.state;
 
-
 import org.apache.log4j.Logger;
 
 import ru.namibios.arduino.config.Property;
@@ -19,9 +18,8 @@ public class KapchaState extends State {
 	@Override
 	public void onNext() {
 		logger.info("Parsing kapcha...");
-		
 		try{
-			Kapcha kapcha = new Kapcha();
+			Kapcha kapcha = new Kapcha(30);
 			
 			Task task = new Task(kapcha, Property.DELAY_BEFORE_KAPCHA, Property.DELAY_AFTER_KAPCHA);
 			boolean isOk = task.run();
@@ -34,5 +32,4 @@ public class KapchaState extends State {
 		}
 		
 	}
-
 }

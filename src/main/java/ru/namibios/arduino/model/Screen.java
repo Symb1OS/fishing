@@ -33,6 +33,7 @@ public class Screen {
 	public static final Color GRAY = new Color(40,40,40);
 	
 	public BufferedImage screenShot;
+	private Noise noise;
 	
 	public Screen(String filename) throws IOException{
 		this.screenShot = ImageIO.read(new File(filename));
@@ -43,6 +44,19 @@ public class Screen {
 		Robot robot = new Robot();
 		screenShot = robot.createScreenCapture(zone);
 		makeGray();
+		noise = new Noise(screenShot);
+	}
+	
+	public void clearNoise(int iteration) throws AWTException {
+		logger.info("Clean the noise...");
+		int cnt = 0;
+		while(cnt < iteration){
+			BufferedImage noiseImage = new Screen(Screen.KAPCHA).getScreenShot();
+			noise.addNois(noiseImage);
+			cnt++;
+		}
+		screenShot = noise.clear();
+		logger.info("Clean ended...");
 	}
 
 	private void makeGray(){
@@ -85,17 +99,8 @@ public class Screen {
 		this.screenShot = screenShot;
 	}
 
-	private Noise noise;
-
-	public void addNoise(BufferedImage image){
-		noise.addNois(image);
-	}
 	
-	public void clear(){
-		screenShot = noise.clear();
-	}
-	
-	public class Noise {
+public class Noise {
 		
 		private BufferedImage image;
 		
@@ -137,7 +142,6 @@ public class Screen {
 		}
 		
 	}
-	
 	public static void main(String[] args) throws AWTException {
 		
 		Screen screen = new Screen(Screen.KAPCHA);

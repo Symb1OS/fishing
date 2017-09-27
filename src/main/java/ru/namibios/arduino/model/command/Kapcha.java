@@ -1,27 +1,25 @@
 package ru.namibios.arduino.model.command;
 
 import java.awt.AWTException;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import org.apache.log4j.Logger;
-import org.codehaus.jackson.map.ObjectMapper;
 
 import ru.namibios.arduino.config.Property;
 import ru.namibios.arduino.model.ImageParser;
 import ru.namibios.arduino.model.Screen;
 import ru.namibios.arduino.utils.Http;
+import ru.namibios.arduino.utils.JSON;
 
 public class Kapcha implements Command{
 
 	final static Logger logger = Logger.getLogger(Kapcha.class);
 
-	private ObjectMapper mapper= new ObjectMapper();
-	
 	private Screen screen;
 	
-	public Kapcha() throws AWTException  {
+	public Kapcha(int iteration) throws AWTException  {
 		this.screen = new Screen(Screen.KAPCHA);
+		screen.clearNoise(iteration);
 	}
 	
 	public Kapcha(String file) throws IOException{
@@ -34,33 +32,19 @@ public class Kapcha implements Command{
 
 	@Override
 	public String getKey(){
-		
-		try { clearNoises(30); } catch (AWTException e) { logger.error("Exception " + e); }
-		
-		ImageParser imageParser = new ImageParser(screen);
-		imageParser.parse(Screen.GRAY);
-		
-		Http http = new Http();
-		
-		String keys = "";
+		String key = "";
 		try {
-			keys = http.parseKapcha(Property.hashInstance(), mapper.writeValueAsString(imageParser.getImageMatrix()));
-		} catch (IOException e) {logger.error("Exception: " + e); } 
+			ImageParser imageParser = new ImageParser(screen);
+			imageParser.parse(Screen.GRAY);
+			
+			Http http = new Http();
+			key = http.parseKapcha(Property.hashInstance(), JSON.getInstance().writeValueAsString(imageParser.getImageMatrix()));
+			
+		} catch (IOException e){
+			logger.error("Exception: " + e); 
+		} 
 
-		return keys.replace("\n", "");
-	}
-	
-	public void clearNoises(int iteration) throws AWTException {
-		logger.info("Clean the noise...");
-		int cnt = 0;
-		while(cnt < iteration){
-			BufferedImage noiseImage = new Screen(Screen.KAPCHA).getScreenShot();
-			screen.addNoise(noiseImage);
-			cnt++;
-		}
-		screen.clear();
-	 	//screen.saveDebugImage();
-		logger.info("Clean ended...");
+		return key.replace("\n", "");
 	}
 	
 }
