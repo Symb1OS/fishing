@@ -11,38 +11,43 @@ public class ImageParser {
 	
 	private static final double CHARS_MIN_KOEF = 0.88;
 	
-	private int[][] imageMatrix;
-	private ArrayList<int[][]> keyWordList;
+	private int[][] screenMatrix;
+	private ArrayList<int[][]> keyList;
 	
 	private BufferedImage screenShot;
 	
-	private MatrixTemplate[] collection;
+	private MatrixTemplate[] collectionTemplate;
 	
 	private int row;
 	private int column;
 	
-	public ImageParser(Screen screen, MatrixTemplate[] collection) {
+	public ImageParser(Screen screen, MatrixTemplate[] matrixTemplate) {
 		this.screenShot = screen.getScreenShot();
 		this.row = screenShot.getHeight(); 
 		this.column = screenShot.getWidth();
-		this.imageMatrix = new int[row][column];
-		this.collection = collection;
+		this.screenMatrix = new int[row][column];
+		this.collectionTemplate = matrixTemplate;
+		this.keyList = new ArrayList<int[][]>();
 	}
 	
 	public ImageParser(Screen screen){
 		this.screenShot = screen.getScreenShot();
 		this.row = screenShot.getHeight();
 		this.column = screenShot.getWidth();
-		this.imageMatrix = new int[row][column];
-		this.keyWordList = new ArrayList<int[][]>();
+		this.screenMatrix = new int[row][column];
+		this.keyList = new ArrayList<int[][]>();
 	}
 	
 	public ImageParser(BufferedImage screenShot){
 		this.screenShot = screenShot;
 		this.row = screenShot.getHeight();
 		this.column = screenShot.getWidth();
-		this.imageMatrix = new int[row][column];
-		this.keyWordList = new ArrayList<int[][]>();
+		this.screenMatrix = new int[row][column];
+		this.keyList = new ArrayList<int[][]>();
+	}
+	
+	public int[][] getImageMatrix() {
+		return screenMatrix;
 	}
 	
 	public void parse(Color identificationColor){
@@ -54,64 +59,37 @@ public class ImageParser {
 									&& color.getGreen() > identificationColor.getGreen()
 									&& color.getRed()   > identificationColor.getRed();
 				
-				imageMatrix[i][j] = isIdentified ? 1 : 0;
+				screenMatrix[i][j] = isIdentified ? 1 : 0;
 			}
 		}
-		keyWordList.add(imageMatrix);
+		keyList.add(screenMatrix);
 	}
 		
-	private int equalsMatrix(int[][] numberMatrix) {
-		int rezultIndex = -1;
+	private int compare(int[][] numberMatrix) {
+	
+		Coefficient coef = new Coefficient(CHARS_MIN_KOEF);
 		
-		double koef = 0;
-		double templateKoef = 0;
-		double calcKoef = 0;
-		double maxCalcKoef = 0;
-
 		int index = 0;
-		int size = collection.length;
-		while(index < size){
+		while(index < collectionTemplate.length){
 			
-			List<int[][]> templateNumber = collection[index].getTemplates(); 
+			List<int[][]> templateNumber = collectionTemplate[index].getTemplates(); 
 			for (int[][] template : templateNumber) {
-				
-				if(calcKoef > CHARS_MIN_KOEF) break;
-				if(template.length != numberMatrix.length ) continue;
-					
-				templateKoef=0; koef = 0;
-				for (int i = 0; i < row; i++) {
-					for (int j = 0; j < column; j++) {
-						boolean isValue;
-						try{ isValue = (template[i][j] == 1); }catch(ArrayIndexOutOfBoundsException e){break;}
-						if(isValue) templateKoef++;
-						
-						boolean valuesEqual = numberMatrix[i][j] == template[i][j] && template[i][j] != 0; 
-						if(valuesEqual) koef +=1;
-					}
-				}
-				
-				calcKoef = koef / templateKoef;
-				boolean isNewKoef = calcKoef > maxCalcKoef; 
-				if( isNewKoef ){
-					rezultIndex = index;
-					maxCalcKoef = calcKoef;
-				}
-				
-				boolean isUndefined = maxCalcKoef < CHARS_MIN_KOEF;
-				if( isUndefined ) rezultIndex = -1;
-				
+				coef.init(numberMatrix, template);
+				coef.calculate(index);
 			}
+			
+			if(coef.isFound()) break; else coef.resetRezultIndex();
 			index++;
 		}
 		
-		return rezultIndex == 10 ? -1 : rezultIndex;
+		return coef.getRezultIndex();
 	}
-	
+
 	public String getkey() {
 		StringBuilder rezult = new StringBuilder();
 		
-		for (int[][] numberMatrix : keyWordList) {
-			rezult.append(equalsMatrix(numberMatrix));
+		for (int[][] numberMatrix : keyList) {
+			rezult.append(compare(numberMatrix));
 		}	
 		return rezult.toString().replace("-1", "");
 	}
@@ -119,17 +97,62 @@ public class ImageParser {
 	public String getNumber() {
 		StringBuilder rezult = new StringBuilder();
 		
-		for (int[][] numberMatrix : keyWordList) {
-			int rezultIndex = equalsMatrix(numberMatrix);
+		for (int[][] numberMatrix : keyList) {
+			int rezultIndex = compare(numberMatrix);
 			if(rezultIndex != -1){
-				rezult.append(collection[equalsMatrix(numberMatrix)]);
+				rezult.append(collectionTemplate[rezultIndex]);
 			}
 		}	
 		return rezult.toString();
 	}
 
-	public int[][] getImageMatrix() {
-		return imageMatrix;
+	class Coefficient{
+
+		private final double minKoef;
+		
+		private int rezultIndex;
+		
+		private int valueKoef;
+		private int templateKoef;
+		
+		private double calcKoef;
+		private double maxCalcKoef;
+		
+		public Coefficient(double minKoef) {
+			this.minKoef = minKoef; 
+		}
+		
+		public void init(int[][] value, int[][] template) {
+			
+			valueKoef = templateKoef = 0;
+			for (int i = 0; i < template.length; i++) {
+				for (int j = 0; j < template[0].length; j++) {
+					if(template[i][j] == 1) templateKoef++;
+					if(value[i][j] == template[i][j] && template[i][j] != 0) valueKoef++;
+				}
+			}
+		}
+		
+		public void calculate(int index) {
+			calcKoef = valueKoef / templateKoef;
+			boolean isNewKoef = calcKoef > maxCalcKoef; 
+			if( isNewKoef ){
+				rezultIndex = index;
+				maxCalcKoef = calcKoef;
+			}
+		}
+		
+		public boolean isFound() {
+			return calcKoef > minKoef;
+		}
+		
+		public void resetRezultIndex() {
+			rezultIndex = -1;
+		}
+		
+		public int getRezultIndex() {
+			return rezultIndex;
+		}
+		
 	}
-	
 }

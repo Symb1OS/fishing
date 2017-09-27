@@ -16,10 +16,10 @@ public class Kapcha implements Command{
 
 	final static Logger logger = Logger.getLogger(Kapcha.class);
 
+	private ObjectMapper mapper= new ObjectMapper();
+	
 	private Screen screen;
 	
-	private ObjectMapper mapper= new ObjectMapper();
-
 	public Kapcha() throws AWTException  {
 		this.screen = new Screen(Screen.KAPCHA);
 	}
@@ -28,6 +28,10 @@ public class Kapcha implements Command{
 		this.screen = new Screen(file);
 	}
 	
+	public Screen getScreen() {
+		return screen;
+	}
+
 	@Override
 	public String getKey(){
 		
@@ -59,9 +63,4 @@ public class Kapcha implements Command{
 		logger.info("Clean ended...");
 	}
 	
-	/*public static void main(String[] args) throws Exception {
-		Screen kapcha = new Screen("20170705_214741.jpg", ImageType.KAPCHA);
-		kapcha.saveDebugImage();
-		
-	}*/
 }

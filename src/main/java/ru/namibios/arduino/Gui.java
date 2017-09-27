@@ -45,11 +45,11 @@ public class Gui extends JFrame{
 	
 	private static final long serialVersionUID = 1L;
 	
-	private JLabel lKapchaImg = new JLabel();
-	private JLabel lKapchaText = new JLabel();
+	public static JLabel lKapchaImg = new JLabel();
+	public static JLabel lKapchaText = new JLabel();
 	
-	private JLabel lFilterOne = new JLabel();
-	private JLabel lFilterTwo = new JLabel();
+	public static JLabel lFilterOne = new JLabel();
+	public static JLabel lFilterTwo = new JLabel();
 	
 	private JTextArea aStatus = new JTextArea();
 	private JScrollPane sStatusPane = new JScrollPane(aStatus);

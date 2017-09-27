@@ -32,9 +32,10 @@ public final class Keyboard {
 			output.println(message);
 			output.flush();
 			
+			logger.info("Sended message: " + message);
 			status = true;
 		}
-		logger.info("Sended message: " + message);
+		
 		return status;
 	}
 	

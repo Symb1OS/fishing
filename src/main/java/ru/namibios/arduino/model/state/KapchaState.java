@@ -1,10 +1,10 @@
 package ru.namibios.arduino.model.state;
 
+
 import org.apache.log4j.Logger;
 
 import ru.namibios.arduino.config.Property;
 import ru.namibios.arduino.model.Task;
-import ru.namibios.arduino.model.command.Command;
 import ru.namibios.arduino.model.command.Kapcha;
 import ru.namibios.arduino.utils.DelayUtils;
 
@@ -15,13 +15,13 @@ public class KapchaState extends State {
 	public KapchaState(FishBot fishBot) {
 		super(fishBot);
 	}
-
+	
 	@Override
 	public void onNext() {
 		logger.info("Parsing kapcha...");
 		
 		try{
-			Command kapcha = new Kapcha();
+			Kapcha kapcha = new Kapcha();
 			
 			Task task = new Task(kapcha, Property.DELAY_BEFORE_KAPCHA, Property.DELAY_AFTER_KAPCHA);
 			boolean isOk = task.run();
