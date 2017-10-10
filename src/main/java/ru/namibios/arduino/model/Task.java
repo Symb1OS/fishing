@@ -17,6 +17,8 @@ public class Task {
 
 	public Task(Command command, long delayBefore, long delayAfter) {
 		this.command = command;
+		this.delayBefore = delayBefore;
+		this.delayAfter = delayAfter;
 	}
 	
 	public boolean run(){

@@ -1,7 +1,5 @@
 package ru.namibios.arduino.model.state;
 
-import java.awt.AWTException;
-
 import org.apache.log4j.Logger;
 
 import ru.namibios.arduino.config.Property;
@@ -28,7 +26,8 @@ public class WaitFishState extends State {
 			boolean isOk = task.run();
 			if(isOk) fishBot.setState(new CutFishState(fishBot));
 			
-		}catch (AWTException e) {
+		}catch (Exception e) {
+			e.printStackTrace();
 			logger.error("Exception " + e);
 		}
 		

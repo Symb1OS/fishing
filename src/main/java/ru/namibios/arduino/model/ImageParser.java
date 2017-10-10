@@ -71,13 +71,11 @@ public class ImageParser {
 		
 		int index = 0;
 		while(index < collectionTemplate.length){
-			
 			List<int[][]> templateNumber = collectionTemplate[index].getTemplates(); 
 			for (int[][] template : templateNumber) {
 				coef.init(numberMatrix, template);
 				coef.calculate(index);
 			}
-			
 			if(coef.isFound()) break; else coef.resetRezultIndex();
 			index++;
 		}
@@ -112,14 +110,16 @@ public class ImageParser {
 		
 		private int rezultIndex;
 		
-		private int valueKoef;
-		private int templateKoef;
+		private double valueKoef;
+		private double templateKoef;
 		
 		private double calcKoef;
 		private double maxCalcKoef;
 		
 		public Coefficient(double minKoef) {
 			this.minKoef = minKoef; 
+			this.calcKoef = 0;
+			this.maxCalcKoef = 0;
 		}
 		
 		public void init(int[][] value, int[][] template) {
@@ -152,6 +152,13 @@ public class ImageParser {
 		
 		public int getRezultIndex() {
 			return rezultIndex;
+		}
+
+		@Override
+		public String toString() {
+			return "Coefficient [minKoef=" + minKoef + ", rezultIndex=" + rezultIndex + ", valueKoef=" + valueKoef
+					+ ", templateKoef=" + templateKoef + ", calcKoef=" + calcKoef + ", maxCalcKoef=" + maxCalcKoef
+					+ "]";
 		}
 		
 	}

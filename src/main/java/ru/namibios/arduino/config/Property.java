@@ -10,10 +10,10 @@ public class Property {
 	public static final int DELAY_BEFORE_WAIT_FISH = 3000;
 	public static final int DELAY_AFTER_WAIT_FISH = 0;
 
-	public static final int DELAY_BEFORE_CUT_FISH = 1200;
-	public static final int DELAY_AFTER_CUT_FISH = 0;
+	public static final int DELAY_BEFORE_CUT_FISH = 1800;
+	public static final int DELAY_AFTER_CUT_FISH = 3920;
 
-	public static final int DELAY_BEFORE_KAPCHA = 3920;
+	public static final int DELAY_BEFORE_KAPCHA = 0;
 	public static final int DELAY_AFTER_KAPCHA= 10000;
 
 	public static final int DELAY_BEFORE_FILTER_LOOOT = 5000;

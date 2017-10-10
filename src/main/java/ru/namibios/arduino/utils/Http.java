@@ -63,21 +63,21 @@ public class Http {
 			postParameters = new ArrayList<BasicNameValuePair>();
 		}
 	
-		public static Builder config() {
+		private static Builder config() {
 			return new Builder();
 		}
 		
-		public Builder setUrl(String url) {
+		private Builder setUrl(String url) {
 			post = new HttpPost(url);
 			return this;
 		}
 		
-		public Builder setParameter(BasicNameValuePair value) {
+		private Builder setParameter(BasicNameValuePair value) {
 			postParameters.add(value);
 			return this;
 		}
 		
-		public HttpPost build() throws UnsupportedEncodingException {
+		private HttpPost build() throws UnsupportedEncodingException {
 			post.setEntity(new UrlEncodedFormEntity(postParameters, "UTF-8"));
 			return post;
 		} 

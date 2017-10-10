@@ -15,7 +15,6 @@ import javax.imageio.ImageIO;
 import org.apache.log4j.Logger;
 
 import ru.namibios.arduino.config.Path;
-import ru.namibios.arduino.model.template.Chars;
 import ru.namibios.arduino.utils.DateUtils;
 
 public class Screen {
@@ -142,12 +141,13 @@ public class Noise {
 		}
 		
 	}
+
 	public static void main(String[] args) throws AWTException {
-		
 		Screen screen = new Screen(Screen.KAPCHA);
-		ImageParser parser = new ImageParser(screen, Chars.values());
+		screen.saveDebugImage();
+		/*ImageParser parser = new ImageParser(screen, Chars.values());
 		parser.parse(Screen.GRAY);
-		parser.getkey();
+		parser.getkey();*/
 		
 	}
 

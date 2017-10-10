@@ -4,6 +4,7 @@ import java.awt.AWTException;
 
 import ru.namibios.arduino.model.ImageParser;
 import ru.namibios.arduino.model.Screen;
+import ru.namibios.arduino.model.template.Chars;
 
 public class WaitFish implements Command{
 
@@ -13,8 +14,7 @@ public class WaitFish implements Command{
 	
 	public WaitFish() throws AWTException{
 		this.screen = new Screen(Screen.SPACE);
-	 
-		this.imageParser = new ImageParser(screen);
+		this.imageParser = new ImageParser(screen, Chars.values());
 		imageParser.parse(Screen.WHITE);
 	}
 

@@ -5,3 +5,441 @@
 [26.09.2017 17:17:37] - Test
 [26.09.2017 17:26:59] - Test
 [27.09.2017 16:04:22] - Test
+[09.10.2017 23:22:05] - Test
+[10.10.2017 21:49:24] - Test
+[10.10.2017 21:49:44] - Test
+[10.10.2017 21:50:03] - Test
+[10.10.2017 21:57:00] - Programm start...
+[10.10.2017 21:57:00] - key=  bef1c08eedddbe9f9d83a0f07d0d26ce9b360a55
+[10.10.2017 21:57:00] - Start...
+[10.10.2017 21:57:03] - Port is closed. Exit
+[10.10.2017 21:58:09] - Test
+[10.10.2017 21:58:21] - Programm start...
+[10.10.2017 21:58:21] - key=  bef1c08eedddbe9f9d83a0f07d0d26ce9b360a55
+[10.10.2017 21:58:21] - Start...
+[10.10.2017 21:58:24] - Port is closed. Exit
+[10.10.2017 22:01:28] - Test
+[10.10.2017 22:01:34] - Programm start...
+[10.10.2017 22:01:34] - key=  bef1c08eedddbe9f9d83a0f07d0d26ce9b360a55
+[10.10.2017 22:01:34] - Start...
+[10.10.2017 22:01:37] - Port is closed. Exit
+[10.10.2017 22:12:58] - Test
+[10.10.2017 22:13:02] - Programm start...
+[10.10.2017 22:13:02] - key=  bef1c08eedddbe9f9d83a0f07d0d26ce9b360a55
+[10.10.2017 22:13:02] - Start...
+[10.10.2017 22:13:05] - Port is closed. Exit
+[10.10.2017 22:15:58] - Test
+[10.10.2017 22:16:01] - Programm start...
+[10.10.2017 22:16:01] - key=  bef1c08eedddbe9f9d83a0f07d0d26ce9b360a55
+[10.10.2017 22:16:01] - Start...
+[10.10.2017 22:16:04] - Port is closed. Exit
+[10.10.2017 22:16:25] - Test
+[10.10.2017 22:16:28] - Programm start...
+[10.10.2017 22:16:28] - key=  bef1c08eedddbe9f9d83a0f07d0d26ce9b360a55
+[10.10.2017 22:16:28] - Start...
+[10.10.2017 22:16:31] - Port is closed. Exit
+[10.10.2017 22:16:44] - Test
+[10.10.2017 22:16:46] - Programm start...
+[10.10.2017 22:16:46] - key=  bef1c08eedddbe9f9d83a0f07d0d26ce9b360a55
+[10.10.2017 22:16:46] - Start...
+[10.10.2017 22:16:49] - Port is closed. Exit
+[10.10.2017 22:22:36] - Test
+[10.10.2017 22:22:48] - Programm start...
+[10.10.2017 22:22:48] - key=  bef1c08eedddbe9f9d83a0f07d0d26ce9b360a55
+[10.10.2017 22:22:48] - Start...
+[10.10.2017 22:22:51] - Port is open...
+[10.10.2017 22:22:51] - Start Fish...
+[10.10.2017 22:25:21] - Test
+[10.10.2017 22:25:32] - Programm start...
+[10.10.2017 22:25:32] - key=  bef1c08eedddbe9f9d83a0f07d0d26ce9b360a55
+[10.10.2017 22:25:32] - Start...
+[10.10.2017 22:25:35] - Port is open...
+[10.10.2017 22:25:35] - Start Fish...
+[10.10.2017 22:25:38] - Sended message: space
+[10.10.2017 22:25:43] - Wait fish..
+[10.10.2017 22:38:22] - Test
+[10.10.2017 22:38:25] - Programm start...
+[10.10.2017 22:38:25] - key=  bef1c08eedddbe9f9d83a0f07d0d26ce9b360a55
+[10.10.2017 22:38:25] - Start...
+[10.10.2017 22:38:29] - Port is open...
+[10.10.2017 22:38:29] - Start Fish...
+[10.10.2017 22:38:32] - Sended message: space
+[10.10.2017 22:38:37] - Wait fish..
+[10.10.2017 22:38:40] - Exception java.lang.NullPointerException
+[10.10.2017 22:38:40] - Wait fish..
+[10.10.2017 22:38:43] - Exception java.lang.NullPointerException
+[10.10.2017 22:38:43] - Wait fish..
+[10.10.2017 22:38:46] - Exception java.lang.NullPointerException
+[10.10.2017 22:38:46] - Wait fish..
+[10.10.2017 22:38:49] - Exception java.lang.NullPointerException
+[10.10.2017 22:38:49] - Wait fish..
+[10.10.2017 22:38:52] - Exception java.lang.NullPointerException
+[10.10.2017 22:38:52] - Wait fish..
+[10.10.2017 22:38:55] - Exception java.lang.NullPointerException
+[10.10.2017 22:38:55] - Wait fish..
+[10.10.2017 22:38:58] - Exception java.lang.NullPointerException
+[10.10.2017 22:38:58] - Wait fish..
+[10.10.2017 22:39:01] - Exception java.lang.NullPointerException
+[10.10.2017 22:39:01] - Wait fish..
+[10.10.2017 22:39:04] - Exception java.lang.NullPointerException
+[10.10.2017 22:39:04] - Wait fish..
+[10.10.2017 22:39:07] - Exception java.lang.NullPointerException
+[10.10.2017 22:39:07] - Wait fish..
+[10.10.2017 22:39:10] - Exception java.lang.NullPointerException
+[10.10.2017 22:39:10] - Wait fish..
+[10.10.2017 22:42:12] - Test
+[10.10.2017 22:42:30] - Programm start...
+[10.10.2017 22:42:30] - key=  bef1c08eedddbe9f9d83a0f07d0d26ce9b360a55
+[10.10.2017 22:42:30] - Start...
+[10.10.2017 22:42:34] - Port is open...
+[10.10.2017 22:42:34] - Start Fish...
+[10.10.2017 22:42:37] - Sended message: space
+[10.10.2017 22:42:42] - Wait fish..
+[10.10.2017 22:42:45] - Exception java.lang.NullPointerException
+[10.10.2017 22:42:45] - Wait fish..
+[10.10.2017 22:42:48] - Exception java.lang.NullPointerException
+[10.10.2017 22:42:48] - Wait fish..
+[10.10.2017 22:47:56] - Test
+[10.10.2017 22:49:47] - Programm start...
+[10.10.2017 22:49:47] - key=  bef1c08eedddbe9f9d83a0f07d0d26ce9b360a55
+[10.10.2017 22:49:47] - Start...
+[10.10.2017 22:49:51] - Port is open...
+[10.10.2017 22:49:51] - Start Fish...
+[10.10.2017 22:49:54] - Sended message: space
+[10.10.2017 22:49:59] - Wait fish..
+[10.10.2017 22:50:02] - Wait fish..
+[10.10.2017 22:50:05] - Wait fish..
+[10.10.2017 22:50:08] - Wait fish..
+[10.10.2017 22:50:11] - Wait fish..
+[10.10.2017 22:50:14] - Wait fish..
+[10.10.2017 22:50:17] - Wait fish..
+[10.10.2017 22:50:20] - Wait fish..
+[10.10.2017 22:50:23] - Wait fish..
+[10.10.2017 22:50:26] - Wait fish..
+[10.10.2017 22:50:29] - Wait fish..
+[10.10.2017 22:50:32] - Wait fish..
+[10.10.2017 22:50:35] - Wait fish..
+[10.10.2017 22:50:38] - Wait fish..
+[10.10.2017 22:50:41] - Wait fish..
+[10.10.2017 22:50:44] - Wait fish..
+[10.10.2017 22:50:47] - Wait fish..
+[10.10.2017 22:50:50] - Wait fish..
+[10.10.2017 22:50:53] - Wait fish..
+[10.10.2017 22:50:56] - Wait fish..
+[10.10.2017 22:50:59] - Wait fish..
+[10.10.2017 22:51:02] - Wait fish..
+[10.10.2017 22:51:05] - Wait fish..
+[10.10.2017 22:51:08] - Wait fish..
+[10.10.2017 22:51:11] - Wait fish..
+[10.10.2017 22:51:14] - Wait fish..
+[10.10.2017 22:51:17] - Wait fish..
+[10.10.2017 22:51:20] - Wait fish..
+[10.10.2017 22:51:23] - Wait fish..
+[10.10.2017 22:51:26] - Wait fish..
+[10.10.2017 22:51:29] - Wait fish..
+[10.10.2017 22:51:32] - Wait fish..
+[10.10.2017 22:51:35] - Wait fish..
+[10.10.2017 22:51:38] - Wait fish..
+[10.10.2017 22:52:35] - Test
+[10.10.2017 22:52:53] - Programm start...
+[10.10.2017 22:52:53] - key=  bef1c08eedddbe9f9d83a0f07d0d26ce9b360a55
+[10.10.2017 22:52:53] - Start...
+[10.10.2017 22:52:56] - Port is open...
+[10.10.2017 22:52:56] - Start Fish...
+[10.10.2017 22:52:59] - Sended message: space
+[10.10.2017 22:53:04] - Wait fish..
+[10.10.2017 22:53:07] - Wait fish..
+[10.10.2017 22:53:10] - Wait fish..
+[10.10.2017 22:53:13] - Wait fish..
+[10.10.2017 22:53:16] - Wait fish..
+[10.10.2017 22:53:19] - Wait fish..
+[10.10.2017 22:53:22] - Wait fish..
+[10.10.2017 22:53:25] - Wait fish..
+[10.10.2017 22:53:28] - Wait fish..
+[10.10.2017 22:53:31] - Wait fish..
+[10.10.2017 22:53:34] - Wait fish..
+[10.10.2017 22:53:37] - Wait fish..
+[10.10.2017 22:53:40] - Wait fish..
+[10.10.2017 22:53:43] - Wait fish..
+[10.10.2017 22:53:46] - Wait fish..
+[10.10.2017 22:53:50] - Wait fish..
+[10.10.2017 22:53:53] - Wait fish..
+[10.10.2017 22:53:56] - Wait fish..
+[10.10.2017 22:53:59] - Wait fish..
+[10.10.2017 22:54:02] - Wait fish..
+[10.10.2017 22:54:05] - Wait fish..
+[10.10.2017 22:54:08] - Wait fish..
+[10.10.2017 22:54:11] - Wait fish..
+[10.10.2017 22:54:14] - Wait fish..
+[10.10.2017 22:54:17] - Wait fish..
+[10.10.2017 22:54:20] - Wait fish..
+[10.10.2017 22:54:23] - Wait fish..
+[10.10.2017 22:54:26] - Wait fish..
+[10.10.2017 22:54:29] - Wait fish..
+[10.10.2017 22:54:32] - Wait fish..
+[10.10.2017 22:54:35] - Wait fish..
+[10.10.2017 22:54:38] - Wait fish..
+[10.10.2017 22:54:41] - Wait fish..
+[10.10.2017 22:54:44] - Wait fish..
+[10.10.2017 22:54:47] - Wait fish..
+[10.10.2017 22:54:50] - Wait fish..
+[10.10.2017 22:54:53] - Wait fish..
+[10.10.2017 22:54:56] - Wait fish..
+[10.10.2017 22:54:59] - Wait fish..
+[10.10.2017 22:55:02] - Wait fish..
+[10.10.2017 22:55:05] - Sended message: space
+[10.10.2017 22:55:06] - Sended message: space
+[10.10.2017 22:55:06] - Cut the fish...
+[10.10.2017 22:55:06] - Parsing kapcha...
+[10.10.2017 22:55:06] - Clean the noise...
+[10.10.2017 22:55:07] - Clean ended...
+[10.10.2017 22:55:12] - Exception: org.apache.http.conn.HttpHostConnectException: Connect to 192.168.0.220:9090 [/192.168.0.220] failed: Connection refused: connect
+[10.10.2017 22:55:22] - Parsing kapcha...
+[10.10.2017 22:55:22] - Clean the noise...
+[10.10.2017 22:55:23] - Clean ended...
+[10.10.2017 22:55:28] - Exception: org.apache.http.conn.HttpHostConnectException: Connect to 192.168.0.220:9090 [/192.168.0.220] failed: Connection refused: connect
+[10.10.2017 22:55:38] - Parsing kapcha...
+[10.10.2017 22:55:38] - Clean the noise...
+[10.10.2017 22:55:38] - Clean ended...
+[10.10.2017 22:57:37] - Test
+[10.10.2017 22:57:42] - Programm start...
+[10.10.2017 22:57:42] - key=  bef1c08eedddbe9f9d83a0f07d0d26ce9b360a55
+[10.10.2017 22:57:42] - Start...
+[10.10.2017 22:57:45] - Port is open...
+[10.10.2017 22:57:45] - Start Fish...
+[10.10.2017 22:57:48] - Sended message: space
+[10.10.2017 22:57:53] - Wait fish..
+[10.10.2017 22:57:56] - Wait fish..
+[10.10.2017 22:57:59] - Wait fish..
+[10.10.2017 22:58:02] - Wait fish..
+[10.10.2017 22:58:05] - Wait fish..
+[10.10.2017 22:58:08] - Wait fish..
+[10.10.2017 22:58:11] - Wait fish..
+[10.10.2017 22:58:14] - Wait fish..
+[10.10.2017 22:58:17] - Wait fish..
+[10.10.2017 22:58:20] - Sended message: space
+[10.10.2017 22:58:22] - Sended message: space
+[10.10.2017 22:58:22] - Cut the fish...
+[10.10.2017 22:58:22] - Parsing kapcha...
+[10.10.2017 22:58:22] - Clean the noise...
+[10.10.2017 22:58:22] - Clean ended...
+[10.10.2017 22:58:28] - Exception: org.apache.http.conn.HttpHostConnectException: Connect to 192.168.0.220:9090 [/192.168.0.220] failed: Connection refused: connect
+[10.10.2017 22:58:38] - Parsing kapcha...
+[10.10.2017 22:58:38] - Clean the noise...
+[10.10.2017 22:58:38] - Clean ended...
+[10.10.2017 22:58:43] - Exception: org.apache.http.conn.HttpHostConnectException: Connect to 192.168.0.220:9090 [/192.168.0.220] failed: Connection refused: connect
+[10.10.2017 22:58:53] - Parsing kapcha...
+[10.10.2017 22:58:53] - Clean the noise...
+[10.10.2017 22:58:54] - Clean ended...
+[10.10.2017 23:05:42] - Test
+[10.10.2017 23:05:46] - Programm start...
+[10.10.2017 23:05:46] - key=  bef1c08eedddbe9f9d83a0f07d0d26ce9b360a55
+[10.10.2017 23:05:46] - Start...
+[10.10.2017 23:05:50] - Port is open...
+[10.10.2017 23:05:50] - Start Fish...
+[10.10.2017 23:05:53] - Sended message: space
+[10.10.2017 23:05:58] - Wait fish..
+[10.10.2017 23:06:01] - Wait fish..
+[10.10.2017 23:06:04] - Wait fish..
+[10.10.2017 23:06:07] - Wait fish..
+[10.10.2017 23:06:10] - Wait fish..
+[10.10.2017 23:06:13] - Wait fish..
+[10.10.2017 23:06:16] - Wait fish..
+[10.10.2017 23:06:19] - Wait fish..
+[10.10.2017 23:06:22] - Wait fish..
+[10.10.2017 23:06:25] - Wait fish..
+[10.10.2017 23:06:28] - Wait fish..
+[10.10.2017 23:06:31] - Wait fish..
+[10.10.2017 23:06:34] - Wait fish..
+[10.10.2017 23:06:37] - Wait fish..
+[10.10.2017 23:06:40] - Wait fish..
+[10.10.2017 23:06:43] - Wait fish..
+[10.10.2017 23:06:46] - Wait fish..
+[10.10.2017 23:06:49] - Wait fish..
+[10.10.2017 23:06:52] - Wait fish..
+[10.10.2017 23:06:55] - Wait fish..
+[10.10.2017 23:06:58] - Wait fish..
+[10.10.2017 23:07:01] - Wait fish..
+[10.10.2017 23:07:04] - Wait fish..
+[10.10.2017 23:07:07] - Wait fish..
+[10.10.2017 23:07:10] - Sended message: space
+[10.10.2017 23:07:11] - Sended message: space
+[10.10.2017 23:07:11] - Cut the fish...
+[10.10.2017 23:07:11] - Parsing kapcha...
+[10.10.2017 23:07:11] - Clean the noise...
+[10.10.2017 23:07:12] - Clean ended...
+[10.10.2017 23:07:20] - Sended message: ""
+[10.10.2017 23:07:30] - Check loot...
+[10.10.2017 23:07:35] - Loot is not recognized... Take.
+[10.10.2017 23:07:35] - Sended message: r
+[10.10.2017 23:07:35] - Start Fish...
+[10.10.2017 23:07:38] - Sended message: space
+[10.10.2017 23:07:43] - Wait fish..
+[10.10.2017 23:07:46] - Wait fish..
+[10.10.2017 23:08:29] - Test
+[10.10.2017 23:08:32] - Programm start...
+[10.10.2017 23:08:32] - key=  bef1c08eedddbe9f9d83a0f07d0d26ce9b360a55
+[10.10.2017 23:08:32] - Start...
+[10.10.2017 23:08:35] - Port is open...
+[10.10.2017 23:08:35] - Start Fish...
+[10.10.2017 23:08:38] - Sended message: space
+[10.10.2017 23:08:43] - Wait fish..
+[10.10.2017 23:08:46] - Wait fish..
+[10.10.2017 23:08:49] - Wait fish..
+[10.10.2017 23:08:52] - Wait fish..
+[10.10.2017 23:08:55] - Wait fish..
+[10.10.2017 23:08:58] - Wait fish..
+[10.10.2017 23:09:01] - Wait fish..
+[10.10.2017 23:09:04] - Wait fish..
+[10.10.2017 23:09:07] - Wait fish..
+[10.10.2017 23:09:10] - Wait fish..
+[10.10.2017 23:09:14] - Wait fish..
+[10.10.2017 23:09:17] - Wait fish..
+[10.10.2017 23:09:20] - Wait fish..
+[10.10.2017 23:09:23] - Wait fish..
+[10.10.2017 23:09:26] - Wait fish..
+[10.10.2017 23:09:29] - Wait fish..
+[10.10.2017 23:09:32] - Wait fish..
+[10.10.2017 23:09:35] - Wait fish..
+[10.10.2017 23:09:38] - Wait fish..
+[10.10.2017 23:09:41] - Wait fish..
+[10.10.2017 23:09:44] - Wait fish..
+[10.10.2017 23:09:47] - Wait fish..
+[10.10.2017 23:09:50] - Wait fish..
+[10.10.2017 23:09:53] - Sended message: space
+[10.10.2017 23:09:55] - Sended message: space
+[10.10.2017 23:09:55] - Cut the fish...
+[10.10.2017 23:09:55] - Parsing kapcha...
+[10.10.2017 23:09:55] - Clean the noise...
+[10.10.2017 23:09:55] - Clean ended...
+[10.10.2017 23:10:00] - Sended message: ""
+[10.10.2017 23:10:10] - Check loot...
+[10.10.2017 23:10:15] - Loot is not recognized... Take.
+[10.10.2017 23:10:15] - Sended message: r
+[10.10.2017 23:10:15] - Start Fish...
+[10.10.2017 23:10:18] - Sended message: space
+[10.10.2017 23:10:23] - Wait fish..
+[10.10.2017 23:10:26] - Wait fish..
+[10.10.2017 23:10:29] - Wait fish..
+[10.10.2017 23:10:32] - Wait fish..
+[10.10.2017 23:12:05] - Test
+[10.10.2017 23:12:08] - Programm start...
+[10.10.2017 23:12:08] - key=  bef1c08eedddbe9f9d83a0f07d0d26ce9b360a55
+[10.10.2017 23:12:08] - Start...
+[10.10.2017 23:12:11] - Port is open...
+[10.10.2017 23:12:11] - Start Fish...
+[10.10.2017 23:12:14] - Sended message: space
+[10.10.2017 23:12:19] - Wait fish..
+[10.10.2017 23:12:22] - Wait fish..
+[10.10.2017 23:12:25] - Wait fish..
+[10.10.2017 23:12:28] - Wait fish..
+[10.10.2017 23:12:31] - Wait fish..
+[10.10.2017 23:12:35] - Wait fish..
+[10.10.2017 23:12:38] - Wait fish..
+[10.10.2017 23:12:41] - Wait fish..
+[10.10.2017 23:12:44] - Wait fish..
+[10.10.2017 23:12:47] - Wait fish..
+[10.10.2017 23:12:50] - Wait fish..
+[10.10.2017 23:12:53] - Wait fish..
+[10.10.2017 23:12:56] - Wait fish..
+[10.10.2017 23:12:59] - Wait fish..
+[10.10.2017 23:13:02] - Wait fish..
+[10.10.2017 23:13:05] - Wait fish..
+[10.10.2017 23:13:08] - Wait fish..
+[10.10.2017 23:13:11] - Wait fish..
+[10.10.2017 23:13:14] - Wait fish..
+[10.10.2017 23:13:17] - Wait fish..
+[10.10.2017 23:13:20] - Wait fish..
+[10.10.2017 23:13:23] - Wait fish..
+[10.10.2017 23:13:26] - Sended message: space
+[10.10.2017 23:13:28] - Sended message: space
+[10.10.2017 23:13:28] - Cut the fish...
+[10.10.2017 23:13:28] - Parsing kapcha...
+[10.10.2017 23:13:28] - Clean the noise...
+[10.10.2017 23:13:28] - Clean ended...
+[10.10.2017 23:13:33] - Sended message: ""
+[10.10.2017 23:13:43] - Check loot...
+[10.10.2017 23:13:48] - Loot is not recognized... Take.
+[10.10.2017 23:13:48] - Sended message: r
+[10.10.2017 23:13:48] - Start Fish...
+[10.10.2017 23:13:51] - Sended message: space
+[10.10.2017 23:13:56] - Wait fish..
+[10.10.2017 23:13:59] - Wait fish..
+[10.10.2017 23:32:14] - Test
+[10.10.2017 23:34:12] - Test
+[10.10.2017 23:34:17] - Programm start...
+[10.10.2017 23:34:17] - key=  bef1c08eedddbe9f9d83a0f07d0d26ce9b360a55
+[10.10.2017 23:34:17] - Start...
+[10.10.2017 23:34:20] - Port is open...
+[10.10.2017 23:34:20] - Start Fish...
+[10.10.2017 23:34:23] - Sended message: space
+[10.10.2017 23:34:28] - Wait fish..
+[10.10.2017 23:34:32] - Wait fish..
+[10.10.2017 23:34:35] - Wait fish..
+[10.10.2017 23:34:38] - Wait fish..
+[10.10.2017 23:34:41] - Wait fish..
+[10.10.2017 23:34:44] - Wait fish..
+[10.10.2017 23:34:47] - Wait fish..
+[10.10.2017 23:34:50] - Wait fish..
+[10.10.2017 23:34:53] - Wait fish..
+[10.10.2017 23:34:56] - Wait fish..
+[10.10.2017 23:34:59] - Wait fish..
+[10.10.2017 23:35:02] - Wait fish..
+[10.10.2017 23:35:05] - Wait fish..
+[10.10.2017 23:35:08] - Wait fish..
+[10.10.2017 23:35:11] - Wait fish..
+[10.10.2017 23:35:14] - Wait fish..
+[10.10.2017 23:35:17] - Wait fish..
+[10.10.2017 23:35:20] - Wait fish..
+[10.10.2017 23:35:23] - Wait fish..
+[10.10.2017 23:35:26] - Wait fish..
+[10.10.2017 23:35:29] - Wait fish..
+[10.10.2017 23:35:32] - Wait fish..
+[10.10.2017 23:35:35] - Wait fish..
+[10.10.2017 23:35:38] - Wait fish..
+[10.10.2017 23:35:41] - Wait fish..
+[10.10.2017 23:35:44] - Wait fish..
+[10.10.2017 23:35:47] - Wait fish..
+[10.10.2017 23:35:50] - Wait fish..
+[10.10.2017 23:35:53] - Wait fish..
+[10.10.2017 23:35:56] - Sended message: space
+[10.10.2017 23:35:58] - Sended message: space
+[10.10.2017 23:35:58] - Cut the fish...
+[10.10.2017 23:35:58] - Parsing kapcha...
+[10.10.2017 23:35:58] - Clean the noise...
+[10.10.2017 23:35:58] - Clean ended...
+[10.10.2017 23:36:03] - Sended message: ""
+[10.10.2017 23:36:13] - Check loot...
+[10.10.2017 23:36:18] - Loot is not recognized... Take.
+[10.10.2017 23:36:18] - Sended message: r
+[10.10.2017 23:36:18] - Start Fish...
+[10.10.2017 23:36:21] - Sended message: space
+[10.10.2017 23:36:26] - Wait fish..
+[10.10.2017 23:41:31] - Test
+[10.10.2017 23:41:36] - Programm start...
+[10.10.2017 23:41:36] - key=  bef1c08eedddbe9f9d83a0f07d0d26ce9b360a55
+[10.10.2017 23:41:36] - Start...
+[10.10.2017 23:41:40] - Port is open...
+[10.10.2017 23:41:40] - Start Fish...
+[10.10.2017 23:41:43] - Sended message: space
+[10.10.2017 23:41:48] - Wait fish..
+[10.10.2017 23:41:51] - Wait fish..
+[10.10.2017 23:41:54] - Wait fish..
+[10.10.2017 23:41:57] - Wait fish..
+[10.10.2017 23:42:00] - Wait fish..
+[10.10.2017 23:42:03] - Wait fish..
+[10.10.2017 23:42:06] - Sended message: space
+[10.10.2017 23:42:07] - Sended message: space
+[10.10.2017 23:42:11] - Cut the fish...
+[10.10.2017 23:42:11] - Parsing kapcha...
+[10.10.2017 23:42:11] - Clean the noise...
+[10.10.2017 23:42:12] - Clean ended...
+[10.10.2017 23:42:13] - Sended message: "adw"
+[10.10.2017 23:42:23] - Check loot...
+[10.10.2017 23:42:28] - Loot is not recognized... Take.
+[10.10.2017 23:42:28] - Sended message: r
+[10.10.2017 23:42:28] - Start Fish...
+[10.10.2017 23:42:31] - Sended message: space
+[10.10.2017 23:42:36] - Wait fish..
+[10.10.2017 23:42:39] - Wait fish..
+[10.10.2017 23:42:42] - Wait fish..

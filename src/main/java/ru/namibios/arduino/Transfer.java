@@ -26,6 +26,7 @@ public class Transfer implements Runnable{
 	public void run() {
 		
 		logger.info("Start...");
+		Property.portInstance().openPort();
 		
 		DelayUtils.delay(3000);
 		if(!Property.portInstance().isOpen()) {

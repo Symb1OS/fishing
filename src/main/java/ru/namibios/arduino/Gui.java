@@ -39,17 +39,17 @@ public class Gui extends JFrame{
 	
 	final static Logger logger = Logger.getLogger(Gui.class);
 	
-	private static final String COM_PORT = "COM7";
+	private static final String COM_PORT = "COM3";
 	private static final int WINDOW_WIDTH = 600;
 	private static final int WINDOW_HEIGHT = 300;
 	
 	private static final long serialVersionUID = 1L;
 	
-	public static JLabel lKapchaImg = new JLabel();
-	public static JLabel lKapchaText = new JLabel();
+	private static JLabel lKapchaImg = new JLabel();
+	private static JLabel lKapchaText = new JLabel();
 	
-	public static JLabel lFilterOne = new JLabel();
-	public static JLabel lFilterTwo = new JLabel();
+	private static JLabel lFilterOne = new JLabel();
+	private static JLabel lFilterTwo = new JLabel();
 	
 	private JTextArea aStatus = new JTextArea();
 	private JScrollPane sStatusPane = new JScrollPane(aStatus);
@@ -74,9 +74,9 @@ public class Gui extends JFrame{
 	private Thread threadTransfer;
 	
 	private void initTestData() {
-		
-	    lKapchaImg.setIcon(new ImageIcon("resources/debug/20170913_145148_581.jpg"));
-	    lKapchaText.setText("aaasss");
+
+	    lKapchaImg.setIcon(new ImageIcon("resources/debug/20170729_015515_638.jpg"));
+	    lKapchaText.setText("wasw");
 	    
 	    lFilterOne.setIcon(new ImageIcon("resources/loot/ok/fish/ersh.jpg"));
 	    lFilterTwo.setIcon(new ImageIcon("resources/loot/ok/fish/cherepaxa.jpg"));
