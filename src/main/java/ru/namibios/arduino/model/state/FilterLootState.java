@@ -23,8 +23,9 @@ public class FilterLootState extends State{
 			Command filter = new FishLoot();
 			
 			Task task = new Task(filter, Property.DELAY_BEFORE_FILTER_LOOOT, Property.DELAY_AFTER_FILTER_LOOOT);
-			boolean isOk = task.run();
-			if(isOk) fishBot.setState(new StartFishState(fishBot));
+			task.run();
+			
+			fishBot.setState(new StartFishState(fishBot));
 			
 		}catch (Exception e) {
 			logger.error("Exception " + e);

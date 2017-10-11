@@ -25,4 +25,5 @@ public class Application {
 	public static void record() throws FileNotFoundException, IOException {
 		Application.config.store(new FileOutputStream(new File(PROPERTY_FILE_NAME)), "");
 	}
+	
 }

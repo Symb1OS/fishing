@@ -75,7 +75,7 @@ public class Gui extends JFrame{
 	
 	private void initTestData() {
 
-	    lKapchaImg.setIcon(new ImageIcon("resources/debug/20170729_015515_638.jpg"));
+	    lKapchaImg.setIcon(new ImageIcon("resources/kapcha/20170729_015515_638.jpg"));
 	    lKapchaText.setText("wasw");
 	    
 	    lFilterOne.setIcon(new ImageIcon("resources/loot/ok/fish/ersh.jpg"));

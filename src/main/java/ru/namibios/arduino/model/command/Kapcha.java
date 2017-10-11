@@ -20,6 +20,7 @@ public class Kapcha implements Command{
 	public Kapcha(int iteration) throws AWTException  {
 		this.screen = new Screen(Screen.KAPCHA);
 		screen.clearNoise(iteration);
+		screen.saveDebugImage();
 	}
 	
 	public Kapcha(String file) throws IOException{

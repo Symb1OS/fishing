@@ -21,6 +21,7 @@ public class CutFishState extends State {
 		Command line = () -> Keyboard.Keys.SPACE;
 	
 		Task task = new Task(line, Property.DELAY_BEFORE_CUT_FISH, Property.DELAY_AFTER_CUT_FISH);
+		
 		boolean isOk = task.run();
 		if(isOk) {
 			logger.info("Cut the fish...");
