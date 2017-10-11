@@ -32,6 +32,7 @@ public class Property {
 	private static boolean fish;
 	private static boolean keys;
 	private static boolean event;
+	private static boolean trash;
 
 	public static String hashInstance() {
 		return hash;
@@ -95,7 +96,13 @@ public class Property {
 
 	public static void setPort(SerialPort port) {
 		Property.port = port;
-		
 	}
 
+	public static boolean isTrash() {
+		return trash;
+	}
+
+	public static void setTrash(boolean trash) {
+		Property.trash = trash;
+	}
 }

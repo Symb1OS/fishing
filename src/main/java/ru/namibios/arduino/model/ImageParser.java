@@ -76,6 +76,7 @@ public class ImageParser {
 				coef.init(numberMatrix, template);
 				coef.calculate(index);
 			}
+			
 			if(coef.isFound()) break; else coef.resetRezultIndex();
 			index++;
 		}
@@ -108,13 +109,13 @@ public class ImageParser {
 
 		private final double minKoef;
 		
-		private int rezultIndex;
+		private double maxCalcKoef;
+		private double calcKoef;
 		
 		private double valueKoef;
 		private double templateKoef;
 		
-		private double calcKoef;
-		private double maxCalcKoef;
+		private int rezultIndex;
 		
 		public Coefficient(double minKoef) {
 			this.minKoef = minKoef; 
@@ -143,7 +144,7 @@ public class ImageParser {
 		}
 		
 		public boolean isFound() {
-			return calcKoef > minKoef;
+			return maxCalcKoef > minKoef;
 		}
 		
 		public void resetRezultIndex() {
@@ -156,10 +157,9 @@ public class ImageParser {
 
 		@Override
 		public String toString() {
-			return "Coefficient [minKoef=" + minKoef + ", rezultIndex=" + rezultIndex + ", valueKoef=" + valueKoef
-					+ ", templateKoef=" + templateKoef + ", calcKoef=" + calcKoef + ", maxCalcKoef=" + maxCalcKoef
+			return "Coefficient [minKoef=" + minKoef + ", maxCalcKoef=" + maxCalcKoef + ", calcKoef=" + calcKoef
+					+ ", valueKoef=" + valueKoef + ", templateKoef=" + templateKoef + ", rezultIndex=" + rezultIndex
 					+ "]";
 		}
-		
 	}
 }

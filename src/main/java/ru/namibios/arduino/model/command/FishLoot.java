@@ -1,6 +1,7 @@
 package ru.namibios.arduino.model.command;
 
 import java.awt.AWTException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +25,15 @@ public class FishLoot implements Command{
 	
 	private List<Integer> userLootOk;
 	
+	public FishLoot(String fileLootOne, String fileLootTwo) throws IOException {
+		this.scrins = new ArrayList<>();
+		this.scrins.add(new Screen(fileLootOne));
+		this.scrins.add(new Screen(fileLootTwo));
+		
+		this.userLootOk = new ArrayList<Integer>();
+		addLootOk();
+	}
+	
 	public FishLoot() throws AWTException {
 		this.scrins = new ArrayList<>();
 		
@@ -36,6 +46,10 @@ public class FishLoot implements Command{
 		this.scrins.add(two);
 		
 		this.userLootOk = new ArrayList<Integer>();
+		addLootOk();
+	}
+	
+	private void addLootOk() {
 		if(Property.isRock())  userLootOk.add(Loot.SCALA.ordinal());
 		if(Property.isKeys())  userLootOk.add(Loot.KEY.ordinal());
 		if(Property.isFish())  userLootOk.add(Loot.FISH.ordinal());
@@ -45,22 +59,37 @@ public class FishLoot implements Command{
 	@Override
 	public String getKey(){
 		
-		String loots= new String();
+		char[] arrayLoots = getLootIndices();
+		
+		if(lootUnknow(arrayLoots)) return Keyboard.Keys.TAKE;
+		
+		boolean isApproved = checkLoot(arrayLoots);
+		
+		if(isApproved) { logger.info("Loot ok."); 		   return Keyboard.Keys.TAKE;} 
+			  else     { logger.info("Trash. Throw out."); return Keyboard.Keys.IGNORE; } 
+	}
+
+	private boolean lootUnknow(char[] arrayLoots) {
+		boolean unknown = (arrayLoots.length == 0); 
+		if(unknown){
+			logger.info("Loot is not recognized... Take.");
+			one.saveImage("loot/unknow");
+		} 
+		return unknown;
+	}
+
+	private char[] getLootIndices() {
+		String loots = "";
 		for (Screen screen : scrins) {
 			imageParser = new ImageParser(screen, Loot.values());
 			imageParser.parse(Screen.GRAY);
 			loots+= imageParser.getkey();
 		}
+		return loots.toCharArray();
+	}
 
-		char[] array = loots.toCharArray();
-		boolean unknown = (array.length == 0); 
-		if(unknown){
-			logger.info("Loot is not recognized... Take.");
-			one.saveImage("loot/unknow");
-			return Keyboard.Keys.TAKE;
-		} 
-		
-		boolean isOk= false;
+	private boolean checkLoot(char[] array) {
+		boolean isOk = false;
 		for (int okIndex : userLootOk) {
 			
 			for (int i = 0; i < array.length; i++) {
@@ -68,13 +97,7 @@ public class FishLoot implements Command{
 				isOk = isOk || okIndex == lootIndex;
 			}
 		}
-		
-		if(isOk) {
-			logger.info("Loot ok."); return Keyboard.Keys.TAKE;
-		} else {
-			logger.info("Trash. Throw out."); return Keyboard.Keys.IGNORE;
-		} 
-		
+		return isOk;
 	}
 	
 }
