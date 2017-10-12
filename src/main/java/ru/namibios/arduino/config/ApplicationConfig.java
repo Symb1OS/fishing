@@ -11,6 +11,27 @@ public interface ApplicationConfig extends Accessible, Mutable{
 	
 	String PORT();
 	
+	@DefaultValue("true")
+	boolean FISH();
+	
+	@DefaultValue("true")
+	boolean KEY();
+	
+	@DefaultValue("true")
+	boolean ROCK();
+	
+	@DefaultValue("true")
+	boolean EVENT();
+	
+	@DefaultValue("false")
+	boolean TRASH();
+	
+	@DefaultValue("true")
+	boolean BEER();
+	
+	@DefaultValue("false")
+	boolean MINIGAME();
+	
 	@DefaultValue("3000")
 	int DELAY_BEFORE_START();
 	
