@@ -1,20 +1,21 @@
 package ru.namibios.arduino;
 
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.JFrame;
-import javax.swing.JCheckBox;
-import java.awt.GridLayout;
-import java.awt.FlowLayout;
 import javax.swing.border.BevelBorder;
 
 import ru.namibios.arduino.config.Application;
@@ -22,6 +23,9 @@ import ru.namibios.arduino.config.Application;
 public class Setting extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
+	
+	private static final int WIDTH = 389;
+	private static final int HEIGHT = 329;
 	
 	private JTextField tHash;
 	private JTextField tPort;
@@ -47,7 +51,9 @@ public class Setting extends JFrame {
 	public Setting() {
 		
 		this.setTitle("Настройки");
+		this.setSize(new Dimension(WIDTH, HEIGHT));
 		this.setLocationRelativeTo(null);  
+	    this.setAlwaysOnTop(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -411,6 +417,9 @@ public class Setting extends JFrame {
 			
 			Application.record();
 			dispose();
+			
+			View view = new View();
+			view.setVisible(true);
 		}
 	} 
 	
@@ -420,6 +429,8 @@ public class Setting extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			dispose();
+			View view = new View();
+			view.setVisible(true);
 		}
 	}
 	
@@ -455,7 +466,6 @@ public class Setting extends JFrame {
 	public static void main(String[] args) {
 		
 		Setting setting = new Setting();
-		setting.pack();
 		setting.setVisible(true);
 	
 	}
