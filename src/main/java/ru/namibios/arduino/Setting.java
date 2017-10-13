@@ -18,7 +18,10 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 
+import com.fazecast.jSerialComm.SerialPort;
+
 import ru.namibios.arduino.config.Application;
+import javax.swing.JComboBox;
 
 public class Setting extends JFrame {
 	
@@ -28,7 +31,7 @@ public class Setting extends JFrame {
 	private static final int HEIGHT = 439;
 	
 	private JTextField tHash;
-	private JTextField tPort;
+	private JComboBox<String> tPort;
 	private JTextField tStartDelayAfter;
 	private JTextField tStartDelayBefore;
 	private JTextField tWaitDelayAfter;
@@ -91,8 +94,12 @@ public class Setting extends JFrame {
 		gbc_lPort.gridy = 1;
 		getContentPane().add(lPort, gbc_lPort);
 		
-		tPort = new JTextField();
-		tPort.setHorizontalAlignment(SwingConstants.LEFT);
+		tPort = new JComboBox<String>();
+		
+	    SerialPort[] portNames = SerialPort.getCommPorts();
+		for(int i = 0; i < portNames.length; i++)
+			tPort.addItem(portNames[i].getSystemPortName());
+
 		GridBagConstraints gbc_tPort = new GridBagConstraints();
 		gbc_tPort.anchor = GridBagConstraints.WEST;
 		gbc_tPort.insets = new Insets(0, 0, 5, 0);
@@ -100,7 +107,6 @@ public class Setting extends JFrame {
 		gbc_tPort.gridx = 1;
 		gbc_tPort.gridy = 1;
 		getContentPane().add(tPort, gbc_tPort);
-		tPort.setColumns(10);
 		
 		JLabel lLoot = new JLabel("Лут:");
 		GridBagConstraints gbc_lLoot = new GridBagConstraints();
@@ -390,7 +396,8 @@ public class Setting extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			Application.getInstance().setProperty("HASH", tHash.getText().trim());
-			Application.getInstance().setProperty("PORT", tPort.getText().trim());
+			//TODO Application.getInstance().setProperty("PORT", tPort.getText().trim());
+			Application.getInstance().setProperty("PORT", tPort.getSelectedItem().toString());
 			
 			Application.getInstance().setProperty("KEY",   String.valueOf(cbKey.isSelected()));
 			Application.getInstance().setProperty("ROCK",  String.valueOf(cbRock.isSelected()));
@@ -437,7 +444,7 @@ public class Setting extends JFrame {
 	public void init() {
 		Application.getInstance();
 		tHash.setText(Application.getInstance().HASH());
-		tPort.setText(Application.getInstance().PORT());
+		tPort.setSelectedItem(Application.getInstance().PORT());
 		
 		cbFish.setSelected(Application.getInstance().FISH());
 		cbKey.setSelected(Application.getInstance().KEY());

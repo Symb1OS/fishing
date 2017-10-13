@@ -104,7 +104,7 @@ public class View extends JFrame{
 	    lKapcha.setFont(new Font("Tahoma", Font.BOLD, 20));
 	    labelPanel.add(lKapcha);
 	    
-	    JLabel lKapchaText = new JLabel("wasd");
+	    JLabel lKapchaText = new JLabel("aaasss");
 	    lKapchaText.setFont(new Font("Tahoma", Font.BOLD, 20));
 	    labelPanel.add(lKapchaText);
 	    
