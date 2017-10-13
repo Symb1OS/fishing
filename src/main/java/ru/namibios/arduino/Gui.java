@@ -179,16 +179,17 @@ public class Gui extends JFrame{
 	    butonPanel.add(bStop, gbc_bStop);
 	}
 	
-	private boolean keyAuth() {
+	private int keyAuth() {
 		String hash = Application.getInstance().HASH();
-		int code = Message.AUTH_BAD;
+		int code = Message.CODE_AUTH_BAD;
 		try{
 			Http http = new Http();
 			code = http.authorized(hash);
 		}catch (Exception e) {
 			logger.error("Exception " + e);
+			return Message.CODE_SERVER_NOT_RESPONDING;
 		}
-		return code == Message.AUTH_OK ? true : false;
+		return code;
 	}
 	
 	
@@ -216,7 +217,6 @@ public class Gui extends JFrame{
 			}catch (Exception e) {
 				e.printStackTrace();
 			}
-			
 		}
 	}
 	
@@ -225,17 +225,22 @@ public class Gui extends JFrame{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			
-			if(keyAuth()){
-				threadTransfer =  new Thread(new Transfer());
-		    	threadAreaLogger = new Thread(new AreaLogger());
-		    	
-		    	threadAreaLogger.start();
-		    	threadTransfer.start();
-			}else{
-				showMessageDialog(Message.KEY_INVALID);
+			int code = keyAuth();
+			switch (code) {
+				case Message.CODE_AUTH_OK: 
+					threadTransfer =  new Thread(new Transfer());
+			    	threadAreaLogger = new Thread(new AreaLogger());
+			    	
+			    	threadAreaLogger.start();
+			    	threadTransfer.start();
+					break;
+				case Message.CODE_AUTH_BAD:
+					showMessageDialog(Message.MSG_KEY_INVALID);
+					break;
+				case Message.CODE_SERVER_NOT_RESPONDING:
+					showMessageDialog(Message.MSG_SERVER_NOT_RESPONDING);
 			}
 		}
-
 	}
 	
 	class StopAction implements ActionListener{

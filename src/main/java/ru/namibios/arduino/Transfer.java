@@ -26,10 +26,9 @@ public class Transfer implements Runnable{
 	public void run() {
 		
 		logger.info("Start...");
-		Application.getInstance().physicalPort().openPort();
 		
 		DelayUtils.delay(3000);
-		if(!Application.getInstance().physicalPort().isOpen()) {
+		if(!Application.getPhysicalPort().isOpen()) {
 			logger.info("Port is closed. Check you port in settings");
 			return;
 		} 
@@ -39,9 +38,10 @@ public class Transfer implements Runnable{
 		FishBot fishBot = new FishBot();
 		while(fishBot.isRunned()) fishBot.getState().onNext();
 		
-		Application.getInstance().physicalPort().closePort();
+		Application.getPhysicalPort().closePort();
 		logger.info("Port closed...");
 		logger.info("Thread stop.");
 	}
 }
+
 

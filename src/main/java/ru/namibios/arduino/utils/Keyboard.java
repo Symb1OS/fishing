@@ -28,7 +28,7 @@ public final class Keyboard {
 		String message = command.getKey().trim();
 		boolean status = false;
 		if(!message.isEmpty()){
-			PrintWriter output = new PrintWriter(Application.getInstance().physicalPort().getOutputStream());
+			PrintWriter output = new PrintWriter(Application.getPhysicalPort().getOutputStream());
 			output.println(message);
 			output.flush();
 			

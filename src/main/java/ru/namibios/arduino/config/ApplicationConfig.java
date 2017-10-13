@@ -2,12 +2,11 @@ package ru.namibios.arduino.config;
 
 import org.aeonbits.owner.Accessible;
 import org.aeonbits.owner.Config.Sources;
+import org.aeonbits.owner.Mutable;
 
 import com.fazecast.jSerialComm.SerialPort;
 
 import ru.namibios.arduino.utils.SerialPortConverter;
-
-import org.aeonbits.owner.Mutable;
 
 @Sources("file:application.properties")
 public interface ApplicationConfig extends Accessible, Mutable{
