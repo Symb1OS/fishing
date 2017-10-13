@@ -2,242 +2,198 @@ package ru.namibios.arduino;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.FlowLayout;
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
-import java.awt.LayoutManager;
-import java.io.IOException;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.SwingUtilities;
+import javax.swing.SwingConstants;
 
 import org.apache.log4j.Logger;
 
-import com.fazecast.jSerialComm.SerialPort;
-
+import ru.namibios.arduino.config.Application;
 import ru.namibios.arduino.config.Message;
-import ru.namibios.arduino.config.Path;
-import ru.namibios.arduino.config.Property;
+import ru.namibios.arduino.utils.Http;
 
 public class Gui extends JFrame{
-	
+
 	final static Logger logger = Logger.getLogger(Gui.class);
 	
-	private static final String COM_PORT = "COM3";
-	private static final int WINDOW_WIDTH = 600;
-	private static final int WINDOW_HEIGHT = 300;
-	
+	private static final int WIDTH = 520;
+	private static final int HEIGHT = 300;
+
 	private static final long serialVersionUID = 1L;
 	
-	private JLabel lKapchaImg = new JLabel();
-	private JLabel lKapchaText = new JLabel();
-	
-	private JLabel lFilterOne = new JLabel();
-	private JLabel lFilterTwo = new JLabel();
-	
-	private JTextArea aStatus = new JTextArea();
-	private JScrollPane sStatusPane = new JScrollPane(aStatus);
-	
-	private JLabel lAutoUse = new JLabel("Автоюз:");
-	private JCheckBox jBear = new JCheckBox("Пиво");
-	private JCheckBox jMinigame = new JCheckBox("Мини-игра");
-	
-	private JLabel lFilter = new JLabel("Фильтр лута:");
-	private JCheckBox jRock = new JCheckBox("Камни");
-	private JCheckBox jFish = new JCheckBox("Рыба");
-	private JCheckBox jKey = new JCheckBox("Ключи");
-	private JCheckBox jEvent= new JCheckBox("Ивент");
-	
-	private JButton startButton = new JButton("Старт");
-	private JButton stopButton = new JButton("Стоп");
-	
-	private Container container = this.getContentPane();
-	
-	private Transfer transfer = new Transfer();
+	private JTextArea taLog = new JTextArea();
 	
 	private Thread threadTransfer;
+	private Thread threadAreaLogger;
 	
-	private void initTestData() {
-
-	    lKapchaImg.setIcon(new ImageIcon("resources/kapcha/20170729_015515_638.jpg"));
-	    lKapchaText.setText("wasw");
-	    
-	    lFilterOne.setIcon(new ImageIcon("resources/loot/ok/fish/ersh.jpg"));
-	    lFilterTwo.setIcon(new ImageIcon("resources/loot/ok/fish/cherepaxa.jpg"));
-	    
-	    aStatus.setEditable(false);
-	}
-
 	public Gui() {
-	    super("Fishbot");
-	    
-	    new Thread(new AreaLogger()).start();
-	    
-	    logger.info("Test");
-	    setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
-	    setLocationRelativeTo(null);  
-	    
-	    setAlwaysOnTop(true);
-	    setLayout(new BorderLayout());
-	    this.setResizable(false);
+		
+		setResizable(false);
+		this.setTitle("Fish bot");
+		
+		this.setSize(new Dimension(WIDTH, HEIGHT));
+     	this.setLocationRelativeTo(null);  
+	    this.setAlwaysOnTop(true);
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    getContentPane().setLayout(new BorderLayout(0, 0));
 	    
-	    jBear.setSelected(true);
-	    jRock.setSelected(true);
-	    jEvent.setSelected(true);
-	    jFish.setSelected(true);
-	    jKey.setSelected(true);
+	    JPanel workPanel = new JPanel();
+	    getContentPane().add(workPanel, BorderLayout.CENTER);
+	    workPanel.setLayout(new BorderLayout(0, 0));
 	    
-	    aStatus.setFont(new Font("TimesRoman", Font.PLAIN, 11));
-	    aStatus.setBackground(Color.BLACK);
-	    aStatus.setForeground(Color.GREEN);
+	    JPanel kapchaLootPanel = new JPanel();
+	    workPanel.add(kapchaLootPanel, BorderLayout.NORTH);
+	    GridBagLayout gbl_kapchaLootPanel = new GridBagLayout();
+	    gbl_kapchaLootPanel.columnWidths = new int[] {30, 30, 30, 30, 30};
+	    gbl_kapchaLootPanel.rowHeights = new int[] {30, 30};
+	    gbl_kapchaLootPanel.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0};
+	    gbl_kapchaLootPanel.rowWeights = new double[]{0.0, 0.0};
+	    kapchaLootPanel.setLayout(gbl_kapchaLootPanel);
 	    
-	    initTestData();
-			
-	    JPanel debug = new JPanel();
-	    debug.setLayout(new BorderLayout());
-	    debug.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
+	    JLabel lKapchaImg = new JLabel("");
+	    lKapchaImg.setIcon(new ImageIcon("resources/demo/kapcha.jpg"));
+	    GridBagConstraints gbc_lKapchaImg = new GridBagConstraints();
+	    gbc_lKapchaImg.insets = new Insets(0, 0, 5, 5);
+	    gbc_lKapchaImg.gridx = 0;
+	    gbc_lKapchaImg.gridy = 0;
+	    kapchaLootPanel.add(lKapchaImg, gbc_lKapchaImg);
 	    
-	    JPanel debugContainer = new JPanel();
-	    debugContainer.setLayout(new BoxLayout(debugContainer, BoxLayout.Y_AXIS));
-	    debugContainer.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
-	
-	    JPanel loot = Builder.config()
-				 .setLayout(new FlowLayout())
-				 .setComponent(new JLabel("Слот 1: "))
-				 .setComponent(lFilterOne)
-				 .setComponent(new JLabel("Слот 2: "))
-				 .setComponent(lFilterTwo)
-				 .build();
+	    JLabel lLootOne = new JLabel("Слот 1:");
+	    lLootOne.setFont(new Font("Tahoma", Font.BOLD, 13));
+	    GridBagConstraints gbc_lLootOne = new GridBagConstraints();
+	    gbc_lLootOne.insets = new Insets(0, 0, 5, 5);
+	    gbc_lLootOne.gridx = 2;
+	    gbc_lLootOne.gridy = 0;
+	    kapchaLootPanel.add(lLootOne, gbc_lLootOne);
 	    
-	    JPanel kapchaImg = new JPanel();
-	    kapchaImg.setLayout(new FlowLayout());
-	    kapchaImg.add(lKapchaImg);
+	    JLabel lLootImgOne = new JLabel("");
+	    lLootImgOne.setIcon(new ImageIcon("resources/demo/key.jpg"));
+	    GridBagConstraints gbc_lLootImgOne = new GridBagConstraints();
+	    gbc_lLootImgOne.fill = GridBagConstraints.HORIZONTAL;
+	    gbc_lLootImgOne.insets = new Insets(0, 0, 5, 5);
+	    gbc_lLootImgOne.gridx = 3;
+	    gbc_lLootImgOne.gridy = 0;
+	    kapchaLootPanel.add(lLootImgOne, gbc_lLootImgOne);
 	    
-	    JPanel kapchaText = new JPanel();
-	    kapchaText.setLayout(new FlowLayout());
-	    kapchaText.add(new JLabel("Результат: "));
-	    kapchaText.add(lKapchaText);
+	    JPanel labelPanel = new JPanel();
+	    GridBagConstraints gbc_labelPanel = new GridBagConstraints();
+	    gbc_labelPanel.fill = GridBagConstraints.BOTH;
+	    gbc_labelPanel.insets = new Insets(0, 0, 5, 5);
+	    gbc_labelPanel.gridx = 0;
+	    gbc_labelPanel.gridy = 1;
+	    kapchaLootPanel.add(labelPanel, gbc_labelPanel);
+	    labelPanel.setLayout(new GridLayout(0, 2, 0, 0));
 	    
-	    debugContainer.add(kapchaImg);
-	    debugContainer.add(kapchaText);
-	    debugContainer.add(loot);
+	    JLabel lKapcha = new JLabel("Результат: ");
+	    lKapcha.setHorizontalAlignment(SwingConstants.CENTER);
+	    lKapcha.setFont(new Font("Tahoma", Font.BOLD, 20));
+	    labelPanel.add(lKapcha);
 	    
-	    debug.add(debugContainer, BorderLayout.NORTH);
-	    debug.add(sStatusPane, BorderLayout.CENTER);
+	    JLabel lKapchaText = new JLabel("aaasss");
+	    lKapchaText.setFont(new Font("Tahoma", Font.BOLD, 20));
+	    labelPanel.add(lKapchaText);
 	    
-	    JPanel buttonContainer = new JPanel();
-	    buttonContainer.add(startButton);
-	    buttonContainer.add(stopButton);
+	    JLabel lLootTwo = new JLabel("Слот 2:");
+	    lLootTwo.setFont(new Font("Tahoma", Font.BOLD, 13));
+	    GridBagConstraints gbc_lLootTwo = new GridBagConstraints();
+	    gbc_lLootTwo.insets = new Insets(0, 0, 5, 5);
+	    gbc_lLootTwo.gridx = 2;
+	    gbc_lLootTwo.gridy = 1;
+	    kapchaLootPanel.add(lLootTwo, gbc_lLootTwo);
 	    
-	    startButton.addActionListener(e -> {
-	    	logger.info("Programm start...");
-			
-	    	SerialPort port = SerialPort.getCommPort(COM_PORT);
-	    	port.setComPortTimeouts(SerialPort.TIMEOUT_SCANNER, 0, 0);
-	    	
-	    	Property.setPort(port);
-			Property.setHash(getAuthKey());
-			
-			Property.setBear(jBear.isSelected());
-			Property.setMinigame(jMinigame.isSelected());
-			
-			Property.setRock(jRock.isSelected());
-			Property.setFish(jFish.isSelected());
-			Property.setKeys(jKey.isSelected());
-			Property.setEvent(jEvent.isSelected());
-			
-			threadTransfer = new Thread(transfer);
-			threadTransfer.start();
-	    });
+	    JLabel lLootImgTwo = new JLabel("");
+	    lLootImgTwo.setIcon(new ImageIcon("resources/demo/scala.jpg"));
+	    GridBagConstraints gbc_lLootImgTwo = new GridBagConstraints();
+	    gbc_lLootImgTwo.insets = new Insets(0, 0, 5, 5);
+	    gbc_lLootImgTwo.gridx = 3;
+	    gbc_lLootImgTwo.gridy = 1;
+	    kapchaLootPanel.add(lLootImgTwo, gbc_lLootImgTwo);
 	    
-	    JPanel filterContainer = Builder.config()
-				.setLayout(new GridLayout(10, 1))
-				.setComponent(lAutoUse)
-				.setComponent(jBear)
-				.setComponent(jMinigame)
-				.setComponent(lFilter)
-				.setComponent(jRock)
-				.setComponent(jKey)
-				.setComponent(jEvent)
-				.setComponent(jFish)
-				.build();
+	    JPanel logPanel = new JPanel();
+	    workPanel.add(logPanel);
+	    logPanel.setLayout(new BoxLayout(logPanel, BoxLayout.X_AXIS));
 	    
-	    filterContainer.add(startButton);
+	    taLog.setFont(new Font("Times New Roman", Font.PLAIN, 11));
+	    taLog.setBackground(Color.BLACK);
+	    taLog.setForeground(Color.GREEN);
+	    taLog.setEditable(false);
+	   
+	    JScrollPane scrollPane = new JScrollPane(taLog);
+	    logPanel.add(scrollPane);
 	    
-	    stopButton.addActionListener(e -> threadTransfer.interrupt());
-	    filterContainer.add(stopButton);
+	    taLog.setCaretPosition(taLog.getDocument().getLength());
 	    
-	    container.add(filterContainer, BorderLayout.CENTER);
-	    container.add(debug,  		   BorderLayout.EAST);
-	    container.add(buttonContainer, BorderLayout.SOUTH);
+	    JPanel butonPanel = new JPanel();
+	    getContentPane().add(butonPanel, BorderLayout.SOUTH);
+	    GridBagLayout gbl_butonPanel = new GridBagLayout();
+	    gbl_butonPanel.columnWidths = new int[]{116, 155, 115, 120, 0};
+	    gbl_butonPanel.rowHeights = new int[]{23, 0};
+	    gbl_butonPanel.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+	    gbl_butonPanel.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+	    butonPanel.setLayout(gbl_butonPanel);
+	    
+	    JButton bSetting = new JButton("Настройки");
+	    
+	    bSetting.addActionListener(new SettingAction());
+	    GridBagConstraints gbc_bSetting = new GridBagConstraints();
+	    gbc_bSetting.fill = GridBagConstraints.HORIZONTAL;
+	    gbc_bSetting.insets = new Insets(0, 0, 0, 5);
+	    gbc_bSetting.gridx = 0;
+	    gbc_bSetting.gridy = 0;
+	    butonPanel.add(bSetting, gbc_bSetting);
+	    
+	    JButton bStart = new JButton("Старт");
+	    GridBagConstraints gbc_bStart = new GridBagConstraints();
+	    gbc_bStart.fill = GridBagConstraints.HORIZONTAL;
+	    gbc_bStart.insets = new Insets(0, 0, 0, 5);
+	    gbc_bStart.gridx = 2;
+	    gbc_bStart.gridy = 0;
+	    
+	    bStart.addActionListener(new StartAction());
+	    
+	    butonPanel.add(bStart, gbc_bStart);
+	    
+	    JButton bStop = new JButton("Стоп");
+	    GridBagConstraints gbc_bStop = new GridBagConstraints();
+	    gbc_bStop.fill = GridBagConstraints.HORIZONTAL;
+	    gbc_bStop.gridx = 3;
+	    gbc_bStop.gridy = 0;
+	    butonPanel.add(bStop, gbc_bStop);
 	}
 	
-	private String getAuthKey(){
-		String key = null;
-		try {
-			key = new String(Files.readAllBytes(Paths.get(Path.RESOURCES_KEY)));
-			logger.info("key=  " + key);
-			if(key.isEmpty()){
-				JOptionPane.showMessageDialog(this, Message.KEY_EMPTY);
-			}
-			
-		} catch (IOException e) {
-			JOptionPane.showMessageDialog(this, Message.KEY_NOT_FOUND);
-			logger.error("Exception: " + e);
-			System.exit(1);
+	private boolean keyAuth() {
+		String hash = Application.getInstance().HASH();
+		int code = Message.AUTH_BAD;
+		try{
+			Http http = new Http();
+			code = http.authorized(hash);
+		}catch (Exception e) {
+			logger.error("Exception " + e);
 		}
-		return key;
+		return code == Message.AUTH_OK ? true : false;
 	}
 	
-	private static class Builder{
-		
-		private LayoutManager layout;
-		private List<Component> components;
-		
-		private Builder() {
-			components = new ArrayList<Component>();
-		}
-		
-		private static Builder config() {
-			return new Builder();
-		}
-		
-		public Builder setLayout(LayoutManager layout) {
-			this.layout = layout;
-			return this;
-		}
-		
-		public Builder setComponent(Component component) {
-			this.components.add(component);
-			return this;
-		}
-		
-		public JPanel build() {
-			JPanel jPanel = new JPanel();
-			
-			jPanel.setLayout(layout);
-			for (Component component : components) {
-				jPanel.add(component);
-			}
-			return jPanel;
-		}
+	
+	private void showMessageDialog(String message) {
+		JOptionPane.showMessageDialog(this, message);
 	}
 	
 	private class AreaLogger implements Runnable{
@@ -250,10 +206,10 @@ public class Gui extends JFrame{
 	    			byte[] file = Files.readAllBytes(Paths.get("work.log"));
 					if(endFile < file.length) {
 						for (int i = 0; i < file.length; i++) {
-							aStatus.append(String.valueOf((char)file[i]));
+							taLog.append(String.valueOf((char)file[i]));
 						}
 					}
-					aStatus.setCaretPosition(aStatus.getDocument().getLength());
+					taLog.setCaretPosition(taLog.getDocument().getLength());
 					endFile = file.length;
 				}
 			
@@ -264,12 +220,48 @@ public class Gui extends JFrame{
 		}
 	}
 	
-	public static void main(String[] args) {
+	class StartAction implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			if(keyAuth()){
+				threadTransfer =  new Thread(new Transfer());
+		    	threadAreaLogger = new Thread(new AreaLogger());
+		    	
+		    	threadAreaLogger.start();
+		    	threadTransfer.start();
+			}else{
+				showMessageDialog(Message.KEY_INVALID);
+			}
+		}
+
+	}
 	
-		SwingUtilities.invokeLater( () -> {
-		    	Gui app = new Gui();
-				app.setVisible(true);
-		});
+	class StopAction implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			threadAreaLogger.interrupt();
+			threadTransfer.interrupt();
+		}
 		
 	}
+	
+	class SettingAction implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			dispose();
+			Setting setting = new Setting();
+			setting.setVisible(true);
+		}
+		
+	}
+	
+	public static void main(String[] args) {
+		Gui view = new Gui();
+		view.setVisible(true);
+	}
+
 }

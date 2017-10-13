@@ -30,8 +30,8 @@ public class Transfer implements Runnable{
 		
 		DelayUtils.delay(3000);
 		if(!Application.getInstance().physicalPort().isOpen()) {
-			logger.info("Port is closed. Exit");
-			System.exit(1);
+			logger.info("Port is closed. Check you port in settings");
+			return;
 		} 
 		
 		logger.info("Port is open...");
@@ -44,3 +44,4 @@ public class Transfer implements Runnable{
 		logger.info("Thread stop.");
 	}
 }
+

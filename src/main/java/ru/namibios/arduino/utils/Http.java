@@ -14,6 +14,8 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
+import ru.namibios.arduino.config.Application;
+
 public class Http {
 	
 	// localhost:5050 - проброс на сервак 
@@ -43,7 +45,7 @@ public class Http {
 		return EntityUtils.toString(entity, "UTF-8");
 	}
 	
-	public String authorized(String key) throws ClientProtocolException, IOException{
+	public int authorized(String key) throws ClientProtocolException, IOException{
 		
 		HttpPost post = Builder.config().setUrl(AUTH_URL)
 				.setParameter(new BasicNameValuePair("HASH", key))
@@ -51,7 +53,7 @@ public class Http {
 
 		response = httpClient.execute(post);
 		HttpEntity entity = response.getEntity();
-		return EntityUtils.toString(entity, "UTF-8");
+		return Integer.valueOf(EntityUtils.toString(entity, "UTF-8").trim());
 	}
 	
 	private static class Builder {
@@ -81,7 +83,13 @@ public class Http {
 			post.setEntity(new UrlEncodedFormEntity(postParameters, "UTF-8"));
 			return post;
 		} 
-		
+	}
+	
+	public static void main(String[] args) throws ClientProtocolException, IOException {
+		String hash = Application.getInstance().HASH();
+		Http http = new Http();
+		int code = http.authorized(hash);
+		System.out.println("Response: " + code);
 	}
 	
 }

@@ -396,7 +396,6 @@ public class Setting extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			Application.getInstance().setProperty("HASH", tHash.getText().trim());
-			//TODO Application.getInstance().setProperty("PORT", tPort.getText().trim());
 			Application.getInstance().setProperty("PORT", tPort.getSelectedItem().toString());
 			
 			Application.getInstance().setProperty("KEY",   String.valueOf(cbKey.isSelected()));
@@ -425,7 +424,7 @@ public class Setting extends JFrame {
 			Application.record();
 			dispose();
 			
-			View view = new View();
+			Gui view = new Gui();
 			view.setVisible(true);
 		}
 	} 
@@ -436,7 +435,7 @@ public class Setting extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			dispose();
-			View view = new View();
+			Gui view = new Gui();
 			view.setVisible(true);
 		}
 	}
