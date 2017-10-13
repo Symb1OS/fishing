@@ -4,7 +4,7 @@ import java.io.PrintWriter;
 
 import org.apache.log4j.Logger;
 
-import ru.namibios.arduino.config.Property;
+import ru.namibios.arduino.config.Application;
 import ru.namibios.arduino.model.command.Command;
 
 public final class Keyboard {
@@ -28,7 +28,7 @@ public final class Keyboard {
 		String message = command.getKey().trim();
 		boolean status = false;
 		if(!message.isEmpty()){
-			PrintWriter output = new PrintWriter(Property.portInstance().getOutputStream());
+			PrintWriter output = new PrintWriter(Application.getInstance().physicalPort().getOutputStream());
 			output.println(message);
 			output.flush();
 			

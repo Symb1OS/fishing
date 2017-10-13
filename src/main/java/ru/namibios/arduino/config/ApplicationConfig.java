@@ -2,6 +2,11 @@ package ru.namibios.arduino.config;
 
 import org.aeonbits.owner.Accessible;
 import org.aeonbits.owner.Config.Sources;
+
+import com.fazecast.jSerialComm.SerialPort;
+
+import ru.namibios.arduino.utils.SerialPortConverter;
+
 import org.aeonbits.owner.Mutable;
 
 @Sources("file:application.properties")
@@ -10,6 +15,10 @@ public interface ApplicationConfig extends Accessible, Mutable{
 	String HASH();
 	
 	String PORT();
+	
+	@DefaultValue("${PORT}")
+	@ConverterClass(SerialPortConverter.class)
+	SerialPort physicalPort();
 	
 	@DefaultValue("true")
 	boolean FISH();

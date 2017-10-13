@@ -2,7 +2,7 @@ package ru.namibios.arduino.model.state;
 
 import org.apache.log4j.Logger;
 
-import ru.namibios.arduino.config.Property;
+import ru.namibios.arduino.config.Application;
 import ru.namibios.arduino.model.Task;
 import ru.namibios.arduino.model.command.Command;
 import ru.namibios.arduino.model.command.FishLoot;
@@ -22,7 +22,7 @@ public class FilterLootState extends State{
 		try {
 			Command filter = new FishLoot();
 			
-			Task task = new Task(filter, Property.DELAY_BEFORE_FILTER_LOOOT, Property.DELAY_AFTER_FILTER_LOOOT);
+			Task task = new Task(filter, Application.getInstance().DELAY_BEFORE_FILTER_LOOT(), Application.getInstance().DELAY_AFTER_FILTER_LOOT());
 			task.run();
 			
 			fishBot.setState(new StartFishState(fishBot));

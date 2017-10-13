@@ -10,6 +10,8 @@ import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -23,6 +25,8 @@ import javax.swing.SwingConstants;
 
 import org.apache.log4j.Logger;
 
+import ru.namibios.arduino.config.Application;
+
 public class View extends JFrame{
 
 	final static Logger logger = Logger.getLogger(View.class);
@@ -32,7 +36,13 @@ public class View extends JFrame{
 
 	private static final long serialVersionUID = 1L;
 	
+	private JTextArea taLog = new JTextArea();
+	
+	private Thread threadTransfer;
+	private Thread threadAreaLogger;
+	
 	public View() {
+		
 		setResizable(false);
 		this.setTitle("Fish bot");
 		
@@ -56,7 +66,7 @@ public class View extends JFrame{
 	    kapchaLootPanel.setLayout(gbl_kapchaLootPanel);
 	    
 	    JLabel lKapchaImg = new JLabel("");
-	    lKapchaImg.setIcon(new ImageIcon("D:\\work\\workspace\\eclipse\\fishing\\resources\\kapcha\\20170729_015515_638.jpg"));
+	    lKapchaImg.setIcon(new ImageIcon("resources/demo/kapcha.jpg"));
 	    GridBagConstraints gbc_lKapchaImg = new GridBagConstraints();
 	    gbc_lKapchaImg.insets = new Insets(0, 0, 5, 5);
 	    gbc_lKapchaImg.gridx = 0;
@@ -72,7 +82,7 @@ public class View extends JFrame{
 	    kapchaLootPanel.add(lLootOne, gbc_lLootOne);
 	    
 	    JLabel lLootImgOne = new JLabel("");
-	    lLootImgOne.setIcon(new ImageIcon("D:\\work\\workspace\\eclipse\\fishing\\resources\\loot\\ok\\key\\key.jpg"));
+	    lLootImgOne.setIcon(new ImageIcon("resources/demo/key.jpg"));
 	    GridBagConstraints gbc_lLootImgOne = new GridBagConstraints();
 	    gbc_lLootImgOne.fill = GridBagConstraints.HORIZONTAL;
 	    gbc_lLootImgOne.insets = new Insets(0, 0, 5, 5);
@@ -107,7 +117,7 @@ public class View extends JFrame{
 	    kapchaLootPanel.add(lLootTwo, gbc_lLootTwo);
 	    
 	    JLabel lLootImgTwo = new JLabel("");
-	    lLootImgTwo.setIcon(new ImageIcon("D:\\work\\workspace\\eclipse\\fishing\\resources\\loot\\ok\\scala\\scala.jpg"));
+	    lLootImgTwo.setIcon(new ImageIcon("resources/demo/scala.jpg"));
 	    GridBagConstraints gbc_lLootImgTwo = new GridBagConstraints();
 	    gbc_lLootImgTwo.insets = new Insets(0, 0, 5, 5);
 	    gbc_lLootImgTwo.gridx = 3;
@@ -118,17 +128,15 @@ public class View extends JFrame{
 	    workPanel.add(logPanel);
 	    logPanel.setLayout(new BoxLayout(logPanel, BoxLayout.X_AXIS));
 	    
-	    JTextArea textArea = new JTextArea();
-	    textArea.setFont(new Font("Times New Roman", Font.PLAIN, 11));
-	    textArea.setText("[11.10.2017 21:31:43] - Port is open...\r\r\n[11.10.2017 21:31:43] - Start Fish...\r\r\n[11.10.2017 21:31:46] - Sended message: space\r\r\n[11.10.2017 21:31:51] - Wait fish..\r\r\n[11.10.2017 21:31:54] - Wait fish..\r\r\n[11.10.2017 21:31:57] - Wait fish..\r\r\n[11.10.2017 21:32:00] - Wait fish..\r\r\n[11.10.2017 21:32:03] - Wait fish..\r\r\n[11.10.2017 21:32:06] - Sended message: space\r\r\n[11.10.2017 21:32:08] - Sended message: space\r\r\n[11.10.2017 21:32:12] - Cut the fish...\r\r\n[11.10.2017 21:32:12] - Parsing kapcha...\r\r\n[11.10.2017 21:32:12] - Clean the noise...\r\r\n[11.10.2017 21:32:13] - Clean ended...\r\r\n[11.10.2017 21:32:14] - Sended message: \"sw\"\r\r\n[11.10.2017 21:32:24] - Check loot...\r\r\n[11.10.2017 21:32:29] - Trash. Throw out.\r\r\n[11.10.2017 21:32:29] - Check loot...\r\r\n[11.10.2017 21:32:34] - Trash. Throw out.\r\r\n[11.10.2017 21:32:34] - Check loot...\r\r\n[11.10.2017 21:32:39] - Trash. Throw out.\r\r\n[11.10.2017 21:32:39] - Check loot...\r\r\n[11.10.2017 21:32:44] - Trash. Throw out.\r\r\n[11.10.2017 21:32:44] - Check loot...\r\r\n[11.10.2017 21:32:49] - Trash. Throw out.\r\r\n[11.10.2017 21:32:49] - Check loot...\r\r\n[11.10.2017 21:32:54] - Trash. Throw out.\r\r\n[11.10.2017 21:32:54] - Check loot...\r\r\n[11.10.2017 21:32:59] - Trash. Throw out.\r\r\n[11.10.2017 21:32:59] - Check loot...\r\r\n[11.10.2017 21:33:03] - Trash. Throw out.\r\r\n[11.10.2017 21:33:03] - Check loot...\r\r\n[11.10.2017 21:43:15] - Test\r\r\n[11.10.2017 21:43:18] - Programm start...\r\r\n[11.10.2017 21:43:18] - key=  bef1c08eedddbe9f9d83a0f07d0d26ce9b360a55\r\r\n[11.10.2017 21:43:18] - Start...\r\r\n[11.10.2017 21:43:22] - Port is open...\r\r\n[11.10.2017 21:43:22] - Start Fish...\r\r\n[11.10.2017 21:43:25] - Sended message: space\r\r\n[11.10.2017 21:43:30] - Wait fish..\r\r\n[11.10.2017 21:43:33] - Wait fish..\r\r\n[11.10.2017 21:43:36] - Wait fish..\r\r\n[11.10.2017 21:43:39] - Wait fish..\r\r\n[11.10.2017 21:43:42] - Wait fish..\r\r\n[11.10.2017 21:43:45] - Wait fish..\r\r\n[11.10.2017 21:43:48] - Wait fish..\r\r\n[11.10.2017 21:43:51] - Wait fish..\r\r\n[11.10.2017 21:43:54] - Wait fish..\r\r\n[11.10.2017 21:43:57] - Wait fish..\r\r\n[11.10.2017 21:44:00] - Wait fish..\r\r\n[11.10.2017 21:44:03] - Wait fish..\r\r\n[11.10.2017 21:44:06] - Wait fish..\r\r\n[11.10.2017 21:44:09] - Wait fish..\r\r\n[11.10.2017 21:44:12] - Wait fish..\r\r\n[11.10.2017 21:44:15] - Wait fish..\r\r\n[11.10.2017 21:44:18] - Wait fish..\r\r\n[11.10.2017 21:44:21] - Wait fish..\r\r\n[11.10.2017 21:44:24] - Wait fish..\r\r\n[11.10.2017 21:44:27] - Wait fish..\r\r\n[11.10.2017 21:44:30] - Wait fish..\r\r\n[11.10.2017 21:44:33] - Wait fish..\r\r\n[11.10.2017 21:44:36] - Wait fish..\r\r\n[11.10.2017 21:44:39] - Wait fish..\r\r\n[11.10.2017 21:44:42] - Wait fish..\r\r\n[11.10.2017 21:44:45] - Wait fish..\r\r\n[11.10.2017 21:44:48] - Wait fish..\r\r\n[11.10.2017 21:44:51] - Wait fish..\r\r\n[11.10.2017 21:44:54] - Wait fish..\r\r\n[11.10.2017 21:44:57] - Wait fish..\r\r\n[11.10.2017 21:45:00] - Wait fish..\r\r\n[11.10.2017 21:45:03] - Wait fish..\r\r\n[11.10.2017 21:45:06] - Wait fish..\r\r\n[11.10.2017 21:45:09] - Wait fish..\r\r\n[11.10.2017 21:45:12] - Wait fish..\r\r\n[11.10.2017 21:45:15] - Sended message: space\r\r\n[11.10.2017 21:45:17] - Sended message: space\r\r\n[11.10.2017 21:45:21] - Cut the fish...\r\r\n[11.10.2017 21:45:21] - Parsing kapcha...\r\r\n[11.10.2017 21:45:21] - Clean the noise...\r\r\n[11.10.2017 21:45:22] - Clean ended...\r\r\n[11.10.2017 21:45:23] - Sended message: \"swww\"\r\r\n[11.10.2017 21:45:33] - Check loot...\r\r\n[11.10.2017 21:45:38] - Loot is not recognized... Take.\r\r\n[11.10.2017 21:45:38] - Sended message: r\r\r\n[11.10.2017 21:45:38] - Start Fish...\r\r\n[11.10.2017 21:45:41] - Sended message: space\r\r\n[11.10.2017 21:45:46] - Wait fish..\r\r\n[11.10.2017 21:45:49] - Wait fish..\r\r\n[11.10.2017 21:45:52] - Wait fish..\r\r\n[11.10.2017 21:45:55] - Wait fish..\r\r\n[11.10.2017 21:45:58] - Wait fish..\r\r\n[11.10.2017 21:46:01] - Wait fish..\r\r\n[11.10.2017 21:46:04] - Wait fish..\r\r\n[11.10.2017 21:46:07] - Wait fish..\r\r\n[11.10.2017 21:46:10] - Wait fish..\r\r\n[11.10.2017 21:46:13] - Wait fish..\r\r\n[11.10.2017 21:46:16] - Wait fish..\r\r\n[11.10.2017 21:46:19] - Wait fish..\r\r\n[11.10.2017 21:46:22] - Wait fish..\r\r\n[11.10.2017 21:46:25] - Wait fish..\r\r\n[11.10.2017 21:46:28] - Wait fish..\r\r\n[11.10.2017 21:46:31] - Wait fish..\r\r\n[11.10.2017 21:46:34] - Wait fish..\r\r\n[11.10.2017 21:46:37] - Wait fish..\r\r\n[11.10.2017 21:46:40] - Wait fish..\r\r\n[11.10.2017 21:46:43] - Wait fish..\r\r\n[11.10.2017 21:46:46] - Wait fish..\r\r\n[11.10.2017 21:46:49] - Wait fish..\r\r\n[11.10.2017 21:46:52] - Wait fish..\r\r\n[11.10.2017 21:46:55] - Wait fish..\r\r\n[11.10.2017 21:46:58] - Wait fish..\r\r\n[11.10.2017 21:47:01] - Wait fish..\r\r\n[11.10.2017 21:47:04] - Wait fish..\r\r\n[11.10.2017 21:47:07] - Wait fish..\r\r\n[11.10.2017 21:47:10] - Wait fish..\r\r\n[11.10.2017 21:47:13] - Wait fish..\r\r\n[11.10.2017 21:47:16] - Wait fish..\r\r\n[11.10.2017 21:47:19] - Wait fish..\r\r\n[11.10.2017 21:47:23] - Wait fish..\r\r\n[11.10.2017 21:47:26] - Wait fish..\r\r\n[11.10.2017 21:47:29] - Wait fish..\r\r\n[11.10.2017 21:47:32] - Wait fish..\r\r\n[11.10.2017 21:47:35] - Sended message: space\r\r\n[11.10.2017 21:47:36] - Sended message: space\r\r\n[11.10.2017 21:47:40] - Cut the fish...\r\r\n[11.10.2017 21:47:40] - Parsing kapcha...\r\r\n[11.10.2017 21:47:40] - Clean the noise...\r\r\n[11.10.2017 21:47:41] - Clean ended...\r\r\n[11.10.2017 21:47:42] - Sended message: \"sadw\"\r\r\n[11.10.2017 21:47:52] - Check loot...\r\r\n[11.10.2017 21:47:57] - Loot is not recognized... Take.\r\r\n[11.10.2017 21:47:57] - Sended message: r\r\r\n[11.10.2017 21:47:57] - Start Fish...\r\r\n[11.10.2017 21:48:00] - Sended message: space\r\r\n[11.10.2017 21:48:05] - Wait fish..\r\r\n[11.10.2017 21:48:08] - Wait fish..\r\r\n[11.10.2017 21:48:11] - Wait fish..");
-	    textArea.setBackground(Color.BLACK);
-	    textArea.setForeground(Color.GREEN);
-	    textArea.setEditable(false);
+	    taLog.setFont(new Font("Times New Roman", Font.PLAIN, 11));
+	    taLog.setBackground(Color.BLACK);
+	    taLog.setForeground(Color.GREEN);
+	    taLog.setEditable(false);
 	   
-	    JScrollPane scrollPane = new JScrollPane(textArea);
+	    JScrollPane scrollPane = new JScrollPane(taLog);
 	    logPanel.add(scrollPane);
 	    
-	    textArea.setCaretPosition(textArea.getDocument().getLength());
+	    taLog.setCaretPosition(taLog.getDocument().getLength());
 	    
 	    JPanel butonPanel = new JPanel();
 	    getContentPane().add(butonPanel, BorderLayout.SOUTH);
@@ -155,6 +163,9 @@ public class View extends JFrame{
 	    gbc_bStart.insets = new Insets(0, 0, 0, 5);
 	    gbc_bStart.gridx = 2;
 	    gbc_bStart.gridy = 0;
+	    
+	    bStart.addActionListener(new StartAction());
+	    
 	    butonPanel.add(bStart, gbc_bStart);
 	    
 	    JButton bStop = new JButton("Стоп");
@@ -163,6 +174,53 @@ public class View extends JFrame{
 	    gbc_bStop.gridx = 3;
 	    gbc_bStop.gridy = 0;
 	    butonPanel.add(bStop, gbc_bStop);
+	}
+	
+	private class AreaLogger implements Runnable{
+
+		@Override
+		public void run() {
+			try {
+	    		long endFile = 0;
+	    		while(true) {
+	    			byte[] file = Files.readAllBytes(Paths.get("work.log"));
+					if(endFile < file.length) {
+						for (int i = 0; i < file.length; i++) {
+							taLog.append(String.valueOf((char)file[i]));
+						}
+					}
+					taLog.setCaretPosition(taLog.getDocument().getLength());
+					endFile = file.length;
+				}
+			
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+	}
+	
+	class StartAction implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+	    	threadTransfer =  new Thread(new Transfer());
+	    	threadAreaLogger = new Thread(new AreaLogger());
+	    	
+	    	threadAreaLogger.start();
+	    	threadTransfer.start();
+		}
+		
+	}
+	
+	class StopAction implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			threadAreaLogger.interrupt();
+			threadTransfer.interrupt();
+		}
+		
 	}
 	
 	class SettingAction implements ActionListener{

@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import ru.namibios.arduino.config.Property;
+import ru.namibios.arduino.config.Application;
 import ru.namibios.arduino.model.ImageParser;
 import ru.namibios.arduino.model.Screen;
 import ru.namibios.arduino.model.template.Loot;
@@ -50,10 +50,10 @@ public class FishLoot implements Command{
 	}
 	
 	private void addLootOk() {
-		if(Property.isRock())  userLootOk.add(Loot.SCALA.ordinal());
-		if(Property.isKeys())  userLootOk.add(Loot.KEY.ordinal());
-		if(Property.isFish())  userLootOk.add(Loot.FISH.ordinal());
-		if(Property.isEvent()) userLootOk.add(Loot.EVENT.ordinal());
+		if(Application.getInstance().ROCK())  userLootOk.add(Loot.SCALA.ordinal());
+		if(Application.getInstance().KEY())   userLootOk.add(Loot.KEY.ordinal());
+		if(Application.getInstance().FISH())  userLootOk.add(Loot.FISH.ordinal());
+		if(Application.getInstance().EVENT()) userLootOk.add(Loot.EVENT.ordinal());
 	}
 	
 	@Override

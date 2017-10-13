@@ -5,7 +5,7 @@ import java.io.IOException;
 
 import org.apache.log4j.Logger;
 
-import ru.namibios.arduino.config.Property;
+import ru.namibios.arduino.config.Application;
 import ru.namibios.arduino.model.ImageParser;
 import ru.namibios.arduino.model.Screen;
 import ru.namibios.arduino.utils.Http;
@@ -39,7 +39,7 @@ public class Kapcha implements Command{
 			imageParser.parse(Screen.GRAY);
 			
 			Http http = new Http();
-			key = http.parseKapcha(Property.hashInstance(), JSON.getInstance().writeValueAsString(imageParser.getImageMatrix()));
+			key = http.parseKapcha(Application.getInstance().HASH(), JSON.getInstance().writeValueAsString(imageParser.getImageMatrix()));
 			
 		} catch (IOException e){
 			logger.error("Exception: " + e); 

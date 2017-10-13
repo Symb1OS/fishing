@@ -24,8 +24,8 @@ public class Setting extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private static final int WIDTH = 389;
-	private static final int HEIGHT = 329;
+	private static final int WIDTH = 466;
+	private static final int HEIGHT = 439;
 	
 	private JTextField tHash;
 	private JTextField tPort;
@@ -297,7 +297,7 @@ public class Setting extends JFrame {
 		GridBagLayout gbl_kapchaPanel = new GridBagLayout();
 		gbl_kapchaPanel.columnWidths = new int[] {0, 0, 0, 0, 0};
 		gbl_kapchaPanel.rowHeights = new int[]{0, 0};
-		gbl_kapchaPanel.columnWeights = new double[]{0.0, 0.0, 1.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_kapchaPanel.columnWeights = new double[]{0.0, 0.0, 1.0, 1.0, 0.0, 0.0};
 		gbl_kapchaPanel.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 		kapchaPanel.setLayout(gbl_kapchaPanel);
 		

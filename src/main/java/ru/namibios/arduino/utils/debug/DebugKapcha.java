@@ -12,7 +12,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import ru.namibios.arduino.config.Property;
 import ru.namibios.arduino.model.command.Kapcha;
 import ru.namibios.arduino.utils.DelayUtils;
 
@@ -69,7 +68,8 @@ public class DebugKapcha extends JFrame{
 	    startButton.addActionListener((e) -> {
 	    	new Thread(() -> {
 				try{
-					Property.setHash("bef1c08eedddbe9f9d83a0f07d0d26ce9b360a55");
+					//TODO
+					//Property.setHash("bef1c08eedddbe9f9d83a0f07d0d26ce9b360a55");
 					
 					String filename= "resources/debug";
 					File folder = new File(filename);

@@ -2,7 +2,7 @@ package ru.namibios.arduino.model.state;
 
 import org.apache.log4j.Logger;
 
-import ru.namibios.arduino.config.Property;
+import ru.namibios.arduino.config.Application;
 import ru.namibios.arduino.model.Task;
 import ru.namibios.arduino.model.command.Kapcha;
 import ru.namibios.arduino.utils.DelayUtils;
@@ -21,7 +21,7 @@ public class KapchaState extends State {
 		try{
 			Kapcha kapcha = new Kapcha(30);
 			
-			Task task = new Task(kapcha, Property.DELAY_BEFORE_KAPCHA, Property.DELAY_AFTER_KAPCHA);
+			Task task = new Task(kapcha, Application.getInstance().DELAY_BEFORE_KAPCHA(), Application.getInstance().DELAY_AFTER_KAPCHA());
 			boolean isOk = task.run();
 			if(isOk) fishBot.setState(new FilterLootState(fishBot));
 			
