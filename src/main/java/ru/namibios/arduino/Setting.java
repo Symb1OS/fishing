@@ -19,11 +19,16 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 
+import org.apache.commons.codec.binary.StringUtils;
+import org.apache.log4j.Logger;
+
 import com.fazecast.jSerialComm.SerialPort;
 
 import ru.namibios.arduino.config.Application;
 
 public class Setting extends JFrame {
+	
+	final static Logger logger = Logger.getLogger(Setting.class);
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -95,10 +100,14 @@ public class Setting extends JFrame {
 		getContentPane().add(lPort, gbc_lPort);
 		
 		tPort = new JComboBox<String>();
-		
-	    SerialPort[] portNames = SerialPort.getCommPorts();
-		for(int i = 0; i < portNames.length; i++)
-			tPort.addItem(portNames[i].getSystemPortName());
+		SerialPort[] portNames = SerialPort.getCommPorts();
+		for(int i = 0; i < portNames.length; i++){
+			try{
+				tPort.addItem(new String(portNames[i].getDescriptivePortName().getBytes("ISO-8859-1"), "Cp1251"));
+			}catch (Exception e) {
+				logger.error("Exception " + e);
+			}
+		}
 
 		GridBagConstraints gbc_tPort = new GridBagConstraints();
 		gbc_tPort.anchor = GridBagConstraints.WEST;
@@ -396,7 +405,7 @@ public class Setting extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			Application.getInstance().setProperty("HASH", tHash.getText().trim());
-			Application.getInstance().setProperty("PORT", tPort.getSelectedItem().toString());
+			Application.getInstance().setProperty("PORT", getPortName(tPort.getSelectedItem().toString()));
 			
 			Application.getInstance().setProperty("KEY",   String.valueOf(cbKey.isSelected()));
 			Application.getInstance().setProperty("ROCK",  String.valueOf(cbRock.isSelected()));
@@ -440,10 +449,24 @@ public class Setting extends JFrame {
 		}
 	}
 	
+	private String getPortName(String descriptionPort){
+		return descriptionPort.substring(descriptionPort.indexOf("(") + 1, descriptionPort.indexOf(")"));
+	}
+	
+	private Object getDescriptionPort(String settingPort){
+		int count = tPort.getItemCount();
+		for (int index = 0; index < count; index++) {
+			if(tPort.getItemAt(index).contains(settingPort)){
+				return tPort.getItemAt(index);
+			};
+		}
+		return 0;
+	}
+	
 	public void init() {
 		Application.getInstance();
 		tHash.setText(Application.getInstance().HASH());
-		tPort.setSelectedItem(Application.getInstance().PORT());
+		tPort.setSelectedItem(getDescriptionPort(Application.getInstance().PORT()));
 		
 		cbFish.setSelected(Application.getInstance().FISH());
 		cbKey.setSelected(Application.getInstance().KEY());
