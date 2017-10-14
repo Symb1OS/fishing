@@ -26,8 +26,10 @@ public class Transfer implements Runnable{
 	public void run() {
 		
 		logger.info("Start...");
-		
+
+		Application.getPhysicalPort().openPort();
 		DelayUtils.delay(3000);
+		
 		if(!Application.getPhysicalPort().isOpen()) {
 			logger.info("Port is closed. Check you port in settings");
 			return;

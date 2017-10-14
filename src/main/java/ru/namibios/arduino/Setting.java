@@ -19,7 +19,6 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 
-import org.apache.commons.codec.binary.StringUtils;
 import org.apache.log4j.Logger;
 
 import com.fazecast.jSerialComm.SerialPort;

@@ -1005,9 +1005,1623 @@
 [13.10.2017 23:33:18] - Start...
 [13.10.2017 23:33:22] - Port is closed. Check you port in settings
 [13.10.2017 23:34:58] - Start...
-[14.10.2017 00:04:46] - Exception org.apache.http.conn.HttpHostConnectException: Connect to 192.168.0.220:9090 [/192.168.0.220] failed: Connection refused: connect
-[14.10.2017 00:04:54] - Exception org.apache.http.conn.HttpHostConnectException: Connect to 192.168.0.220:9090 [/192.168.0.220] failed: Connection refused: connect
-[14.10.2017 00:13:01] - Exception org.apache.http.conn.HttpHostConnectException: Connect to 192.168.0.220:9090 [/192.168.0.220] failed: Connection refused: connect
-[14.10.2017 00:13:02] - Exception org.apache.http.conn.HttpHostConnectException: Connect to 192.168.0.220:9090 [/192.168.0.220] failed: Connection refused: connect
-[14.10.2017 00:20:49] - Exception org.apache.http.conn.HttpHostConnectException: Connect to 192.168.0.220:9090 [/192.168.0.220] failed: Connection refused: connect
-[14.10.2017 00:24:13] - Exception org.apache.http.conn.HttpHostConnectException: Connect to 192.168.0.220:9090 [/192.168.0.220] failed: Connection refused: connect
+[14.10.2017 19:17:36] - Start...
+[14.10.2017 19:17:57] - Start...
+[14.10.2017 19:18:00] - Port is closed. Check you port in settings
+[14.10.2017 19:19:00] - Start...
+[14.10.2017 19:19:03] - Port is closed. Check you port in settings
+[14.10.2017 19:21:07] - Start...
+[14.10.2017 19:21:10] - Port is open...
+[14.10.2017 19:21:10] - Start Fish...
+[14.10.2017 19:21:14] - Sended message: space
+[14.10.2017 19:21:19] - Wait fish..
+[14.10.2017 19:21:22] - Wait fish..
+[14.10.2017 19:21:25] - Sended message: space
+[14.10.2017 19:21:32] - Sended message: space
+[14.10.2017 19:29:01] - Start...
+[14.10.2017 19:29:04] - Port is open...
+[14.10.2017 19:29:04] - Start Fish...
+[14.10.2017 19:29:07] - Sended message: space
+[14.10.2017 19:29:12] - Wait fish..
+[14.10.2017 19:29:15] - Wait fish..
+[14.10.2017 19:29:19] - Wait fish..
+[14.10.2017 19:29:22] - Wait fish..
+[14.10.2017 19:29:25] - Wait fish..
+[14.10.2017 19:29:28] - Wait fish..
+[14.10.2017 19:29:31] - Wait fish..
+[14.10.2017 19:29:34] - Wait fish..
+[14.10.2017 19:29:37] - Wait fish..
+[14.10.2017 19:29:40] - Wait fish..
+[14.10.2017 19:29:43] - Wait fish..
+[14.10.2017 19:29:46] - Wait fish..
+[14.10.2017 19:29:49] - Wait fish..
+[14.10.2017 19:29:52] - Wait fish..
+[14.10.2017 19:29:55] - Wait fish..
+[14.10.2017 19:29:58] - Wait fish..
+[14.10.2017 19:30:01] - Wait fish..
+[14.10.2017 19:30:04] - Wait fish..
+[14.10.2017 19:30:07] - Wait fish..
+[14.10.2017 19:30:10] - Wait fish..
+[14.10.2017 19:30:13] - Wait fish..
+[14.10.2017 19:30:16] - Wait fish..
+[14.10.2017 19:30:19] - Wait fish..
+[14.10.2017 19:30:22] - Wait fish..
+[14.10.2017 19:30:25] - Wait fish..
+[14.10.2017 19:30:28] - Wait fish..
+[14.10.2017 19:30:31] - Wait fish..
+[14.10.2017 19:30:34] - Wait fish..
+[14.10.2017 19:30:37] - Wait fish..
+[14.10.2017 19:30:40] - Wait fish..
+[14.10.2017 19:30:43] - Wait fish..
+[14.10.2017 19:30:46] - Sended message: space
+[14.10.2017 19:30:54] - Sended message: space
+[14.10.2017 19:31:16] - Start...
+[14.10.2017 19:31:20] - Port is open...
+[14.10.2017 19:31:20] - Start Fish...
+[14.10.2017 19:31:23] - Sended message: space
+[14.10.2017 19:31:28] - Wait fish..
+[14.10.2017 19:31:31] - Wait fish..
+[14.10.2017 19:31:34] - Wait fish..
+[14.10.2017 19:31:37] - Wait fish..
+[14.10.2017 19:31:40] - Wait fish..
+[14.10.2017 19:31:43] - Wait fish..
+[14.10.2017 19:31:46] - Wait fish..
+[14.10.2017 19:31:49] - Wait fish..
+[14.10.2017 19:31:52] - Wait fish..
+[14.10.2017 19:31:55] - Wait fish..
+[14.10.2017 19:31:58] - Wait fish..
+[14.10.2017 19:32:01] - Wait fish..
+[14.10.2017 19:32:04] - Wait fish..
+[14.10.2017 19:32:07] - Wait fish..
+[14.10.2017 19:32:10] - Wait fish..
+[14.10.2017 19:32:13] - Wait fish..
+[14.10.2017 19:32:16] - Wait fish..
+[14.10.2017 19:32:19] - Wait fish..
+[14.10.2017 19:32:22] - Wait fish..
+[14.10.2017 19:32:25] - Wait fish..
+[14.10.2017 19:32:28] - Wait fish..
+[14.10.2017 19:32:31] - Wait fish..
+[14.10.2017 19:32:34] - Wait fish..
+[14.10.2017 19:32:37] - Wait fish..
+[14.10.2017 19:32:40] - Wait fish..
+[14.10.2017 19:32:43] - Wait fish..
+[14.10.2017 19:32:46] - Wait fish..
+[14.10.2017 19:32:49] - Wait fish..
+[14.10.2017 19:32:52] - Wait fish..
+[14.10.2017 19:32:55] - Wait fish..
+[14.10.2017 19:32:58] - Wait fish..
+[14.10.2017 19:33:01] - Wait fish..
+[14.10.2017 19:33:04] - Wait fish..
+[14.10.2017 19:33:07] - Wait fish..
+[14.10.2017 19:33:10] - Wait fish..
+[14.10.2017 19:33:13] - Wait fish..
+[14.10.2017 19:33:16] - Wait fish..
+[14.10.2017 19:33:19] - Wait fish..
+[14.10.2017 19:33:22] - Wait fish..
+[14.10.2017 19:33:25] - Sended message: space
+[14.10.2017 19:33:27] - Sended message: space
+[14.10.2017 19:33:27] - Cut the fish...
+[14.10.2017 19:33:27] - Parsing kapcha...
+[14.10.2017 19:33:27] - Clean the noise...
+[14.10.2017 19:33:28] - Clean ended...
+[14.10.2017 19:41:38] - Start...
+[14.10.2017 19:41:41] - Port is open...
+[14.10.2017 19:41:41] - Start Fish...
+[14.10.2017 19:41:44] - Sended message: space
+[14.10.2017 19:41:49] - Wait fish..
+[14.10.2017 19:41:52] - Wait fish..
+[14.10.2017 19:41:55] - Wait fish..
+[14.10.2017 19:41:59] - Wait fish..
+[14.10.2017 19:42:02] - Wait fish..
+[14.10.2017 19:42:05] - Wait fish..
+[14.10.2017 19:42:08] - Wait fish..
+[14.10.2017 19:42:11] - Wait fish..
+[14.10.2017 19:42:14] - Wait fish..
+[14.10.2017 19:42:17] - Wait fish..
+[14.10.2017 19:42:20] - Wait fish..
+[14.10.2017 19:42:23] - Wait fish..
+[14.10.2017 19:42:26] - Wait fish..
+[14.10.2017 19:42:29] - Wait fish..
+[14.10.2017 19:42:32] - Wait fish..
+[14.10.2017 19:42:35] - Wait fish..
+[14.10.2017 19:42:38] - Wait fish..
+[14.10.2017 19:42:41] - Wait fish..
+[14.10.2017 19:42:44] - Wait fish..
+[14.10.2017 19:42:47] - Wait fish..
+[14.10.2017 19:42:50] - Wait fish..
+[14.10.2017 19:42:53] - Wait fish..
+[14.10.2017 19:42:56] - Wait fish..
+[14.10.2017 19:42:59] - Wait fish..
+[14.10.2017 19:43:02] - Sended message: space
+[14.10.2017 19:43:02] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:02] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:02] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:02] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:02] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:02] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:02] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:02] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:02] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:02] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:02] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:02] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:02] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:02] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:02] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:02] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:02] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:02] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:02] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:02] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:02] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:02] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:02] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:02] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:02] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:02] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:02] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:02] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:02] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:02] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:02] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:02] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:02] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:02] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:02] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:02] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:03] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:04] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException: 10
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:05] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:06] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:07] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:08] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:09] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:10] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:11] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:12] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:12] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:12] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:12] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:12] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:12] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:12] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:12] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:12] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:12] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:12] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:12] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:12] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:12] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:12] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:12] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:12] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:12] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:12] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:12] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:12] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:12] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:12] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:12] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:12] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:12] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:12] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:12] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:12] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:12] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:12] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:12] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:12] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:12] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:12] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:12] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:12] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:12] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:12] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:12] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:12] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:12] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 19:43:12] - Exception java.lang.ArrayIndexOutOfBoundsException
+[14.10.2017 20:21:49] - numberMatrix 25	numberMatrix.column 10
+[14.10.2017 20:21:49] - template 25	template.column 10
+[14.10.2017 20:39:03] - Start...
+[14.10.2017 20:39:06] - Port is open...
+[14.10.2017 20:39:06] - Start Fish...
+[14.10.2017 20:39:09] - Sended message: space
+[14.10.2017 20:39:14] - Wait fish..
+[14.10.2017 20:39:17] - Wait fish..
+[14.10.2017 20:39:20] - Wait fish..
+[14.10.2017 20:39:23] - Wait fish..
+[14.10.2017 20:39:26] - Wait fish..
+[14.10.2017 20:39:29] - Wait fish..
+[14.10.2017 20:39:32] - Wait fish..
+[14.10.2017 20:39:35] - Wait fish..
+[14.10.2017 20:39:38] - Wait fish..
+[14.10.2017 20:39:41] - Wait fish..
+[14.10.2017 20:39:44] - Wait fish..
+[14.10.2017 20:39:48] - Wait fish..
+[14.10.2017 20:39:51] - Wait fish..
+[14.10.2017 20:39:54] - Wait fish..
+[14.10.2017 20:39:57] - Wait fish..
+[14.10.2017 20:40:00] - Wait fish..
+[14.10.2017 20:40:03] - Wait fish..
+[14.10.2017 20:40:06] - Wait fish..
+[14.10.2017 20:40:09] - Wait fish..
+[14.10.2017 20:40:12] - Wait fish..
+[14.10.2017 20:40:15] - Wait fish..
+[14.10.2017 20:40:18] - Wait fish..
+[14.10.2017 20:40:21] - Wait fish..
+[14.10.2017 20:40:24] - Wait fish..
+[14.10.2017 20:40:27] - Sended message: space
+[14.10.2017 20:40:29] - Sended message: space
+[14.10.2017 20:40:29] - Cut the fish...
+[14.10.2017 20:40:29] - Parsing kapcha...
+[14.10.2017 20:40:29] - Clean the noise...
+[14.10.2017 20:40:30] - Clean ended...
+[14.10.2017 20:40:31] - Sended message: "aaa"
+[14.10.2017 20:42:47] - Start...
+[14.10.2017 20:42:51] - Port is open...
+[14.10.2017 20:42:51] - Start Fish...
+[14.10.2017 20:42:54] - Sended message: space
+[14.10.2017 20:42:59] - Wait fish..
+[14.10.2017 20:43:02] - Wait fish..
+[14.10.2017 20:43:05] - Wait fish..
+[14.10.2017 20:43:08] - Wait fish..
+[14.10.2017 20:43:11] - Wait fish..
+[14.10.2017 20:43:14] - Wait fish..
+[14.10.2017 20:43:17] - Wait fish..
+[14.10.2017 20:43:20] - Wait fish..
+[14.10.2017 20:43:23] - Wait fish..
+[14.10.2017 20:43:26] - Wait fish..
+[14.10.2017 20:43:29] - Wait fish..
+[14.10.2017 20:43:32] - Wait fish..
+[14.10.2017 20:43:35] - Wait fish..
+[14.10.2017 20:43:38] - Wait fish..
+[14.10.2017 20:43:41] - Wait fish..
+[14.10.2017 20:43:44] - Wait fish..
+[14.10.2017 20:43:47] - Wait fish..
+[14.10.2017 20:43:50] - Wait fish..
+[14.10.2017 20:43:53] - Wait fish..
+[14.10.2017 20:43:56] - Wait fish..
+[14.10.2017 20:43:59] - Wait fish..
+[14.10.2017 20:44:02] - Wait fish..
+[14.10.2017 20:44:05] - Wait fish..
+[14.10.2017 20:44:08] - Wait fish..
+[14.10.2017 20:44:11] - Wait fish..
+[14.10.2017 20:44:14] - Wait fish..
+[14.10.2017 20:44:17] - Sended message: space
+[14.10.2017 20:44:19] - Sended message: space
+[14.10.2017 20:44:19] - Cut the fish...
+[14.10.2017 20:44:19] - Parsing kapcha...
+[14.10.2017 20:44:19] - Clean the noise...
+[14.10.2017 20:44:20] - Clean ended...
+[14.10.2017 20:44:21] - Sended message: "aaa"
+[14.10.2017 20:56:34] - Start...
+[14.10.2017 20:56:38] - Port is open...
+[14.10.2017 20:56:38] - Start Fish...
+[14.10.2017 20:56:41] - Sended message: space
+[14.10.2017 20:56:46] - Wait fish..
+[14.10.2017 20:56:49] - Wait fish..
+[14.10.2017 20:56:52] - Wait fish..
+[14.10.2017 20:56:55] - Wait fish..
+[14.10.2017 20:56:58] - Wait fish..
+[14.10.2017 20:57:01] - Wait fish..
+[14.10.2017 20:57:04] - Wait fish..
+[14.10.2017 20:57:07] - Wait fish..
+[14.10.2017 20:57:10] - Wait fish..
+[14.10.2017 20:57:13] - Wait fish..
+[14.10.2017 20:57:16] - Wait fish..
+[14.10.2017 20:57:19] - Wait fish..
+[14.10.2017 20:57:22] - Wait fish..
+[14.10.2017 20:57:25] - Wait fish..
+[14.10.2017 20:57:28] - Wait fish..
+[14.10.2017 20:57:31] - Wait fish..
+[14.10.2017 20:57:34] - Wait fish..
+[14.10.2017 20:57:37] - Wait fish..
+[14.10.2017 20:57:40] - Wait fish..
+[14.10.2017 20:57:43] - Wait fish..
+[14.10.2017 20:57:46] - Wait fish..
+[14.10.2017 20:57:49] - Wait fish..
+[14.10.2017 20:57:52] - Wait fish..
+[14.10.2017 20:57:55] - Wait fish..
+[14.10.2017 20:57:58] - Wait fish..
+[14.10.2017 20:58:01] - Wait fish..
+[14.10.2017 20:58:04] - Wait fish..
+[14.10.2017 20:58:07] - Wait fish..
+[14.10.2017 20:58:10] - Wait fish..
+[14.10.2017 20:58:13] - Wait fish..
+[14.10.2017 20:58:16] - Wait fish..
+[14.10.2017 20:58:19] - Wait fish..
+[14.10.2017 20:58:22] - Sended message: space
+[14.10.2017 20:58:24] - Sended message: space
+[14.10.2017 20:58:24] - Cut the fish...
+[14.10.2017 20:58:24] - Parsing kapcha...
+[14.10.2017 20:58:24] - Clean the noise...
+[14.10.2017 20:58:25] - Clean ended...
+[14.10.2017 20:58:25] - Sended message: "aaa"
+[14.10.2017 20:58:35] - Check loot...
+[14.10.2017 20:58:40] - Loot is not recognized... Take.
+[14.10.2017 20:58:40] - Sended message: r
+[14.10.2017 20:58:40] - Start Fish...
+[14.10.2017 20:58:43] - Sended message: space
+[14.10.2017 20:58:48] - Wait fish..
+[14.10.2017 20:58:51] - Wait fish..
+[14.10.2017 20:58:54] - Wait fish..
+[14.10.2017 21:00:55] - Start...
+[14.10.2017 21:01:22] - Start...
+[14.10.2017 21:01:26] - Port is open...
+[14.10.2017 21:01:26] - Start Fish...
+[14.10.2017 21:01:29] - Sended message: space
+[14.10.2017 21:01:34] - Wait fish..
+[14.10.2017 21:01:37] - Wait fish..
+[14.10.2017 21:01:40] - Wait fish..
+[14.10.2017 21:01:43] - Wait fish..
+[14.10.2017 21:01:46] - Wait fish..
+[14.10.2017 21:01:49] - Wait fish..
+[14.10.2017 21:01:52] - Wait fish..
+[14.10.2017 21:01:55] - Wait fish..
+[14.10.2017 21:01:58] - Wait fish..
+[14.10.2017 21:02:01] - Wait fish..
+[14.10.2017 21:02:04] - Wait fish..
+[14.10.2017 21:02:07] - Wait fish..
+[14.10.2017 21:02:10] - Wait fish..
+[14.10.2017 21:02:13] - Wait fish..
+[14.10.2017 21:02:16] - Wait fish..
+[14.10.2017 21:02:19] - Wait fish..
+[14.10.2017 21:02:22] - Wait fish..
+[14.10.2017 21:02:25] - Wait fish..
+[14.10.2017 21:02:28] - Wait fish..
+[14.10.2017 21:02:31] - Wait fish..
+[14.10.2017 21:02:34] - Wait fish..
+[14.10.2017 21:02:37] - Wait fish..
+[14.10.2017 21:02:40] - Wait fish..
+[14.10.2017 21:02:43] - Wait fish..
+[14.10.2017 21:02:46] - Wait fish..
+[14.10.2017 21:02:49] - Wait fish..
+[14.10.2017 21:02:52] - Wait fish..
+[14.10.2017 21:02:55] - Wait fish..
+[14.10.2017 21:02:58] - Sended message: space
+[14.10.2017 21:03:00] - Sended message: space
+[14.10.2017 21:03:00] - Cut the fish...
+[14.10.2017 21:03:00] - Parsing kapcha...
+[14.10.2017 21:03:00] - Clean the noise...
+[14.10.2017 21:03:01] - Clean ended...
+[14.10.2017 21:03:01] - Sended message: "aaa"
+[14.10.2017 21:03:11] - Check loot...
+[14.10.2017 21:03:37] - Start...
+[14.10.2017 21:03:41] - Port is open...
+[14.10.2017 21:03:41] - Start Fish...
+[14.10.2017 21:03:44] - Sended message: space
+[14.10.2017 21:03:49] - Wait fish..
+[14.10.2017 21:03:52] - Wait fish..
+[14.10.2017 21:03:55] - Wait fish..
+[14.10.2017 21:03:58] - Wait fish..
+[14.10.2017 21:04:01] - Wait fish..
+[14.10.2017 21:04:04] - Wait fish..
+[14.10.2017 21:04:07] - Wait fish..
+[14.10.2017 21:04:10] - Wait fish..
+[14.10.2017 21:04:13] - Wait fish..
+[14.10.2017 21:04:16] - Wait fish..
+[14.10.2017 21:04:19] - Wait fish..
+[14.10.2017 21:04:22] - Wait fish..
+[14.10.2017 21:04:25] - Wait fish..
+[14.10.2017 21:04:28] - Wait fish..
+[14.10.2017 21:04:31] - Wait fish..
+[14.10.2017 21:04:34] - Wait fish..
+[14.10.2017 21:04:37] - Wait fish..
+[14.10.2017 21:04:40] - Wait fish..
+[14.10.2017 21:04:43] - Wait fish..
+[14.10.2017 21:04:46] - Wait fish..
+[14.10.2017 21:04:49] - Wait fish..
+[14.10.2017 21:04:52] - Wait fish..
+[14.10.2017 21:04:55] - Wait fish..
+[14.10.2017 21:04:58] - Wait fish..
+[14.10.2017 21:05:01] - Sended message: space
+[14.10.2017 21:05:03] - Sended message: space
+[14.10.2017 21:05:03] - Cut the fish...
+[14.10.2017 21:05:03] - Parsing kapcha...
+[14.10.2017 21:05:03] - Clean the noise...
+[14.10.2017 21:05:04] - Clean ended...
+[14.10.2017 21:05:05] - Sended message: "aaa"
+[14.10.2017 21:10:59] - Start...
+[14.10.2017 21:11:02] - Port is open...
+[14.10.2017 21:11:02] - Start Fish...
+[14.10.2017 21:11:28] - Start...
+[14.10.2017 21:11:31] - Port is open...
+[14.10.2017 21:11:31] - Start Fish...
+[14.10.2017 21:11:34] - Sended message: space
+[14.10.2017 21:11:39] - Wait fish..
+[14.10.2017 21:11:42] - Wait fish..
+[14.10.2017 21:11:45] - Wait fish..
+[14.10.2017 21:11:48] - Wait fish..
+[14.10.2017 21:11:51] - Wait fish..
+[14.10.2017 21:11:54] - Wait fish..
+[14.10.2017 21:11:57] - Wait fish..
+[14.10.2017 21:12:00] - Wait fish..
+[14.10.2017 21:12:03] - Wait fish..
+[14.10.2017 21:12:07] - Wait fish..
+[14.10.2017 21:12:10] - Wait fish..
+[14.10.2017 21:12:13] - Wait fish..
+[14.10.2017 21:12:16] - Wait fish..
+[14.10.2017 21:12:19] - Wait fish..
+[14.10.2017 21:12:22] - Wait fish..
+[14.10.2017 21:12:25] - Wait fish..
+[14.10.2017 21:12:28] - Wait fish..
+[14.10.2017 21:12:31] - Wait fish..
+[14.10.2017 21:12:34] - Wait fish..
+[14.10.2017 21:12:37] - Wait fish..
+[14.10.2017 21:12:40] - Wait fish..
+[14.10.2017 21:12:43] - Wait fish..
+[14.10.2017 21:12:46] - Wait fish..
+[14.10.2017 21:12:49] - Wait fish..
+[14.10.2017 21:12:52] - Wait fish..
+[14.10.2017 21:12:55] - Wait fish..
+[14.10.2017 21:12:58] - Wait fish..
+[14.10.2017 21:13:01] - Wait fish..
+[14.10.2017 21:13:04] - Wait fish..
+[14.10.2017 21:13:07] - Wait fish..
+[14.10.2017 21:13:10] - Wait fish..
+[14.10.2017 21:13:13] - Wait fish..
+[14.10.2017 21:13:16] - Wait fish..
+[14.10.2017 21:13:19] - Wait fish..
+[14.10.2017 21:13:22] - Wait fish..
+[14.10.2017 21:13:25] - Sended message: space
+[14.10.2017 21:13:27] - Sended message: space
+[14.10.2017 21:13:27] - Cut the fish...
+[14.10.2017 21:13:27] - Parsing kapcha...
+[14.10.2017 21:13:27] - Clean the noise...
+[14.10.2017 21:13:28] - Clean ended...
+[14.10.2017 21:13:29] - Sended message: "aaa"
+[14.10.2017 21:13:39] - Check loot...
+[14.10.2017 21:16:20] - Start...
+[14.10.2017 21:16:23] - Port is open...
+[14.10.2017 21:16:23] - Start Fish...
+[14.10.2017 21:16:26] - Sended message: space
+[14.10.2017 21:16:31] - Wait fish..
+[14.10.2017 21:16:34] - Wait fish..
+[14.10.2017 21:16:37] - Wait fish..
+[14.10.2017 21:16:40] - Wait fish..
+[14.10.2017 21:16:43] - Wait fish..
+[14.10.2017 21:16:46] - Wait fish..
+[14.10.2017 21:16:49] - Wait fish..
+[14.10.2017 21:16:52] - Wait fish..
+[14.10.2017 21:16:55] - Wait fish..
+[14.10.2017 21:16:58] - Wait fish..
+[14.10.2017 21:17:01] - Wait fish..
+[14.10.2017 21:17:04] - Wait fish..
+[14.10.2017 21:17:07] - Wait fish..
+[14.10.2017 21:17:10] - Wait fish..
+[14.10.2017 21:17:14] - Wait fish..
+[14.10.2017 21:17:17] - Wait fish..
+[14.10.2017 21:17:20] - Wait fish..
+[14.10.2017 21:17:23] - Wait fish..
+[14.10.2017 21:17:26] - Wait fish..
+[14.10.2017 21:17:29] - Wait fish..
+[14.10.2017 21:17:32] - Wait fish..
+[14.10.2017 21:17:35] - Wait fish..
+[14.10.2017 21:17:38] - Wait fish..
+[14.10.2017 21:17:41] - Wait fish..
+[14.10.2017 21:17:44] - Wait fish..
+[14.10.2017 21:17:47] - Wait fish..
+[14.10.2017 21:17:50] - Wait fish..
+[14.10.2017 21:17:53] - Wait fish..
+[14.10.2017 21:17:56] - Wait fish..
+[14.10.2017 21:17:59] - Wait fish..
+[14.10.2017 21:18:02] - Wait fish..
+[14.10.2017 21:18:05] - Wait fish..
+[14.10.2017 21:18:08] - Wait fish..
+[14.10.2017 21:18:11] - Wait fish..
+[14.10.2017 21:18:14] - Sended message: space
+[14.10.2017 21:18:16] - Sended message: space
+[14.10.2017 21:18:16] - Cut the fish...
+[14.10.2017 21:18:16] - Parsing kapcha...
+[14.10.2017 21:18:16] - Clean the noise...
+[14.10.2017 21:18:17] - Clean ended...
+[14.10.2017 21:18:21] - Sended message: "aaa"
+[14.10.2017 21:22:44] - Start...
+[14.10.2017 21:22:47] - Port is open...
+[14.10.2017 21:22:47] - Start Fish...
+[14.10.2017 21:22:50] - Sended message: space
+[14.10.2017 21:22:55] - Wait fish..
+[14.10.2017 21:22:58] - Wait fish..
+[14.10.2017 21:23:01] - Wait fish..
+[14.10.2017 21:23:04] - Wait fish..
+[14.10.2017 21:23:07] - Wait fish..
+[14.10.2017 21:23:10] - Wait fish..
+[14.10.2017 21:23:13] - Wait fish..
+[14.10.2017 21:23:16] - Wait fish..
+[14.10.2017 21:23:19] - Wait fish..
+[14.10.2017 21:23:22] - Wait fish..
+[14.10.2017 21:23:25] - Wait fish..
+[14.10.2017 21:23:28] - Wait fish..
+[14.10.2017 21:23:31] - Wait fish..
+[14.10.2017 21:23:34] - Wait fish..
+[14.10.2017 21:23:37] - Wait fish..
+[14.10.2017 21:23:40] - Wait fish..
+[14.10.2017 21:23:43] - Wait fish..
+[14.10.2017 21:23:46] - Wait fish..
+[14.10.2017 21:23:49] - Wait fish..
+[14.10.2017 21:23:52] - Wait fish..
+[14.10.2017 21:23:55] - Wait fish..
+[14.10.2017 21:23:59] - Wait fish..
+[14.10.2017 21:24:02] - Wait fish..
+[14.10.2017 21:24:05] - Wait fish..
+[14.10.2017 21:24:08] - Wait fish..
+[14.10.2017 21:24:11] - Wait fish..
+[14.10.2017 21:24:14] - Wait fish..
+[14.10.2017 21:24:17] - Wait fish..
+[14.10.2017 21:24:20] - Wait fish..
+[14.10.2017 21:24:23] - Wait fish..
+[14.10.2017 21:24:26] - Wait fish..
+[14.10.2017 21:24:29] - Wait fish..
+[14.10.2017 21:24:32] - Wait fish..
+[14.10.2017 21:24:35] - Wait fish..
+[14.10.2017 21:24:38] - Wait fish..
+[14.10.2017 21:24:41] - Wait fish..
+[14.10.2017 21:24:44] - Sended message: space
+[14.10.2017 21:24:46] - Sended message: space
+[14.10.2017 21:24:46] - Cut the fish...
+[14.10.2017 21:24:46] - Parsing kapcha...
+[14.10.2017 21:24:50] - Clean the noise...
+[14.10.2017 21:24:50] - Clean ended...
+[14.10.2017 21:24:51] - Sended message: ""
+[14.10.2017 21:30:14] - Start...
+[14.10.2017 21:30:18] - Port is open...
+[14.10.2017 21:30:18] - Start Fish...
+[14.10.2017 21:30:21] - Sended message: space
+[14.10.2017 21:30:26] - Wait fish..
+[14.10.2017 21:30:29] - Wait fish..
+[14.10.2017 21:30:32] - Wait fish..
+[14.10.2017 21:30:35] - Wait fish..
+[14.10.2017 21:30:38] - Wait fish..
+[14.10.2017 21:30:41] - Wait fish..
+[14.10.2017 21:30:44] - Wait fish..
+[14.10.2017 21:30:47] - Wait fish..
+[14.10.2017 21:30:50] - Wait fish..
+[14.10.2017 21:30:53] - Wait fish..
+[14.10.2017 21:30:56] - Wait fish..
+[14.10.2017 21:30:59] - Wait fish..
+[14.10.2017 21:31:02] - Wait fish..
+[14.10.2017 21:31:05] - Wait fish..
+[14.10.2017 21:31:08] - Wait fish..
+[14.10.2017 21:31:11] - Wait fish..
+[14.10.2017 21:31:14] - Wait fish..
+[14.10.2017 21:31:17] - Wait fish..
+[14.10.2017 21:31:20] - Wait fish..
+[14.10.2017 21:31:23] - Wait fish..
+[14.10.2017 21:31:26] - Wait fish..
+[14.10.2017 21:31:29] - Wait fish..
+[14.10.2017 21:31:32] - Wait fish..
+[14.10.2017 21:31:35] - Wait fish..
+[14.10.2017 21:31:38] - Wait fish..
+[14.10.2017 21:31:41] - Wait fish..
+[14.10.2017 21:31:44] - Wait fish..
+[14.10.2017 21:31:47] - Wait fish..
+[14.10.2017 21:31:51] - Wait fish..
+[14.10.2017 21:31:54] - Wait fish..
+[14.10.2017 21:31:57] - Wait fish..
+[14.10.2017 21:32:00] - Wait fish..
+[14.10.2017 21:32:03] - Wait fish..
+[14.10.2017 21:32:06] - Sended message: space
+[14.10.2017 21:32:08] - Sended message: space
+[14.10.2017 21:32:08] - Cut the fish...
+[14.10.2017 21:32:08] - Parsing kapcha...
+[14.10.2017 21:32:12] - Clean the noise...
+[14.10.2017 21:32:12] - Clean ended...
+[14.10.2017 21:32:13] - Sended message: ""
+[14.10.2017 21:32:23] - Check loot...
+[14.10.2017 21:32:28] - Loot is not recognized... Take.
+[14.10.2017 21:32:28] - Sended message: r
+[14.10.2017 21:32:28] - Start Fish...
+[14.10.2017 21:32:31] - Sended message: space
+[14.10.2017 21:32:36] - Wait fish..
+[14.10.2017 21:32:39] - Wait fish..
+[14.10.2017 21:32:42] - Wait fish..
+[14.10.2017 21:44:05] - Start...
+[14.10.2017 21:44:09] - Port is open...
+[14.10.2017 21:44:09] - Start Fish...
+[14.10.2017 21:44:12] - Sended message: space
+[14.10.2017 21:44:17] - Wait fish..
+[14.10.2017 21:44:20] - Wait fish..
+[14.10.2017 21:44:23] - Wait fish..
+[14.10.2017 21:44:26] - Wait fish..
+[14.10.2017 21:44:29] - Wait fish..
+[14.10.2017 21:44:32] - Wait fish..
+[14.10.2017 21:44:35] - Wait fish..
+[14.10.2017 21:44:38] - Wait fish..
+[14.10.2017 21:44:41] - Wait fish..
+[14.10.2017 21:44:44] - Wait fish..
+[14.10.2017 21:44:47] - Wait fish..
+[14.10.2017 21:44:50] - Wait fish..
+[14.10.2017 21:44:53] - Wait fish..
+[14.10.2017 21:44:56] - Wait fish..
+[14.10.2017 21:44:59] - Wait fish..
+[14.10.2017 21:45:02] - Wait fish..
+[14.10.2017 21:45:05] - Wait fish..
+[14.10.2017 21:45:08] - Wait fish..
+[14.10.2017 21:45:11] - Wait fish..
+[14.10.2017 21:45:14] - Wait fish..
+[14.10.2017 21:45:17] - Wait fish..
+[14.10.2017 21:45:20] - Wait fish..
+[14.10.2017 21:45:23] - Wait fish..
+[14.10.2017 21:45:26] - Wait fish..
+[14.10.2017 21:45:29] - Wait fish..
+[14.10.2017 21:45:32] - Wait fish..
+[14.10.2017 21:45:35] - Wait fish..
+[14.10.2017 21:45:38] - Wait fish..
+[14.10.2017 21:45:41] - Sended message: space
+[14.10.2017 21:45:44] - Sended message: space
+[14.10.2017 21:45:44] - Cut the fish...
+[14.10.2017 21:45:44] - Parsing kapcha...
+[14.10.2017 21:45:48] - Clean the noise...
+[14.10.2017 21:45:49] - Clean ended...
+[14.10.2017 21:45:49] - Sended message: ""
+[14.10.2017 21:45:59] - Check loot...
+[14.10.2017 21:46:05] - Loot is not recognized... Take.
+[14.10.2017 21:46:05] - Sended message: r
+[14.10.2017 21:46:05] - Start Fish...
+[14.10.2017 21:46:08] - Sended message: space
+[14.10.2017 21:48:50] - Start...
+[14.10.2017 21:48:53] - Port is open...
+[14.10.2017 21:48:53] - Start Fish...
+[14.10.2017 21:48:56] - Message length: 5
+[14.10.2017 21:48:56] - Sended message: space
+[14.10.2017 21:49:01] - Wait fish..
+[14.10.2017 21:49:04] - Wait fish..
+[14.10.2017 21:49:07] - Wait fish..
+[14.10.2017 21:49:10] - Wait fish..
+[14.10.2017 21:49:13] - Wait fish..
+[14.10.2017 21:49:16] - Wait fish..
+[14.10.2017 21:49:19] - Wait fish..
+[14.10.2017 21:49:22] - Wait fish..
+[14.10.2017 21:49:25] - Wait fish..
+[14.10.2017 21:49:28] - Wait fish..
+[14.10.2017 21:49:31] - Wait fish..
+[14.10.2017 21:49:34] - Wait fish..
+[14.10.2017 21:49:37] - Wait fish..
+[14.10.2017 21:49:40] - Wait fish..
+[14.10.2017 21:49:43] - Wait fish..
+[14.10.2017 21:49:46] - Wait fish..
+[14.10.2017 21:49:49] - Wait fish..
+[14.10.2017 21:49:52] - Wait fish..
+[14.10.2017 21:49:55] - Wait fish..
+[14.10.2017 21:49:58] - Wait fish..
+[14.10.2017 21:50:01] - Wait fish..
+[14.10.2017 21:50:04] - Wait fish..
+[14.10.2017 21:50:07] - Wait fish..
+[14.10.2017 21:50:11] - Wait fish..
+[14.10.2017 21:50:14] - Wait fish..
+[14.10.2017 21:50:17] - Wait fish..
+[14.10.2017 21:50:20] - Wait fish..
+[14.10.2017 21:50:23] - Wait fish..
+[14.10.2017 21:50:26] - Wait fish..
+[14.10.2017 21:50:29] - Wait fish..
+[14.10.2017 21:50:32] - Wait fish..
+[14.10.2017 21:50:35] - Wait fish..
+[14.10.2017 21:50:38] - Wait fish..
+[14.10.2017 21:50:41] - Wait fish..
+[14.10.2017 21:50:44] - Wait fish..
+[14.10.2017 21:50:47] - Message length: 5
+[14.10.2017 21:50:47] - Sended message: space
+[14.10.2017 21:50:49] - Message length: 5
+[14.10.2017 21:50:49] - Sended message: space
+[14.10.2017 21:50:49] - Cut the fish...
+[14.10.2017 21:50:49] - Parsing kapcha...
+[14.10.2017 21:50:53] - Clean the noise...
+[14.10.2017 21:50:54] - Clean ended...
+[14.10.2017 21:50:55] - Message length: 2
+[14.10.2017 21:50:55] - Sended message: ""
+[14.10.2017 21:51:05] - Check loot...
+[14.10.2017 21:51:10] - Loot is not recognized... Take.
+[14.10.2017 21:51:10] - Message length: 1
+[14.10.2017 21:51:10] - Sended message: r
+[14.10.2017 21:51:10] - Start Fish...
+[14.10.2017 21:54:58] - Start...
+[14.10.2017 21:55:02] - Port is open...
+[14.10.2017 21:55:02] - Start Fish...
+[14.10.2017 21:55:05] - Message length: 5
+[14.10.2017 21:55:05] - Sended message: space
+[14.10.2017 21:55:10] - Wait fish..
+[14.10.2017 21:55:13] - Wait fish..
+[14.10.2017 21:55:16] - Wait fish..
+[14.10.2017 21:55:19] - Wait fish..
+[14.10.2017 21:55:22] - Wait fish..
+[14.10.2017 21:55:25] - Wait fish..
+[14.10.2017 21:55:28] - Wait fish..
+[14.10.2017 21:55:31] - Message length: 5
+[14.10.2017 21:55:31] - Sended message: space
+[14.10.2017 21:55:31] - Message length: 5
+[14.10.2017 21:55:31] - Sended message: space
+[14.10.2017 21:55:31] - Cut the fish...
+[14.10.2017 21:55:31] - Parsing kapcha...
+[14.10.2017 21:55:35] - Clean the noise...
+[14.10.2017 21:55:36] - Clean ended...
+[14.10.2017 21:55:36] - Message length: 2
+[14.10.2017 21:55:36] - Sended message: ""
+[14.10.2017 21:55:54] - Start...
+[14.10.2017 21:55:58] - Port is open...
+[14.10.2017 21:55:58] - Start Fish...
+[14.10.2017 21:56:01] - Message length: 5
+[14.10.2017 21:56:01] - Sended message: space
+[14.10.2017 21:56:06] - Wait fish..
+[14.10.2017 21:56:09] - Wait fish..
+[14.10.2017 21:56:12] - Wait fish..
+[14.10.2017 21:56:15] - Wait fish..
+[14.10.2017 21:56:18] - Wait fish..
+[14.10.2017 21:56:21] - Wait fish..
+[14.10.2017 21:56:24] - Wait fish..
+[14.10.2017 21:56:27] - Wait fish..
+[14.10.2017 21:56:30] - Wait fish..
+[14.10.2017 21:56:33] - Wait fish..
+[14.10.2017 21:56:36] - Wait fish..
+[14.10.2017 21:56:39] - Wait fish..
+[14.10.2017 21:56:42] - Message length: 5
+[14.10.2017 21:56:42] - Sended message: space
+[14.10.2017 21:56:45] - Message length: 5
+[14.10.2017 21:56:45] - Sended message: space
+[14.10.2017 21:56:45] - Cut the fish...
+[14.10.2017 21:56:45] - Parsing kapcha...
+[14.10.2017 21:56:49] - Clean the noise...
+[14.10.2017 21:56:49] - Clean ended...
+[14.10.2017 21:56:50] - Message length: 2
+[14.10.2017 21:56:50] - Sended message: ""
+[14.10.2017 21:57:00] - Check loot...
+[14.10.2017 21:58:06] - Start...
+[14.10.2017 21:58:09] - Port is open...
+[14.10.2017 21:58:09] - Start Fish...
+[14.10.2017 21:58:12] - Message length: 5
+[14.10.2017 21:58:12] - Sended message: space
+[14.10.2017 21:58:17] - Wait fish..
+[14.10.2017 21:58:20] - Wait fish..
+[14.10.2017 21:58:23] - Wait fish..
+[14.10.2017 21:58:26] - Wait fish..
+[14.10.2017 21:58:29] - Wait fish..
+[14.10.2017 21:58:32] - Wait fish..
+[14.10.2017 21:58:35] - Wait fish..
+[14.10.2017 21:58:38] - Wait fish..
+[14.10.2017 21:58:41] - Wait fish..
+[14.10.2017 21:58:44] - Wait fish..
+[14.10.2017 21:58:47] - Wait fish..
+[14.10.2017 21:58:50] - Wait fish..
+[14.10.2017 21:58:53] - Wait fish..
+[14.10.2017 21:58:56] - Wait fish..
+[14.10.2017 21:58:59] - Wait fish..
+[14.10.2017 21:59:02] - Wait fish..
+[14.10.2017 21:59:05] - Wait fish..
+[14.10.2017 21:59:08] - Wait fish..
+[14.10.2017 21:59:11] - Wait fish..
+[14.10.2017 21:59:15] - Wait fish..
+[14.10.2017 21:59:18] - Wait fish..
+[14.10.2017 21:59:21] - Wait fish..
+[14.10.2017 21:59:24] - Wait fish..
+[14.10.2017 21:59:27] - Wait fish..
+[14.10.2017 21:59:30] - Wait fish..
+[14.10.2017 21:59:33] - Wait fish..
+[14.10.2017 21:59:36] - Wait fish..
+[14.10.2017 21:59:39] - Wait fish..
+[14.10.2017 21:59:42] - Wait fish..
+[14.10.2017 21:59:45] - Wait fish..
+[14.10.2017 21:59:48] - Wait fish..
+[14.10.2017 21:59:51] - Wait fish..
+[14.10.2017 21:59:54] - Wait fish..
+[14.10.2017 21:59:57] - Message length: 5
+[14.10.2017 21:59:57] - Sended message: space
+[14.10.2017 21:59:59] - Message length: 5
+[14.10.2017 21:59:59] - Sended message: space
+[14.10.2017 21:59:59] - Cut the fish...
+[14.10.2017 21:59:59] - Parsing kapcha...
+[14.10.2017 22:00:03] - Clean the noise...
+[14.10.2017 22:00:04] - Clean ended...
+[14.10.2017 22:00:05] - Message length: 2
+[14.10.2017 22:00:05] - Sended message: ""
+[14.10.2017 22:00:15] - Check loot...
+[14.10.2017 22:20:31] - Start...
+[14.10.2017 22:20:35] - Port is open...
+[14.10.2017 22:20:35] - Start Fish...
+[14.10.2017 22:20:38] - Message length: 5
+[14.10.2017 22:20:38] - Sended message: space
+[14.10.2017 22:20:43] - Wait fish..
+[14.10.2017 22:20:46] - Wait fish..
+[14.10.2017 22:20:49] - Wait fish..
+[14.10.2017 22:20:52] - Wait fish..
+[14.10.2017 22:20:55] - Wait fish..
+[14.10.2017 22:20:58] - Wait fish..
+[14.10.2017 22:21:01] - Wait fish..
+[14.10.2017 22:21:04] - Wait fish..
+[14.10.2017 22:21:07] - Wait fish..
+[14.10.2017 22:21:10] - Wait fish..
+[14.10.2017 22:21:13] - Wait fish..
+[14.10.2017 22:21:16] - Wait fish..
+[14.10.2017 22:21:19] - Wait fish..
+[14.10.2017 22:21:22] - Wait fish..
+[14.10.2017 22:21:25] - Wait fish..
+[14.10.2017 22:21:28] - Wait fish..
+[14.10.2017 22:21:31] - Wait fish..
+[14.10.2017 22:21:34] - Wait fish..
+[14.10.2017 22:21:37] - Wait fish..
+[14.10.2017 22:21:40] - Wait fish..
+[14.10.2017 22:21:43] - Wait fish..
+[14.10.2017 22:21:46] - Wait fish..
+[14.10.2017 22:21:49] - Wait fish..
+[14.10.2017 22:21:52] - Wait fish..
+[14.10.2017 22:21:55] - Wait fish..
+[14.10.2017 22:21:58] - Wait fish..
+[14.10.2017 22:22:01] - Message length: 5
+[14.10.2017 22:22:01] - Sended message: space
+[14.10.2017 22:22:04] - Message length: 5
+[14.10.2017 22:22:04] - Sended message: space
+[14.10.2017 22:22:04] - Cut the fish...
+[14.10.2017 22:22:04] - Parsing kapcha...
+[14.10.2017 22:22:08] - Clean the noise...
+[14.10.2017 22:22:08] - Clean ended...
+[14.10.2017 22:22:19] - Start Fish...
+[14.10.2017 22:22:22] - Message length: 5
+[14.10.2017 22:22:22] - Sended message: space
+[14.10.2017 22:22:27] - Wait fish..
+[14.10.2017 22:34:36] - Start...
+[14.10.2017 22:34:39] - Port is open...
+[14.10.2017 22:34:39] - Start Fish...
+[14.10.2017 22:34:42] - Message length: 5
+[14.10.2017 22:34:42] - Sended message: space
+[14.10.2017 22:34:47] - Wait fish..
+[14.10.2017 22:34:50] - Wait fish..
+[14.10.2017 22:34:53] - Wait fish..
+[14.10.2017 22:34:56] - Wait fish..
+[14.10.2017 22:34:59] - Wait fish..
+[14.10.2017 22:35:02] - Wait fish..
+[14.10.2017 22:35:05] - Wait fish..
+[14.10.2017 22:35:09] - Wait fish..
+[14.10.2017 22:35:12] - Wait fish..
+[14.10.2017 22:35:15] - Wait fish..
+[14.10.2017 22:35:18] - Wait fish..
+[14.10.2017 22:35:21] - Wait fish..
+[14.10.2017 22:35:24] - Wait fish..
+[14.10.2017 22:35:27] - Wait fish..
+[14.10.2017 22:35:30] - Wait fish..
+[14.10.2017 22:35:33] - Wait fish..
+[14.10.2017 22:35:36] - Wait fish..
+[14.10.2017 22:35:39] - Wait fish..
+[14.10.2017 22:35:42] - Wait fish..
+[14.10.2017 22:35:45] - Wait fish..
+[14.10.2017 22:35:48] - Wait fish..
+[14.10.2017 22:35:51] - Wait fish..
+[14.10.2017 22:35:54] - Wait fish..
+[14.10.2017 22:35:57] - Wait fish..
+[14.10.2017 22:36:00] - Wait fish..
+[14.10.2017 22:36:03] - Wait fish..
+[14.10.2017 22:36:06] - Wait fish..
+[14.10.2017 22:36:09] - Wait fish..
+[14.10.2017 22:36:12] - Wait fish..
+[14.10.2017 22:36:15] - Wait fish..
+[14.10.2017 22:36:18] - Wait fish..
+[14.10.2017 22:36:21] - Wait fish..
+[14.10.2017 22:36:24] - Wait fish..
+[14.10.2017 22:36:27] - Wait fish..
+[14.10.2017 22:36:30] - Message length: 5
+[14.10.2017 22:36:30] - Sended message: space
+[14.10.2017 22:36:32] - Message length: 5
+[14.10.2017 22:36:32] - Sended message: space
+[14.10.2017 22:36:32] - Cut the fish...
+[14.10.2017 22:36:32] - Parsing kapcha...
+[14.10.2017 22:36:32] - Clean the noise...
+[14.10.2017 22:36:33] - Clean ended...
+[14.10.2017 22:36:37] - Clean the noise...
+[14.10.2017 22:36:37] - Clean ended...
+[14.10.2017 22:36:48] - Captcha is not recognized. Return to start...
+[14.10.2017 22:36:48] - Start Fish...
+[14.10.2017 22:36:51] - Message length: 5
+[14.10.2017 22:36:51] - Sended message: space
+[14.10.2017 22:36:56] - Wait fish..
+[14.10.2017 22:48:15] - Start...
+[14.10.2017 22:48:19] - Port is open...
+[14.10.2017 22:48:19] - Start Fish...
+[14.10.2017 22:48:22] - Message length: 5
+[14.10.2017 22:48:22] - Sended message: space
+[14.10.2017 22:48:27] - Wait fish..
+[14.10.2017 22:48:30] - Wait fish..
+[14.10.2017 22:48:33] - Wait fish..
+[14.10.2017 22:48:36] - Wait fish..
+[14.10.2017 22:48:39] - Wait fish..
+[14.10.2017 22:48:42] - Wait fish..
+[14.10.2017 22:48:45] - Wait fish..
+[14.10.2017 22:48:48] - Wait fish..
+[14.10.2017 22:48:51] - Wait fish..
+[14.10.2017 22:48:54] - Wait fish..
+[14.10.2017 22:48:57] - Wait fish..
+[14.10.2017 22:49:00] - Wait fish..
+[14.10.2017 22:49:03] - Wait fish..
+[14.10.2017 22:49:06] - Wait fish..
+[14.10.2017 22:49:09] - Wait fish..
+[14.10.2017 22:49:12] - Wait fish..
+[14.10.2017 22:49:15] - Wait fish..
+[14.10.2017 22:49:18] - Wait fish..
+[14.10.2017 22:49:21] - Wait fish..
+[14.10.2017 22:49:24] - Wait fish..
+[14.10.2017 22:49:27] - Wait fish..
+[14.10.2017 22:49:30] - Wait fish..
+[14.10.2017 22:49:33] - Wait fish..
+[14.10.2017 22:49:36] - Wait fish..
+[14.10.2017 22:49:39] - Wait fish..
+[14.10.2017 22:49:42] - Wait fish..
+[14.10.2017 22:49:45] - Wait fish..
+[14.10.2017 22:49:48] - Wait fish..
+[14.10.2017 22:49:51] - Wait fish..
+[14.10.2017 22:49:54] - Wait fish..
+[14.10.2017 22:49:57] - Wait fish..
+[14.10.2017 22:50:00] - Wait fish..
+[14.10.2017 22:50:03] - Wait fish..
+[14.10.2017 22:50:06] - Wait fish..
+[14.10.2017 22:50:09] - Wait fish..
+[14.10.2017 22:50:12] - Wait fish..
+[14.10.2017 22:50:15] - Message length: 5
+[14.10.2017 22:50:15] - Sended message: space
+[14.10.2017 22:50:18] - Message length: 5
+[14.10.2017 22:50:18] - Sended message: space
+[14.10.2017 22:50:18] - Cut the fish...
+[14.10.2017 22:50:18] - Parsing kapcha...
+[14.10.2017 22:50:18] - Clean the noise...
+[14.10.2017 22:50:18] - Clean ended...
+[14.10.2017 22:50:22] - Clean the noise...
+[14.10.2017 22:50:23] - Clean ended...
+[14.10.2017 22:50:33] - Captcha is not recognized. Return to start...
+[14.10.2017 22:50:33] - Start Fish...
+[14.10.2017 22:50:36] - Message length: 5
+[14.10.2017 22:50:36] - Sended message: space
+[14.10.2017 22:53:23] - Start...
+[14.10.2017 22:53:27] - Port is open...
+[14.10.2017 22:53:27] - Start Fish...
+[14.10.2017 22:53:30] - Message length: 5
+[14.10.2017 22:53:30] - Sended message: space
+[14.10.2017 22:53:35] - Wait fish..
+[14.10.2017 22:53:38] - Wait fish..
+[14.10.2017 22:53:41] - Wait fish..
+[14.10.2017 22:53:44] - Wait fish..
+[14.10.2017 22:53:47] - Wait fish..
+[14.10.2017 22:53:50] - Wait fish..
+[14.10.2017 22:53:53] - Wait fish..
+[14.10.2017 22:53:56] - Wait fish..
+[14.10.2017 22:53:59] - Wait fish..
+[14.10.2017 22:54:02] - Wait fish..
+[14.10.2017 22:54:05] - Wait fish..
+[14.10.2017 22:54:08] - Wait fish..
+[14.10.2017 22:54:11] - Wait fish..
+[14.10.2017 22:54:14] - Wait fish..
+[14.10.2017 22:54:17] - Wait fish..
+[14.10.2017 22:54:20] - Wait fish..
+[14.10.2017 22:54:23] - Wait fish..
+[14.10.2017 22:54:26] - Wait fish..
+[14.10.2017 22:54:29] - Wait fish..
+[14.10.2017 22:54:32] - Wait fish..
+[14.10.2017 22:54:35] - Wait fish..
+[14.10.2017 22:54:38] - Wait fish..
+[14.10.2017 22:54:41] - Wait fish..
+[14.10.2017 22:54:44] - Wait fish..
+[14.10.2017 22:54:47] - Wait fish..
+[14.10.2017 22:54:50] - Wait fish..
+[14.10.2017 22:54:53] - Wait fish..
+[14.10.2017 22:54:56] - Wait fish..
+[14.10.2017 22:54:59] - Wait fish..
+[14.10.2017 22:55:02] - Wait fish..
+[14.10.2017 22:55:05] - Wait fish..
+[14.10.2017 22:55:08] - Wait fish..
+[14.10.2017 22:55:11] - Wait fish..
+[14.10.2017 22:55:14] - Wait fish..
+[14.10.2017 22:55:17] - Message length: 5
+[14.10.2017 22:55:17] - Sended message: space
+[14.10.2017 22:55:20] - Message length: 5
+[14.10.2017 22:55:20] - Sended message: space
+[14.10.2017 22:55:20] - Cut the fish...
+[14.10.2017 22:55:20] - Parsing kapcha...
+[14.10.2017 22:55:24] - Clean the noise...
+[14.10.2017 22:55:24] - Clean ended...
+[14.10.2017 22:55:35] - Captcha is not recognized. Return to start...
+[14.10.2017 22:55:35] - Start Fish...
+[14.10.2017 22:55:38] - Message length: 5
+[14.10.2017 22:55:38] - Sended message: space
+[14.10.2017 22:55:43] - Wait fish..
+[14.10.2017 23:11:01] - Start...
+[14.10.2017 23:11:05] - Port is open...
+[14.10.2017 23:11:05] - Start Fish...
+[14.10.2017 23:11:08] - Message length: 5
+[14.10.2017 23:11:08] - Sended message: space
+[14.10.2017 23:11:13] - Wait fish..
+[14.10.2017 23:11:16] - Wait fish..
+[14.10.2017 23:11:19] - Wait fish..
+[14.10.2017 23:11:22] - Wait fish..
+[14.10.2017 23:11:25] - Wait fish..
+[14.10.2017 23:11:28] - Wait fish..
+[14.10.2017 23:11:31] - Wait fish..
+[14.10.2017 23:11:34] - Wait fish..
+[14.10.2017 23:11:37] - Wait fish..
+[14.10.2017 23:11:40] - Wait fish..
+[14.10.2017 23:11:43] - Wait fish..
+[14.10.2017 23:11:46] - Wait fish..
+[14.10.2017 23:11:49] - Wait fish..
+[14.10.2017 23:11:52] - Wait fish..
+[14.10.2017 23:11:55] - Wait fish..
+[14.10.2017 23:11:58] - Wait fish..
+[14.10.2017 23:12:01] - Wait fish..
+[14.10.2017 23:12:04] - Wait fish..
+[14.10.2017 23:12:07] - Wait fish..
+[14.10.2017 23:12:10] - Wait fish..
+[14.10.2017 23:12:13] - Wait fish..
+[14.10.2017 23:12:16] - Wait fish..
+[14.10.2017 23:12:19] - Wait fish..
+[14.10.2017 23:12:22] - Wait fish..
+[14.10.2017 23:12:25] - Wait fish..
+[14.10.2017 23:12:28] - Wait fish..
+[14.10.2017 23:12:31] - Wait fish..
+[14.10.2017 23:12:34] - Wait fish..
+[14.10.2017 23:12:37] - Wait fish..
+[14.10.2017 23:12:40] - Wait fish..
+[14.10.2017 23:12:43] - Wait fish..
+[14.10.2017 23:12:46] - Wait fish..
+[14.10.2017 23:12:49] - Wait fish..
+[14.10.2017 23:12:52] - Wait fish..
+[14.10.2017 23:12:55] - Wait fish..
+[14.10.2017 23:12:58] - Wait fish..
+[14.10.2017 23:13:01] - Wait fish..
+[14.10.2017 23:13:04] - Message length: 5
+[14.10.2017 23:13:04] - Sended message: space
+[14.10.2017 23:13:06] - Message length: 5
+[14.10.2017 23:13:06] - Sended message: space
+[14.10.2017 23:13:06] - Cut the fish...
+[14.10.2017 23:13:06] - Parsing kapcha...
+[14.10.2017 23:13:10] - Clean the noise...
+[14.10.2017 23:13:11] - Clean ended...
+[14.10.2017 23:25:20] - Start...
+[14.10.2017 23:25:23] - Port is open...
+[14.10.2017 23:25:23] - Start Fish...
+[14.10.2017 23:25:26] - Sended message: space
+[14.10.2017 23:25:31] - Wait fish..
+[14.10.2017 23:25:34] - Wait fish..
+[14.10.2017 23:25:37] - Wait fish..
+[14.10.2017 23:25:40] - Wait fish..
+[14.10.2017 23:25:43] - Wait fish..
+[14.10.2017 23:25:46] - Wait fish..
+[14.10.2017 23:25:49] - Wait fish..
+[14.10.2017 23:25:52] - Wait fish..
+[14.10.2017 23:25:55] - Wait fish..
+[14.10.2017 23:25:58] - Wait fish..
+[14.10.2017 23:26:01] - Wait fish..
+[14.10.2017 23:26:04] - Wait fish..
+[14.10.2017 23:26:07] - Wait fish..
+[14.10.2017 23:26:10] - Wait fish..
+[14.10.2017 23:26:13] - Wait fish..
+[14.10.2017 23:26:16] - Wait fish..
+[14.10.2017 23:26:19] - Wait fish..
+[14.10.2017 23:26:22] - Wait fish..
+[14.10.2017 23:26:25] - Wait fish..
+[14.10.2017 23:26:28] - Wait fish..
+[14.10.2017 23:26:31] - Wait fish..
+[14.10.2017 23:26:35] - Wait fish..
+[14.10.2017 23:26:38] - Wait fish..
+[14.10.2017 23:26:41] - Wait fish..
+[14.10.2017 23:26:44] - Wait fish..
+[14.10.2017 23:26:47] - Wait fish..
+[14.10.2017 23:26:50] - Wait fish..
+[14.10.2017 23:26:53] - Wait fish..
+[14.10.2017 23:26:56] - Wait fish..
+[14.10.2017 23:26:59] - Wait fish..
+[14.10.2017 23:27:02] - Wait fish..
+[14.10.2017 23:27:05] - Sended message: space
+[14.10.2017 23:27:07] - Sended message: space
+[14.10.2017 23:27:07] - Cut the fish...
+[14.10.2017 23:27:07] - Parsing kapcha...
+[14.10.2017 23:27:11] - Clean the noise...
+[14.10.2017 23:27:12] - Clean ended...

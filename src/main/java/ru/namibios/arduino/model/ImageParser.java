@@ -10,7 +10,7 @@ import ru.namibios.arduino.model.template.MatrixTemplate;
 public class ImageParser {
 	
 	private static final double CHARS_MIN_KOEF = 0.88;
-	
+
 	private int[][] screenMatrix;
 	private ArrayList<int[][]> keyList;
 	
@@ -62,6 +62,7 @@ public class ImageParser {
 				screenMatrix[i][j] = isIdentified ? 1 : 0;
 			}
 		}
+		
 		keyList.add(screenMatrix);
 	}
 		
@@ -73,6 +74,7 @@ public class ImageParser {
 		while(index < collectionTemplate.length){
 			List<int[][]> templateNumber = collectionTemplate[index].getTemplates(); 
 			for (int[][] template : templateNumber) {
+				if(!isCorrectrDimension(numberMatrix, template)) continue;
 				coef.init(numberMatrix, template);
 				coef.calculate(index);
 			}
@@ -82,6 +84,10 @@ public class ImageParser {
 		}
 		
 		return coef.getRezultIndex();
+	}
+
+	private boolean isCorrectrDimension(int[][] numberMatrix, int[][] template) {
+		return (numberMatrix.length == template.length && numberMatrix[0].length == template[0].length);
 	}
 
 	public String getkey() {

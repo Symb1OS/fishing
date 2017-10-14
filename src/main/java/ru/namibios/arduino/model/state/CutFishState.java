@@ -5,7 +5,7 @@ import org.apache.log4j.Logger;
 import ru.namibios.arduino.config.Application;
 import ru.namibios.arduino.model.Task;
 import ru.namibios.arduino.model.command.Command;
-import ru.namibios.arduino.model.command.Line;
+import ru.namibios.arduino.utils.Keyboard;
 
 public class CutFishState extends State {
 
@@ -20,7 +20,7 @@ public class CutFishState extends State {
 		
 		try{
 			
-			Command line = new Line(); //Keyboard.Keys.SPACE;
+			Command line = () -> Keyboard.Keys.SPACE;
 		
 			Task task = new Task(line, Application.getInstance().DELAY_BEFORE_CUT_FISH(), Application.getInstance().DELAY_AFTER_CUT_FISH());
 			

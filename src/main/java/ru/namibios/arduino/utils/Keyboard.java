@@ -27,7 +27,7 @@ public final class Keyboard {
 	public static boolean send(Command command) {
 		String message = command.getKey().trim();
 		boolean status = false;
-		if(!message.isEmpty()){
+		if(!"".equals(message)){
 			PrintWriter output = new PrintWriter(Application.getPhysicalPort().getOutputStream());
 			output.println(message);
 			output.flush();

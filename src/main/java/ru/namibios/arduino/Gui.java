@@ -239,6 +239,7 @@ public class Gui extends JFrame{
 					break;
 				case Message.CODE_SERVER_NOT_RESPONDING:
 					showMessageDialog(Message.MSG_SERVER_NOT_RESPONDING);
+					break;
 			}
 		}
 	}

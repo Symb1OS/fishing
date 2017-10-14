@@ -17,9 +17,11 @@ public class Kapcha implements Command{
 
 	private Screen screen;
 	
+	private int iteration;
+	
 	public Kapcha(int iteration) throws AWTException  {
 		this.screen = new Screen(Screen.KAPCHA);
-		screen.clearNoise(iteration);
+		this.iteration = iteration;
 		screen.saveDebugImage();
 	}
 	
@@ -33,19 +35,22 @@ public class Kapcha implements Command{
 
 	@Override
 	public String getKey(){
+		
 		String key = "";
 		try {
+			
+			screen.clearNoise(iteration);
+			
 			ImageParser imageParser = new ImageParser(screen);
 			imageParser.parse(Screen.GRAY);
 			
 			Http http = new Http();
 			key = http.parseKapcha(Application.getInstance().HASH(), JSON.getInstance().writeValueAsString(imageParser.getImageMatrix()));
 			
-		} catch (IOException e){
+		} catch (IOException | AWTException e){
 			logger.error("Exception: " + e); 
 		} 
-
-		return key.replace("\n", "");
+		return key.replaceAll("\"",  "");
 	}
 	
 }

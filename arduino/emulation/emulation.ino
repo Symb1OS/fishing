@@ -82,7 +82,14 @@ void dinner2(){
 }
 
 char getKey(char key){
-  if(key == 'w' || key == 'a' || key == 's' || key == 'd' || key == 'r') return key;
+  switch  (key){
+    case 'w': return 'w';
+    case 's': return 's';
+    case 'a': return 'a';
+    case 'd': return 'd';
+    case 'r': return 'r';
+    default : break;
+  }
 }
 
 void loop() {
@@ -92,21 +99,21 @@ void loop() {
 
   if(length != 0){
     Serial.print(input);
-          if(input.startsWith("bear")){
-              bear();
+          if(input.startsWith("space")){
+              pressKey(0x20);
           } else if(input.startsWith("minigame")){
               miniGame();
           } else if(input.startsWith("dinner1")){
               dinner1();
           } else if(input.startsWith("dinner2")){
               dinner2();
-          } else if(input.startsWith("space")){
-              pressKey(0x20);
+          } else if(input.startsWith("bear")){
+              bear();
           } else{
               for(int i = 0; i < length; i++){
                 delay(random(130, 210));
                 char symbol = input[i];
-                pressKey(getKey(symbol));
+                pressKey(symbol);
               }
               
           }

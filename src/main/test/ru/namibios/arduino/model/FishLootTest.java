@@ -7,7 +7,7 @@ import java.io.IOException;
 import org.junit.Before;
 import org.junit.Test;
 
-import ru.namibios.arduino.config.Property;
+import ru.namibios.arduino.config.Application;
 import ru.namibios.arduino.model.command.FishLoot;
 import ru.namibios.arduino.utils.Keyboard;
 
@@ -15,10 +15,7 @@ public class FishLootTest {
 	
 	@Before
 	public void init() {
-		Property.setKeys(true);
-		Property.setEvent(true);
-		Property.setFish(true);
-		Property.setRock(true);
+		Application.getInstance();
 	}
 	
 	@Test

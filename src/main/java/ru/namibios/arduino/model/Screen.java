@@ -139,16 +139,5 @@ public class Noise {
 			}
 			return image;
 		}
-		
 	}
-
-	public static void main(String[] args) throws AWTException {
-		Screen screen = new Screen(Screen.KAPCHA);
-		screen.saveDebugImage();
-		/*ImageParser parser = new ImageParser(screen, Chars.values());
-		parser.parse(Screen.GRAY);
-		parser.getkey();*/
-		
-	}
-
 }
