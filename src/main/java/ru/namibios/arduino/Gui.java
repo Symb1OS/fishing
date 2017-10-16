@@ -92,7 +92,7 @@ public class Gui extends JFrame{
 	    kapchaLootPanel.add(lLootOne, gbc_lLootOne);
 	    
 	    lLootImgOne = new JLabel("");
-	    lLootImgOne.setIcon(new ImageIcon("resources/demo/key.jpg"));
+	    lLootImgOne.setIcon(new ImageIcon("resources/demo/empty.jpg"));
 	    GridBagConstraints gbc_lLootImgOne = new GridBagConstraints();
 	    gbc_lLootImgOne.fill = GridBagConstraints.HORIZONTAL;
 	    gbc_lLootImgOne.insets = new Insets(0, 0, 5, 5);
@@ -127,7 +127,7 @@ public class Gui extends JFrame{
 	    kapchaLootPanel.add(lLootTwo, gbc_lLootTwo);
 	    
 	    lLootImgTwo = new JLabel("");
-	    lLootImgTwo.setIcon(new ImageIcon("resources/demo/scala.jpg"));
+	    lLootImgTwo.setIcon(new ImageIcon("resources/demo/empty.jpg"));
 	    GridBagConstraints gbc_lLootImgTwo = new GridBagConstraints();
 	    gbc_lLootImgTwo.insets = new Insets(0, 0, 5, 5);
 	    gbc_lLootImgTwo.gridx = 3;

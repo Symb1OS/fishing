@@ -108,5 +108,4 @@ public class FishLoot implements Command, Reloader{
 		Gui.lLootImgOne.setIcon(new ImageIcon(one.getScreenShot()));
 		Gui.lLootImgTwo.setIcon(new ImageIcon(two.getScreenShot()));
 	}
-	
 }

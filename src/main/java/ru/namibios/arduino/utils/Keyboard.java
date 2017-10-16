@@ -34,7 +34,7 @@ public final class Keyboard {
 			output.println(message);
 			output.flush();
 			
-			logger.info("Sended message: " + message);
+			logger.info("Sended message[" + message.length() + "]: " + message);
 			status = true;
 		}
 		
