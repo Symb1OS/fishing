@@ -17,13 +17,18 @@ public class KapchaState extends State {
 	
 	@Override
 	public void onNext() {
+	
 		logger.info("Parsing kapcha...");
+		
 		try{
 			Kapcha kapcha = new Kapcha(30);
 			
 			Task task = new Task(kapcha, Application.getInstance().DELAY_BEFORE_KAPCHA(), Application.getInstance().DELAY_AFTER_KAPCHA());
-			boolean isOk = task.run();
-			if(isOk){
+			boolean isIdentified = task.run();
+			
+			kapcha.reloadGui();
+			
+			if(isIdentified){
 				logger.info("Ok. Go to the next state...");
 				fishBot.setState(new FilterLootState(fishBot));
 			}
@@ -31,7 +36,6 @@ public class KapchaState extends State {
 				logger.info("Captcha is not recognized. Return to start...");
 				fishBot.setState(new StartFishState(fishBot));
 			}
-				
 			
 		}catch (Exception e) {
 			logger.error("Exception " + e);

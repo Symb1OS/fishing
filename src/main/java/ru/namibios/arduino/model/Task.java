@@ -24,8 +24,8 @@ public class Task {
 	public boolean run(){
 		
 		DelayUtils.delay(delayBefore);
-		boolean isOk = Keyboard.send(command);
+		boolean isMessageSended = Keyboard.send(command);
 		DelayUtils.delay(delayAfter);
-		return isOk;
+		return isMessageSended;
 	}
 }

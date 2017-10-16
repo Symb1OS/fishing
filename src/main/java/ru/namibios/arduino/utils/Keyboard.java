@@ -11,6 +11,8 @@ public final class Keyboard {
 	
 	final static Logger logger = Logger.getLogger(Keyboard.class);
 	
+	private Keyboard() {}
+	
 	public final class Keys {
 		
 		public static final String TAKE = "r";

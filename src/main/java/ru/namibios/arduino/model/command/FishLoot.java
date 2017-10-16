@@ -5,15 +5,18 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.ImageIcon;
+
 import org.apache.log4j.Logger;
 
+import ru.namibios.arduino.Gui;
 import ru.namibios.arduino.config.Application;
 import ru.namibios.arduino.model.ImageParser;
 import ru.namibios.arduino.model.Screen;
 import ru.namibios.arduino.model.template.Loot;
 import ru.namibios.arduino.utils.Keyboard;
 
-public class FishLoot implements Command{
+public class FishLoot implements Command, Reloader{
 	
 	final static Logger logger = Logger.getLogger(FishLoot.class);
 
@@ -98,6 +101,12 @@ public class FishLoot implements Command{
 			}
 		}
 		return isOk;
+	}
+
+	@Override
+	public void reloadGui() {
+		Gui.lLootImgOne.setIcon(new ImageIcon(one.getScreenShot()));
+		Gui.lLootImgTwo.setIcon(new ImageIcon(two.getScreenShot()));
 	}
 	
 }

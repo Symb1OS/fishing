@@ -4,7 +4,6 @@ import org.apache.log4j.Logger;
 
 import ru.namibios.arduino.config.Application;
 import ru.namibios.arduino.model.Task;
-import ru.namibios.arduino.model.command.Command;
 import ru.namibios.arduino.model.command.FishLoot;
 
 public class FilterLootState extends State{
@@ -20,7 +19,9 @@ public class FilterLootState extends State{
 		logger.info("Check loot...");
 		
 		try {
-			Command filter = new FishLoot();
+			
+			FishLoot filter = new FishLoot();
+			filter.reloadGui();
 			
 			Task task = new Task(filter, Application.getInstance().DELAY_BEFORE_FILTER_LOOT(), Application.getInstance().DELAY_AFTER_FILTER_LOOT());
 			task.run();

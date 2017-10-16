@@ -18,11 +18,7 @@ import ru.namibios.arduino.config.Application;
 
 public class Http {
 	
-	// localhost:5050 - проброс на сервак 
-	// 192.168.0.220:9090
-	
 	private static final String AUTH_URL = "http://192.168.0.220:9090/fishingserver/authorized";
-	
 	private static final String KAPCHA_URL = "http://192.168.0.220:9090/fishingserver/kapcha";
 	
 	private HttpClient httpClient;

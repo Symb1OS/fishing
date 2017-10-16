@@ -3,15 +3,18 @@ package ru.namibios.arduino.model.command;
 import java.awt.AWTException;
 import java.io.IOException;
 
+import javax.swing.ImageIcon;
+
 import org.apache.log4j.Logger;
 
+import ru.namibios.arduino.Gui;
 import ru.namibios.arduino.config.Application;
 import ru.namibios.arduino.model.ImageParser;
 import ru.namibios.arduino.model.Screen;
 import ru.namibios.arduino.utils.Http;
 import ru.namibios.arduino.utils.JSON;
 
-public class Kapcha implements Command{
+public class Kapcha implements Command, Reloader{
 
 	final static Logger logger = Logger.getLogger(Kapcha.class);
 
@@ -19,9 +22,12 @@ public class Kapcha implements Command{
 	
 	private int iteration;
 	
+	private String key;
+	
 	public Kapcha(int iteration) throws AWTException  {
 		this.screen = new Screen(Screen.KAPCHA);
 		this.iteration = iteration;
+		this.key = "";
 		screen.saveDebugImage();
 	}
 	
@@ -36,7 +42,6 @@ public class Kapcha implements Command{
 	@Override
 	public String getKey(){
 		
-		String key = "";
 		try {
 			
 			screen.clearNoise(iteration);
@@ -51,6 +56,13 @@ public class Kapcha implements Command{
 			logger.error("Exception: " + e); 
 		} 
 		return key.replaceAll("\"",  "");
+	}
+
+	@Override
+	public void reloadGui() {
+		Gui.lKapchaImg.setIcon(new ImageIcon(screen.getScreenShot()));
+		Gui.lKapchaText.setText(key);
+		
 	}
 	
 }

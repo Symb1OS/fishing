@@ -43,6 +43,13 @@ public class Gui extends JFrame{
 	
 	private Thread threadTransfer;
 	private Thread threadAreaLogger;
+
+	public static JLabel lKapchaImg;
+
+	public static JLabel lKapchaText;
+
+	public static JLabel lLootImgOne;
+	public static JLabel lLootImgTwo;
 	
 	public Gui() {
 		
@@ -68,7 +75,7 @@ public class Gui extends JFrame{
 	    gbl_kapchaLootPanel.rowWeights = new double[]{0.0, 0.0};
 	    kapchaLootPanel.setLayout(gbl_kapchaLootPanel);
 	    
-	    JLabel lKapchaImg = new JLabel("");
+	    lKapchaImg = new JLabel("");
 	    lKapchaImg.setIcon(new ImageIcon("resources/demo/kapcha.jpg"));
 	    GridBagConstraints gbc_lKapchaImg = new GridBagConstraints();
 	    gbc_lKapchaImg.insets = new Insets(0, 0, 5, 5);
@@ -84,7 +91,7 @@ public class Gui extends JFrame{
 	    gbc_lLootOne.gridy = 0;
 	    kapchaLootPanel.add(lLootOne, gbc_lLootOne);
 	    
-	    JLabel lLootImgOne = new JLabel("");
+	    lLootImgOne = new JLabel("");
 	    lLootImgOne.setIcon(new ImageIcon("resources/demo/key.jpg"));
 	    GridBagConstraints gbc_lLootImgOne = new GridBagConstraints();
 	    gbc_lLootImgOne.fill = GridBagConstraints.HORIZONTAL;
@@ -107,7 +114,7 @@ public class Gui extends JFrame{
 	    lKapcha.setFont(new Font("Tahoma", Font.BOLD, 20));
 	    labelPanel.add(lKapcha);
 	    
-	    JLabel lKapchaText = new JLabel("aaasss");
+	    lKapchaText = new JLabel("");
 	    lKapchaText.setFont(new Font("Tahoma", Font.BOLD, 20));
 	    labelPanel.add(lKapchaText);
 	    
@@ -119,7 +126,7 @@ public class Gui extends JFrame{
 	    gbc_lLootTwo.gridy = 1;
 	    kapchaLootPanel.add(lLootTwo, gbc_lLootTwo);
 	    
-	    JLabel lLootImgTwo = new JLabel("");
+	    lLootImgTwo = new JLabel("");
 	    lLootImgTwo.setIcon(new ImageIcon("resources/demo/scala.jpg"));
 	    GridBagConstraints gbc_lLootImgTwo = new GridBagConstraints();
 	    gbc_lLootImgTwo.insets = new Insets(0, 0, 5, 5);
