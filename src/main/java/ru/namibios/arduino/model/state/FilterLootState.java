@@ -3,8 +3,8 @@ package ru.namibios.arduino.model.state;
 import org.apache.log4j.Logger;
 
 import ru.namibios.arduino.config.Application;
-import ru.namibios.arduino.model.Task;
 import ru.namibios.arduino.model.command.FishLoot;
+import ru.namibios.arduino.utils.Keyboard;
 
 public class FilterLootState extends State{
 
@@ -12,19 +12,20 @@ public class FilterLootState extends State{
 
 	public FilterLootState(FishBot fishBot) {
 		super(fishBot);
+		
+		this.beforeStart = Application.getInstance().DELAY_BEFORE_FILTER_LOOT();
+		this.afterStart = Application.getInstance().DELAY_AFTER_FILTER_LOOT();
 	}
 
 	@Override
-	public void onNext() {
+	public void onStep() {
 		logger.info("Check loot...");
 		
 		try {
 			
 			FishLoot filter = new FishLoot();
 			filter.reloadGui();
-			
-			Task task = new Task(filter, Application.getInstance().DELAY_BEFORE_FILTER_LOOT(), Application.getInstance().DELAY_AFTER_FILTER_LOOT());
-			task.run();
+			Keyboard.send(filter);
 			
 			fishBot.setState(new StartFishState(fishBot));
 			

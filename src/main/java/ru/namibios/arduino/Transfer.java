@@ -20,7 +20,6 @@ public class Transfer implements Runnable{
 		
 		subTasker = new SubTasker();
 		if(Application.getInstance().BEER()) subTasker.add(new SubTask("bear", EVERY_HOUR));
-
 	}
 	
 	public void run() {
@@ -38,7 +37,7 @@ public class Transfer implements Runnable{
 		logger.info("Port is open...");
 		
 		FishBot fishBot = new FishBot();
-		while(fishBot.isRunned()) fishBot.getState().onNext();
+		while(fishBot.isRunned()) fishBot.getState().start();
 		
 		Application.getPhysicalPort().closePort();
 		logger.info("Port closed...");

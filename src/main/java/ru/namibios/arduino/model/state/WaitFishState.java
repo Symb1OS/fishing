@@ -3,9 +3,9 @@ package ru.namibios.arduino.model.state;
 import org.apache.log4j.Logger;
 
 import ru.namibios.arduino.config.Application;
-import ru.namibios.arduino.model.Task;
 import ru.namibios.arduino.model.command.Command;
 import ru.namibios.arduino.model.command.WaitFish;
+import ru.namibios.arduino.utils.Keyboard;
 
 public class WaitFishState extends State {
 	
@@ -13,18 +13,20 @@ public class WaitFishState extends State {
 
 	public WaitFishState(FishBot fishBot) {
 		super(fishBot);
+		
+		this.beforeStart = Application.getInstance().DELAY_BEFORE_WAIT_FISH();
+		this.afterStart = Application.getInstance().DELAY_AFTER_WAIT_FISH();
 	}
 
 	@Override
-	public void onNext() {
+	public void onStep() {
 		logger.info("Wait fish..");
 		
 		try {
 			
 			Command waitFish = new WaitFish();
+			boolean isFishBite = Keyboard.send(waitFish);
 			
-			Task task = new Task(waitFish, Application.getInstance().DELAY_BEFORE_WAIT_FISH(), Application.getInstance().DELAY_AFTER_WAIT_FISH());
-			boolean isFishBite = task.run();
 			if(isFishBite) fishBot.setState(new CutFishState(fishBot));
 			
 		}catch (Exception e) {

@@ -19,16 +19,12 @@ public class Kapcha implements Command, Reloader{
 	final static Logger logger = Logger.getLogger(Kapcha.class);
 
 	private Screen screen;
-	
-	private int iteration;
-	
 	private String key;
 	
 	public Kapcha(int iteration) throws AWTException  {
 		this.screen = new Screen(Screen.KAPCHA);
-		this.iteration = iteration;
+		this.screen.clearNoise(iteration);
 		this.key = "";
-		screen.saveDebugImage();
 	}
 	
 	public Kapcha(String file) throws IOException{
@@ -44,15 +40,13 @@ public class Kapcha implements Command, Reloader{
 		
 		try {
 			
-			screen.clearNoise(iteration);
-			
 			ImageParser imageParser = new ImageParser(screen);
 			imageParser.parse(Screen.GRAY);
 			
 			Http http = new Http();
 			key = http.parseKapcha(Application.getInstance().HASH(), JSON.getInstance().writeValueAsString(imageParser.getImageMatrix()));
 			
-		} catch (IOException | AWTException e){
+		} catch (IOException e){
 			logger.error("Exception: " + e); 
 		} 
 		return key.replaceAll("\"",  "");

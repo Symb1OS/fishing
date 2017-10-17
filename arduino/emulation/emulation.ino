@@ -30,6 +30,7 @@ const int DINNER_SLOT_2_Y = 1004;
 
 void setup() {
   Serial.begin(9600);
+  Serial.setTimeout(10);
   Keyboard.begin();
   Mouse.begin();
 }
@@ -90,15 +91,12 @@ char getKey(char key) {
     case 'r': return 'r';
     default : return '@';
   }
-
-  //if (key == 'w' || key == 's' || key == 'a' || key == 'd' || key == 'r') return key;
 }
 
 void loop() {
 
   String input = Serial.readString();
   int length = input.length();
-
   if (length != 0) {
     //Serial.print(input);
     if (input.startsWith("space")) {
@@ -122,4 +120,5 @@ void loop() {
     }
 
   }
+  
 }

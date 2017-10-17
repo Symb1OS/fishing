@@ -3,8 +3,8 @@ package ru.namibios.arduino.model.state;
 import org.apache.log4j.Logger;
 
 import ru.namibios.arduino.config.Application;
-import ru.namibios.arduino.model.Task;
 import ru.namibios.arduino.model.command.Command;
+import ru.namibios.arduino.model.command.Line;
 import ru.namibios.arduino.utils.Keyboard;
 
 public class CutFishState extends State {
@@ -13,19 +13,20 @@ public class CutFishState extends State {
 
 	public CutFishState(FishBot fishBot) {
 		super(fishBot);
+		
+		this.beforeStart = Application.getInstance().DELAY_BEFORE_CUT_FISH();
+		this.afterStart = Application.getInstance().DELAY_AFTER_CUT_FISH();
 	}
 
 	@Override
-	public void onNext() {
+	public void onStep() {
 		
 		try{
 			
-			Command line = () -> Keyboard.Keys.SPACE;
-		
-			Task task = new Task(line, Application.getInstance().DELAY_BEFORE_CUT_FISH(), Application.getInstance().DELAY_AFTER_CUT_FISH());
+			Command line = new Line(); 
+			boolean isBlueZone = Keyboard.send(line);
 			
-			boolean isOk = task.run();
-			if(isOk) {
+			if(isBlueZone) {
 				logger.info("Cut the fish...");
 				fishBot.setState(new KapchaState(fishBot));
 			}

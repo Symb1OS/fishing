@@ -3,9 +3,9 @@ package ru.namibios.arduino.model.state;
 import org.apache.log4j.Logger;
 
 import ru.namibios.arduino.config.Application;
-import ru.namibios.arduino.model.Task;
 import ru.namibios.arduino.model.command.Kapcha;
 import ru.namibios.arduino.utils.DelayUtils;
+import ru.namibios.arduino.utils.Keyboard;
 
 public class KapchaState extends State {
 
@@ -13,23 +13,24 @@ public class KapchaState extends State {
 
 	public KapchaState(FishBot fishBot) {
 		super(fishBot);
+		
+		this.beforeStart = Application.getInstance().DELAY_BEFORE_KAPCHA();
+		this.afterStart = Application.getInstance().DELAY_AFTER_KAPCHA();
 	}
 	
 	@Override
-	public void onNext() {
+	public void onStep() {
 	
 		logger.info("Parsing kapcha...");
 		
 		try{
+			
 			Kapcha kapcha = new Kapcha(30);
-			
-			Task task = new Task(kapcha, Application.getInstance().DELAY_BEFORE_KAPCHA(), Application.getInstance().DELAY_AFTER_KAPCHA());
-			boolean isIdentified = task.run();
-			
+			boolean isIdentified = Keyboard.send(kapcha);
 			kapcha.reloadGui();
 			
 			if(isIdentified){
-				logger.info("Ok. Go to the next state...");
+				logger.info("Kapcha identified. Go to the next state...");
 				fishBot.setState(new FilterLootState(fishBot));
 			}
 			else {
