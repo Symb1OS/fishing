@@ -24,6 +24,7 @@ public class Kapcha implements Command, Reloader{
 	public Kapcha(int iteration) throws AWTException  {
 		this.screen = new Screen(Screen.KAPCHA);
 		this.screen.clearNoise(iteration);
+		this.screen.saveImage("kapcha");
 		this.key = "";
 	}
 	
@@ -55,7 +56,7 @@ public class Kapcha implements Command, Reloader{
 	@Override
 	public void reloadGui() {
 		Gui.lKapchaImg.setIcon(new ImageIcon(screen.getScreenShot()));
-		Gui.lKapchaText.setText(key);
+		Gui.lKapchaText.setText(key.toUpperCase());
 		
 	}
 	

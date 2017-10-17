@@ -41,7 +41,7 @@ public class FishLoot implements Command, Reloader{
 		this.scrins = new ArrayList<>();
 		
 		this.one = new Screen(Screen.LOOT_SLOT_ONE);
-		this.one.saveImage("loot");
+		this.one.saveImage("loot/unsort");
 		
 		this.two = new Screen(Screen.LOOT_SLOT_TWO);
 		
