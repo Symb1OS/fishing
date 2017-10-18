@@ -35,7 +35,8 @@ public class KapchaState extends State {
 			}
 			else {
 				logger.info("Captcha is not recognized. Return to start...");
-				fishBot.setState(new StartFishState(fishBot));
+				//TODO Need add PerfectState() to not loosing loot
+				fishBot.setState(new FilterLootState(fishBot));
 			}
 			
 		}catch (Exception e) {

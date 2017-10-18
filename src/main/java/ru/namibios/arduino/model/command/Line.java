@@ -19,7 +19,6 @@ public class Line implements Command {
 		imageParser = new ImageParser(screen, Chars.values());
 		imageParser.parse(Screen.GRAY);
 		
-		screen.saveImage("debug/line");
 	}
 	
 	@Override

@@ -28,7 +28,7 @@ public class CutFishState extends State {
 			
 			if(isBlueZone) {
 				logger.info("Cut the fish...");
-				fishBot.setState(new KapchaState(fishBot));
+				fishBot.setState(new CheckCutState(fishBot));
 			}
 			
 		}catch (Exception e) {

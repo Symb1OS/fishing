@@ -179,11 +179,13 @@ public class Gui extends JFrame{
 	    butonPanel.add(bStart, gbc_bStart);
 	    
 	    JButton bStop = new JButton("Стоп");
+	    bStop.addActionListener(new StopAction());
 	    GridBagConstraints gbc_bStop = new GridBagConstraints();
 	    gbc_bStop.fill = GridBagConstraints.HORIZONTAL;
 	    gbc_bStop.gridx = 3;
 	    gbc_bStop.gridy = 0;
 	    butonPanel.add(bStop, gbc_bStop);
+	    	
 	}
 	
 	private int keyAuth() {
@@ -235,11 +237,16 @@ public class Gui extends JFrame{
 			int code = keyAuth();
 			switch (code) {
 				case Message.CODE_AUTH_OK: 
-					threadTransfer =  new Thread(new Transfer());
-			    	threadAreaLogger = new Thread(new AreaLogger());
-			    	
-			    	threadAreaLogger.start();
-			    	threadTransfer.start();
+					if(threadTransfer == null && threadAreaLogger == null){
+						threadTransfer =  new Thread(new Transfer());
+				    	threadAreaLogger = new Thread(new AreaLogger());
+				    	
+				    	threadAreaLogger.start();
+				    	threadTransfer.start();
+					}else{
+						showMessageDialog("Программа уже запущена");
+					}
+					
 					break;
 				case Message.CODE_AUTH_BAD:
 					showMessageDialog(Message.MSG_KEY_INVALID);
