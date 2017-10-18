@@ -8,16 +8,24 @@ public class CheckCutState extends State{
 
 	private static final Logger logger = Logger.getLogger(CheckCutState.class);
 	
+	private int step ;
+	
 	public CheckCutState(FishBot fishBot) {
 		super(fishBot);
 		this.beforeStart = 0;
 		this.afterStart = 0;
+		step = 0;
 	}
 
 	@Override
 	public void onStep() {
 		
 		try{
+			
+			if(step > 150){
+				logger.info("Status not identified... Go to FilterLoot..");
+				fishBot.setState(new FilterLootState(fishBot));
+			} 
 			
 			CheckCut perfect = new CheckCut();
 			String key = perfect.getKey();
@@ -39,6 +47,7 @@ public class CheckCutState extends State{
 				}
 			}
 			
+			step++;
 		}catch (Exception e) {
 			logger.error("Exception " + e);
 			fishBot.setState(new KapchaState(fishBot));

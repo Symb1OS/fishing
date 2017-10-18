@@ -30,7 +30,7 @@ public class CheckCut implements Command{
 	}
 	
 	public static void main(String[] args) throws IOException, AWTException {
-		Screen screen = new Screen("resources/debug/20171019_002319_664.jpg");
+		Screen screen = new Screen("resources/debug/20171019_015245_877.jpg");
 		
 		ImageParser imageParser = new ImageParser(screen);
 		imageParser.parse(Screen.WHITE);
