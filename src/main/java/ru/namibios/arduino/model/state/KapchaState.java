@@ -25,7 +25,7 @@ public class KapchaState extends State {
 		
 		try{
 			
-			Kapcha kapcha = new Kapcha(30);
+			Kapcha kapcha = new Kapcha(50);
 			boolean isIdentified = Keyboard.send(kapcha);
 			kapcha.reloadGui();
 			

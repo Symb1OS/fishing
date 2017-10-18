@@ -50,7 +50,7 @@ public class Kapcha implements Command, Reloader{
 		} catch (IOException e){
 			logger.error("Exception: " + e); 
 		} 
-		return key.replaceAll("\"",  "");
+		return key.replaceAll("\"",  "").replaceAll("\n", "");
 	}
 
 	@Override

@@ -18,7 +18,7 @@ import ru.namibios.arduino.utils.DelayUtils;
 public class DebugKapcha extends JFrame{
 	
 	private static final long serialVersionUID = 1L;
-	private static final int WINDOW_WIDTH = 500;
+	private static final int WINDOW_WIDTH = 600;
 	private static final int WINDOW_HEIGHT = 150;
 	
 	private Container container = this.getContentPane();
@@ -30,12 +30,14 @@ public class DebugKapcha extends JFrame{
 	
 	private JButton correctButton = new JButton("Верно");
 	private JButton incorrectButton = new JButton("Неверно");
+	private JButton deleteButton = new JButton("Удалить");
 	
 	private JPanel south = new JPanel();
 	private JPanel center = new JPanel();
 	
 	private boolean isCorrect;
 	private boolean isIncorrect;
+	private boolean isDelete;
 	
 	public DebugKapcha() {
 		
@@ -55,12 +57,14 @@ public class DebugKapcha extends JFrame{
 	    
 	    correctButton.addActionListener((e) -> isCorrect = true);
 	    incorrectButton.addActionListener((e) -> isIncorrect = true);
+	    deleteButton.addActionListener((e) -> isDelete = true);
 	    
 	    JPanel correctButtonPanel = new JPanel();
 	    
 	    correctButtonPanel.setLayout(new GridLayout(1, 2));
 	    correctButtonPanel.add(correctButton);
 	    correctButtonPanel.add(incorrectButton);
+	    correctButtonPanel.add(deleteButton);
 	    
 	    south.setLayout(new GridLayout(2, 1));
 	    south.add(correctButtonPanel);
@@ -68,31 +72,30 @@ public class DebugKapcha extends JFrame{
 	    startButton.addActionListener((e) -> {
 	    	new Thread(() -> {
 				try{
-					//TODO
-					//Property.setHash("bef1c08eedddbe9f9d83a0f07d0d26ce9b360a55");
 					
 					String filename= "resources/debug";
 					File folder = new File(filename);
 					for (File file: folder.listFiles()) {
 						if(file.isFile()){
-							
+							System.out.println(file.getName());
 							kapchaimage.setIcon(new ImageIcon(file.toString()));
 							
 							Kapcha kapcha = new Kapcha(file.toString());
-							
 							String key = kapcha.getKey();
-							
 							kapchaParse.setText(key);	
 							
 							while(true){
 								if(isCorrect){
-									file.renameTo(new File("resources/debug/correct/" + file.getName()));
+									file.renameTo(new File("resources/debug/correct/" + key.replaceAll("\n", "") + ".jpg"));
 								} 
 								if(isIncorrect){
 									file.renameTo(new File("resources/debug/incorrect/" + file.getName()));
 								}
-								if(isCorrect || isIncorrect){
-									isCorrect = isIncorrect = false;
+								if(isDelete){
+									file.delete();;
+								}
+								if(isCorrect || isIncorrect  || isDelete){
+									isCorrect = isIncorrect = isDelete = false;
 									break;
 								} 
 								DelayUtils.delay(200);
@@ -115,6 +118,7 @@ public class DebugKapcha extends JFrame{
 	public static void main(String[] args) {
 		DebugKapcha debugKapcha = new DebugKapcha();
 		debugKapcha.setVisible(true);
+		
 	}
 	
 }
