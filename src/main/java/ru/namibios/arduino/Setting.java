@@ -403,31 +403,31 @@ public class Setting extends JFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			Application.getInstance().setProperty("HASH", tHash.getText().trim());
-			Application.getInstance().setProperty("PORT", getPortName(tPort.getSelectedItem().toString()));
+			Application.getInstance().setProperty("bot.key", tHash.getText().trim());
+			Application.getInstance().setProperty("bot.port", getPortName(tPort.getSelectedItem().toString()));
 			
-			Application.getInstance().setProperty("KEY",   String.valueOf(cbKey.isSelected()));
-			Application.getInstance().setProperty("ROCK",  String.valueOf(cbRock.isSelected()));
-			Application.getInstance().setProperty("FISH",  String.valueOf(cbFish.isSelected()));
-			Application.getInstance().setProperty("EVENT", String.valueOf(cbEvent.isSelected()));
+			Application.getInstance().setProperty("bot.loot.key",   String.valueOf(cbKey.isSelected()));
+			Application.getInstance().setProperty("bot.loot.rock",  String.valueOf(cbRock.isSelected()));
+			Application.getInstance().setProperty("bot.loot.fish",  String.valueOf(cbFish.isSelected()));
+			Application.getInstance().setProperty("bot.loot.event", String.valueOf(cbEvent.isSelected()));
 			
-			Application.getInstance().setProperty("BEER",  String.valueOf(cbBeer.isSelected()));
-			Application.getInstance().setProperty("MINIGAME", String.valueOf(cbMinigame.isSelected()));
+			Application.getInstance().setProperty("bot.autouse.beer",  String.valueOf(cbBeer.isSelected()));
+			Application.getInstance().setProperty("bot.autouse.minigame", String.valueOf(cbMinigame.isSelected()));
 			
-			Application.getInstance().setProperty("DELAY_BEFORE_START", tStartDelayBefore.getText().trim());
-			Application.getInstance().setProperty("DELAY_AFTER_START", tStartDelayAfter.getText().trim());
+			Application.getInstance().setProperty("bot.delay.start.before", tStartDelayBefore.getText().trim());
+			Application.getInstance().setProperty("bot.delay.start.after", tStartDelayAfter.getText().trim());
 			
-			Application.getInstance().setProperty("DELAY_BEFORE_WAIT_FISH", tWaitDelayBefore.getText().trim());
-			Application.getInstance().setProperty("DELAY_AFTER_WAIT_FISH", tWaitDelayAfter.getText().trim());
+			Application.getInstance().setProperty("bot.delay.waitfish.before", tWaitDelayBefore.getText().trim());
+			Application.getInstance().setProperty("bot.delay.waitfish.after", tWaitDelayAfter.getText().trim());
 			
-			Application.getInstance().setProperty("DELAY_BEFORE_CUT_FISH", tCutDelayBefore.getText().trim());
-			Application.getInstance().setProperty("DELAY_AFTER_CUT_FISH", tCutDelayAfter.getText().trim());
+			Application.getInstance().setProperty("bot.delay.cutfish.before", tCutDelayBefore.getText().trim());
+			Application.getInstance().setProperty("bot.delay.cutfish.after", tCutDelayAfter.getText().trim());
 			
-			Application.getInstance().setProperty("DELAY_BEFORE_KAPCHA", tKapchaDelayBefore.getText().trim());
-			Application.getInstance().setProperty("DELAY_AFTER_KAPCHA", tKapchaDelayAfter.getText().trim());
+			Application.getInstance().setProperty("bot.delay.kapcha.before", tKapchaDelayBefore.getText().trim());
+			Application.getInstance().setProperty("bot.delay.kapcha.after", tKapchaDelayAfter.getText().trim());
 			
-			Application.getInstance().setProperty("DELAY_BEFORE_FILTER_LOOT", tFilterDelayBefore.getText().trim());
-			Application.getInstance().setProperty("DELAY_AFTER_FILTER_LOOT", tFilterDelayAfter.getText().trim());
+			Application.getInstance().setProperty("bot.delay.filterloot.before", tFilterDelayBefore.getText().trim());
+			Application.getInstance().setProperty("bot.delay.filterloot.after", tFilterDelayAfter.getText().trim());
 			
 			Application.record();
 			dispose();
@@ -449,7 +449,9 @@ public class Setting extends JFrame {
 	}
 	
 	private String getPortName(String descriptionPort){
-		return descriptionPort.substring(descriptionPort.indexOf("(") + 1, descriptionPort.indexOf(")"));
+		return descriptionPort.lastIndexOf("") == -1 
+				? descriptionPort.substring(descriptionPort.indexOf("(") + 1, descriptionPort.indexOf(")"))
+				: descriptionPort;
 	}
 	
 	private Object getDescriptionPort(String settingPort){
@@ -495,7 +497,7 @@ public class Setting extends JFrame {
 		
 		Setting setting = new Setting();
 		setting.setVisible(true);
-	
+		
 	}
 
 }
