@@ -9,7 +9,7 @@ import ru.namibios.arduino.model.template.StatusCutTemplate;
 
 public class StatusCutState extends State{
 
-	private static final int COUNT_BEFORE_OVERFLOW = 150;
+	private static final int COUNT_BEFORE_OVERFLOW = 300;
 
 	private static final Logger logger = Logger.getLogger(StatusCutState.class);
 	
@@ -34,7 +34,6 @@ public class StatusCutState extends State{
 			
 			Status<StatusCutTemplate> statusCut = new StatusCut();
 			StatusCutTemplate status = statusCut.getNameTemplate();
-			
 			if(status == null) {
 				step++;
 				return;
@@ -47,12 +46,12 @@ public class StatusCutState extends State{
 					break;
 				} 
 				case GOOD: {
-					logger.info("Good. Go parse kapcha");
+					logger.info("GOOD. Go parse kapcha");
 					fishBot.setState(new KapchaState(fishBot));
 					break;
 				}
 				case BAD: {
-					logger.info("Bad. Back to start...");
+					logger.info("BAD. Back to start...");
 					fishBot.setState(new StartFishState(fishBot));
 					break;
 				}

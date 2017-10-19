@@ -59,4 +59,5 @@ public class StatusKapchaState extends State{
 			fishBot.setState(new FilterLootState(fishBot));
 		}
 	}
+	
 }

@@ -449,7 +449,7 @@ public class Setting extends JFrame {
 	}
 	
 	private String getPortName(String descriptionPort){
-		return descriptionPort.lastIndexOf("") == -1 
+		return descriptionPort.indexOf(")") != -1 
 				? descriptionPort.substring(descriptionPort.indexOf("(") + 1, descriptionPort.indexOf(")"))
 				: descriptionPort;
 	}

@@ -21,12 +21,13 @@ public class Screen {
 	
 	private final static Logger logger = Logger.getLogger(Screen.class);
 
+	public static final Rectangle FULL_SCREEN   = new Rectangle(0, 0, 1920, 1080);
 	public static final Rectangle SPACE 	    = new Rectangle(928, 194, 63, 25);
 	public static final Rectangle LINE 			= new Rectangle(820, 402, 278, 25);
 	public static final Rectangle SUB_LINE 	 	= new Rectangle(997, 402, 10, 25);
 	public static final Rectangle STATUS_CUT 	= new Rectangle(874, 480, 171, 33);
 	public static final Rectangle KAPCHA 		= new Rectangle(780, 350, 372, 58);
-	public static final Rectangle STATUS_KAPCHA = new Rectangle(0, 0, 0, 0);
+	public static final Rectangle STATUS_KAPCHA = new Rectangle(810, 495, 295, 85);
 	public static final Rectangle LOOT_SLOT_ONE = new Rectangle(1537, 592, 47, 48);
 	public static final Rectangle LOOT_SLOT_TWO = new Rectangle(1584, 592, 47, 48);
 	

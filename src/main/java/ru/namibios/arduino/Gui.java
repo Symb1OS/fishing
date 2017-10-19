@@ -1,5 +1,6 @@
 package ru.namibios.arduino;
 
+import java.awt.AWTException;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -27,6 +28,7 @@ import org.apache.log4j.Logger;
 
 import ru.namibios.arduino.config.Application;
 import ru.namibios.arduino.config.Message;
+import ru.namibios.arduino.model.Screen;
 import ru.namibios.arduino.utils.Http;
 
 public class Gui extends JFrame{
@@ -57,7 +59,8 @@ public class Gui extends JFrame{
 		this.setTitle("Fish bot");
 		
 		this.setSize(new Dimension(WIDTH, HEIGHT));
-     	this.setLocationRelativeTo(null);  
+     	//this.setLocationRelativeTo(null);
+		this.setLocation(20, 400);
 	    this.setAlwaysOnTop(true);
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    getContentPane().setLayout(new BorderLayout(0, 0));
@@ -76,7 +79,6 @@ public class Gui extends JFrame{
 	    kapchaLootPanel.setLayout(gbl_kapchaLootPanel);
 	    
 	    lKapchaImg = new JLabel("");
-	  //  lKapchaImg.setIcon(new ImageIcon("resources/demo/kapcha.jpg"));
 	    GridBagConstraints gbc_lKapchaImg = new GridBagConstraints();
 	    gbc_lKapchaImg.insets = new Insets(0, 0, 5, 5);
 	    gbc_lKapchaImg.gridx = 0;
@@ -92,7 +94,6 @@ public class Gui extends JFrame{
 	    kapchaLootPanel.add(lLootOne, gbc_lLootOne);
 	    
 	    lLootImgOne = new JLabel("");
-	    //lLootImgOne.setIcon(new ImageIcon("resources/demo/empty.jpg"));
 	    GridBagConstraints gbc_lLootImgOne = new GridBagConstraints();
 	    gbc_lLootImgOne.fill = GridBagConstraints.HORIZONTAL;
 	    gbc_lLootImgOne.insets = new Insets(0, 0, 5, 5);
@@ -127,7 +128,6 @@ public class Gui extends JFrame{
 	    kapchaLootPanel.add(lLootTwo, gbc_lLootTwo);
 	    
 	    lLootImgTwo = new JLabel("");
-	    //lLootImgTwo.setIcon(new ImageIcon("resources/demo/empty.jpg"));
 	    GridBagConstraints gbc_lLootImgTwo = new GridBagConstraints();
 	    gbc_lLootImgTwo.insets = new Insets(0, 0, 5, 5);
 	    gbc_lLootImgTwo.gridx = 3;
@@ -186,6 +186,25 @@ public class Gui extends JFrame{
 	    gbc_bStop.gridy = 0;
 	    butonPanel.add(bStop, gbc_bStop);
 	    
+	    JButton bTest = new JButton("test");
+	    bTest.addActionListener((e) -> {
+	    	Thread t = new Thread( new Runnable() {
+				
+				@Override
+				public void run() {
+					while(true){
+						try {
+							Screen screen = new Screen(Screen.STATUS_KAPCHA);
+							screen.saveImage("debug");
+						} catch (AWTException e1) {
+							e1.printStackTrace();
+						}
+					}
+				}
+			});
+	    	t.start();
+	    });
+	    butonPanel.add(bTest);
 	    threadRepaintGui = new Thread(new Repaint());
 	    threadRepaintGui.start();
 	    	
@@ -236,11 +255,14 @@ public class Gui extends JFrame{
 
 		@Override
 		public void run() {
-			lKapchaImg.setIcon(GuiHolder.getImgKapcha());
-			lKapchaText.setText(GuiHolder.getKapcha());
 			
-			lLootImgOne.setIcon(GuiHolder.getLootOne());
-			lLootImgTwo.setIcon(GuiHolder.getLootTwo());
+			while(true){
+				lKapchaImg.setIcon(GuiHolder.getImgKapcha());
+				lKapchaText.setText(GuiHolder.getKapcha());
+				
+				lLootImgOne.setIcon(GuiHolder.getLootOne());
+				lLootImgTwo.setIcon(GuiHolder.getLootTwo());
+			}
 			
 		}
 		

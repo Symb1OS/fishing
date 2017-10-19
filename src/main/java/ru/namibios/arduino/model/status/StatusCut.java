@@ -5,7 +5,6 @@ import java.io.IOException;
 
 import ru.namibios.arduino.model.ImageParser;
 import ru.namibios.arduino.model.Screen;
-import ru.namibios.arduino.model.template.Chars;
 import ru.namibios.arduino.model.template.StatusCutTemplate;
 
 public class StatusCut implements Status<StatusCutTemplate>{
@@ -17,15 +16,16 @@ public class StatusCut implements Status<StatusCutTemplate>{
 		screen.saveImage("debug/statuscut");
 	}
 	
+	
 	public StatusCut(String filename) throws IOException{
 		screen = new Screen(filename);
 	}
 
 	@Override
 	public StatusCutTemplate getNameTemplate() {
-		ImageParser parser = new ImageParser(screen, Chars.values());
+		ImageParser parser = new ImageParser(screen, StatusCutTemplate.values());
 		parser.parse(Screen.WHITE);
-
+		
 		return (StatusCutTemplate) parser.getNameTemplate();
 	}
 	
