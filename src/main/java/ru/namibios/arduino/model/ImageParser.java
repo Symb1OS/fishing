@@ -90,7 +90,7 @@ public class ImageParser {
 		return (numberMatrix.length == template.length && numberMatrix[0].length == template[0].length);
 	}
 
-	public String getkey() {
+	public String getKey() {
 		StringBuilder rezult = new StringBuilder();
 		
 		for (int[][] numberMatrix : keyList) {
@@ -110,7 +110,18 @@ public class ImageParser {
 		}	
 		return rezult.toString();
 	}
-
+	
+	public MatrixTemplate getNameTemplate() {
+		for (int[][] numberMatrix : keyList) {
+			int foundIndex= compare(numberMatrix);
+			if(foundIndex != -1) {
+				return collectionTemplate[foundIndex];
+			}
+		}
+		return null;
+	}
+	
+	
 	class Coefficient{
 
 		private final double minKoef;

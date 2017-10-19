@@ -27,5 +27,4 @@ public class StartFishState extends State{
 		if(isSend) fishBot.setState(new WaitFishState(fishBot));
 		
 	}
-
 }

@@ -86,7 +86,7 @@ public class FishLoot implements Command, Reloader{
 		for (Screen screen : scrins) {
 			imageParser = new ImageParser(screen, Loot.values());
 			imageParser.parse(Screen.GRAY);
-			loots+= imageParser.getkey();
+			loots+= imageParser.getKey();
 		}
 		return loots.toCharArray();
 	}

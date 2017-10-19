@@ -2,6 +2,8 @@ package ru.namibios.arduino.model.state;
 
 import org.apache.log4j.Logger;
 
+import com.fazecast.jSerialComm.SerialPort;
+
 import ru.namibios.arduino.config.Application;
 import ru.namibios.arduino.model.command.Command;
 import ru.namibios.arduino.model.command.Line;
@@ -28,7 +30,7 @@ public class CutFishState extends State {
 			
 			if(isBlueZone) {
 				logger.info("Cut the fish...");
-				fishBot.setState(new CheckCutState(fishBot));
+				fishBot.setState(new StatusCutState(fishBot));
 			}
 			
 		}catch (Exception e) {

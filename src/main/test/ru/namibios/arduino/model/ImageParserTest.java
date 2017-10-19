@@ -28,7 +28,7 @@ public class ImageParserTest {
 		ImageParser parser = new ImageParser(screen, Loot.values());
 		
 		parser.parse(Screen.GRAY);
-		String key = parser.getkey();
+		String key = parser.getKey();
 		
 		Assert.assertEquals("1", key);
 	}

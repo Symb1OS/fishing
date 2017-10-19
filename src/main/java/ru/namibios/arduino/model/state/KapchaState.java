@@ -4,7 +4,6 @@ import org.apache.log4j.Logger;
 
 import ru.namibios.arduino.config.Application;
 import ru.namibios.arduino.model.command.Kapcha;
-import ru.namibios.arduino.utils.DelayUtils;
 import ru.namibios.arduino.utils.Keyboard;
 
 public class KapchaState extends State {
@@ -26,22 +25,19 @@ public class KapchaState extends State {
 		try{
 			
 			Kapcha kapcha = new Kapcha(50);
-			boolean isIdentified = Keyboard.send(kapcha);
-			kapcha.reloadGui();
+			boolean isSendToInput = Keyboard.send(kapcha);
 			
-			if(isIdentified){
-				logger.info("Kapcha identified. Go to the next state...");
-				fishBot.setState(new FilterLootState(fishBot));
+			if(isSendToInput){
+				logger.info("Kapcha send to input. Go to check status...");
+				fishBot.setState(new StatusKapchaState(fishBot));
 			}
 			else {
-				logger.info("Captcha is not recognized. Return to start...");
-				//TODO Need add PerfectState() to not loosing loot
-				fishBot.setState(new FilterLootState(fishBot));
+				logger.info("Kapcha is not recognized. Return to start...");
+				fishBot.setState(new StartFishState(fishBot));
 			}
 			
 		}catch (Exception e) {
-			logger.error("Exception " + e);
-			DelayUtils.delay(7000);
+			logger.error("Back to start. Exception: " + e);
 			fishBot.setState(new StartFishState(fishBot));
 		}
 		
