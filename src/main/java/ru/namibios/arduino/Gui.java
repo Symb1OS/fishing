@@ -14,7 +14,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -43,6 +42,7 @@ public class Gui extends JFrame{
 	
 	private Thread threadTransfer;
 	private Thread threadAreaLogger;
+	private Thread threadRepaintGui;
 
 	public static JLabel lKapchaImg;
 
@@ -76,7 +76,7 @@ public class Gui extends JFrame{
 	    kapchaLootPanel.setLayout(gbl_kapchaLootPanel);
 	    
 	    lKapchaImg = new JLabel("");
-	    lKapchaImg.setIcon(new ImageIcon("resources/demo/kapcha.jpg"));
+	  //  lKapchaImg.setIcon(new ImageIcon("resources/demo/kapcha.jpg"));
 	    GridBagConstraints gbc_lKapchaImg = new GridBagConstraints();
 	    gbc_lKapchaImg.insets = new Insets(0, 0, 5, 5);
 	    gbc_lKapchaImg.gridx = 0;
@@ -92,7 +92,7 @@ public class Gui extends JFrame{
 	    kapchaLootPanel.add(lLootOne, gbc_lLootOne);
 	    
 	    lLootImgOne = new JLabel("");
-	    lLootImgOne.setIcon(new ImageIcon("resources/demo/empty.jpg"));
+	    //lLootImgOne.setIcon(new ImageIcon("resources/demo/empty.jpg"));
 	    GridBagConstraints gbc_lLootImgOne = new GridBagConstraints();
 	    gbc_lLootImgOne.fill = GridBagConstraints.HORIZONTAL;
 	    gbc_lLootImgOne.insets = new Insets(0, 0, 5, 5);
@@ -127,7 +127,7 @@ public class Gui extends JFrame{
 	    kapchaLootPanel.add(lLootTwo, gbc_lLootTwo);
 	    
 	    lLootImgTwo = new JLabel("");
-	    lLootImgTwo.setIcon(new ImageIcon("resources/demo/empty.jpg"));
+	    //lLootImgTwo.setIcon(new ImageIcon("resources/demo/empty.jpg"));
 	    GridBagConstraints gbc_lLootImgTwo = new GridBagConstraints();
 	    gbc_lLootImgTwo.insets = new Insets(0, 0, 5, 5);
 	    gbc_lLootImgTwo.gridx = 3;
@@ -185,6 +185,9 @@ public class Gui extends JFrame{
 	    gbc_bStop.gridx = 3;
 	    gbc_bStop.gridy = 0;
 	    butonPanel.add(bStop, gbc_bStop);
+	    
+	    threadRepaintGui = new Thread(new Repaint());
+	    threadRepaintGui.start();
 	    	
 	}
 	
@@ -229,6 +232,20 @@ public class Gui extends JFrame{
 		}
 	}
 	
+	class Repaint implements Runnable {
+
+		@Override
+		public void run() {
+			lKapchaImg.setIcon(GuiHolder.getImgKapcha());
+			lKapchaText.setText(GuiHolder.getKapcha());
+			
+			lLootImgOne.setIcon(GuiHolder.getLootOne());
+			lLootImgTwo.setIcon(GuiHolder.getLootTwo());
+			
+		}
+		
+	}
+
 	class StartAction implements ActionListener{
 
 		@Override

@@ -14,8 +14,6 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
-import ru.namibios.arduino.config.Application;
-
 public class Http {
 	
 	private static final String AUTH_URL = "http://192.168.0.220:9090/fishingserver/authorized";
@@ -80,12 +78,4 @@ public class Http {
 			return post;
 		} 
 	}
-	
-	public static void main(String[] args) throws ClientProtocolException, IOException {
-		String hash = Application.getInstance().HASH();
-		Http http = new Http();
-		int code = http.authorized(hash);
-		System.out.println("Response: " + code);
-	}
-	
 }

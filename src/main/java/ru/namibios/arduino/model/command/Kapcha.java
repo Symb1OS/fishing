@@ -7,7 +7,7 @@ import javax.swing.ImageIcon;
 
 import org.apache.log4j.Logger;
 
-import ru.namibios.arduino.Gui;
+import ru.namibios.arduino.GuiHolder;
 import ru.namibios.arduino.config.Application;
 import ru.namibios.arduino.model.ImageParser;
 import ru.namibios.arduino.model.Screen;
@@ -55,8 +55,8 @@ public class Kapcha implements Command, Reloader{
 
 	@Override
 	public void reloadGui() {
-		Gui.lKapchaImg.setIcon(new ImageIcon(screen.getScreenShot()));
-		Gui.lKapchaText.setText(key.toUpperCase());
+		GuiHolder.setImgKapcha(new ImageIcon(screen.getScreenShot()));
+		GuiHolder.setKapcha(key.toUpperCase());
 		
 	}
 	

@@ -9,7 +9,7 @@ import javax.swing.ImageIcon;
 
 import org.apache.log4j.Logger;
 
-import ru.namibios.arduino.Gui;
+import ru.namibios.arduino.GuiHolder;
 import ru.namibios.arduino.config.Application;
 import ru.namibios.arduino.model.ImageParser;
 import ru.namibios.arduino.model.Screen;
@@ -105,7 +105,8 @@ public class FishLoot implements Command, Reloader{
 
 	@Override
 	public void reloadGui() {
-		Gui.lLootImgOne.setIcon(new ImageIcon(one.getScreenShot()));
-		Gui.lLootImgTwo.setIcon(new ImageIcon(two.getScreenShot()));
+		GuiHolder.setLootOne(new ImageIcon(one.getScreenShot()));
+		GuiHolder.setLootTwo(new ImageIcon(two.getScreenShot()));
+		
 	}
 }

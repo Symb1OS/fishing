@@ -1,5 +1,6 @@
 package ru.namibios.arduino.model.state;
 
+
 public class FishBot {
 
 	private State state;

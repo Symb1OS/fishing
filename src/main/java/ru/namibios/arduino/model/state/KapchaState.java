@@ -27,6 +27,8 @@ public class KapchaState extends State {
 			Kapcha kapcha = new Kapcha(50);
 			boolean isSendToInput = Keyboard.send(kapcha);
 			
+			kapcha.reloadGui();
+			
 			if(isSendToInput){
 				logger.info("Kapcha send to input. Go to check status...");
 				fishBot.setState(new StatusKapchaState(fishBot));

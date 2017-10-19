@@ -37,12 +37,10 @@ public class Transfer implements Runnable{
 		logger.info("Port is open...");
 		
 		FishBot fishBot = new FishBot();
-		while(fishBot.isRunned()) fishBot.getState().start();
+		while (fishBot.isRunned()) fishBot.getState().start();
 		
 		Application.getPhysicalPort().closePort();
 		logger.info("Port closed...");
 		logger.info("Thread stop.");
 	}
 }
-
-

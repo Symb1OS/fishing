@@ -17,6 +17,10 @@ public interface ApplicationConfig extends Accessible, Mutable{
 	@Key("bot.port")
 	String PORT();
 	
+	@DefaultValue("50")
+	@Key("bot.kapcha.noise.iteration")
+	int CNT_KAPCHA();
+	
 	@Key("bot.port.serial")
 	@DefaultValue("${bot.key}")
 	@ConverterClass(SerialPortConverter.class)
