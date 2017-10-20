@@ -9,7 +9,7 @@ import com.fazecast.jSerialComm.SerialPort;
 
 public class Application {
 
-	public static final String PROPERTY_FILE_NAME = "application.properties";
+	public static final String PROPERTY_FILE_NAME = "resources/application.properties";
 	
 	private static ApplicationConfig config;
 	

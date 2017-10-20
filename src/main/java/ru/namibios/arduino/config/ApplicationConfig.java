@@ -8,7 +8,7 @@ import com.fazecast.jSerialComm.SerialPort;
 
 import ru.namibios.arduino.utils.SerialPortConverter;
 
-@Sources("file:application.properties")
+@Sources("file:resources/application.properties")
 public interface ApplicationConfig extends Accessible, Mutable{
 	
 	@Key("bot.key")
