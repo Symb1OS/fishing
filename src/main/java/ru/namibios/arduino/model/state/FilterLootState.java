@@ -1,8 +1,10 @@
 package ru.namibios.arduino.model.state;
 
+
 import org.apache.log4j.Logger;
 
 import ru.namibios.arduino.config.Application;
+import ru.namibios.arduino.gui.adapter.FilterReloader;
 import ru.namibios.arduino.model.command.FishLoot;
 import ru.namibios.arduino.utils.Keyboard;
 
@@ -24,8 +26,9 @@ public class FilterLootState extends State{
 		try {
 			
 			FishLoot filter = new FishLoot();
-			filter.reloadGui();
 			Keyboard.send(filter);
+			
+			repaint(new FilterReloader(filter));
 			
 			fishBot.setState(new StartFishState(fishBot));
 			
@@ -35,4 +38,5 @@ public class FilterLootState extends State{
 		}
 		
 	}
+
 }

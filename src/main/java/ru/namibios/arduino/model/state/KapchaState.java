@@ -3,6 +3,7 @@ package ru.namibios.arduino.model.state;
 import org.apache.log4j.Logger;
 
 import ru.namibios.arduino.config.Application;
+import ru.namibios.arduino.gui.adapter.KapchaReloader;
 import ru.namibios.arduino.model.command.Kapcha;
 import ru.namibios.arduino.utils.Keyboard;
 
@@ -27,7 +28,7 @@ public class KapchaState extends State {
 			Kapcha kapcha = new Kapcha(50);
 			boolean isSendToInput = Keyboard.send(kapcha);
 			
-			kapcha.reloadGui();
+			repaint(new KapchaReloader(kapcha));
 			
 			if(isSendToInput){
 				logger.info("Kapcha send to input. Go to check status...");
@@ -44,4 +45,5 @@ public class KapchaState extends State {
 		}
 		
 	}
+	
 }

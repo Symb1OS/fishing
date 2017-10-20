@@ -1,5 +1,6 @@
 package ru.namibios.arduino.model.state;
 
+import ru.namibios.arduino.gui.adapter.Reloader;
 import ru.namibios.arduino.utils.DelayUtils;
 
 public abstract class State {
@@ -27,5 +28,9 @@ public abstract class State {
 	}
 	
 	public abstract void onStep();
+	
+	public void repaint(Reloader reloader) {
+		fishBot.getGui().repaint(reloader);
+	}
 
 }

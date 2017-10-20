@@ -28,7 +28,7 @@ public class Line implements Command {
 	
 	public static void main(String[] args) throws IOException {
 
-		Screen screen =new Screen("resources/debug/line/20171014_231306_848.jpg");
+		Screen screen = new Screen("resources/debug/line/20171014_231306_848.jpg");
 		
 		ImageParser parser = new ImageParser(screen, Chars.values());
 		parser.parse(Screen.WHITE);

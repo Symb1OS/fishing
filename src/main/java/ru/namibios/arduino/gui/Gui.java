@@ -1,6 +1,5 @@
-package ru.namibios.arduino;
+package ru.namibios.arduino.gui;
 
-import java.awt.AWTException;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -15,6 +14,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -26,9 +26,12 @@ import javax.swing.SwingConstants;
 
 import org.apache.log4j.Logger;
 
+import ru.namibios.arduino.Transfer;
 import ru.namibios.arduino.config.Application;
 import ru.namibios.arduino.config.Message;
-import ru.namibios.arduino.model.Screen;
+import ru.namibios.arduino.gui.adapter.FilterReloader;
+import ru.namibios.arduino.gui.adapter.KapchaReloader;
+import ru.namibios.arduino.gui.adapter.Reloader;
 import ru.namibios.arduino.utils.Http;
 
 public class Gui extends JFrame{
@@ -44,14 +47,12 @@ public class Gui extends JFrame{
 	
 	private Thread threadTransfer;
 	private Thread threadAreaLogger;
-	private Thread threadRepaintGui;
 
-	public static JLabel lKapchaImg;
+	private JLabel lKapchaImg;
+	private JLabel lKapchaText;
 
-	public static JLabel lKapchaText;
-
-	public static JLabel lLootImgOne;
-	public static JLabel lLootImgTwo;
+	private JLabel lLootImgOne;
+	private JLabel lLootImgTwo;
 	
 	public Gui() {
 		
@@ -59,7 +60,6 @@ public class Gui extends JFrame{
 		this.setTitle("Fish bot");
 		
 		this.setSize(new Dimension(WIDTH, HEIGHT));
-     	//this.setLocationRelativeTo(null);
 		this.setLocation(20, 400);
 	    this.setAlwaysOnTop(true);
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -79,6 +79,7 @@ public class Gui extends JFrame{
 	    kapchaLootPanel.setLayout(gbl_kapchaLootPanel);
 	    
 	    lKapchaImg = new JLabel("");
+	    lKapchaImg.setIcon(new ImageIcon("resources/demo/kapcha.jpg"));
 	    GridBagConstraints gbc_lKapchaImg = new GridBagConstraints();
 	    gbc_lKapchaImg.insets = new Insets(0, 0, 5, 5);
 	    gbc_lKapchaImg.gridx = 0;
@@ -94,6 +95,7 @@ public class Gui extends JFrame{
 	    kapchaLootPanel.add(lLootOne, gbc_lLootOne);
 	    
 	    lLootImgOne = new JLabel("");
+	    lLootImgOne.setIcon(new ImageIcon("resources/demo/key.jpg"));
 	    GridBagConstraints gbc_lLootImgOne = new GridBagConstraints();
 	    gbc_lLootImgOne.fill = GridBagConstraints.HORIZONTAL;
 	    gbc_lLootImgOne.insets = new Insets(0, 0, 5, 5);
@@ -116,6 +118,7 @@ public class Gui extends JFrame{
 	    labelPanel.add(lKapcha);
 	    
 	    lKapchaText = new JLabel("");
+	    lKapchaText.setText("DDW");
 	    lKapchaText.setFont(new Font("Tahoma", Font.BOLD, 20));
 	    labelPanel.add(lKapchaText);
 	    
@@ -128,6 +131,7 @@ public class Gui extends JFrame{
 	    kapchaLootPanel.add(lLootTwo, gbc_lLootTwo);
 	    
 	    lLootImgTwo = new JLabel("");
+	    lLootImgTwo.setIcon(new ImageIcon("resources/demo/scala.jpg"));
 	    GridBagConstraints gbc_lLootImgTwo = new GridBagConstraints();
 	    gbc_lLootImgTwo.insets = new Insets(0, 0, 5, 5);
 	    gbc_lLootImgTwo.gridx = 3;
@@ -174,7 +178,7 @@ public class Gui extends JFrame{
 	    gbc_bStart.gridx = 2;
 	    gbc_bStart.gridy = 0;
 	    
-	    bStart.addActionListener(new StartAction());
+	    bStart.addActionListener(new StartAction(this));
 	    
 	    butonPanel.add(bStart, gbc_bStart);
 	    
@@ -188,26 +192,40 @@ public class Gui extends JFrame{
 	    
 	    JButton bTest = new JButton("test");
 	    bTest.addActionListener((e) -> {
+	    	
 	    	Thread t = new Thread( new Runnable() {
 				
 				@Override
 				public void run() {
-					while(true){
+					
+				/*	while(true){
 						try {
 							Screen screen = new Screen(Screen.STATUS_KAPCHA);
 							screen.saveImage("debug");
 						} catch (AWTException e1) {
 							e1.printStackTrace();
 						}
-					}
+					}*/
 				}
 			});
 	    	t.start();
 	    });
 	    butonPanel.add(bTest);
-	    threadRepaintGui = new Thread(new Repaint());
-	    threadRepaintGui.start();
-	    	
+
+	}
+	
+	public void repaint(Reloader reloader) {
+		
+		if(reloader instanceof FilterReloader) {
+			this.lLootImgOne.setIcon(reloader.getLootOne());
+			this.lLootImgTwo.setIcon(reloader.getLootTwo());
+		}
+		
+		if(reloader instanceof KapchaReloader) {
+			this.lKapchaImg.setIcon(reloader.getKapcha());
+			this.lKapchaText.setText(reloader.getKeyKapcha());;
+		}
+		
 	}
 	
 	private int keyAuth() {
@@ -222,7 +240,6 @@ public class Gui extends JFrame{
 		}
 		return code;
 	}
-	
 	
 	private void showMessageDialog(String message) {
 		JOptionPane.showMessageDialog(this, message);
@@ -251,33 +268,21 @@ public class Gui extends JFrame{
 		}
 	}
 	
-	class Repaint implements Runnable {
-
-		@Override
-		public void run() {
-			
-			while(true){
-				lKapchaImg.setIcon(GuiHolder.getImgKapcha());
-				lKapchaText.setText(GuiHolder.getKapcha());
-				
-				lLootImgOne.setIcon(GuiHolder.getLootOne());
-				lLootImgTwo.setIcon(GuiHolder.getLootTwo());
-			}
-			
-		}
-		
-	}
-
 	class StartAction implements ActionListener{
+
+		private Gui gui;
+		
+		public StartAction(Gui gui) {
+			this.gui = gui;
+		}
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			
 			int code = keyAuth();
 			switch (code) {
 				case Message.CODE_AUTH_OK: 
 					if(threadTransfer == null && threadAreaLogger == null){
-						threadTransfer =  new Thread(new Transfer());
+						threadTransfer =  new Thread(new Transfer(gui));
 				    	threadAreaLogger = new Thread(new AreaLogger());
 				    	
 				    	threadAreaLogger.start();
@@ -285,7 +290,6 @@ public class Gui extends JFrame{
 					}else{
 						showMessageDialog("Программа уже запущена");
 					}
-					
 					break;
 				case Message.CODE_AUTH_BAD:
 					showMessageDialog(Message.MSG_KEY_INVALID);

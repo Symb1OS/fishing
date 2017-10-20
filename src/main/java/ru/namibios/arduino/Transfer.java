@@ -3,6 +3,7 @@ package ru.namibios.arduino;
 import org.apache.log4j.Logger;
 
 import ru.namibios.arduino.config.Application;
+import ru.namibios.arduino.gui.Gui;
 import ru.namibios.arduino.model.SubTasker;
 import ru.namibios.arduino.model.SubTasker.SubTask;
 import ru.namibios.arduino.model.state.FishBot;
@@ -14,10 +15,12 @@ public class Transfer implements Runnable{
 
 	private static final int EVERY_HOUR = 1000 * 60 * 60;
 
+	private Gui gui;
+	
 	private SubTasker subTasker;
 	
-	public Transfer() {
-		
+	public Transfer(Gui gui) {
+		this.gui = gui;
 		subTasker = new SubTasker();
 		if(Application.getInstance().BEER()) subTasker.add(new SubTask("bear", EVERY_HOUR));
 	}
@@ -36,7 +39,7 @@ public class Transfer implements Runnable{
 		
 		logger.info("Port is open...");
 		
-		FishBot fishBot = new FishBot();
+		FishBot fishBot = new FishBot(gui);
 		while (fishBot.isRunned()) fishBot.getState().start();
 		
 		Application.getPhysicalPort().closePort();

@@ -1,4 +1,4 @@
-package ru.namibios.arduino;
+package ru.namibios.arduino.gui;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -55,8 +55,6 @@ public class Setting extends JFrame {
 	
 	private JCheckBox cbMinigame;
 	private JCheckBox cbBeer;
-
-	
 
 	public Setting() {
 		
