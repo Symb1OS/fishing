@@ -51,9 +51,12 @@ public class Setting extends JFrame {
 	private JCheckBox cbRock;
 	private JCheckBox cbEvent;
 	private JCheckBox cbKey;
+	private JCheckBox cbUnknown;
 	
 	private JCheckBox cbMinigame;
 	private JCheckBox cbBeer;
+
+	
 
 	public Setting() {
 		
@@ -128,7 +131,7 @@ public class Setting extends JFrame {
 		JPanel cbPanel = new JPanel();
 		cbPanel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		GridBagConstraints gbc_cbPanel = new GridBagConstraints();
-		gbc_cbPanel.gridheight = 2;
+		gbc_cbPanel.gridheight = 3;
 		gbc_cbPanel.insets = new Insets(0, 0, 5, 0);
 		gbc_cbPanel.fill = GridBagConstraints.BOTH;
 		gbc_cbPanel.gridx = 1;
@@ -147,6 +150,9 @@ public class Setting extends JFrame {
 		
 		cbKey = new JCheckBox("Ключи");
 		cbPanel.add(cbKey);
+		
+		cbUnknown = new JCheckBox("Неопознанный");
+		cbPanel.add(cbUnknown);
 		
 		JLabel label_1 = new JLabel("Автоюз:");
 		label_1.setVerticalAlignment(SwingConstants.TOP);
@@ -410,6 +416,7 @@ public class Setting extends JFrame {
 			Application.getInstance().setProperty("bot.loot.rock",  String.valueOf(cbRock.isSelected()));
 			Application.getInstance().setProperty("bot.loot.fish",  String.valueOf(cbFish.isSelected()));
 			Application.getInstance().setProperty("bot.loot.event", String.valueOf(cbEvent.isSelected()));
+			Application.getInstance().setProperty("bot.loot.unknown", String.valueOf(cbUnknown.isSelected()));
 			
 			Application.getInstance().setProperty("bot.autouse.beer",  String.valueOf(cbBeer.isSelected()));
 			Application.getInstance().setProperty("bot.autouse.minigame", String.valueOf(cbMinigame.isSelected()));
@@ -473,6 +480,7 @@ public class Setting extends JFrame {
 		cbKey.setSelected(Application.getInstance().KEY());
 		cbEvent.setSelected(Application.getInstance().EVENT());
 		cbRock.setSelected(Application.getInstance().ROCK());
+		cbUnknown.setSelected(Application.getInstance().TAKE_UNKNOWN());
 		
 		cbBeer.setSelected(Application.getInstance().BEER());
 		cbMinigame.setSelected(Application.getInstance().MINIGAME());

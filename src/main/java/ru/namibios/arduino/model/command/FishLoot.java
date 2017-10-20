@@ -5,18 +5,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.ImageIcon;
-
 import org.apache.log4j.Logger;
 
-import ru.namibios.arduino.GuiHolder;
 import ru.namibios.arduino.config.Application;
 import ru.namibios.arduino.model.ImageParser;
 import ru.namibios.arduino.model.Screen;
 import ru.namibios.arduino.model.template.Loot;
 import ru.namibios.arduino.utils.Keyboard;
 
-public class FishLoot implements Command, Reloader{
+public class FishLoot implements Command{
 	
 	final static Logger logger = Logger.getLogger(FishLoot.class);
 
@@ -64,21 +61,30 @@ public class FishLoot implements Command, Reloader{
 		
 		char[] arrayLoots = getLootIndices();
 		
-		if(lootUnknow(arrayLoots)) return Keyboard.Keys.TAKE;
+		boolean isUnknow = lootUnknow(arrayLoots);
+		boolean isTake = Application.getInstance().TAKE_UNKNOWN();
+		if(isUnknow && isTake){
+			saveUnknown("Loot is not recognized. Take..");
+			return Keyboard.Keys.TAKE;
+		} 
+		if(isUnknow && !isTake){
+			saveUnknown("Loot is not recognized. No take..");
+			return Keyboard.Keys.IGNORE;
+		} 
 		
 		boolean isApproved = checkLoot(arrayLoots);
-		
 		if(isApproved) { logger.info("Loot ok."); 		   return Keyboard.Keys.TAKE;} 
 			  else     { logger.info("Trash. Throw out."); return Keyboard.Keys.IGNORE; } 
 	}
+	
+	private void saveUnknown(String message) {
+		logger.info(message);
+		one.saveImage("loot/unknow");
+		two.saveImage("loot/unknow");
+	}
 
 	private boolean lootUnknow(char[] arrayLoots) {
-		boolean unknown = (arrayLoots.length == 0); 
-		if(unknown){
-			logger.info("Loot is not recognized... Take.");
-			one.saveImage("loot/unknow");
-		} 
-		return unknown;
+		return (arrayLoots.length == 0);
 	}
 
 	private char[] getLootIndices() {
@@ -102,11 +108,13 @@ public class FishLoot implements Command, Reloader{
 		}
 		return isOk;
 	}
-
-	@Override
-	public void reloadGui() {
-		GuiHolder.setLootOne(new ImageIcon(one.getScreenShot()));
-		GuiHolder.setLootTwo(new ImageIcon(two.getScreenShot()));
-		
+	
+	public Screen getOne() {
+		return one;
 	}
+
+	public Screen getTwo() {
+		return two;
+	}
+	
 }

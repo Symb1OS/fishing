@@ -46,6 +46,9 @@ public interface ApplicationConfig extends Accessible, Mutable{
 	@DefaultValue("false")
 	boolean TRASH();
 	
+	@Key("bot.loot.unknown")
+	boolean TAKE_UNKNOWN();
+	
 	@Key("bot.autouse.beer")
 	@DefaultValue("true")
 	boolean BEER();
