@@ -9,13 +9,15 @@ import ru.namibios.arduino.model.SubTasker.SubTask;
 import ru.namibios.arduino.model.state.FishBot;
 import ru.namibios.arduino.utils.DelayUtils;
 
-public class Transfer implements Runnable{ 
+public class Transfer extends Thread{ 
 	
 	final static Logger logger = Logger.getLogger(Transfer.class);
 
 	private static final int EVERY_HOUR = 1000 * 60 * 60;
 
 	private Gui gui;
+	
+	private FishBot fishBot;
 	
 	private SubTasker subTasker;
 	
@@ -25,6 +27,11 @@ public class Transfer implements Runnable{
 		if(Application.getInstance().BEER()) subTasker.add(new SubTask("bear", EVERY_HOUR));
 	}
 	
+	public FishBot getFishBot() {
+		return fishBot;
+	}
+
+	@Override
 	public void run() {
 		
 		logger.info("Start...");
@@ -39,11 +46,12 @@ public class Transfer implements Runnable{
 		
 		logger.info("Port is open...");
 		
-		FishBot fishBot = new FishBot(gui);
+		fishBot = new FishBot(gui);
 		while (fishBot.isRunned()) fishBot.getState().start();
 		
 		Application.getPhysicalPort().closePort();
 		logger.info("Port closed...");
 		logger.info("Thread stop.");
 	}
+	
 }

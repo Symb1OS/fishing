@@ -1,5 +1,6 @@
 package ru.namibios.arduino.gui;
 
+import java.awt.AWTException;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -32,6 +33,7 @@ import ru.namibios.arduino.config.Message;
 import ru.namibios.arduino.gui.adapter.FilterReloader;
 import ru.namibios.arduino.gui.adapter.KapchaReloader;
 import ru.namibios.arduino.gui.adapter.Reloader;
+import ru.namibios.arduino.model.Screen;
 import ru.namibios.arduino.utils.Http;
 
 public class Gui extends JFrame{
@@ -45,7 +47,7 @@ public class Gui extends JFrame{
 	
 	private JTextArea taLog = new JTextArea();
 	
-	private Thread threadTransfer;
+	private Transfer threadTransfer;
 	private Thread threadAreaLogger;
 
 	private JLabel lKapchaImg;
@@ -95,7 +97,7 @@ public class Gui extends JFrame{
 	    kapchaLootPanel.add(lLootOne, gbc_lLootOne);
 	    
 	    lLootImgOne = new JLabel("");
-	    lLootImgOne.setIcon(new ImageIcon("resources/demo/key.jpg"));
+	    lLootImgOne.setIcon(new ImageIcon("resources/demo/empty.jpg"));
 	    GridBagConstraints gbc_lLootImgOne = new GridBagConstraints();
 	    gbc_lLootImgOne.fill = GridBagConstraints.HORIZONTAL;
 	    gbc_lLootImgOne.insets = new Insets(0, 0, 5, 5);
@@ -118,7 +120,7 @@ public class Gui extends JFrame{
 	    labelPanel.add(lKapcha);
 	    
 	    lKapchaText = new JLabel("");
-	    lKapchaText.setText("DDW");
+	    lKapchaText.setText("");
 	    lKapchaText.setFont(new Font("Tahoma", Font.BOLD, 20));
 	    labelPanel.add(lKapchaText);
 	    
@@ -131,7 +133,7 @@ public class Gui extends JFrame{
 	    kapchaLootPanel.add(lLootTwo, gbc_lLootTwo);
 	    
 	    lLootImgTwo = new JLabel("");
-	    lLootImgTwo.setIcon(new ImageIcon("resources/demo/scala.jpg"));
+	    lLootImgTwo.setIcon(new ImageIcon("resources/demo/empty.jpg"));
 	    GridBagConstraints gbc_lLootImgTwo = new GridBagConstraints();
 	    gbc_lLootImgTwo.insets = new Insets(0, 0, 5, 5);
 	    gbc_lLootImgTwo.gridx = 3;
@@ -198,14 +200,12 @@ public class Gui extends JFrame{
 				@Override
 				public void run() {
 					
-				/*	while(true){
 						try {
-							Screen screen = new Screen(Screen.STATUS_KAPCHA);
+							Screen screen = new Screen(Screen.KAPCHA);
 							screen.saveImage("debug");
 						} catch (AWTException e1) {
 							e1.printStackTrace();
 						}
-					}*/
 				}
 			});
 	    	t.start();
@@ -245,13 +245,13 @@ public class Gui extends JFrame{
 		JOptionPane.showMessageDialog(this, message);
 	}
 	
-	private class AreaLogger implements Runnable{
+	private class AreaLogger extends Thread{
 
 		@Override
 		public void run() {
 			try {
 	    		long endFile = 0;
-	    		while(true) {
+	    		while(!isInterrupted()) {
 	    			byte[] file = Files.readAllBytes(Paths.get("work.log"));
 					if(endFile < file.length) {
 						for (int i = 0; i < file.length; i++) {
@@ -281,15 +281,7 @@ public class Gui extends JFrame{
 			int code = keyAuth();
 			switch (code) {
 				case Message.CODE_AUTH_OK: 
-					if(threadTransfer == null && threadAreaLogger == null){
-						threadTransfer =  new Thread(new Transfer(gui));
-				    	threadAreaLogger = new Thread(new AreaLogger());
-				    	
-				    	threadAreaLogger.start();
-				    	threadTransfer.start();
-					}else{
-						showMessageDialog("Программа уже запущена");
-					}
+					startThread();
 					break;
 				case Message.CODE_AUTH_BAD:
 					showMessageDialog(Message.MSG_KEY_INVALID);
@@ -299,14 +291,31 @@ public class Gui extends JFrame{
 					break;
 			}
 		}
+
+		private void startThread() {
+			
+			boolean isInit = threadTransfer != null ;
+			boolean isRunned = isInit && threadTransfer.getFishBot().isRunned();
+			if( !isInit || !isRunned ){
+				threadTransfer =  new Transfer(gui);
+				threadTransfer.start();
+			}else{
+				showMessageDialog("Программа уже запущена");
+			} 
+			
+			if(threadAreaLogger == null){
+		    	threadAreaLogger = new AreaLogger();
+		    	threadAreaLogger.start();
+			}
+			
+		}
 	}
 	
 	class StopAction implements ActionListener{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			threadAreaLogger.interrupt();
-			threadTransfer.interrupt();
+			threadTransfer.getFishBot().setRunned(false);
 		}
 		
 	}

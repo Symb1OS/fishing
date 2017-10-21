@@ -13,7 +13,6 @@ public class StatusCut implements Status<StatusCutTemplate>{
 	
 	public StatusCut() throws AWTException {
 		screen = new Screen(Screen.STATUS_CUT);
-		screen.saveImage("debug/statuscut");
 	}
 	
 	

@@ -41,6 +41,7 @@ public class FishLoot implements Command{
 		this.one.saveImage("loot/unsort");
 		
 		this.two = new Screen(Screen.LOOT_SLOT_TWO);
+		this.two.saveImage("loot/unsort");
 		
 		this.scrins.add(one);
 		this.scrins.add(two);
