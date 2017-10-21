@@ -1,6 +1,5 @@
 package ru.namibios.arduino.gui;
 
-import java.awt.AWTException;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -33,8 +32,9 @@ import ru.namibios.arduino.config.Message;
 import ru.namibios.arduino.gui.adapter.FilterReloader;
 import ru.namibios.arduino.gui.adapter.KapchaReloader;
 import ru.namibios.arduino.gui.adapter.Reloader;
-import ru.namibios.arduino.model.Screen;
+import ru.namibios.arduino.utils.DelayUtils;
 import ru.namibios.arduino.utils.Http;
+import ru.namibios.arduino.utils.Keyboard;
 
 public class Gui extends JFrame{
 
@@ -199,13 +199,9 @@ public class Gui extends JFrame{
 				
 				@Override
 				public void run() {
-					
-						try {
-							Screen screen = new Screen(Screen.KAPCHA);
-							screen.saveImage("debug");
-						} catch (AWTException e1) {
-							e1.printStackTrace();
-						}
+					Application.getPhysicalPort().openPort();
+					DelayUtils.delay(2000);
+					Keyboard.send( () -> "Rod[1542,355]");
 				}
 			});
 	    	t.start();

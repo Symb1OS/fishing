@@ -10,8 +10,11 @@ public abstract class State {
 	protected long beforeStart;
 	protected long afterStart;
 	
+	protected long timeStart;
+	
 	public State(FishBot fishBot) {
 		this.fishBot = fishBot;
+		this.timeStart = System.currentTimeMillis();
 	}
 	
 	public State(FishBot fishBot, long beforeStart, long afterStart) {
@@ -28,6 +31,13 @@ public abstract class State {
 	}
 	
 	public abstract void onStep();
+	
+	public boolean checkTime(long period){
+		long current = System.currentTimeMillis();
+		long workTime = current - timeStart;
+		
+		return workTime > period;
+	}
 	
 	public void repaint(Reloader reloader) {
 		fishBot.getGui().repaint(reloader);

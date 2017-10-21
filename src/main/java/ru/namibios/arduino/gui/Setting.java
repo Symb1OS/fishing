@@ -31,17 +31,14 @@ public class Setting extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private static final int WIDTH = 466;
-	private static final int HEIGHT = 439;
-	
 	private JTextField tHash;
 	private JComboBox<String> tPort;
 	private JTextField tStartDelayAfter;
 	private JTextField tStartDelayBefore;
 	private JTextField tWaitDelayAfter;
 	private JTextField tWaitDelayBefore;
-	private JTextField tCutDelayAfter;
-	private JTextField tCutDelayBefore;
+	private JTextField tRodDelayAfter;
+	private JTextField tRodDelayBefore;
 	private JTextField tKapchaDelayBefore;
 	private JTextField tKapchaDelayAfter;
 	private JTextField tFilterDelayAfter;
@@ -55,20 +52,22 @@ public class Setting extends JFrame {
 	
 	private JCheckBox cbMinigame;
 	private JCheckBox cbBeer;
+	private JTextField tCountRod;
+	private JTextField tTimeChangeRod;
 
 	public Setting() {
 		
 		this.setTitle("Настройки");
-		this.setSize(new Dimension(WIDTH, HEIGHT));
+		this.setSize(new Dimension(466, 520));
 		this.setLocationRelativeTo(null);  
 	    this.setAlwaysOnTop(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0};
-		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 52, 0, 0, 0, 0};
+		gridBagLayout.rowHeights = new int[] {30, 0, 0, 0, 52, 0, 30, 30};
 		gridBagLayout.columnWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0};
 		getContentPane().setLayout(gridBagLayout);
 		
 		JLabel lHash = new JLabel("Ключ:");
@@ -120,7 +119,6 @@ public class Setting extends JFrame {
 		JLabel lLoot = new JLabel("Лут:");
 		GridBagConstraints gbc_lLoot = new GridBagConstraints();
 		gbc_lLoot.anchor = GridBagConstraints.NORTHWEST;
-		gbc_lLoot.gridheight = 2;
 		gbc_lLoot.insets = new Insets(0, 0, 5, 5);
 		gbc_lLoot.gridx = 0;
 		gbc_lLoot.gridy = 3;
@@ -129,7 +127,6 @@ public class Setting extends JFrame {
 		JPanel cbPanel = new JPanel();
 		cbPanel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		GridBagConstraints gbc_cbPanel = new GridBagConstraints();
-		gbc_cbPanel.gridheight = 3;
 		gbc_cbPanel.insets = new Insets(0, 0, 5, 0);
 		gbc_cbPanel.fill = GridBagConstraints.BOTH;
 		gbc_cbPanel.gridx = 1;
@@ -158,7 +155,7 @@ public class Setting extends JFrame {
 		gbc_label_1.anchor = GridBagConstraints.NORTHWEST;
 		gbc_label_1.insets = new Insets(0, 0, 5, 5);
 		gbc_label_1.gridx = 0;
-		gbc_label_1.gridy = 6;
+		gbc_label_1.gridy = 4;
 		getContentPane().add(label_1, gbc_label_1);
 		
 		JPanel autoUsePanel = new JPanel();
@@ -169,7 +166,7 @@ public class Setting extends JFrame {
 		gbc_autoUsePanel.insets = new Insets(0, 0, 5, 0);
 		gbc_autoUsePanel.fill = GridBagConstraints.BOTH;
 		gbc_autoUsePanel.gridx = 1;
-		gbc_autoUsePanel.gridy = 6;
+		gbc_autoUsePanel.gridy = 4;
 		getContentPane().add(autoUsePanel, gbc_autoUsePanel);
 		
 		cbBeer = new JCheckBox("Пиво");
@@ -178,6 +175,40 @@ public class Setting extends JFrame {
 		cbMinigame = new JCheckBox("Мини-игра");
 		autoUsePanel.add(cbMinigame);
 		
+		JLabel label = new JLabel("Удочки:");
+		GridBagConstraints gbc_label = new GridBagConstraints();
+		gbc_label.anchor = GridBagConstraints.NORTHWEST;
+		gbc_label.insets = new Insets(0, 0, 5, 5);
+		gbc_label.gridx = 0;
+		gbc_label.gridy = 5;
+		getContentPane().add(label, gbc_label);
+		
+		JPanel panel = new JPanel();
+		panel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		GridBagConstraints gbc_panel = new GridBagConstraints();
+		gbc_panel.insets = new Insets(0, 0, 5, 0);
+		gbc_panel.fill = GridBagConstraints.BOTH;
+		gbc_panel.gridx = 1;
+		gbc_panel.gridy = 5;
+		getContentPane().add(panel, gbc_panel);
+		panel.setLayout(new GridLayout(2, 2, 0, 0));
+		
+		JLabel lblNewLabel_4 = new JLabel("Кол-во удочек:");
+		panel.add(lblNewLabel_4);
+		
+		tCountRod = new JTextField();
+		tCountRod.setText("8");
+		panel.add(tCountRod);
+		tCountRod.setColumns(10);
+		
+		JLabel lblNewLabel = new JLabel("Время ожидания(мс)");
+		lblNewLabel.setToolTipText("Если таймер статуса ожидания рыбы превышает данное значение запускается задача на смену удочки");
+		panel.add(lblNewLabel);
+		
+		tTimeChangeRod = new JTextField();
+		panel.add(tTimeChangeRod);
+		tTimeChangeRod.setColumns(10);
+		
 		JLabel lDelay = new JLabel("Задержки:");
 		lDelay.setHorizontalAlignment(SwingConstants.LEFT);
 		lDelay.setVerticalAlignment(SwingConstants.TOP);
@@ -185,7 +216,7 @@ public class Setting extends JFrame {
 		gbc_lDelay.anchor = GridBagConstraints.NORTHWEST;
 		gbc_lDelay.insets = new Insets(0, 0, 5, 5);
 		gbc_lDelay.gridx = 0;
-		gbc_lDelay.gridy = 8;
+		gbc_lDelay.gridy = 6;
 		getContentPane().add(lDelay, gbc_lDelay);
 		
 		JPanel delayPanel = new JPanel();
@@ -194,7 +225,7 @@ public class Setting extends JFrame {
 		gbc_delayPanel.insets = new Insets(0, 0, 5, 0);
 		gbc_delayPanel.fill = GridBagConstraints.BOTH;
 		gbc_delayPanel.gridx = 1;
-		gbc_delayPanel.gridy = 8;
+		gbc_delayPanel.gridy = 6;
 		getContentPane().add(delayPanel, gbc_delayPanel);
 		delayPanel.setLayout(new GridLayout(5, 1, 0, 0));
 		
@@ -282,33 +313,33 @@ public class Setting extends JFrame {
 		gbl_cutPanel.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 		cutPanel.setLayout(gbl_cutPanel);
 		
-		JLabel lDelayCut = new JLabel("Подсечка:");
-		GridBagConstraints gbc_lDelayCut = new GridBagConstraints();
-		gbc_lDelayCut.gridwidth = 3;
-		gbc_lDelayCut.insets = new Insets(0, 0, 0, 5);
-		gbc_lDelayCut.anchor = GridBagConstraints.WEST;
-		gbc_lDelayCut.gridx = 0;
-		gbc_lDelayCut.gridy = 0;
-		cutPanel.add(lDelayCut, gbc_lDelayCut);
+		JLabel lDelayChangeRod = new JLabel("Смена удочки");
+		GridBagConstraints gbc_lDelayChangeRod = new GridBagConstraints();
+		gbc_lDelayChangeRod.gridwidth = 3;
+		gbc_lDelayChangeRod.insets = new Insets(0, 0, 0, 5);
+		gbc_lDelayChangeRod.anchor = GridBagConstraints.WEST;
+		gbc_lDelayChangeRod.gridx = 0;
+		gbc_lDelayChangeRod.gridy = 0;
+		cutPanel.add(lDelayChangeRod, gbc_lDelayChangeRod);
 		
-		tCutDelayBefore = new JTextField();
-		GridBagConstraints gbc_tCutDelayBefore = new GridBagConstraints();
-		gbc_tCutDelayBefore.anchor = GridBagConstraints.EAST;
-		gbc_tCutDelayBefore.insets = new Insets(0, 0, 0, 5);
-		gbc_tCutDelayBefore.fill = GridBagConstraints.HORIZONTAL;
-		gbc_tCutDelayBefore.gridx = 4;
-		gbc_tCutDelayBefore.gridy = 0;
-		cutPanel.add(tCutDelayBefore, gbc_tCutDelayBefore);
-		tCutDelayBefore.setColumns(10);
+		tRodDelayBefore = new JTextField();
+		GridBagConstraints gbc_tRodDelayBefore = new GridBagConstraints();
+		gbc_tRodDelayBefore.anchor = GridBagConstraints.EAST;
+		gbc_tRodDelayBefore.insets = new Insets(0, 0, 0, 5);
+		gbc_tRodDelayBefore.fill = GridBagConstraints.HORIZONTAL;
+		gbc_tRodDelayBefore.gridx = 4;
+		gbc_tRodDelayBefore.gridy = 0;
+		cutPanel.add(tRodDelayBefore, gbc_tRodDelayBefore);
+		tRodDelayBefore.setColumns(10);
 		
-		tCutDelayAfter = new JTextField();
-		GridBagConstraints gbc_tCutDelayAfter = new GridBagConstraints();
-		gbc_tCutDelayAfter.anchor = GridBagConstraints.EAST;
-		gbc_tCutDelayAfter.fill = GridBagConstraints.HORIZONTAL;
-		gbc_tCutDelayAfter.gridx = 5;
-		gbc_tCutDelayAfter.gridy = 0;
-		cutPanel.add(tCutDelayAfter, gbc_tCutDelayAfter);
-		tCutDelayAfter.setColumns(10);
+		tRodDelayAfter = new JTextField();
+		GridBagConstraints gbc_tRodDelayAfter = new GridBagConstraints();
+		gbc_tRodDelayAfter.anchor = GridBagConstraints.EAST;
+		gbc_tRodDelayAfter.fill = GridBagConstraints.HORIZONTAL;
+		gbc_tRodDelayAfter.gridx = 5;
+		gbc_tRodDelayAfter.gridy = 0;
+		cutPanel.add(tRodDelayAfter, gbc_tRodDelayAfter);
+		tRodDelayAfter.setColumns(10);
 		
 		JPanel kapchaPanel = new JPanel();
 		delayPanel.add(kapchaPanel);
@@ -386,10 +417,11 @@ public class Setting extends JFrame {
 		
 		JPanel bPanel = new JPanel();
 		GridBagConstraints gbc_bPanel = new GridBagConstraints();
+		gbc_bPanel.insets = new Insets(0, 0, 5, 0);
 		gbc_bPanel.anchor = GridBagConstraints.EAST;
 		gbc_bPanel.fill = GridBagConstraints.VERTICAL;
 		gbc_bPanel.gridx = 1;
-		gbc_bPanel.gridy = 9;
+		gbc_bPanel.gridy = 7;
 		getContentPane().add(bPanel, gbc_bPanel);
 		
 		JButton bSave = new JButton("Сохранить");
@@ -419,14 +451,17 @@ public class Setting extends JFrame {
 			Application.getInstance().setProperty("bot.autouse.beer",  String.valueOf(cbBeer.isSelected()));
 			Application.getInstance().setProperty("bot.autouse.minigame", String.valueOf(cbMinigame.isSelected()));
 			
+			Application.getInstance().setProperty("bot.rod.count", String.valueOf(tCountRod.getText()));
+			Application.getInstance().setProperty("bot.rod.changetime", String.valueOf(tTimeChangeRod.getText()));
+			
 			Application.getInstance().setProperty("bot.delay.start.before", tStartDelayBefore.getText().trim());
 			Application.getInstance().setProperty("bot.delay.start.after", tStartDelayAfter.getText().trim());
 			
 			Application.getInstance().setProperty("bot.delay.waitfish.before", tWaitDelayBefore.getText().trim());
 			Application.getInstance().setProperty("bot.delay.waitfish.after", tWaitDelayAfter.getText().trim());
 			
-			Application.getInstance().setProperty("bot.delay.cutfish.before", tCutDelayBefore.getText().trim());
-			Application.getInstance().setProperty("bot.delay.cutfish.after", tCutDelayAfter.getText().trim());
+			Application.getInstance().setProperty("bot.delay.rod.before", tRodDelayBefore.getText().trim());
+			Application.getInstance().setProperty("bot.delay.rod.after", tRodDelayAfter.getText().trim());
 			
 			Application.getInstance().setProperty("bot.delay.kapcha.before", tKapchaDelayBefore.getText().trim());
 			Application.getInstance().setProperty("bot.delay.kapcha.after", tKapchaDelayAfter.getText().trim());
@@ -483,14 +518,17 @@ public class Setting extends JFrame {
 		cbBeer.setSelected(Application.getInstance().BEER());
 		cbMinigame.setSelected(Application.getInstance().MINIGAME());
 		
+		tCountRod.setText(String.valueOf(Application.getInstance().COUNT_ROD()));
+		tTimeChangeRod.setText(String.valueOf(Application.getInstance().TIME_CHANGE_ROD()));
+		
 		tStartDelayBefore.setText(String.valueOf(Application.getInstance().DELAY_BEFORE_START()));
 		tStartDelayAfter.setText(String.valueOf(Application.getInstance().DELAY_AFTER_START()));
 		
 		tWaitDelayBefore.setText(String.valueOf(Application.getInstance().DELAY_BEFORE_WAIT_FISH()));
 		tWaitDelayAfter.setText(String.valueOf(Application.getInstance().DELAY_AFTER_WAIT_FISH()));
 		
-		tCutDelayBefore.setText(String.valueOf(Application.getInstance().DELAY_BEFORE_CUT_FISH()));
-		tCutDelayAfter.setText(String.valueOf(Application.getInstance().DELAY_AFTER_CUT_FISH()));
+		tRodDelayBefore.setText(String.valueOf(Application.getInstance().DELAY_BEFORE_CHANGE_ROD()));
+		tRodDelayAfter.setText(String.valueOf(Application.getInstance().DELAY_AFTER_CHANGE_ROD()));
 		
 		tKapchaDelayBefore.setText(String.valueOf(Application.getInstance().DELAY_BEFORE_KAPCHA()));
 		tKapchaDelayAfter.setText(String.valueOf(Application.getInstance().DELAY_AFTER_KAPCHA()));

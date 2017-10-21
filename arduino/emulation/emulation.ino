@@ -14,37 +14,11 @@ const int SLAVE_OK_Y = 346;
 const int SLAVE_REPEAT_X = 1577;
 const int SLAVE_REPEAT_Y = 679;
 
-//MINI-GAME
-const int MINIGAME_ICON_X = 754;
-const int MINIGAME_ICON_Y = 660;
-const int MINIGAME_CUBE_X = 1318;
-const int MINIGAME_CUBE_Y = 795;
-
-//DINNER 1
-const int DINNER_SLOT_1_X = 1312;
-const int DINNER_SLOT_1_Y = 1002;
-
-//DINNER 2
-const int DINNER_SLOT_2_X = 1361;
-const int DINNER_SLOT_2_Y = 1004;
-
 void setup() {
   Serial.begin(9600);
   Serial.setTimeout(10);
   Keyboard.begin();
   Mouse.begin();
-}
-
-void moveTo(int x, int y, boolean leftClick) {
-  MouseTo.setTarget(x, y);
-  while (MouseTo.move() == false) {}
-  delay(random(1000, 1500));
-  if (leftClick) {
-    Mouse.press();
-    delay(random(120, 150));
-    Mouse.release();
-    delay(1500);
-  }
 }
 
 void pressKey(char key) {
@@ -63,23 +37,34 @@ void bear() {
   pressKey(0xB1);
 }
 
-void miniGame() {
-  pressKey(0xB1);
-  moveTo(MINIGAME_ICON_X, MINIGAME_ICON_Y, true);
-  moveTo(MINIGAME_CUBE_X, MINIGAME_CUBE_Y, true);
-  pressKey(0xB1);
+void moveTo(int x, int y, char button) {
+  MouseTo.setTarget(x, y);
+  while (MouseTo.move() == false) {}
+  delay(random(1000, 1500));
+
+  Serial.println('Mouse button: ' + button);
+  Mouse.press(button);   
+  delay(random(120, 150));
+  Mouse.release(button);
+  delay(1500);
 }
 
-void dinner1() {
-  pressKey(0xB1);
-  moveTo(DINNER_SLOT_1_X, DINNER_SLOT_1_Y, true);
-  pressKey(0xB1);
-}
+void changeRod(String touch){
 
-void dinner2() {
-  pressKey(0xB1);
-  moveTo(DINNER_SLOT_2_X, DINNER_SLOT_2_Y, true);
-  pressKey(0xB1);
+  pressKey('i'); 
+  
+  int sx = touch.indexOf('[') + 1;
+  int sy = touch.indexOf(',');
+    
+  int x = touch.substring(sx, sy).toInt();
+  int y = touch.substring(sy + 1, touch.length() - 1).toInt();
+  
+  Serial.println(x);
+  Serial.println(y);
+
+  moveTo(x, y, MOUSE_RIGHT);
+
+  pressKey('i');
 }
 
 char getKey(char key) {
@@ -98,15 +83,11 @@ void loop() {
   String input = Serial.readString();
   int length = input.length();
   if (length != 0) {
-    //Serial.print(input);
+    Serial.println(input);
     if (input.startsWith("space")) {
       pressKey(0x20);
-    } else if (input.startsWith("minigame")) {
-      miniGame();
-    } else if (input.startsWith("dinner1")) {
-      dinner1();
-    } else if (input.startsWith("dinner2")) {
-      dinner2();
+    } else if (input.startsWith("Rod")) {
+      changeRod(input);
     } else if (input.startsWith("bear")) {
       bear();
     } else {
@@ -122,3 +103,4 @@ void loop() {
   }
   
 }
+

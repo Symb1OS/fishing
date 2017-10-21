@@ -17,6 +17,22 @@ public interface ApplicationConfig extends Accessible, Mutable{
 	@Key("bot.port")
 	String PORT();
 	
+	@Key("bot.rod.count")
+	@DefaultValue("0")
+	int COUNT_ROD();
+	
+	@Key("bot.rod.changetime")
+	@DefaultValue("180000")
+	int TIME_CHANGE_ROD();
+	
+	@Key("bot.delay.rod.before")
+	@DefaultValue("0")
+	int DELAY_BEFORE_CHANGE_ROD();
+	
+	@Key("bot.delay.rod.after")
+	@DefaultValue("15000")
+	int DELAY_AFTER_CHANGE_ROD();
+	
 	@DefaultValue("50")
 	@Key("bot.kapcha.noise.iteration")
 	int CNT_KAPCHA();
@@ -74,11 +90,11 @@ public interface ApplicationConfig extends Accessible, Mutable{
 	int DELAY_AFTER_WAIT_FISH();
 
 	@Key("bot.delay.cutfish.before")
-	@DefaultValue("1800")
+	@DefaultValue("0")
 	int DELAY_BEFORE_CUT_FISH();
 	
 	@Key("bot.delay.cutfish.after")
-	@DefaultValue("3920")
+	@DefaultValue("0")
 	int DELAY_AFTER_CUT_FISH();
 	
 	@Key("bot.delay.statuscut.before")
