@@ -10,8 +10,6 @@ import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -24,7 +22,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 
+import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.apache.log4j.PatternLayout;
 
 import ru.namibios.arduino.Transfer;
 import ru.namibios.arduino.config.Application;
@@ -35,6 +35,7 @@ import ru.namibios.arduino.gui.adapter.Reloader;
 import ru.namibios.arduino.utils.DelayUtils;
 import ru.namibios.arduino.utils.Http;
 import ru.namibios.arduino.utils.Keyboard;
+import ru.namibios.arduino.utils.TextAreaAppender;
 
 public class Gui extends JFrame{
 
@@ -48,7 +49,6 @@ public class Gui extends JFrame{
 	private JTextArea taLog = new JTextArea();
 	
 	private Transfer threadTransfer;
-	private Thread threadAreaLogger;
 
 	private JLabel lKapchaImg;
 	private JLabel lKapchaText;
@@ -152,7 +152,9 @@ public class Gui extends JFrame{
 	    JScrollPane scrollPane = new JScrollPane(taLog);
 	    logPanel.add(scrollPane);
 	    
-	    taLog.setCaretPosition(taLog.getDocument().getLength());
+	    TextAreaAppender appender = new TextAreaAppender(this);
+	    appender.setLayout(new PatternLayout("%d{dd.MM.yyyy HH:mm:ss}] - %m%n"));
+		LogManager.getRootLogger().addAppender(appender);
 	    
 	    JPanel butonPanel = new JPanel();
 	    getContentPane().add(butonPanel, BorderLayout.SOUTH);
@@ -219,7 +221,7 @@ public class Gui extends JFrame{
 		
 		if(reloader instanceof KapchaReloader) {
 			this.lKapchaImg.setIcon(reloader.getKapcha());
-			this.lKapchaText.setText(reloader.getKeyKapcha());;
+			this.lKapchaText.setText(reloader.getKeyKapcha().toUpperCase());
 		}
 		
 	}
@@ -239,29 +241,6 @@ public class Gui extends JFrame{
 	
 	private void showMessageDialog(String message) {
 		JOptionPane.showMessageDialog(this, message);
-	}
-	
-	private class AreaLogger extends Thread{
-
-		@Override
-		public void run() {
-			try {
-	    		long endFile = 0;
-	    		while(!isInterrupted()) {
-	    			byte[] file = Files.readAllBytes(Paths.get("work.log"));
-					if(endFile < file.length) {
-						for (int i = 0; i < file.length; i++) {
-							taLog.append(String.valueOf((char)file[i]));
-						}
-					}
-					taLog.setCaretPosition(taLog.getDocument().getLength());
-					endFile = file.length;
-				}
-			
-			}catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
 	}
 	
 	class StartAction implements ActionListener{
@@ -299,14 +278,13 @@ public class Gui extends JFrame{
 				showMessageDialog("Программа уже запущена");
 			} 
 			
-			if(threadAreaLogger == null){
-		    	threadAreaLogger = new AreaLogger();
-		    	threadAreaLogger.start();
-			}
-			
 		}
 	}
 	
+	public JTextArea getTaLog() {
+		return taLog;
+	}
+
 	class StopAction implements ActionListener{
 
 		@Override
