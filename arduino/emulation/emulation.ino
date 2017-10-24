@@ -67,6 +67,24 @@ void changeRod(String touch){
   pressKey('i');
 }
 
+void takeLoot(String loot){
+
+  pressKey(0x80); 
+  
+  int sx = loot.indexOf('[') + 1;
+  int sy = loot.indexOf(',');
+    
+  int x = loot.substring(sx, sy).toInt();
+  int y = loot.substring(sy + 1, loot.length() - 1).toInt();
+  
+  Serial.println(x);
+  Serial.println(y);
+
+  moveTo(x, y, MOUSE_RIGHT);
+
+  pressKey(0x80);
+}
+
 char getKey(char key) {
   switch  (key) {
     case 'w': return 'w';
@@ -88,6 +106,8 @@ void loop() {
       pressKey(0x20);
     } else if (input.startsWith("Rod")) {
       changeRod(input);
+    } else if (input.startsWith("Loot")) {
+      takeLoot(input);
     } else if (input.startsWith("bear")) {
       bear();
     } else {
@@ -103,4 +123,3 @@ void loop() {
   }
   
 }
-

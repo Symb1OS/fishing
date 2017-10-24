@@ -19,7 +19,9 @@ public enum Loot implements MatrixTemplate{
 	
 	TRASH("resources/loot/trash"),
 	
-	EVENT("resources/loot/ok/event");
+	EVENT("resources/loot/ok/event"),
+	
+	EMPTY("resources/loot/ok/empty");
 	
 	private final List<int[][]> templates;
 	

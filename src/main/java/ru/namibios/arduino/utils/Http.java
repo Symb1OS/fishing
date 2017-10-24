@@ -16,11 +16,11 @@ import org.apache.http.util.EntityUtils;
 
 public class Http {
 	
-	private static final String AUTH_URL = "http://192.168.0.220:9090/fishingserver/authorized";
-	private static final String KAPCHA_URL = "http://192.168.0.220:9090/fishingserver/kapcha";
+	//private static final String AUTH_URL = "http://192.168.0.220:9090/fishingserver/authorized";
+	//private static final String KAPCHA_URL = "http://192.168.0.220:9090/fishingserver/kapcha";
 	
-	//private static final String AUTH_URL = "http://46.188.5.59:9090/fishingserver/authorized";
-	//private static final String KAPCHA_URL = "http://46.188.5.59:9090/fishingserver/kapcha";
+	private static final String AUTH_URL = "http://46.188.5.59:9090/fishingserver/authorized";
+	private static final String KAPCHA_URL = "http://46.188.5.59:9090/fishingserver/kapcha";
 	
 	private HttpClient httpClient;
 	

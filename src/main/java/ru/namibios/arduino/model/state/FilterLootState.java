@@ -38,5 +38,4 @@ public class FilterLootState extends State{
 		}
 		
 	}
-
 }

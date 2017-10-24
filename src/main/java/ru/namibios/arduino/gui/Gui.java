@@ -272,7 +272,7 @@ public class Gui extends JFrame{
 			boolean isInit = threadTransfer != null ;
 			boolean isRunned = isInit && threadTransfer.getFishBot().isRunned();
 			if( !isInit || !isRunned ){
-				threadTransfer =  new Transfer(gui);
+				threadTransfer = new Transfer(gui);
 				threadTransfer.start();
 			}else{
 				showMessageDialog("Программа уже запущена");

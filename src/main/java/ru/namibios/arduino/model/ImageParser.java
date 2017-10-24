@@ -9,7 +9,7 @@ import ru.namibios.arduino.model.template.MatrixTemplate;
 
 public class ImageParser {
 	
-	private static final double CHARS_MIN_KOEF = 0.88;
+	private static final double CHARS_MIN_KOEF = 0.90;
 
 	private int[][] screenMatrix;
 	private ArrayList<int[][]> keyList;
@@ -94,9 +94,9 @@ public class ImageParser {
 		StringBuilder rezult = new StringBuilder();
 		
 		for (int[][] numberMatrix : keyList) {
-			rezult.append(compare(numberMatrix));
+			rezult.append(compare(numberMatrix)+ ",");
 		}	
-		return rezult.toString().replace("-1", "");
+		return rezult.toString();
 	}
 	 
 	public String getNumber() {

@@ -18,7 +18,7 @@ import ru.namibios.arduino.utils.DelayUtils;
 public class DebugKapcha extends JFrame{
 	
 	private static final long serialVersionUID = 1L;
-	private static final int WINDOW_WIDTH = 600;
+	private static final int WINDOW_WIDTH = 700;
 	private static final int WINDOW_HEIGHT = 150;
 	
 	private Container container = this.getContentPane();
