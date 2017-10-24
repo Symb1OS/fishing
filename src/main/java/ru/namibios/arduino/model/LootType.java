@@ -1,4 +1,4 @@
-package ru.namibios.arduino.model.command;
+package ru.namibios.arduino.model;
 
 public class LootType {
 	
