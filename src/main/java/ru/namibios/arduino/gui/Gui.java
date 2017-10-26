@@ -298,7 +298,6 @@ public class Gui extends JFrame{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			dispose();
 			Setting setting = new Setting();
 			setting.setVisible(true);
 		}

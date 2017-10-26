@@ -472,8 +472,6 @@ public class Setting extends JFrame {
 			Application.record();
 			dispose();
 			
-			Gui view = new Gui();
-			view.setVisible(true);
 		}
 	} 
 	
@@ -483,8 +481,6 @@ public class Setting extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			dispose();
-			Gui view = new Gui();
-			view.setVisible(true);
 		}
 	}
 	
