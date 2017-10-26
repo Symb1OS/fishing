@@ -22,6 +22,8 @@ public class Http {
 	private static final String AUTH_URL = "http://46.188.5.59:9090/fishingserver/authorized";
 	private static final String KAPCHA_URL = "http://46.188.5.59:9090/fishingserver/kapcha";
 	
+	private static final String TELEGRAM_ALARMER_BOT_URL = "https://alarmerbot.ru";
+	
 	private HttpClient httpClient;
 	
 	private HttpResponse response;
@@ -51,6 +53,18 @@ public class Http {
 		response = httpClient.execute(post);
 		HttpEntity entity = response.getEntity();
 		return Integer.valueOf(EntityUtils.toString(entity, "UTF-8").trim());
+	}
+	
+	public String sendTelegram(String key, String message) throws ClientProtocolException, IOException{
+		
+		HttpPost post = Builder.config().setUrl(TELEGRAM_ALARMER_BOT_URL)
+				.setParameter(new BasicNameValuePair("key", key))
+				.setParameter(new BasicNameValuePair("message", message))
+				.build();
+
+		response = httpClient.execute(post);
+		HttpEntity entity = response.getEntity();
+		return EntityUtils.toString(entity, "UTF-8").trim();
 	}
 	
 	private static class Builder {

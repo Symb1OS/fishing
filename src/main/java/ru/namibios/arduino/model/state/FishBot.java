@@ -3,6 +3,8 @@ package ru.namibios.arduino.model.state;
 import ru.namibios.arduino.config.Application;
 import ru.namibios.arduino.gui.Gui;
 import ru.namibios.arduino.model.Rod;
+import ru.namibios.arduino.notification.Notification;
+import ru.namibios.arduino.notification.TelegramNotification;
 
 public class FishBot {
 
@@ -20,6 +22,15 @@ public class FishBot {
 		
 		isRunned = true;
 		state = new StartFishState(this);
+	}
+	
+	public void notifyUser(String message){
+			
+		if(Application.getInstance().TELEGRAM()) {
+			Notification telegram = new TelegramNotification(message);
+			telegram.notifyUser();
+		}
+			
 	}
 
 	public State getState() {

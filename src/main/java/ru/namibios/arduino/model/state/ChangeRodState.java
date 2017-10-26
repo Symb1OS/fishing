@@ -5,6 +5,7 @@ import org.apache.log4j.Logger;
 import ru.namibios.arduino.config.Application;
 import ru.namibios.arduino.model.Touch;
 import ru.namibios.arduino.model.command.Command;
+import ru.namibios.arduino.notification.Notification;
 import ru.namibios.arduino.utils.Keyboard;
 
 public class ChangeRodState extends State{
@@ -33,6 +34,7 @@ public class ChangeRodState extends State{
 			
 		}else{
 			logger.info("Free fishing rods are locked. Finish work.");
+			fishBot.notifyUser(Notification.OUT_RODS);
 			fishBot.setRunned(false);
 		}
 	}

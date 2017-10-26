@@ -54,20 +54,23 @@ public class Setting extends JFrame {
 	private JCheckBox cbBeer;
 	private JTextField tCountRod;
 	private JTextField tTimeChangeRod;
+	
+	private JCheckBox cbTelegram;
+	private JTextField tTelegramKey;	
 
 	public Setting() {
 		
 		this.setTitle("Настройки");
-		this.setSize(new Dimension(466, 520));
+		this.setSize(new Dimension(500, 520));
 		this.setLocationRelativeTo(null);  
 	    this.setAlwaysOnTop(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0};
-		gridBagLayout.rowHeights = new int[] {30, 0, 0, 0, 52, 0, 30, 30};
+		gridBagLayout.rowHeights = new int[] {30, 0, 0, 0, 52, 0, 0, 30, 30};
 		gridBagLayout.columnWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0};
 		getContentPane().setLayout(gridBagLayout);
 		
 		JLabel lHash = new JLabel("Ключ:");
@@ -209,6 +212,58 @@ public class Setting extends JFrame {
 		panel.add(tTimeChangeRod);
 		tTimeChangeRod.setColumns(10);
 		
+		JLabel lblNewLabel_1 = new JLabel("Оповещения:");
+		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
+		gbc_lblNewLabel_1.anchor = GridBagConstraints.NORTHWEST;
+		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel_1.gridx = 0;
+		gbc_lblNewLabel_1.gridy = 6;
+		getContentPane().add(lblNewLabel_1, gbc_lblNewLabel_1);
+		
+		JPanel notificationPanel = new JPanel();
+		notificationPanel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		GridBagConstraints gbc_notificationPanel = new GridBagConstraints();
+		gbc_notificationPanel.insets = new Insets(0, 0, 5, 0);
+		gbc_notificationPanel.fill = GridBagConstraints.BOTH;
+		gbc_notificationPanel.gridx = 1;
+		gbc_notificationPanel.gridy = 6;
+		getContentPane().add(notificationPanel, gbc_notificationPanel);
+		notificationPanel.setLayout(new GridLayout(2, 0, 0, 0));
+		
+		JPanel telegramPanel = new JPanel();
+		notificationPanel.add(telegramPanel);
+		GridBagLayout gbl_telegramPanel = new GridBagLayout();
+		gbl_telegramPanel.columnWidths = new int[] {0, 0, 0};
+		gbl_telegramPanel.rowHeights = new int[]{0, 0};
+		gbl_telegramPanel.columnWeights = new double[]{0.0, 0.0, 1.0};
+		gbl_telegramPanel.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		telegramPanel.setLayout(gbl_telegramPanel);
+		
+		cbTelegram = new JCheckBox("Телеграм");
+		GridBagConstraints gbc_cbTelegram = new GridBagConstraints();
+		gbc_cbTelegram.anchor = GridBagConstraints.WEST;
+		gbc_cbTelegram.insets = new Insets(0, 0, 0, 5);
+		gbc_cbTelegram.gridx = 0;
+		gbc_cbTelegram.gridy = 0;
+		telegramPanel.add(cbTelegram, gbc_cbTelegram);
+		
+		JLabel lTelegram = new JLabel("Ключ:");
+		GridBagConstraints gbc_lTelegram = new GridBagConstraints();
+		gbc_lTelegram.insets = new Insets(0, 0, 0, 5);
+		gbc_lTelegram.anchor = GridBagConstraints.EAST;
+		gbc_lTelegram.gridx = 1;
+		gbc_lTelegram.gridy = 0;
+		telegramPanel.add(lTelegram, gbc_lTelegram);
+		
+		tTelegramKey = new JTextField();
+		GridBagConstraints gbc_tTelegramKey = new GridBagConstraints();
+		gbc_tTelegramKey.anchor = GridBagConstraints.EAST;
+		gbc_tTelegramKey.fill = GridBagConstraints.HORIZONTAL;
+		gbc_tTelegramKey.gridx = 2;
+		gbc_tTelegramKey.gridy = 0;
+		telegramPanel.add(tTelegramKey, gbc_tTelegramKey);
+		tTelegramKey.setColumns(10);
+		
 		JLabel lDelay = new JLabel("Задержки:");
 		lDelay.setHorizontalAlignment(SwingConstants.LEFT);
 		lDelay.setVerticalAlignment(SwingConstants.TOP);
@@ -216,7 +271,7 @@ public class Setting extends JFrame {
 		gbc_lDelay.anchor = GridBagConstraints.NORTHWEST;
 		gbc_lDelay.insets = new Insets(0, 0, 5, 5);
 		gbc_lDelay.gridx = 0;
-		gbc_lDelay.gridy = 6;
+		gbc_lDelay.gridy = 7;
 		getContentPane().add(lDelay, gbc_lDelay);
 		
 		JPanel delayPanel = new JPanel();
@@ -225,7 +280,7 @@ public class Setting extends JFrame {
 		gbc_delayPanel.insets = new Insets(0, 0, 5, 0);
 		gbc_delayPanel.fill = GridBagConstraints.BOTH;
 		gbc_delayPanel.gridx = 1;
-		gbc_delayPanel.gridy = 6;
+		gbc_delayPanel.gridy = 7;
 		getContentPane().add(delayPanel, gbc_delayPanel);
 		delayPanel.setLayout(new GridLayout(5, 1, 0, 0));
 		
@@ -417,11 +472,10 @@ public class Setting extends JFrame {
 		
 		JPanel bPanel = new JPanel();
 		GridBagConstraints gbc_bPanel = new GridBagConstraints();
-		gbc_bPanel.insets = new Insets(0, 0, 5, 0);
 		gbc_bPanel.anchor = GridBagConstraints.EAST;
 		gbc_bPanel.fill = GridBagConstraints.VERTICAL;
 		gbc_bPanel.gridx = 1;
-		gbc_bPanel.gridy = 7;
+		gbc_bPanel.gridy = 8;
 		getContentPane().add(bPanel, gbc_bPanel);
 		
 		JButton bSave = new JButton("Сохранить");
@@ -463,6 +517,9 @@ public class Setting extends JFrame {
 			Application.getInstance().setProperty("bot.delay.rod.before", tRodDelayBefore.getText().trim());
 			Application.getInstance().setProperty("bot.delay.rod.after", tRodDelayAfter.getText().trim());
 			
+			Application.getInstance().setProperty("bot.notification.telegram", String.valueOf(cbTelegram.isSelected()));
+			Application.getInstance().setProperty("bot.notification.telegram.key", tTelegramKey.getText().trim());
+			
 			Application.getInstance().setProperty("bot.delay.kapcha.before", tKapchaDelayBefore.getText().trim());
 			Application.getInstance().setProperty("bot.delay.kapcha.after", tKapchaDelayAfter.getText().trim());
 			
@@ -474,7 +531,6 @@ public class Setting extends JFrame {
 			
 		}
 	} 
-	
 	
 	class CancelAction implements ActionListener{
 
@@ -514,6 +570,9 @@ public class Setting extends JFrame {
 		cbBeer.setSelected(Application.getInstance().BEER());
 		cbMinigame.setSelected(Application.getInstance().MINIGAME());
 		
+		cbTelegram.setSelected(Application.getInstance().TELEGRAM());
+		tTelegramKey.setText(Application.getInstance().TELEGRAM_KEY());
+		
 		tCountRod.setText(String.valueOf(Application.getInstance().COUNT_ROD()));
 		tTimeChangeRod.setText(String.valueOf(Application.getInstance().TIME_CHANGE_ROD()));
 		
@@ -539,5 +598,4 @@ public class Setting extends JFrame {
 		setting.setVisible(true);
 		
 	}
-
 }

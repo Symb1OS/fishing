@@ -129,4 +129,11 @@ public interface ApplicationConfig extends Accessible, Mutable{
 	@DefaultValue("0")
 	int DELAY_AFTER_FILTER_LOOT();
 	
+	@Key("bot.notification.telegram")
+	@DefaultValue("false")
+	boolean TELEGRAM();
+	
+	@Key("bot.notification.telegram.key")
+	String TELEGRAM_KEY();
+	
 }
