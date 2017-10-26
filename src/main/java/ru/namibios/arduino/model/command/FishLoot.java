@@ -55,10 +55,11 @@ public class FishLoot implements Command{
 	private String[] getLootIndices() {
 		String loots = "";
 		for (Screen screen : scrins) {
-			imageParser = new ImageParser(screen, Loot.values(), 0.99);
+			imageParser = new ImageParser(screen, Loot.values(), 0.88);
 			imageParser.parse(Screen.GRAY);
 			loots+= imageParser.getKey();
 		}
+		System.out.println(loots);
 		return loots.split(",");
 	}
 	
@@ -101,6 +102,11 @@ public class FishLoot implements Command{
 
 	public Screen getTwo() {
 		return two;
+	}
+	
+	public static void main(String[] args) throws IOException {
+		FishLoot fishLoot =new FishLoot("resources/loot/unsort/20171026_212121_309.jpg","resources/loot/unsort/20171026_212121_324.jpg");
+		System.out.println(fishLoot.getKey());
 	}
 	
 }
