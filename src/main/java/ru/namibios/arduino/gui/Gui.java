@@ -7,7 +7,9 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.Insets;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -66,6 +68,9 @@ public class Gui extends JFrame{
 	    this.setAlwaysOnTop(true);
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    getContentPane().setLayout(new BorderLayout(0, 0));
+	    
+	    Image im = Toolkit.getDefaultToolkit().getImage("resources/icon.png");
+	    setIconImage(im);
 	    
 	    JPanel workPanel = new JPanel();
 	    getContentPane().add(workPanel, BorderLayout.CENTER);
