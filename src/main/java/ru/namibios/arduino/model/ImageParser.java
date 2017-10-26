@@ -9,8 +9,6 @@ import ru.namibios.arduino.model.template.MatrixTemplate;
 
 public class ImageParser {
 	
-	private static final double CHARS_MIN_KOEF = 0.90;
-
 	private int[][] screenMatrix;
 	private ArrayList<int[][]> keyList;
 	
@@ -18,11 +16,24 @@ public class ImageParser {
 	
 	private MatrixTemplate[] collectionTemplate;
 	
+	private double coefIdentification = 0.88;
+	
 	private int row;
 	private int column;
 	
+	
 	public ImageParser(Screen screen, MatrixTemplate[] matrixTemplate) {
 		this.screenShot = screen.getScreenShot();
+		this.row = screenShot.getHeight(); 
+		this.column = screenShot.getWidth();
+		this.screenMatrix = new int[row][column];
+		this.collectionTemplate = matrixTemplate;
+		this.keyList = new ArrayList<int[][]>();
+	}
+	
+	public ImageParser(Screen screen, MatrixTemplate[] matrixTemplate, double coef) {
+		this.screenShot = screen.getScreenShot();
+		this.coefIdentification = coef;
 		this.row = screenShot.getHeight(); 
 		this.column = screenShot.getWidth();
 		this.screenMatrix = new int[row][column];
@@ -68,7 +79,7 @@ public class ImageParser {
 		
 	private int compare(int[][] numberMatrix) {
 	
-		Coefficient coef = new Coefficient(CHARS_MIN_KOEF);
+		Coefficient coef = new Coefficient(coefIdentification);
 		
 		int index = 0;
 		while(index < collectionTemplate.length){

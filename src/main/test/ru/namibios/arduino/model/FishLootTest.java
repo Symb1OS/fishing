@@ -1,5 +1,6 @@
 package ru.namibios.arduino.model;
 
+
 import static org.junit.Assert.assertEquals;
 
 import java.io.IOException;
@@ -18,28 +19,71 @@ public class FishLootTest {
 		Application.getInstance();
 	}
 	
-	@Test
-	public void testOk() throws IOException {
-
-		String slotOne = "resources/test/loot/ersh.jpg";
-		String slotTwo = "resources/test/loot/losos.jpg";
+	// ------------------------------ALL FILTER TRUE------------------------------//
 	
-		FishLoot fishLoot = new FishLoot(slotOne, slotTwo);
+	// --------------------TAKE ALL--------------------//
+	@Test
+	public void okEmpty() throws IOException{
+		FishLoot fishLoot = new FishLoot("resources/loot/ok/scala/scala.jpg", "resources/loot/ok/empty/empty.jpg");
 		String key = fishLoot.getKey();
 		
-		assertEquals(key, Keyboard.Keys.TAKE);
+		assertEquals(Keyboard.Keys.TAKE, key);
+		
 	}
 	
 	@Test
-	public void testTrash() throws IOException {
-		
-		String slotOne = "resources/test/loot/gorchak.jpg";
-		String slotTwo = "resources/test/loot/boot.jpg";
-	
-		FishLoot fishLoot = new FishLoot(slotOne, slotTwo);
+	public void okOk() throws IOException{
+		FishLoot fishLoot = new FishLoot("resources/loot/ok/fish/xarius.jpg", "resources/loot/ok/fish/losos.jpg");
 		String key = fishLoot.getKey();
 		
-		assertEquals(key, Keyboard.Keys.IGNORE);
+		assertEquals(Keyboard.Keys.TAKE, key);
+	}
+	
+	
+	// --------------------TAKE BY INDEX--------------------//
+	@Test
+	public void OkTrash() throws IOException{
+		FishLoot fishLoot = new FishLoot("resources/loot/ok/fish/zerex.jpg","resources/loot/trash/macropod.jpg");
+		String key = fishLoot.getKey();
+		
+		assertEquals("Loot[1561,616]", key);
+	}
+	
+	@Test
+	public void trashOk() throws IOException{
+		FishLoot fishLoot = new FishLoot("resources/loot/trash/boot.jpg","resources/loot/ok/fish/ersh.jpg");
+		String key = fishLoot.getKey();
+		
+		assertEquals("Loot[1608,616]", key);
+	}
+	
+	
+	// --------------------IGNORE ALL--------------------//
+	
+	@Test
+	public void trashTrash() throws IOException{
+		FishLoot fishLoot = new FishLoot("resources/loot/trash/boot.jpg", "resources/loot/trash/mechenosec.jpg");
+		String key = fishLoot.getKey();
+		
+		assertEquals(Keyboard.Keys.IGNORE, key);
+	}
+	
+	
+	@Test
+	public void trashEmpty() throws IOException {
+		FishLoot fishLoot = new FishLoot("resources/loot/trash/gorchak.jpg","resources/loot/ok/empty/empty.jpg");
+		String key = fishLoot.getKey();
+		
+		assertEquals(Keyboard.Keys.IGNORE, key);
+	} 
+	
+	@Test
+	public void unknowEmpty() throws IOException{
+		FishLoot fishLoot = new FishLoot("resources/loot/unknow/20171021_173648_334.jpg", "resources/loot/ok/empty/empty.jpg");
+		String key = fishLoot.getKey();
+		
+		assertEquals("", key);
+		
 	}
 	
 }

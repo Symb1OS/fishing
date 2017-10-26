@@ -18,7 +18,7 @@ import ru.namibios.arduino.utils.Keyboard;
 
 public class FishLoot implements Command{
 	
-	private final static Touch[] TOUCHS = {
+	private final static Touch[] TOUCH = {
 							new Touch(1561, 616),
 							new Touch(1608, 616)
 	};
@@ -55,7 +55,7 @@ public class FishLoot implements Command{
 	private String[] getLootIndices() {
 		String loots = "";
 		for (Screen screen : scrins) {
-			imageParser = new ImageParser(screen, Loot.values());
+			imageParser = new ImageParser(screen, Loot.values(), 0.99);
 			imageParser.parse(Screen.GRAY);
 			loots+= imageParser.getKey();
 		}
@@ -67,7 +67,8 @@ public class FishLoot implements Command{
 		
 		String[] arrayLoots = getLootIndices();
 		
-		Looter looter = new Looter(arrayLoots);
+		boolean isTakeUnknow = Application.getInstance().TAKE_UNKNOWN();
+		Looter looter = new Looter(arrayLoots, isTakeUnknow);
 		
 		if(looter.isTakeAll()) {
 			logger.info("Loot ok. Take all..");
@@ -84,22 +85,14 @@ public class FishLoot implements Command{
 			for(LootType type : looter.getLootTypeList()) {
 				if(type.isOk()) {
 					int index = type.getIndex();
-					Touch touch = TOUCHS[index];
+					Touch touch = TOUCH[index];
 					return "Loot" + touch;
 				}
 			}
-			
-			return Keyboard.Keys.TAKE;
 		}
 		
-		boolean isTakeUnknow = Application.getInstance().TAKE_UNKNOWN();
-		if(isTakeUnknow) {
-			logger.info("Loot unknow. Take..");
-			return Keyboard.Keys.TAKE;
-		}else {
-			logger.info("Loot unknow. Not take..");
-			return Keyboard.Keys.IGNORE;
-		}
+		logger.info("Strategy is not defined. Take..");
+		return Keyboard.Keys.TAKE;
 	}
 
 	public Screen getOne() {
@@ -108,28 +101,6 @@ public class FishLoot implements Command{
 
 	public Screen getTwo() {
 		return two;
-	}
-	
-	public static void main(String[] args) throws IOException {
-		
-		FishLoot okEmpty = new FishLoot("resources/loot/ok/scala/scala.jpg", "resources/loot/ok/empty/empty.jpg");
-		okEmpty.getKey();
-		
-		System.out.println();
-		
-		FishLoot okOk = new FishLoot("resources/loot/ok/scala/scala.jpg", "resources/loot/ok/scala/scala.jpg");
-		okOk.getKey();
-		
-		System.out.println();
-		
-		FishLoot trashOk = new FishLoot("resources/loot/trash/fishnet.jpg", "resources/loot/ok/scala/scala.jpg");
-		trashOk.getKey();
-		
-		System.out.println();
-		
-		FishLoot trashTrash = new FishLoot("resources/loot/trash/rope.jpg", "resources/loot/trash/rope.jpg");
-		trashTrash.getKey();
-		
 	}
 	
 }

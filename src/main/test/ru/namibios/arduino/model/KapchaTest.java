@@ -24,7 +24,7 @@ public class KapchaTest {
 				String key = kapcha.getKey();
 				
 				System.out.println(key + " == " + name);
-				assertEquals(key, name);
+				assertEquals(name, key);
 			} 
 		}
 	}

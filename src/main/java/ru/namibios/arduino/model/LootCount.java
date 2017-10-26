@@ -6,6 +6,7 @@ public class LootCount {
 	private int trash;
 	private int empty;
 	private int unknow;
+	
 	private int length;
 
 	public LootCount(int length) {
@@ -31,7 +32,7 @@ public class LootCount {
 	public void incUnknow() {
 		unknow++;
 	}
-
+	
 	public int getOk() {
 		return ok;
 	}
@@ -54,7 +55,7 @@ public class LootCount {
 
 	@Override
 	public String toString() {
-		return "LootCount [ok=" + ok + ", trash=" + trash + ", empty=" + empty + ", unknow=" + unknow + "]";
+		return "LootCount [ok=" + ok + ", trash=" + trash + ", empty=" + empty + ", unknow=" + unknow + ", length="
+				+ length + "]";
 	}
-
 }
