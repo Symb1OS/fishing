@@ -14,13 +14,12 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
+import ru.namibios.arduino.config.Application;
+
 public class Http {
 	
-	private static final String AUTH_URL = "http://192.168.0.220:9090/fishingserver/authorized";
-	private static final String KAPCHA_URL = "http://192.168.0.220:9090/fishingserver/kapcha";
-	
-	//private static final String AUTH_URL = "http://46.188.5.59:9090/fishingserver/authorized";
-	//private static final String KAPCHA_URL = "http://46.188.5.59:9090/fishingserver/kapcha";
+	private static final String AUTH_URL = "http://%s/fishingserver/authorized";
+	private static final String KAPCHA_URL = "http://%s/fishingserver/kapcha";
 	
 	private static final String TELEGRAM_ALARMER_BOT_URL = "https://alarmerbot.ru";
 	
@@ -33,8 +32,8 @@ public class Http {
 	}
 	
 	public String parseKapcha(String key, String matrix) throws ClientProtocolException, IOException{
-
-		HttpPost post = Builder.config().setUrl(KAPCHA_URL)
+		
+		HttpPost post = Builder.config().setUrl(String.format(KAPCHA_URL, Application.getInstance().HTTP_SERVER()))
 				.setParameter(new BasicNameValuePair("HASH", key))
 				.setParameter(new BasicNameValuePair("MATRIX", matrix))
 				.build();
@@ -46,7 +45,7 @@ public class Http {
 	
 	public int authorized(String key) throws ClientProtocolException, IOException{
 		
-		HttpPost post = Builder.config().setUrl(AUTH_URL)
+		HttpPost post = Builder.config().setUrl(String.format(AUTH_URL,Application.getInstance().HTTP_SERVER()))
 				.setParameter(new BasicNameValuePair("HASH", key))
 				.build();
 

@@ -17,6 +17,10 @@ public interface ApplicationConfig extends Accessible, Mutable{
 	@Key("bot.port")
 	String PORT();
 	
+	@Key("bot.http")
+	@DefaultValue("46.188.5.59:9090")
+	String HTTP_SERVER();
+	
 	@Key("bot.rod.count")
 	@DefaultValue("0")
 	int COUNT_ROD();
