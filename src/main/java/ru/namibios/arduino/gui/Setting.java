@@ -50,6 +50,10 @@ public class Setting extends JFrame {
 	private JCheckBox cbKey;
 	private JCheckBox cbUnknown;
 	
+	private JCheckBox cbAutoOne;
+	private JTextField tHotKeyOne;
+	private JTextField tKeyTimerOne;
+	
 	private JCheckBox cbMinigame;
 	private JCheckBox cbBeer;
 	private JTextField tCountRod;
@@ -68,9 +72,9 @@ public class Setting extends JFrame {
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0};
-		gridBagLayout.rowHeights = new int[] {30, 0, 0, 0, 52, 0, 0, 30, 30};
+		gridBagLayout.rowHeights = new int[] {30, 0, 0, 0, 52, 0, 0, 0, 30, 30};
 		gridBagLayout.columnWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0};
 		getContentPane().setLayout(gridBagLayout);
 		
 		JLabel lHash = new JLabel("Ключ:");
@@ -178,12 +182,57 @@ public class Setting extends JFrame {
 		cbMinigame = new JCheckBox("Мини-игра");
 		autoUsePanel.add(cbMinigame);
 		
+		JLabel lblNewLabel_2 = new JLabel("Слоты:");
+		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
+		gbc_lblNewLabel_2.anchor = GridBagConstraints.WEST;
+		gbc_lblNewLabel_2.fill = GridBagConstraints.VERTICAL;
+		gbc_lblNewLabel_2.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel_2.gridx = 0;
+		gbc_lblNewLabel_2.gridy = 5;
+		getContentPane().add(lblNewLabel_2, gbc_lblNewLabel_2);
+		
+		JPanel slotPanel = new JPanel();
+		slotPanel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		GridBagConstraints gbc_slotPanel = new GridBagConstraints();
+		gbc_slotPanel.insets = new Insets(0, 0, 5, 0);
+		gbc_slotPanel.fill = GridBagConstraints.BOTH;
+		gbc_slotPanel.gridx = 1;
+		gbc_slotPanel.gridy = 5;
+		getContentPane().add(slotPanel, gbc_slotPanel);
+		slotPanel.setLayout(new GridLayout(1, 1, 0, 0));
+		
+		JPanel slotOnePanel = new JPanel();
+		slotPanel.add(slotOnePanel);
+		slotOnePanel.setLayout(null);
+		
+		cbAutoOne = new JCheckBox("1:");
+		cbAutoOne.setBounds(8, 0, 45, 23);
+		slotOnePanel.add(cbAutoOne);
+		
+		JLabel lHotKeyOne = new JLabel("Клавиша:");
+		lHotKeyOne.setBounds(67, 4, 83, 15);
+		slotOnePanel.add(lHotKeyOne);
+		
+		tHotKeyOne = new JTextField();
+		tHotKeyOne.setBounds(150, 2, 60, 19);
+		slotOnePanel.add(tHotKeyOne);
+		tHotKeyOne.setColumns(10);
+		
+		JLabel lKeyTimerOne = new JLabel("Таймер:");
+		lKeyTimerOne.setBounds(218, 4, 70, 15);
+		slotOnePanel.add(lKeyTimerOne);
+		
+		tKeyTimerOne = new JTextField();
+		tKeyTimerOne.setBounds(290, 2, 91, 19);
+		slotOnePanel.add(tKeyTimerOne);
+		tKeyTimerOne.setColumns(10);
+		
 		JLabel label = new JLabel("Удочки:");
 		GridBagConstraints gbc_label = new GridBagConstraints();
 		gbc_label.anchor = GridBagConstraints.NORTHWEST;
 		gbc_label.insets = new Insets(0, 0, 5, 5);
 		gbc_label.gridx = 0;
-		gbc_label.gridy = 5;
+		gbc_label.gridy = 6;
 		getContentPane().add(label, gbc_label);
 		
 		JPanel panel = new JPanel();
@@ -192,7 +241,7 @@ public class Setting extends JFrame {
 		gbc_panel.insets = new Insets(0, 0, 5, 0);
 		gbc_panel.fill = GridBagConstraints.BOTH;
 		gbc_panel.gridx = 1;
-		gbc_panel.gridy = 5;
+		gbc_panel.gridy = 6;
 		getContentPane().add(panel, gbc_panel);
 		panel.setLayout(new GridLayout(2, 2, 0, 0));
 		
@@ -217,7 +266,7 @@ public class Setting extends JFrame {
 		gbc_lblNewLabel_1.anchor = GridBagConstraints.NORTHWEST;
 		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_1.gridx = 0;
-		gbc_lblNewLabel_1.gridy = 6;
+		gbc_lblNewLabel_1.gridy = 7;
 		getContentPane().add(lblNewLabel_1, gbc_lblNewLabel_1);
 		
 		JPanel notificationPanel = new JPanel();
@@ -226,7 +275,7 @@ public class Setting extends JFrame {
 		gbc_notificationPanel.insets = new Insets(0, 0, 5, 0);
 		gbc_notificationPanel.fill = GridBagConstraints.BOTH;
 		gbc_notificationPanel.gridx = 1;
-		gbc_notificationPanel.gridy = 6;
+		gbc_notificationPanel.gridy = 7;
 		getContentPane().add(notificationPanel, gbc_notificationPanel);
 		notificationPanel.setLayout(new GridLayout(2, 0, 0, 0));
 		
@@ -271,7 +320,7 @@ public class Setting extends JFrame {
 		gbc_lDelay.anchor = GridBagConstraints.NORTHWEST;
 		gbc_lDelay.insets = new Insets(0, 0, 5, 5);
 		gbc_lDelay.gridx = 0;
-		gbc_lDelay.gridy = 7;
+		gbc_lDelay.gridy = 8;
 		getContentPane().add(lDelay, gbc_lDelay);
 		
 		JPanel delayPanel = new JPanel();
@@ -280,7 +329,7 @@ public class Setting extends JFrame {
 		gbc_delayPanel.insets = new Insets(0, 0, 5, 0);
 		gbc_delayPanel.fill = GridBagConstraints.BOTH;
 		gbc_delayPanel.gridx = 1;
-		gbc_delayPanel.gridy = 7;
+		gbc_delayPanel.gridy = 8;
 		getContentPane().add(delayPanel, gbc_delayPanel);
 		delayPanel.setLayout(new GridLayout(5, 1, 0, 0));
 		
@@ -475,7 +524,7 @@ public class Setting extends JFrame {
 		gbc_bPanel.anchor = GridBagConstraints.EAST;
 		gbc_bPanel.fill = GridBagConstraints.VERTICAL;
 		gbc_bPanel.gridx = 1;
-		gbc_bPanel.gridy = 8;
+		gbc_bPanel.gridy = 9;
 		getContentPane().add(bPanel, gbc_bPanel);
 		
 		JButton bSave = new JButton("Сохранить");
@@ -504,6 +553,10 @@ public class Setting extends JFrame {
 			
 			Application.getInstance().setProperty("bot.autouse.beer",  String.valueOf(cbBeer.isSelected()));
 			Application.getInstance().setProperty("bot.autouse.minigame", String.valueOf(cbMinigame.isSelected()));
+			
+			Application.getInstance().setProperty("bot.slot.first", String.valueOf(cbAutoOne.isSelected()));
+			Application.getInstance().setProperty("bot.slot.first.key", String.valueOf(tHotKeyOne.getText()));
+			Application.getInstance().setProperty("bot.slot.first.delayuse", String.valueOf(tKeyTimerOne.getText()));
 			
 			Application.getInstance().setProperty("bot.rod.count", String.valueOf(tCountRod.getText()));
 			Application.getInstance().setProperty("bot.rod.changetime", String.valueOf(tTimeChangeRod.getText()));
@@ -569,6 +622,10 @@ public class Setting extends JFrame {
 		
 		cbBeer.setSelected(Application.getInstance().BEER());
 		cbMinigame.setSelected(Application.getInstance().MINIGAME());
+		
+		cbAutoOne.setSelected(Application.getInstance().FIRST_SLOT());
+		tHotKeyOne.setText(Application.getInstance().FIRST_KEY_NUMBER());
+		tKeyTimerOne.setText(String.valueOf(Application.getInstance().FIRST_SLOT_USE_DELAY()));
 		
 		cbTelegram.setSelected(Application.getInstance().TELEGRAM());
 		tTelegramKey.setText(Application.getInstance().TELEGRAM_KEY());

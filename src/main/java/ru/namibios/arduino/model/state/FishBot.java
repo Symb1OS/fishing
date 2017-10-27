@@ -3,6 +3,7 @@ package ru.namibios.arduino.model.state;
 import ru.namibios.arduino.config.Application;
 import ru.namibios.arduino.gui.Gui;
 import ru.namibios.arduino.model.Rod;
+import ru.namibios.arduino.model.Slot;
 import ru.namibios.arduino.notification.Notification;
 import ru.namibios.arduino.notification.TelegramNotification;
 
@@ -14,11 +15,16 @@ public class FishBot {
 	
 	private Rod rod;
 	
+	private Slot slot;
+	
 	private boolean isRunned;
+	
+	private boolean isRestart;
 	
 	public FishBot(Gui gui) {
 		this.gui = gui;
 		this.rod = new Rod(Application.getInstance().COUNT_ROD());
+		this.slot = new Slot(Application.getInstance().FIRST_SLOT(), Application.getInstance().FIRST_KEY_NUMBER(), Application.getInstance().FIRST_SLOT_USE_DELAY());
 		
 		isRunned = true;
 		state = new StartFishState(this);
@@ -31,6 +37,18 @@ public class FishBot {
 			telegram.notifyUser();
 		}
 			
+	}
+	
+	public Slot getSlot() {
+		return slot;
+	}
+
+	public void setRestart(boolean isRestart) {
+		this.isRestart = isRestart;
+	}
+	
+	public boolean isRestart() {
+		return isRestart;
 	}
 
 	public State getState() {

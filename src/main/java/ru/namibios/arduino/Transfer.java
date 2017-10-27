@@ -20,6 +20,14 @@ public class Transfer extends Thread{
 	public FishBot getFishBot() {
 		return fishBot;
 	}
+	
+	public void restart(){
+		logger.info("Need Restart. Restarted after 15 second...");
+		DelayUtils.delay(15000);
+		fishBot.setRunned(true);
+		fishBot.setRestart(false);
+		run();
+	}
 
 	@Override
 	public void run() {
@@ -39,8 +47,12 @@ public class Transfer extends Thread{
 		while (fishBot.isRunned()) fishBot.getState().start();
 		
 		Application.getPhysicalPort().closePort();
+		
 		logger.info("Port closed...");
 		logger.info("Thread stop.");
+		
+		if(fishBot.isRestart()) restart();
+
 	}
 	
 }

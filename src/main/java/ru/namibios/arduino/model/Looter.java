@@ -64,7 +64,6 @@ public class Looter {
 			if(lootType.isTrash()) count.incTrash();
 			if(lootType.isUnknow()) count.incUnknow();
 		}
-		System.out.println(count);
 		
 	}
 	

@@ -67,6 +67,12 @@ void changeRod(String touch){
   pressKey('i');
 }
 
+void useSlot(String slot){
+	int start = slot.indexOf('[');
+	char key = slot.charAt(start + 1);
+	pressKey(key);
+}
+
 void takeLoot(String loot){
 
   pressKey(0x80); 
@@ -108,6 +114,8 @@ void loop() {
       changeRod(input);
     } else if (input.startsWith("Loot")) {
       takeLoot(input);
+    } else if (input.startsWith("Slot")) {
+      useSlot(input);
     } else if (input.startsWith("bear")) {
       bear();
     } else {

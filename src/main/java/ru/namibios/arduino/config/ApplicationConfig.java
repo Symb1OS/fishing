@@ -140,4 +140,16 @@ public interface ApplicationConfig extends Accessible, Mutable{
 	@Key("bot.notification.telegram.key")
 	String TELEGRAM_KEY();
 	
+	@Key("bot.slot.first")
+	@DefaultValue("false")
+	boolean FIRST_SLOT();
+	
+	@Key("bot.slot.first.key")
+	@DefaultValue("1")
+	String FIRST_KEY_NUMBER();
+	
+	@Key("bot.slot.first.delayuse")
+	@DefaultValue("5000")
+	int FIRST_SLOT_USE_DELAY();
+	
 }

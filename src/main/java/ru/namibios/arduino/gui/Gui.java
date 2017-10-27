@@ -9,7 +9,6 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Insets;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -69,7 +68,7 @@ public class Gui extends JFrame{
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    getContentPane().setLayout(new BorderLayout(0, 0));
 	    
-	    Image im = Toolkit.getDefaultToolkit().getImage("resources/icon.png");
+	    Image im = new ImageIcon("resources/icon.png").getImage();
 	    setIconImage(im);
 	    
 	    JPanel workPanel = new JPanel();
@@ -246,6 +245,20 @@ public class Gui extends JFrame{
 	
 	private void showMessageDialog(String message) {
 		JOptionPane.showMessageDialog(this, message);
+	}
+	
+	
+	class RestartAction implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			if (threadTransfer != null) {
+				threadTransfer.getFishBot().setRestart(true);
+				threadTransfer.getFishBot().setRunned(false);
+			}
+			
+		}
+		
 	}
 	
 	class StartAction implements ActionListener{
