@@ -19,6 +19,7 @@ void setup() {
   Serial.setTimeout(10);
   Keyboard.begin();
   Mouse.begin();
+  MouseTo.setCorrectionFactor(1);
 }
 
 void pressKey(char key) {
@@ -69,7 +70,10 @@ void changeRod(String touch){
 
 void useSlot(String slot){
 	int start = slot.indexOf('[');
+
+  Serial.println(start);
 	char key = slot.charAt(start + 1);
+  Serial.println(key);
 	pressKey(key);
 }
 

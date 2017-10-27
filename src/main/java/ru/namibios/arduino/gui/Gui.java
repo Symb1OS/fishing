@@ -205,7 +205,7 @@ public class Gui extends JFrame{
 				
 				@Override
 				public void run() {
-					Application.getPhysicalPort().openPort();
+				    Application.getPhysicalPort().openPort();
 					DelayUtils.delay(2000);
 					Keyboard.send( () -> "Rod[1542,355]");
 				}

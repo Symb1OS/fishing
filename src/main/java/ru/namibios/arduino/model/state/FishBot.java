@@ -27,7 +27,12 @@ public class FishBot {
 		this.slot = new Slot(Application.getInstance().FIRST_SLOT(), Application.getInstance().FIRST_KEY_NUMBER(), Application.getInstance().FIRST_SLOT_USE_DELAY());
 		
 		isRunned = true;
-		state = new StartFishState(this);
+		state = new UseSlotState(this);
+	}
+	
+	public void restart(){
+		setRestart(true);
+		setRunned(false);
 	}
 	
 	public void notifyUser(String message){

@@ -6,7 +6,7 @@ public class WorkTime{
 	private long current;
 	
 	public WorkTime() {
-		start = System.currentTimeMillis();
+		start = 0;
 	}
 	
 	public long getTime() {

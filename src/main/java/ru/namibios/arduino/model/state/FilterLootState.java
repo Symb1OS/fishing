@@ -30,7 +30,7 @@ public class FilterLootState extends State{
 			
 			repaint(new FilterReloader(filter));
 			
-			fishBot.setState(new StartFishState(fishBot));
+			fishBot.setState(new UseSlotState(fishBot));
 			
 		}catch (Exception e) {
 			logger.error("Exception " + e);
