@@ -31,7 +31,7 @@ public class ChangeRodState extends State{
 			Keyboard.send(command);
 			
 			fishBot.setState(new StartFishState(fishBot));
-			fishBot.setRestart(true);
+			fishBot.restart();
 			
 		}else{
 			logger.info("Free fishing rods are locked. Finish work.");
