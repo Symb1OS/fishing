@@ -105,7 +105,7 @@ public class FishLoot implements Command{
 	}
 	
 	public static void main(String[] args) throws IOException {
-		FishLoot fishLoot =new FishLoot("resources/loot/unsort/20171026_212121_309.jpg","resources/loot/unsort/20171026_212121_324.jpg");
+		FishLoot fishLoot =new FishLoot("D:/work/photo_2017-10-29_17-48-30.jpg","D:/work/photo_2017-10-29_17-48-56.jpg");
 		System.out.println(fishLoot.getKey());
 	}
 	
