@@ -100,7 +100,6 @@ public class Screen {
 	public void setScreenShot(BufferedImage screenShot) {
 		this.screenShot = screenShot;
 	}
-
 	
 public class Noise {
 		

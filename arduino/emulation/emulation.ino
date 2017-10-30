@@ -2,40 +2,22 @@
 #include <Mouse.h>
 #include <MouseTo.h>
 
-// BEAR
-const int SLAVE_ICON_X = 1162;
-const int SLAVE_ICON_Y = 519;
-const int SLAVE_RECREATION_X = 1499;
-const int SLAVE_RECREATION_Y = 676;
-const int SLAVE_SELECT_BEAR_X = 1160;
-const int SLAVE_SELECT_BEAR_Y = 189;
-const int SLAVE_OK_X = 1247;
-const int SLAVE_OK_Y = 346;
-const int SLAVE_REPEAT_X = 1577;
-const int SLAVE_REPEAT_Y = 679;
+const float CORRECTION_FACTOR = 1;
+
 
 void setup() {
   Serial.begin(9600);
   Serial.setTimeout(10);
   Keyboard.begin();
   Mouse.begin();
-  MouseTo.setCorrectionFactor(1);
+  
+  MouseTo.setCorrectionFactor(CORRECTION_FACTOR);
 }
 
 void pressKey(char key) {
   Keyboard.press(key);
   delay(random(60, 130));
   Keyboard.releaseAll();
-}
-
-void bear() {
-  pressKey(0xB1);
-  moveTo(SLAVE_ICON_X, SLAVE_ICON_Y, true);
-  moveTo(SLAVE_RECREATION_X, SLAVE_RECREATION_Y, true);
-  moveTo(SLAVE_SELECT_BEAR_X, SLAVE_SELECT_BEAR_Y, true);
-  moveTo(SLAVE_OK_X, SLAVE_OK_Y, true);
-  moveTo(SLAVE_REPEAT_X, SLAVE_REPEAT_Y, true);
-  pressKey(0xB1);
 }
 
 void moveTo(int x, int y, char button) {
@@ -48,6 +30,16 @@ void moveTo(int x, int y, char button) {
   delay(random(120, 150));
   Mouse.release(button);
   delay(1500);
+}
+
+void test(){
+ MouseTo.setTarget(0, 0);
+ while (MouseTo.move() == false) {}
+ delay(1000);
+ MouseTo.setTarget(1500, 0);
+ while (MouseTo.move() == false) {}
+ delay(1000);
+
 }
 
 void changeRod(String touch){
@@ -69,12 +61,12 @@ void changeRod(String touch){
 }
 
 void useSlot(String slot){
-	int start = slot.indexOf('[');
+  int start = slot.indexOf('[');
 
   Serial.println(start);
-	char key = slot.charAt(start + 1);
+  char key = slot.charAt(start + 1);
   Serial.println(key);
-	pressKey(key);
+  pressKey(key);
 }
 
 void takeLoot(String loot){
@@ -120,8 +112,8 @@ void loop() {
       takeLoot(input);
     } else if (input.startsWith("Slot")) {
       useSlot(input);
-    } else if (input.startsWith("bear")) {
-      bear();
+    } else if (input.startsWith("test")) {
+      test();
     } else {
       for (int i = 0; i < length; i++) {
         delay(random(130, 210));

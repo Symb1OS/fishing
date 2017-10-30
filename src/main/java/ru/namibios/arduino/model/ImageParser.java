@@ -2,9 +2,11 @@ package ru.namibios.arduino.model;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import ru.namibios.arduino.model.template.Loot;
 import ru.namibios.arduino.model.template.MatrixTemplate;
 
 public class ImageParser {
@@ -83,18 +85,16 @@ public class ImageParser {
 		
 		int index = 0;
 		while(index < collectionTemplate.length){
-			List<int[][]> templateNumber = collectionTemplate[index].getTemplates(); 
+			List<int[][]> templateNumber = collectionTemplate[index].getTemplates();
 			for (int[][] template : templateNumber) {
 				if(!isCorrectrDimension(numberMatrix, template)) continue;
 				coef.init(numberMatrix, template);
 				coef.calculate(index);
 			}
-			
-			if(coef.isFound()) break; else coef.resetRezultIndex();
 			index++;
 		}
 		
-		return coef.getRezultIndex();
+		return coef.isFound() ? coef.getRezultIndex() : coef.unknowIndex();
 	}
 
 	private boolean isCorrectrDimension(int[][] numberMatrix, int[][] template) {
@@ -175,6 +175,10 @@ public class ImageParser {
 			return maxCalcKoef > minKoef;
 		}
 		
+		public int unknowIndex() {
+			return -1;
+		}
+		
 		public void resetRezultIndex() {
 			rezultIndex = -1;
 		}
@@ -190,4 +194,5 @@ public class ImageParser {
 					+ "]";
 		}
 	}
+	
 }
