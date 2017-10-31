@@ -24,7 +24,7 @@ public class StartFishState extends State{
 		Command command = () -> Keyboard.Keys.SPACE;
 		boolean isSend = Keyboard.send(command);
 		
-		if(isSend) fishBot.setState(new WaitFishState(fishBot));
+		if(isSend) fishBot.setState(new PersonalMessageState(fishBot));
 		
 	}
 }

@@ -2,11 +2,9 @@ package ru.namibios.arduino.model;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import ru.namibios.arduino.model.template.Loot;
 import ru.namibios.arduino.model.template.MatrixTemplate;
 
 public class ImageParser {
@@ -100,6 +98,17 @@ public class ImageParser {
 	private boolean isCorrectrDimension(int[][] numberMatrix, int[][] template) {
 		return (numberMatrix.length == template.length && numberMatrix[0].length == template[0].length);
 	}
+	
+	public double getCoefWhite() {
+		double allElement = row * column;
+		double countElem = 0;
+		for (int i = 0; i < screenMatrix.length; i++) {
+			for (int j = 0; j < screenMatrix[0].length; j++) {
+				if(screenMatrix[i][j] == 1) countElem++; 
+			}
+		}
+		return countElem / allElement;
+	}
 
 	public String getKey() {
 		StringBuilder rezult = new StringBuilder();
@@ -131,7 +140,6 @@ public class ImageParser {
 		}
 		return null;
 	}
-	
 	
 	class Coefficient{
 

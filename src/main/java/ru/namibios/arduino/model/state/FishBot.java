@@ -21,12 +21,15 @@ public class FishBot {
 	
 	private boolean isRestart;
 	
+	private boolean isPmDetected;
+	
 	public FishBot(Gui gui) {
 		this.gui = gui;
 		this.rod = new Rod(Application.getInstance().COUNT_ROD());
 		this.slot = new Slot(Application.getInstance().FIRST_SLOT(), Application.getInstance().FIRST_KEY_NUMBER(), Application.getInstance().FIRST_SLOT_USE_DELAY());
 		
 		isRunned = true;
+		isPmDetected = false;
 		state = new UseSlotState(this);
 	}
 	
@@ -83,5 +86,13 @@ public class FishBot {
 	public void setRod(Rod rod) {
 		this.rod = rod;
 	}
-	
+
+	public boolean isPmDetected() {
+		return isPmDetected;
+	}
+
+	public void setPmDetected(boolean isPmDetected) {
+		this.isPmDetected = isPmDetected;
+	}
+
 }

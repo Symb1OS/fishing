@@ -30,10 +30,11 @@ public class Screen {
 	public static final Rectangle STATUS_KAPCHA = new Rectangle(810, 495, 295, 85);
 	public static final Rectangle LOOT_SLOT_ONE = new Rectangle(1537, 592, 47, 48);
 	public static final Rectangle LOOT_SLOT_TWO = new Rectangle(1584, 592, 47, 48);
+	public static final Rectangle CHAT 			= new Rectangle(0, 0, 0, 0);
 	
 	public static final Color WHITE = new Color(120,120,120);
 	public static final Color GRAY = new Color(40,40,40);
-
+	
 	public BufferedImage screenShot;
 	private Noise noise;
 	
@@ -141,5 +142,6 @@ public class Noise {
 			}
 			return image;
 		}
+		
 	}
 }

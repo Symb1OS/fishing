@@ -98,6 +98,11 @@ char getKey(char key) {
   }
 }
 
+void exitGame(){
+	preesKey(0xB1);
+	
+}
+
 void loop() {
 
   String input = Serial.readString();
@@ -114,7 +119,9 @@ void loop() {
       useSlot(input);
     } else if (input.startsWith("test")) {
       test();
-    } else {
+    } else if (input.startsWith("Exit")) {
+      exitGame();
+    }else {
       for (int i = 0; i < length; i++) {
         delay(random(130, 210));
         char symbol = getKey(input[i]);

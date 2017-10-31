@@ -9,6 +9,7 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -24,6 +25,7 @@ import org.apache.log4j.Logger;
 import com.fazecast.jSerialComm.SerialPort;
 
 import ru.namibios.arduino.config.Application;
+import javax.swing.JRadioButton;
 
 public class Setting extends JFrame {
 	
@@ -60,21 +62,27 @@ public class Setting extends JFrame {
 	private JTextField tTimeChangeRod;
 	
 	private JCheckBox cbTelegram;
-	private JTextField tTelegramKey;	
+	private JTextField tTelegramKey;
+
+	private JRadioButton rbAutoFish;
+
+	private JRadioButton rbExitGame;
+
+	private JRadioButton rbNothing;	
 
 	public Setting() {
 		
 		this.setTitle("Настройки");
-		this.setSize(new Dimension(500, 520));
+		this.setSize(new Dimension(520, 550));
 		this.setLocationRelativeTo(null);  
 	    this.setAlwaysOnTop(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0};
-		gridBagLayout.rowHeights = new int[] {30, 0, 0, 0, 52, 0, 0, 0, 30, 30};
+		gridBagLayout.rowHeights = new int[] {30, 0, 0, 0, 52, 0, 0, 0, 0, 30, 30};
 		gridBagLayout.columnWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0};
 		getContentPane().setLayout(gridBagLayout);
 		
 		JLabel lHash = new JLabel("Ключ:");
@@ -277,7 +285,7 @@ public class Setting extends JFrame {
 		gbc_notificationPanel.gridx = 1;
 		gbc_notificationPanel.gridy = 7;
 		getContentPane().add(notificationPanel, gbc_notificationPanel);
-		notificationPanel.setLayout(new GridLayout(2, 0, 0, 0));
+		notificationPanel.setLayout(new GridLayout(1, 0, 0, 0));
 		
 		JPanel telegramPanel = new JPanel();
 		notificationPanel.add(telegramPanel);
@@ -313,6 +321,38 @@ public class Setting extends JFrame {
 		telegramPanel.add(tTelegramKey, gbc_tTelegramKey);
 		tTelegramKey.setColumns(10);
 		
+		JLabel label_2 = new JLabel("Написали в ПМ:");
+		GridBagConstraints gbc_label_2 = new GridBagConstraints();
+		gbc_label_2.anchor = GridBagConstraints.NORTHWEST;
+		gbc_label_2.insets = new Insets(0, 0, 5, 5);
+		gbc_label_2.gridx = 0;
+		gbc_label_2.gridy = 8;
+		getContentPane().add(label_2, gbc_label_2);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
+		gbc_panel_1.insets = new Insets(0, 0, 5, 0);
+		gbc_panel_1.fill = GridBagConstraints.BOTH;
+		gbc_panel_1.gridx = 1;
+		gbc_panel_1.gridy = 8;
+		getContentPane().add(panel_1, gbc_panel_1);
+		panel_1.setLayout(new GridLayout(0, 3, 0, 0));
+		
+		rbAutoFish = new JRadioButton("Авто рыбалка");
+		panel_1.add(rbAutoFish);
+		
+		rbExitGame = new JRadioButton("Выйти из игры");
+		panel_1.add(rbExitGame);
+		
+		rbNothing = new JRadioButton("Ничего");
+		panel_1.add(rbNothing);
+		
+		ButtonGroup pmGroup = new ButtonGroup();
+		pmGroup.add(rbAutoFish);
+		pmGroup.add(rbExitGame);
+		pmGroup.add(rbNothing);
+		
 		JLabel lDelay = new JLabel("Задержки:");
 		lDelay.setHorizontalAlignment(SwingConstants.LEFT);
 		lDelay.setVerticalAlignment(SwingConstants.TOP);
@@ -320,7 +360,7 @@ public class Setting extends JFrame {
 		gbc_lDelay.anchor = GridBagConstraints.NORTHWEST;
 		gbc_lDelay.insets = new Insets(0, 0, 5, 5);
 		gbc_lDelay.gridx = 0;
-		gbc_lDelay.gridy = 8;
+		gbc_lDelay.gridy = 9;
 		getContentPane().add(lDelay, gbc_lDelay);
 		
 		JPanel delayPanel = new JPanel();
@@ -329,7 +369,7 @@ public class Setting extends JFrame {
 		gbc_delayPanel.insets = new Insets(0, 0, 5, 0);
 		gbc_delayPanel.fill = GridBagConstraints.BOTH;
 		gbc_delayPanel.gridx = 1;
-		gbc_delayPanel.gridy = 8;
+		gbc_delayPanel.gridy = 9;
 		getContentPane().add(delayPanel, gbc_delayPanel);
 		delayPanel.setLayout(new GridLayout(5, 1, 0, 0));
 		
@@ -524,7 +564,7 @@ public class Setting extends JFrame {
 		gbc_bPanel.anchor = GridBagConstraints.EAST;
 		gbc_bPanel.fill = GridBagConstraints.VERTICAL;
 		gbc_bPanel.gridx = 1;
-		gbc_bPanel.gridy = 9;
+		gbc_bPanel.gridy = 10;
 		getContentPane().add(bPanel, gbc_bPanel);
 		
 		JButton bSave = new JButton("Сохранить");
@@ -572,6 +612,10 @@ public class Setting extends JFrame {
 			
 			Application.getInstance().setProperty("bot.notification.telegram", String.valueOf(cbTelegram.isSelected()));
 			Application.getInstance().setProperty("bot.notification.telegram.key", tTelegramKey.getText().trim());
+			
+			Application.getInstance().setProperty("bot.pm.event.exitgame", String.valueOf(rbExitGame.isSelected()));
+			Application.getInstance().setProperty("bot.pm.event.autofish", String.valueOf(rbAutoFish.isSelected()));
+			Application.getInstance().setProperty("bot.pm.event.nothing",  String.valueOf(rbNothing.isSelected()));
 			
 			Application.getInstance().setProperty("bot.delay.kapcha.before", tKapchaDelayBefore.getText().trim());
 			Application.getInstance().setProperty("bot.delay.kapcha.after", tKapchaDelayAfter.getText().trim());
@@ -629,6 +673,10 @@ public class Setting extends JFrame {
 		
 		cbTelegram.setSelected(Application.getInstance().TELEGRAM());
 		tTelegramKey.setText(Application.getInstance().TELEGRAM_KEY());
+		
+		rbAutoFish.setSelected(Application.getInstance().PM_AUTOFISH());
+		rbExitGame.setSelected(Application.getInstance().PM_EXIT_GAME());
+		rbNothing.setSelected(Application.getInstance().PM_NOTHING());
 		
 		tCountRod.setText(String.valueOf(Application.getInstance().COUNT_ROD()));
 		tTimeChangeRod.setText(String.valueOf(Application.getInstance().TIME_CHANGE_ROD()));
