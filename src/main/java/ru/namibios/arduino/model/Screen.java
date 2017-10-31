@@ -30,7 +30,7 @@ public class Screen {
 	public static final Rectangle STATUS_KAPCHA = new Rectangle(810, 495, 295, 85);
 	public static final Rectangle LOOT_SLOT_ONE = new Rectangle(1537, 592, 47, 48);
 	public static final Rectangle LOOT_SLOT_TWO = new Rectangle(1584, 592, 47, 48);
-	public static final Rectangle CHAT 			= new Rectangle(0, 0, 0, 0);
+	public static final Rectangle CHAT 			= new Rectangle(5, 1000, 355, 40);
 	
 	public static final Color WHITE = new Color(120,120,120);
 	public static final Color GRAY = new Color(40,40,40);
@@ -79,7 +79,7 @@ public class Screen {
 	
 	public void saveDebugImage(){
 		try {
-			ImageIO.write(screenShot, "jpg", new File(Path.RESOURCES_DEBUG + DateUtils.getYYYY_MM_DD_HH_MM_SS_S() + ".jpg"));
+			ImageIO.write(screenShot, "jpg", new File(Path.DEBUG + DateUtils.getYYYY_MM_DD_HH_MM_SS_S() + ".jpg"));
 		} catch (IOException e) {
 			logger.error("Exception " + e);
 		}
@@ -144,4 +144,5 @@ public class Noise {
 		}
 		
 	}
+
 }

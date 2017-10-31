@@ -22,7 +22,7 @@ public class PersonalMessageState extends State {
 		
 		try {
 			
-			PersonalMessage pm = new PersonalMessage(0.05);
+			PersonalMessage pm = new PersonalMessage(Application.getInstance().PM_COEF());
 			if(pm.isDetected() && !fishBot.isPmDetected()) {
 				
 				logger.info("Reseived a private message. Send telegram notification.");
@@ -37,6 +37,7 @@ public class PersonalMessageState extends State {
 				if(Application.getInstance().PM_EXIT_GAME()) {
 					logger.info("Received a private message. Exit game...");
 					fishBot.notifyUser(Notification.TURN_AUTOFISH);
+					fishBot.setRunned(false);
 					Keyboard.send(() -> "Exit");
 				}
 				

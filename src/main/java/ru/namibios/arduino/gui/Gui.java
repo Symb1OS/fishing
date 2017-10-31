@@ -207,7 +207,7 @@ public class Gui extends JFrame{
 				public void run() {
 				    Application.getPhysicalPort().openPort();
 					DelayUtils.delay(2000);
-					Keyboard.send( () -> "Rod[1542,355]");
+					Keyboard.send( () -> "Exit");
 				}
 			});
 	    	t.start();

@@ -152,6 +152,10 @@ public interface ApplicationConfig extends Accessible, Mutable{
 	@DefaultValue("5000")
 	int FIRST_SLOT_USE_DELAY();
 	
+	@Key("bot.pm.event.coef")
+	@DefaultValue("0.1")
+	double PM_COEF();
+	
 	@Key("bot.pm.event.exitgame")
 	@DefaultValue("false")
 	boolean PM_EXIT_GAME();

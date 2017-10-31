@@ -99,8 +99,11 @@ char getKey(char key) {
 }
 
 void exitGame(){
-	preesKey(0xB1);
-	
+	pressKey(0xB1);
+	moveTo(751, 757, MOUSE_LEFT );
+  moveTo(961, 296, MOUSE_LEFT );
+  moveTo(917, 587, MOUSE_LEFT );
+  pressKey(0xB1);
 }
 
 void loop() {
