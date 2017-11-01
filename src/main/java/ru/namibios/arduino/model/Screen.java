@@ -12,10 +12,13 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 
+import org.apache.http.client.ClientProtocolException;
 import org.apache.log4j.Logger;
 
+import ru.namibios.arduino.config.Application;
 import ru.namibios.arduino.config.Path;
 import ru.namibios.arduino.utils.DateUtils;
+import ru.namibios.arduino.utils.Http;
 
 public class Screen {
 	
@@ -41,6 +44,13 @@ public class Screen {
 	public Screen(String filename) throws IOException{
 		this.screenShot = ImageIO.read(new File(filename));
 		makeGray();
+	}
+	
+	public Screen(Rectangle zone, boolean gray) throws AWTException {
+		Robot robot = new Robot();
+		screenShot = robot.createScreenCapture(zone);
+		if(gray) makeGray();
+		noise = new Noise(screenShot);
 	}
 	
 	public Screen(Rectangle zone) throws AWTException {
@@ -100,6 +110,11 @@ public class Screen {
 
 	public void setScreenShot(BufferedImage screenShot) {
 		this.screenShot = screenShot;
+	}
+	
+	public void upload() throws ClientProtocolException, IOException{
+		Http http = new Http();
+		http.uploadImage(Application.getInstance().HASH(), screenShot);
 	}
 	
 public class Noise {
