@@ -73,7 +73,7 @@ public class Http {
 	
 	public void uploadImage(String key, BufferedImage image) throws ClientProtocolException, IOException{
 		
-		HttpPost post = new HttpPost(UPLOAD_IMAGE_URL);
+		HttpPost post = new HttpPost(String.format(UPLOAD_IMAGE_URL, Application.getInstance().HTTP_SERVER()));
 		
 		MultipartEntityBuilder builder = MultipartEntityBuilder.create();
 		builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);

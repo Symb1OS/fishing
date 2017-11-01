@@ -247,7 +247,6 @@ public class Gui extends JFrame{
 		JOptionPane.showMessageDialog(this, message);
 	}
 	
-	
 	class RestartAction implements ActionListener{
 
 		@Override
