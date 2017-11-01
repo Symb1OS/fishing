@@ -16,6 +16,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
@@ -25,7 +26,6 @@ import org.apache.log4j.Logger;
 import com.fazecast.jSerialComm.SerialPort;
 
 import ru.namibios.arduino.config.Application;
-import javax.swing.JRadioButton;
 
 public class Setting extends JFrame {
 	

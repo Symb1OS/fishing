@@ -1,6 +1,7 @@
 package ru.namibios.arduino.utils;
 
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 
@@ -18,5 +19,24 @@ public class ImageUtils {
 			throw new RuntimeException(e);
 		}
 		return image;
+	}
+	
+	public static byte[] imageToBytes(BufferedImage image) {
+		
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		byte[] bytes = null;
+		
+		try {
+			
+			ImageIO.write( image, "jpg", baos );
+			baos.flush();
+			bytes = baos.toByteArray();
+			baos.close();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return bytes;
+		
 	}
 }

@@ -1,5 +1,6 @@
 package ru.namibios.arduino.utils;
 
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -10,6 +11,9 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.ContentType;
+import org.apache.http.entity.mime.HttpMultipartMode;
+import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
@@ -20,6 +24,7 @@ public class Http {
 	
 	private static final String AUTH_URL = "http://%s/fishingserver/authorized";
 	private static final String KAPCHA_URL = "http://%s/fishingserver/kapcha";
+	private static final String UPLOAD_IMAGE_URL = "http://%s/fishingserver/upload";
 	
 	private static final String TELEGRAM_ALARMER_BOT_URL = "https://alarmerbot.ru";
 	
@@ -64,6 +69,22 @@ public class Http {
 		response = httpClient.execute(post);
 		HttpEntity entity = response.getEntity();
 		return EntityUtils.toString(entity, "UTF-8").trim();
+	}
+	
+	public void uploadImage(String key, BufferedImage image) throws ClientProtocolException, IOException{
+		
+		HttpPost post = new HttpPost(UPLOAD_IMAGE_URL);
+		
+		MultipartEntityBuilder builder = MultipartEntityBuilder.create();
+		builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
+		builder.addTextBody("HASH", key, ContentType.TEXT_PLAIN);
+		builder.addBinaryBody("SCREEN", ImageUtils.imageToBytes(image), ContentType.DEFAULT_BINARY, "file.ext");
+		 
+		HttpEntity entity = builder.build();
+		post.setEntity(entity);
+		
+		response = httpClient.execute(post);
+		
 	}
 	
 	private static class Builder {
