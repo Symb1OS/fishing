@@ -27,6 +27,7 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PatternLayout;
 
+import ru.namibios.arduino.ActionClientSocket;
 import ru.namibios.arduino.Transfer;
 import ru.namibios.arduino.config.Application;
 import ru.namibios.arduino.config.Message;
@@ -56,6 +57,8 @@ public class Gui extends JFrame{
 
 	private JLabel lLootImgOne;
 	private JLabel lLootImgTwo;
+	
+	private ActionClientSocket clientSocket;
 	
 	public Gui() {
 		
@@ -198,6 +201,8 @@ public class Gui extends JFrame{
 	    gbc_bStop.gridy = 0;
 	    butonPanel.add(bStop, gbc_bStop);
 	    
+	    clientSocket = new ActionClientSocket();
+	    
 	    JButton bTest = new JButton("test");
 	    bTest.addActionListener((e) -> {
 	    	
@@ -246,7 +251,6 @@ public class Gui extends JFrame{
 	private void showMessageDialog(String message) {
 		JOptionPane.showMessageDialog(this, message);
 	}
-	
 	
 	class RestartAction implements ActionListener{
 

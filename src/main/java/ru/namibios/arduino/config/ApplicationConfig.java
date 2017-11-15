@@ -21,6 +21,10 @@ public interface ApplicationConfig extends Accessible, Mutable{
 	@DefaultValue("46.188.5.59:9090")
 	String HTTP_SERVER();
 	
+	@Key("bot.ws.action")
+	@DefaultValue("ws://${bot.http}/monitoring/action/${bot.key}")
+	String WS_ACTION();
+	
 	@Key("bot.rod.count")
 	@DefaultValue("0")
 	int COUNT_ROD();

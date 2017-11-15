@@ -98,6 +98,23 @@ char getKey(char key) {
   }
 }
 
+void personalMessage(String pm){
+  
+  int usernameStart = pm.indexOf('[') + 1;
+  int usernameEnd = pm.indexOf(',') + 1;
+  int messageEnd = pm.indexOf(']');
+  
+  String username = pm.substring(usernameStart, usernameEnd);
+  String message = pm.substring(usernameEnd,messageEnd);
+
+   // enter
+   // alt + 4
+   // write message
+   // tab
+   // write username
+   // enter
+}
+
 void exitGame(){
 	pressKey(0xB1);
 	moveTo(751, 757, MOUSE_LEFT );
@@ -122,7 +139,9 @@ void loop() {
       useSlot(input);
     } else if (input.startsWith("test")) {
       test();
-    } else if (input.startsWith("Exit")) {
+    } else if (input.startsWith("PM")) {
+      personalMessage(input);
+    }else if (input.startsWith("Exit")) {
       exitGame();
     }else {
       for (int i = 0; i < length; i++) {
