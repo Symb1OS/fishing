@@ -11,6 +11,8 @@ import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -26,17 +28,16 @@ import javax.swing.SwingConstants;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PatternLayout;
+import org.codehaus.jackson.type.TypeReference;
 
 import ru.namibios.arduino.ActionClientSocket;
 import ru.namibios.arduino.Transfer;
 import ru.namibios.arduino.config.Application;
-import ru.namibios.arduino.config.Message;
 import ru.namibios.arduino.gui.adapter.FilterReloader;
 import ru.namibios.arduino.gui.adapter.KapchaReloader;
 import ru.namibios.arduino.gui.adapter.Reloader;
-import ru.namibios.arduino.utils.DelayUtils;
 import ru.namibios.arduino.utils.Http;
-import ru.namibios.arduino.utils.Keyboard;
+import ru.namibios.arduino.utils.JSON;
 import ru.namibios.arduino.utils.TextAreaAppender;
 
 public class Gui extends JFrame{
@@ -210,9 +211,7 @@ public class Gui extends JFrame{
 				
 				@Override
 				public void run() {
-				    Application.getPhysicalPort().openPort();
-					DelayUtils.delay(2000);
-					Keyboard.send( () -> "Exit");
+				   
 				}
 			});
 	    	t.start();
@@ -235,17 +234,16 @@ public class Gui extends JFrame{
 		
 	}
 	
-	private int keyAuth() {
+	private Map<String, Object> getAuthMap() {
 		String hash = Application.getInstance().HASH();
-		int code = Message.CODE_AUTH_BAD;
+		Map<String, Object> map = new HashMap<>();
 		try{
 			Http http = new Http();
-			code = http.authorized(hash);
+			map = JSON.getInstance().readValue(http.auth(hash), new TypeReference<Map<String, Object>>(){});
 		}catch (Exception e) {
 			logger.error("Exception " + e);
-			return Message.CODE_SERVER_NOT_RESPONDING;
 		}
-		return code;
+		return map;
 	}
 	
 	private void showMessageDialog(String message) {
@@ -260,7 +258,6 @@ public class Gui extends JFrame{
 				threadTransfer.getFishBot().setRestart(true);
 				threadTransfer.getFishBot().setRunned(false);
 			}
-			
 		}
 		
 	}
@@ -275,18 +272,16 @@ public class Gui extends JFrame{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			int code = keyAuth();
-			switch (code) {
-				case Message.CODE_AUTH_OK: 
-					startThread();
-					break;
-				case Message.CODE_AUTH_BAD:
-					showMessageDialog(Message.MSG_KEY_INVALID);
-					break;
-				case Message.CODE_SERVER_NOT_RESPONDING:
-					showMessageDialog(Message.MSG_SERVER_NOT_RESPONDING);
-					break;
+			Map<String, Object> map= getAuthMap();
+			boolean status = (boolean) map.get("status");
+			String message = (String) map.get("message");
+			
+			if (status) {
+				startThread();
+			}else {
+				showMessageDialog(message);
 			}
+		
 		}
 
 		private void startThread() {

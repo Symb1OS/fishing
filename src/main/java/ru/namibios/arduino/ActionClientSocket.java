@@ -45,7 +45,7 @@ public class ActionClientSocket {
 	
 	@OnClose
 	public void onClose(Session session) {
-		logger.info("connection closed..");
+		logger.info("Connection closed..");
 	}
 	
 	@OnMessage
@@ -58,13 +58,11 @@ public class ActionClientSocket {
 		if (command.equals("Exit")) {
 			Command com = () -> command;
 			Keyboard.send(com);
-		} else if(command.equals("PM")) {
+		}
+		if(command.equals("PM")) {
 			Command com = () -> action.toPersonalMessage();
 			Keyboard.send(com);
-			
-		} else {
-			logger.info("Unknow action: " + action);
-		}
+		} 
 	}
 	
 	@OnError

@@ -48,7 +48,7 @@ public class Http {
 		return EntityUtils.toString(entity, "UTF-8");
 	}
 	
-	public int authorized(String key) throws ClientProtocolException, IOException{
+	public String auth(String key) throws ClientProtocolException, IOException{
 		
 		HttpPost post = Builder.config().setUrl(String.format(AUTH_URL,Application.getInstance().HTTP_SERVER()))
 				.setParameter(new BasicNameValuePair("HASH", key))
@@ -56,7 +56,7 @@ public class Http {
 
 		response = httpClient.execute(post);
 		HttpEntity entity = response.getEntity();
-		return Integer.valueOf(EntityUtils.toString(entity, "UTF-8").trim());
+		return EntityUtils.toString(entity, "UTF-8").trim();
 	}
 	
 	public String sendTelegram(String key, String message) throws ClientProtocolException, IOException{
