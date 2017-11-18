@@ -1,5 +1,6 @@
 package ru.namibios.arduino.utils;
 
+import java.awt.AWTException;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -19,6 +20,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
 import ru.namibios.arduino.config.Application;
+import ru.namibios.arduino.model.Screen;
 
 public class Http {
 	
@@ -73,7 +75,7 @@ public class Http {
 	
 	public void uploadImage(String key, BufferedImage image) throws ClientProtocolException, IOException{
 		
-		HttpPost post = new HttpPost(UPLOAD_IMAGE_URL);
+		HttpPost post = new HttpPost(String.format(UPLOAD_IMAGE_URL, Application.getInstance().HTTP_SERVER()));
 		
 		MultipartEntityBuilder builder = MultipartEntityBuilder.create();
 		builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
@@ -85,6 +87,11 @@ public class Http {
 		
 		response = httpClient.execute(post);
 		
+	}
+	
+	public static void main(String[] args) throws ClientProtocolException, IOException, AWTException {
+		Http http = new Http();
+		http.uploadImage(Application.getInstance().HASH(), new Screen(Screen.FULL_SCREEN).getScreenShot());
 	}
 	
 	private static class Builder {
