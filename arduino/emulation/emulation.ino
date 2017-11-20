@@ -20,6 +20,13 @@ void pressKey(char key) {
   Keyboard.releaseAll();
 }
 
+void pressKey(char first, char second) {
+  Keyboard.press(first);
+  Keyboard.press(second);
+  delay(random(60, 130));
+  Keyboard.releaseAll();
+}
+
 void moveTo(int x, int y, char button) {
   MouseTo.setTarget(x, y);
   while (MouseTo.move() == false) {}
@@ -85,6 +92,7 @@ void takeLoot(String loot){
   moveTo(x, y, MOUSE_RIGHT);
 
   pressKey(0x80);
+  
 }
 
 char getKey(char key) {
@@ -101,23 +109,41 @@ char getKey(char key) {
 void personalMessage(String pm){
   
   int usernameStart = pm.indexOf('[') + 1;
-  int usernameEnd = pm.indexOf(',') + 1;
+  int usernameEnd = pm.indexOf(',');
   int messageEnd = pm.indexOf(']');
   
   String username = pm.substring(usernameStart, usernameEnd);
-  String message = pm.substring(usernameEnd,messageEnd);
+  String message = pm.substring(usernameEnd + 1,messageEnd);
 
-   // enter
-   // alt + 4
-   // write message
-   // tab
-   // write username
-   // enter
+  delay(1000);
+  pressKey(0xB0);
+
+  pressKey(0x82, '3');
+
+  //print message
+  for (int index = 0; index < message.length(); index++){
+    pressKey(message[index]);  
+  }
+
+  pressKey(0xB3);
+
+  // clear username
+  for (int index = 0; index < 20; index++){
+    pressKey(0xB2);  
+  }
+
+  //print TO
+  for (int index = 0; index < username.length(); index++){
+    pressKey(username[index]);  
+  }
+
+  pressKey(0xB3);
+  pressKey(0xB0);
 }
 
 void exitGame(){
 	pressKey(0xB1);
-	moveTo(751, 757, MOUSE_LEFT );
+	moveTo(820, 757, MOUSE_LEFT );
   moveTo(961, 296, MOUSE_LEFT );
   moveTo(917, 587, MOUSE_LEFT );
   pressKey(0xB1);
