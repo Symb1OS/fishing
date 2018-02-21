@@ -15,6 +15,9 @@ public class Kapcha implements Command{
 
 	final static Logger logger = Logger.getLogger(Kapcha.class);
 
+	private static final int NEURAL_NETWORK = 0;
+	private static final int ALGORITHM = 1;
+
 	private Screen screen;
 	private String key;
 	
@@ -46,12 +49,24 @@ public class Kapcha implements Command{
 			imageParser.parse(Screen.GRAY);
 			
 			Http http = new Http();
-			key = http.parseKapcha(Application.getInstance().HASH(), JSON.getInstance().writeValueAsString(imageParser.getImageMatrix()));
+			
+			switch (Application.getInstance().PARSE_VARIABLE()) {
+				case NEURAL_NETWORK:
+					key = http.parseByteKapcha(Application.getInstance().HASH(), screen.toByteArray());
+					break;
+					
+				case ALGORITHM:
+					key = http.parseKapcha(Application.getInstance().HASH(), JSON.getInstance().writeValueAsString(imageParser.getImageMatrix()));
+					break;
+	
+				default:
+					throw new IllegalArgumentException(String.format("Strategy is not defined. Strategy = %s", Application.getInstance().PARSE_VARIABLE()));
+			}
 			
 		} catch (IOException e){
 			logger.error("Exception: " + e); 
 		} 
-		return key.replaceAll("\"",  "").replaceAll("\n", "");
+		return key.replaceAll("\"", "").replaceAll("\n", "");
 	}
 
 }

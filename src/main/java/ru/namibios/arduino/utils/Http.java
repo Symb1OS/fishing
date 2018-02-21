@@ -20,12 +20,14 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
 import ru.namibios.arduino.config.Application;
+import ru.namibios.arduino.model.ImageParser;
 import ru.namibios.arduino.model.Screen;
 
 public class Http {
 	
 	private static final String AUTH_URL = "http://%s/fishingserver/authorized";
 	private static final String KAPCHA_URL = "http://%s/fishingserver/kapcha";
+	private static final String BYTE_KAPCHA_URL = "http://%s/fishingserver/byte_kapcha";
 	private static final String UPLOAD_IMAGE_URL = "http://%s/fishingserver/upload";
 	
 	private static final String TELEGRAM_ALARMER_BOT_URL = "https://alarmerbot.ru";
@@ -48,6 +50,23 @@ public class Http {
 		response = httpClient.execute(post);
 		HttpEntity entity = response.getEntity();
 		return EntityUtils.toString(entity, "UTF-8");
+	}
+	
+	public String parseByteKapcha(String key, byte[] kapcha) throws ClientProtocolException, IOException{
+		
+		HttpPost post = new HttpPost(String.format(BYTE_KAPCHA_URL, Application.getInstance().HTTP_SERVER()));
+		
+		MultipartEntityBuilder builder = MultipartEntityBuilder.create();
+		builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
+		builder.addTextBody("HASH", key, ContentType.TEXT_PLAIN);
+		builder.addBinaryBody("SCREEN", kapcha, ContentType.DEFAULT_BINARY, "file.ext");
+		 
+		HttpEntity entity = builder.build();
+		post.setEntity(entity);
+		
+		response = httpClient.execute(post);
+		entity = response.getEntity();
+		return EntityUtils.toString(entity, "UTF-8").trim();
 	}
 	
 	public String auth(String key) throws ClientProtocolException, IOException{
@@ -90,8 +109,16 @@ public class Http {
 	}
 	
 	public static void main(String[] args) throws ClientProtocolException, IOException, AWTException {
+		Screen screen = new Screen("/home/symbios/fishingserver/resources/kapcha/13.jpg");
+		
+		ImageParser parser = new ImageParser(screen);
+		parser.parse(Screen.GRAY);
+		
 		Http http = new Http();
-		http.uploadImage(Application.getInstance().HASH(), new Screen(Screen.FULL_SCREEN).getScreenShot());
+		String nn = http.parseByteKapcha(Application.getInstance().HASH(), screen.toByteArray());
+		String alg = http.parseKapcha(Application.getInstance().HASH(), JSON.getInstance().writeValueAsString(parser.getImageMatrix()));
+		System.out.println("NN: " + nn);
+		System.out.println("Alg: " + alg);
 	}
 	
 	private static class Builder {

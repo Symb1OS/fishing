@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Rectangle;
 import java.awt.Robot;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -102,6 +103,24 @@ public class Screen {
 		this.screenShot = screenShot;
 	}
 	
+	public byte[] toByteArray() {
+		
+		byte[] imageInByte = null;
+		
+		try {
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			ImageIO.write(screenShot, "jpg", baos );
+			baos.flush();
+			imageInByte = baos.toByteArray();
+			baos.close();
+			
+		}catch(IOException e){
+			System.out.println(e.getMessage());
+		}
+		
+		return imageInByte;
+	}
+	
 public class Noise {
 		
 		private BufferedImage image;
@@ -117,6 +136,7 @@ public class Noise {
 			this.height = this.image.getHeight();
 			this.width = this.image.getWidth();
 			this.noises = new ArrayList<>();
+			
 		}
 		
 		public void addNois(BufferedImage image){
