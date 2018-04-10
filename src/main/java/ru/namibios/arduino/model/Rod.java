@@ -3,14 +3,10 @@ package ru.namibios.arduino.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import ru.namibios.arduino.config.Application;
+
 public class Rod {
 	
-	private static final int START_X = 1532;
-	private static final int START_Y = 355;
-	
-	private static final int DX = 48;
-	private static final int DY = 0;
-
 	private int currentId;
 	private List<Touch> rods;
 
@@ -18,13 +14,13 @@ public class Rod {
 		currentId = 0;
 		rods = new ArrayList<>();
 		
-		int x = START_X;
-		int y = START_Y;
+		int x = Application.getInstance().ROD_START_X();
+		int y = Application.getInstance().ROD_START_Y();
 		
 		for (int i = 0; i < cntRod; i++) {
 			rods.add(new Touch(x, y));
-			x += DX;
-			y += DY;
+			x += Application.getInstance().ROD_DX();
+			y += Application.getInstance().ROD_DY();
 		}
 	}
 	
@@ -36,6 +32,14 @@ public class Rod {
 		Touch touch = rods.get(currentId);
 		currentId++;
 		return touch;
+	}
+	
+	public static void main(String[] args) {
+		Rod rod = new Rod(8);
+		while(rod.hasNext()) {
+			System.out.println(rod.getNext());
+		}
+		
 	}
 	
 }

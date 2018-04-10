@@ -33,6 +33,22 @@ public interface ApplicationConfig extends Accessible, Mutable{
 	@DefaultValue("180000")
 	int TIME_CHANGE_ROD();
 	
+	@Key("bot.rod.x")
+	@DefaultValue("1532")
+	int ROD_START_X();
+	
+	@Key("bot.rod.y")
+	@DefaultValue("355")
+	int ROD_START_Y();
+	
+	@Key("bot.rod.dx")
+	@DefaultValue("48")
+	int ROD_DX();
+	
+	@Key("bot.rod.dy")
+	@DefaultValue("0")
+	int ROD_DY();
+	
 	@Key("bot.delay.rod.before")
 	@DefaultValue("0")
 	int DELAY_BEFORE_CHANGE_ROD();

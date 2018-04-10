@@ -12,6 +12,7 @@ import org.codehaus.jackson.type.TypeReference;
 
 import ru.namibios.arduino.Transfer;
 import ru.namibios.arduino.config.Application;
+import ru.namibios.arduino.config.Message;
 import ru.namibios.arduino.gui.view.RootView;
 import ru.namibios.arduino.utils.Http;
 import ru.namibios.arduino.utils.JSON;
@@ -49,7 +50,7 @@ public class StartController implements ActionListener {
 			threadTransfer = new Transfer();
 			threadTransfer.start();
 		}else{
-			showMessageDialog("Программа уже запущена");
+			showMessageDialog(Message.ALREADY_WORK);
 		} 
 		
 	}

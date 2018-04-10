@@ -38,7 +38,6 @@ public class WaitFishState extends State {
 			e.printStackTrace();
 			logger.error("Exception " + e);
 		}
-		
 	}
 	
 }

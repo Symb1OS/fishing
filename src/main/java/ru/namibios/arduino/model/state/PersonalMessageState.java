@@ -3,8 +3,8 @@ package ru.namibios.arduino.model.state;
 import org.apache.log4j.Logger;
 
 import ru.namibios.arduino.config.Application;
+import ru.namibios.arduino.config.Message;
 import ru.namibios.arduino.model.command.PersonalMessage;
-import ru.namibios.arduino.notification.Notification;
 import ru.namibios.arduino.utils.Keyboard;
 
 public class PersonalMessageState extends State {
@@ -26,17 +26,17 @@ public class PersonalMessageState extends State {
 			if(pm.isDetected() && !fishBot.isPmDetected()) {
 				
 				logger.info("Reseived a private message. Send telegram notification.");
-				fishBot.notifyUser(Notification.RECEIVED_PRIVATE_MESSAGE);
+				fishBot.notifyUser(Message.RECEIVED_PRIVATE_MESSAGE);
 				
 				if(Application.getInstance().PM_AUTOFISH()) {
 					logger.info("Received a private message. Switch to autofish...");
-					fishBot.notifyUser(Notification.TURN_AUTOFISH);
+					fishBot.notifyUser(Message.TURN_AUTOFISH);
 					fishBot.setRunned(false);
 				}
 				
 				if(Application.getInstance().PM_EXIT_GAME()) {
 					logger.info("Received a private message. Exit game...");
-					fishBot.notifyUser(Notification.TURN_AUTOFISH);
+					fishBot.notifyUser(Message.EXIT_GAME);
 					fishBot.setRunned(false);
 					Keyboard.send(() -> "Exit");
 				}
