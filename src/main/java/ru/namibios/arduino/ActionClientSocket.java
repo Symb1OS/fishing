@@ -33,6 +33,7 @@ public class ActionClientSocket {
 			
 	        WebSocketContainer container = ContainerProvider.getWebSocketContainer();
 	        container.connectToServer(this, new URI(Application.getInstance().WS_ACTION()));
+	        
 		}catch(Exception ex){
 			ex.printStackTrace();
 		}

@@ -9,7 +9,6 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.log4j.Logger;
 
 import ru.namibios.arduino.config.Application;
-import ru.namibios.arduino.gui.adapter.FilterReloader;
 import ru.namibios.arduino.model.Screen;
 import ru.namibios.arduino.model.command.FishLoot;
 import ru.namibios.arduino.utils.Http;
@@ -36,8 +35,6 @@ public class FilterLootState extends State{
 			
 			FishLoot filter = new FishLoot();
 			Keyboard.send(filter);
-			
-			repaint(new FilterReloader(filter));
 			
 			fishBot.setState(new UseSlotState(fishBot));
 			

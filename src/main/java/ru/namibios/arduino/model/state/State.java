@@ -1,6 +1,5 @@
 package ru.namibios.arduino.model.state;
 
-import ru.namibios.arduino.gui.adapter.Reloader;
 import ru.namibios.arduino.utils.DelayUtils;
 
 public abstract class State {
@@ -21,7 +20,6 @@ public abstract class State {
 		this.fishBot = fishBot;
 		this.beforeStart = beforeStart;
 		this.afterStart = afterStart;
-		
 	}
 	
 	public void start(){
@@ -37,10 +35,6 @@ public abstract class State {
 		long workTime = current - timeStart;
 		
 		return workTime > period;
-	}
-	
-	public void repaint(Reloader reloader) {
-		fishBot.getGui().repaint(reloader);
 	}
 
 }

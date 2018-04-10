@@ -3,7 +3,6 @@ package ru.namibios.arduino;
 import org.apache.log4j.Logger;
 
 import ru.namibios.arduino.config.Application;
-import ru.namibios.arduino.gui.Gui;
 import ru.namibios.arduino.model.state.FishBot;
 import ru.namibios.arduino.utils.DelayUtils;
 
@@ -13,8 +12,9 @@ public class Transfer extends Thread{
 
 	private FishBot fishBot;
 	
-	public Transfer(Gui gui) {
-		this.fishBot = new FishBot(gui);
+	public Transfer() {
+		this.fishBot = new FishBot();
+		new ActionClientSocket();
 	}
 	
 	public FishBot getFishBot() {

@@ -1,7 +1,6 @@
 package ru.namibios.arduino.model.state;
 
 import ru.namibios.arduino.config.Application;
-import ru.namibios.arduino.gui.Gui;
 import ru.namibios.arduino.model.Rod;
 import ru.namibios.arduino.model.Slot;
 import ru.namibios.arduino.notification.Notification;
@@ -9,8 +8,6 @@ import ru.namibios.arduino.notification.TelegramNotification;
 
 public class FishBot {
 
-	private Gui gui;
-	
 	private State state;
 	
 	private Rod rod;
@@ -23,8 +20,7 @@ public class FishBot {
 	
 	private boolean isPmDetected;
 	
-	public FishBot(Gui gui) {
-		this.gui = gui;
+	public FishBot() {
 		this.rod = new Rod(Application.getInstance().COUNT_ROD());
 		this.slot = new Slot(Application.getInstance().FIRST_SLOT(), Application.getInstance().FIRST_KEY_NUMBER(), Application.getInstance().FIRST_SLOT_USE_DELAY());
 		
@@ -67,10 +63,6 @@ public class FishBot {
 		this.state = command;
 	}
 	
-	public Gui getGui() {
-		return gui;
-	}
-
 	public boolean isRunned() {
 		return isRunned;
 	}

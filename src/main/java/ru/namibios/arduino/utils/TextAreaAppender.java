@@ -1,6 +1,5 @@
 package ru.namibios.arduino.utils;
 
-
 import javax.swing.JTextArea;
 
 import org.apache.log4j.AppenderSkeleton;
@@ -8,14 +7,12 @@ import org.apache.log4j.Layout;
 import org.apache.log4j.Level;
 import org.apache.log4j.spi.LoggingEvent;
 
-import ru.namibios.arduino.gui.Gui;
-
 public class TextAreaAppender extends AppenderSkeleton {
 	
 	private final JTextArea jTextA;
 
-	public TextAreaAppender(Gui gui) {
-		jTextA = gui.getTaLog();
+	public TextAreaAppender(JTextArea jTextArea) {
+		this.jTextA = jTextArea;
 	}
 
 	@Override
@@ -32,6 +29,7 @@ public class TextAreaAppender extends AppenderSkeleton {
 	}
 
 	public void close() {
+		//ignore
 	}
 
 	public boolean requiresLayout() {

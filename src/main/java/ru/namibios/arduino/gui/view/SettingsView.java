@@ -1,4 +1,4 @@
-package ru.namibios.arduino.gui;
+package ru.namibios.arduino.gui.view;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -6,8 +6,6 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -19,6 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
 import javax.swing.border.BevelBorder;
 
 import org.apache.log4j.Logger;
@@ -26,11 +25,13 @@ import org.apache.log4j.Logger;
 import com.fazecast.jSerialComm.SerialPort;
 
 import ru.namibios.arduino.config.Application;
+import ru.namibios.arduino.gui.controller.CancelController;
+import ru.namibios.arduino.gui.controller.SaveController;
 
-public class Setting extends JFrame {
+public class SettingsView extends JFrame{
 	
-	final static Logger logger = Logger.getLogger(Setting.class);
-	
+	private Logger logger = Logger.getLogger(SettingsView.class);
+
 	private static final long serialVersionUID = 1L;
 	
 	private JTextField tHash;
@@ -70,13 +71,13 @@ public class Setting extends JFrame {
 
 	private JRadioButton rbNothing;	
 
-	public Setting() {
+	public SettingsView() {
 		
-		this.setTitle("Настройки");
+		this.setTitle(UIManager.getString("preference.label"));
 		this.setSize(new Dimension(520, 550));
 		this.setLocationRelativeTo(null);  
 	    this.setAlwaysOnTop(true);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0};
@@ -85,7 +86,7 @@ public class Setting extends JFrame {
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0};
 		getContentPane().setLayout(gridBagLayout);
 		
-		JLabel lHash = new JLabel("Ключ:");
+		JLabel lHash = new JLabel(UIManager.getString("preference.label.key"));
 		lHash.setHorizontalAlignment(SwingConstants.LEFT);
 		GridBagConstraints gbc_lHash = new GridBagConstraints();
 		gbc_lHash.insets = new Insets(0, 0, 5, 5);
@@ -105,7 +106,7 @@ public class Setting extends JFrame {
 		getContentPane().add(tHash, gbc_tHash);
 		tHash.setColumns(10);
 		
-		JLabel lPort = new JLabel("Порт:");
+		JLabel lPort = new JLabel(UIManager.getString(UIManager.getString("preference.label.port")));
 		GridBagConstraints gbc_lPort = new GridBagConstraints();
 		gbc_lPort.anchor = GridBagConstraints.WEST;
 		gbc_lPort.insets = new Insets(0, 0, 5, 5);
@@ -131,7 +132,7 @@ public class Setting extends JFrame {
 		gbc_tPort.gridy = 1;
 		getContentPane().add(tPort, gbc_tPort);
 		
-		JLabel lLoot = new JLabel("Лут:");
+		JLabel lLoot = new JLabel(UIManager.getString("preference.label.loot"));
 		GridBagConstraints gbc_lLoot = new GridBagConstraints();
 		gbc_lLoot.anchor = GridBagConstraints.NORTHWEST;
 		gbc_lLoot.insets = new Insets(0, 0, 5, 5);
@@ -149,22 +150,22 @@ public class Setting extends JFrame {
 		getContentPane().add(cbPanel, gbc_cbPanel);
 		cbPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
 		
-		cbFish = new JCheckBox("Рыба");
+		cbFish = new JCheckBox(UIManager.getString("preference.label.fish"));
 		cbPanel.add(cbFish);
 		
-		cbRock = new JCheckBox("Камни");
+		cbRock = new JCheckBox(UIManager.getString("preference.label.rock"));
 		cbPanel.add(cbRock);
 		
-		cbEvent = new JCheckBox("Ивент");
+		cbEvent = new JCheckBox(UIManager.getString("preference.label.event"));
 		cbPanel.add(cbEvent);
 		
-		cbKey = new JCheckBox("Ключи");
+		cbKey = new JCheckBox(UIManager.getString("preference.label.keys"));
 		cbPanel.add(cbKey);
 		
-		cbUnknown = new JCheckBox("Неопознанный");
+		cbUnknown = new JCheckBox(UIManager.getString("preference.label.unknow"));
 		cbPanel.add(cbUnknown);
 		
-		JLabel label_1 = new JLabel("Автоюз:");
+		JLabel label_1 = new JLabel(UIManager.getString("preference.label.autouse"));
 		label_1.setVerticalAlignment(SwingConstants.TOP);
 		GridBagConstraints gbc_label_1 = new GridBagConstraints();
 		gbc_label_1.anchor = GridBagConstraints.NORTHWEST;
@@ -184,13 +185,13 @@ public class Setting extends JFrame {
 		gbc_autoUsePanel.gridy = 4;
 		getContentPane().add(autoUsePanel, gbc_autoUsePanel);
 		
-		cbBeer = new JCheckBox("Пиво");
+		cbBeer = new JCheckBox(UIManager.getString("preference.label.beer"));
 		autoUsePanel.add(cbBeer);
 		
-		cbMinigame = new JCheckBox("Мини-игра");
+		cbMinigame = new JCheckBox(UIManager.getString("preference.label.minigame"));
 		autoUsePanel.add(cbMinigame);
 		
-		JLabel lblNewLabel_2 = new JLabel("Слоты:");
+		JLabel lblNewLabel_2 = new JLabel(UIManager.getString("preference.label.slot"));
 		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
 		gbc_lblNewLabel_2.anchor = GridBagConstraints.WEST;
 		gbc_lblNewLabel_2.fill = GridBagConstraints.VERTICAL;
@@ -217,7 +218,7 @@ public class Setting extends JFrame {
 		cbAutoOne.setBounds(8, 0, 45, 23);
 		slotOnePanel.add(cbAutoOne);
 		
-		JLabel lHotKeyOne = new JLabel("Клавиша:");
+		JLabel lHotKeyOne = new JLabel(UIManager.getString("preference.label.digital"));
 		lHotKeyOne.setBounds(67, 4, 83, 15);
 		slotOnePanel.add(lHotKeyOne);
 		
@@ -226,7 +227,7 @@ public class Setting extends JFrame {
 		slotOnePanel.add(tHotKeyOne);
 		tHotKeyOne.setColumns(10);
 		
-		JLabel lKeyTimerOne = new JLabel("Таймер:");
+		JLabel lKeyTimerOne = new JLabel(UIManager.getString("preference.label.timer"));
 		lKeyTimerOne.setBounds(218, 4, 70, 15);
 		slotOnePanel.add(lKeyTimerOne);
 		
@@ -235,7 +236,7 @@ public class Setting extends JFrame {
 		slotOnePanel.add(tKeyTimerOne);
 		tKeyTimerOne.setColumns(10);
 		
-		JLabel label = new JLabel("Удочки:");
+		JLabel label = new JLabel(UIManager.getString("preference.label.rod"));
 		GridBagConstraints gbc_label = new GridBagConstraints();
 		gbc_label.anchor = GridBagConstraints.NORTHWEST;
 		gbc_label.insets = new Insets(0, 0, 5, 5);
@@ -253,7 +254,7 @@ public class Setting extends JFrame {
 		getContentPane().add(panel, gbc_panel);
 		panel.setLayout(new GridLayout(2, 2, 0, 0));
 		
-		JLabel lblNewLabel_4 = new JLabel("Кол-во удочек:");
+		JLabel lblNewLabel_4 = new JLabel(UIManager.getString("preference.label.rod.count"));
 		panel.add(lblNewLabel_4);
 		
 		tCountRod = new JTextField();
@@ -261,15 +262,15 @@ public class Setting extends JFrame {
 		panel.add(tCountRod);
 		tCountRod.setColumns(10);
 		
-		JLabel lblNewLabel = new JLabel("Время ожидания(мс)");
-		lblNewLabel.setToolTipText("Если таймер статуса ожидания рыбы превышает данное значение запускается задача на смену удочки");
+		JLabel lblNewLabel = new JLabel(UIManager.getString("preference.label.waittime"));
+		lblNewLabel.setToolTipText(UIManager.getString("preference.label.waittime.tooltip"));
 		panel.add(lblNewLabel);
 		
 		tTimeChangeRod = new JTextField();
 		panel.add(tTimeChangeRod);
 		tTimeChangeRod.setColumns(10);
 		
-		JLabel lblNewLabel_1 = new JLabel("Оповещения:");
+		JLabel lblNewLabel_1 = new JLabel(UIManager.getString("preference.label.notification"));
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
 		gbc_lblNewLabel_1.anchor = GridBagConstraints.NORTHWEST;
 		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
@@ -296,7 +297,7 @@ public class Setting extends JFrame {
 		gbl_telegramPanel.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 		telegramPanel.setLayout(gbl_telegramPanel);
 		
-		cbTelegram = new JCheckBox("Телеграм");
+		cbTelegram = new JCheckBox(UIManager.getString("preference.label.telegram"));
 		GridBagConstraints gbc_cbTelegram = new GridBagConstraints();
 		gbc_cbTelegram.anchor = GridBagConstraints.WEST;
 		gbc_cbTelegram.insets = new Insets(0, 0, 0, 5);
@@ -304,7 +305,7 @@ public class Setting extends JFrame {
 		gbc_cbTelegram.gridy = 0;
 		telegramPanel.add(cbTelegram, gbc_cbTelegram);
 		
-		JLabel lTelegram = new JLabel("Ключ:");
+		JLabel lTelegram = new JLabel(UIManager.getString("preference.label.key"));
 		GridBagConstraints gbc_lTelegram = new GridBagConstraints();
 		gbc_lTelegram.insets = new Insets(0, 0, 0, 5);
 		gbc_lTelegram.anchor = GridBagConstraints.EAST;
@@ -321,7 +322,7 @@ public class Setting extends JFrame {
 		telegramPanel.add(tTelegramKey, gbc_tTelegramKey);
 		tTelegramKey.setColumns(10);
 		
-		JLabel label_2 = new JLabel("Написали в ПМ:");
+		JLabel label_2 = new JLabel(UIManager.getString("preference.label.wrotepm"));
 		GridBagConstraints gbc_label_2 = new GridBagConstraints();
 		gbc_label_2.anchor = GridBagConstraints.NORTHWEST;
 		gbc_label_2.insets = new Insets(0, 0, 5, 5);
@@ -339,13 +340,13 @@ public class Setting extends JFrame {
 		getContentPane().add(panel_1, gbc_panel_1);
 		panel_1.setLayout(new GridLayout(0, 3, 0, 0));
 		
-		rbAutoFish = new JRadioButton("Авто рыбалка");
+		rbAutoFish = new JRadioButton(UIManager.getString("preference.label.autofish"));
 		panel_1.add(rbAutoFish);
 		
-		rbExitGame = new JRadioButton("Выйти из игры");
+		rbExitGame = new JRadioButton(UIManager.getString("preference.label.exitgame"));
 		panel_1.add(rbExitGame);
 		
-		rbNothing = new JRadioButton("Ничего");
+		rbNothing = new JRadioButton(UIManager.getString("preference.label.nothing"));
 		panel_1.add(rbNothing);
 		
 		ButtonGroup pmGroup = new ButtonGroup();
@@ -353,7 +354,7 @@ public class Setting extends JFrame {
 		pmGroup.add(rbExitGame);
 		pmGroup.add(rbNothing);
 		
-		JLabel lDelay = new JLabel("Задержки:");
+		JLabel lDelay = new JLabel(UIManager.getString("preference.label.delay"));
 		lDelay.setHorizontalAlignment(SwingConstants.LEFT);
 		lDelay.setVerticalAlignment(SwingConstants.TOP);
 		GridBagConstraints gbc_lDelay = new GridBagConstraints();
@@ -382,7 +383,7 @@ public class Setting extends JFrame {
 		gbl_startPanel.rowWeights = new double[]{1.0, Double.MIN_VALUE};
 		startPanel.setLayout(gbl_startPanel);
 		
-		JLabel lDelayStart = new JLabel("Старт:");
+		JLabel lDelayStart = new JLabel(UIManager.getString("preference.label.start"));
 		GridBagConstraints gbc_lDelayStart = new GridBagConstraints();
 		gbc_lDelayStart.gridwidth = 3;
 		gbc_lDelayStart.anchor = GridBagConstraints.WEST;
@@ -420,7 +421,7 @@ public class Setting extends JFrame {
 		gbl_waitPanel.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 		waitPanel.setLayout(gbl_waitPanel);
 		
-		JLabel lDelayWait = new JLabel("Ожидание:");
+		JLabel lDelayWait = new JLabel(UIManager.getString("preference.label.wait"));
 		GridBagConstraints gbc_lDelayWait = new GridBagConstraints();
 		gbc_lDelayWait.gridwidth = 3;
 		gbc_lDelayWait.anchor = GridBagConstraints.WEST;
@@ -457,7 +458,7 @@ public class Setting extends JFrame {
 		gbl_cutPanel.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 		cutPanel.setLayout(gbl_cutPanel);
 		
-		JLabel lDelayChangeRod = new JLabel("Смена удочки");
+		JLabel lDelayChangeRod = new JLabel(UIManager.getString("preference.label.changerod"));
 		GridBagConstraints gbc_lDelayChangeRod = new GridBagConstraints();
 		gbc_lDelayChangeRod.gridwidth = 3;
 		gbc_lDelayChangeRod.insets = new Insets(0, 0, 0, 5);
@@ -494,7 +495,7 @@ public class Setting extends JFrame {
 		gbl_kapchaPanel.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 		kapchaPanel.setLayout(gbl_kapchaPanel);
 		
-		JLabel lDelayKapcha = new JLabel("Капча:");
+		JLabel lDelayKapcha = new JLabel(UIManager.getString("preference.label.captcha"));
 		GridBagConstraints gbc_lDelayKapcha = new GridBagConstraints();
 		gbc_lDelayKapcha.anchor = GridBagConstraints.WEST;
 		gbc_lDelayKapcha.gridwidth = 3;
@@ -531,7 +532,7 @@ public class Setting extends JFrame {
 		gbl_filterPanel.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 		filterPanel.setLayout(gbl_filterPanel);
 		
-		JLabel lDelayFilter = new JLabel("Фильтр");
+		JLabel lDelayFilter = new JLabel(UIManager.getString("preference.label.filter"));
 		GridBagConstraints gbc_lDelayFilter = new GridBagConstraints();
 		gbc_lDelayFilter.anchor = GridBagConstraints.WEST;
 		gbc_lDelayFilter.gridwidth = 3;
@@ -567,96 +568,24 @@ public class Setting extends JFrame {
 		gbc_bPanel.gridy = 10;
 		getContentPane().add(bPanel, gbc_bPanel);
 		
-		JButton bSave = new JButton("Сохранить");
-		bSave.addActionListener(new SaveAction());
+		JButton bSave = new JButton(UIManager.getString("preference.button.save"));
+		bSave.addActionListener(new SaveController(this));
 		bPanel.add(bSave);
 		
-		JButton bCancel = new JButton("Отмена");
-		bCancel.addActionListener(new CancelAction());
+		JButton bCancel = new JButton(UIManager.getString("preference.button.cancel"));
+		bCancel.addActionListener(new CancelController(this));
 		bPanel.add(bCancel);
 		
-		init();
-	}
-	
-	class SaveAction implements ActionListener{
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			Application.getInstance().setProperty("bot.key", tHash.getText().trim());
-			Application.getInstance().setProperty("bot.port", getPortName(tPort.getSelectedItem().toString()));
-			
-			Application.getInstance().setProperty("bot.loot.key",   String.valueOf(cbKey.isSelected()));
-			Application.getInstance().setProperty("bot.loot.rock",  String.valueOf(cbRock.isSelected()));
-			Application.getInstance().setProperty("bot.loot.fish",  String.valueOf(cbFish.isSelected()));
-			Application.getInstance().setProperty("bot.loot.event", String.valueOf(cbEvent.isSelected()));
-			Application.getInstance().setProperty("bot.loot.unknown", String.valueOf(cbUnknown.isSelected()));
-			
-			Application.getInstance().setProperty("bot.autouse.beer",  String.valueOf(cbBeer.isSelected()));
-			Application.getInstance().setProperty("bot.autouse.minigame", String.valueOf(cbMinigame.isSelected()));
-			
-			Application.getInstance().setProperty("bot.slot.first", String.valueOf(cbAutoOne.isSelected()));
-			Application.getInstance().setProperty("bot.slot.first.key", String.valueOf(tHotKeyOne.getText()));
-			Application.getInstance().setProperty("bot.slot.first.delayuse", String.valueOf(tKeyTimerOne.getText()));
-			
-			Application.getInstance().setProperty("bot.rod.count", String.valueOf(tCountRod.getText()));
-			Application.getInstance().setProperty("bot.rod.changetime", String.valueOf(tTimeChangeRod.getText()));
-			
-			Application.getInstance().setProperty("bot.delay.start.before", tStartDelayBefore.getText().trim());
-			Application.getInstance().setProperty("bot.delay.start.after", tStartDelayAfter.getText().trim());
-			
-			Application.getInstance().setProperty("bot.delay.waitfish.before", tWaitDelayBefore.getText().trim());
-			Application.getInstance().setProperty("bot.delay.waitfish.after", tWaitDelayAfter.getText().trim());
-			
-			Application.getInstance().setProperty("bot.delay.rod.before", tRodDelayBefore.getText().trim());
-			Application.getInstance().setProperty("bot.delay.rod.after", tRodDelayAfter.getText().trim());
-			
-			Application.getInstance().setProperty("bot.notification.telegram", String.valueOf(cbTelegram.isSelected()));
-			Application.getInstance().setProperty("bot.notification.telegram.key", tTelegramKey.getText().trim());
-			
-			Application.getInstance().setProperty("bot.pm.event.exitgame", String.valueOf(rbExitGame.isSelected()));
-			Application.getInstance().setProperty("bot.pm.event.autofish", String.valueOf(rbAutoFish.isSelected()));
-			Application.getInstance().setProperty("bot.pm.event.nothing",  String.valueOf(rbNothing.isSelected()));
-			
-			Application.getInstance().setProperty("bot.delay.kapcha.before", tKapchaDelayBefore.getText().trim());
-			Application.getInstance().setProperty("bot.delay.kapcha.after", tKapchaDelayAfter.getText().trim());
-			
-			Application.getInstance().setProperty("bot.delay.filterloot.before", tFilterDelayBefore.getText().trim());
-			Application.getInstance().setProperty("bot.delay.filterloot.after", tFilterDelayAfter.getText().trim());
-			
-			Application.record();
-			dispose();
-			
-		}
-	} 
-	
-	class CancelAction implements ActionListener{
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			dispose();
-		}
-	}
-	
-	private String getPortName(String descriptionPort){
-		return descriptionPort.indexOf(")") != -1 
-				? descriptionPort.substring(descriptionPort.indexOf("(") + 1, descriptionPort.indexOf(")"))
-				: descriptionPort;
-	}
-	
-	private Object getDescriptionPort(String settingPort){
+		Application.getInstance();
+		
+		tHash.setText(Application.getInstance().HASH());
+		
 		int count = tPort.getItemCount();
 		for (int index = 0; index < count; index++) {
-			if(tPort.getItemAt(index).contains(settingPort)){
-				return tPort.getItemAt(index);
+			if(tPort.getItemAt(index).contains(Application.getInstance().PORT())){
+				tPort.setSelectedItem(tPort.getItemAt(index));
 			};
 		}
-		return 0;
-	}
-	
-	public void init() {
-		Application.getInstance();
-		tHash.setText(Application.getInstance().HASH());
-		tPort.setSelectedItem(getDescriptionPort(Application.getInstance().PORT()));
 		
 		cbFish.setSelected(Application.getInstance().FISH());
 		cbKey.setSelected(Application.getInstance().KEY());
@@ -695,12 +624,126 @@ public class Setting extends JFrame {
 		
 		tFilterDelayBefore.setText(String.valueOf(Application.getInstance().DELAY_BEFORE_FILTER_LOOT()));
 		tFilterDelayAfter.setText(String.valueOf(Application.getInstance().DELAY_AFTER_FILTER_LOOT()));
+		
 	}
-	
-	public static void main(String[] args) {
-		
-		Setting setting = new Setting();
-		setting.setVisible(true);
-		
+
+	public Logger getLogger() {
+		return logger;
+	}
+
+	public JTextField gettHash() {
+		return tHash;
+	}
+
+	public JComboBox<String> gettPort() {
+		return tPort;
+	}
+
+	public JTextField gettStartDelayAfter() {
+		return tStartDelayAfter;
+	}
+
+	public JTextField gettStartDelayBefore() {
+		return tStartDelayBefore;
+	}
+
+	public JTextField gettWaitDelayAfter() {
+		return tWaitDelayAfter;
+	}
+
+	public JTextField gettWaitDelayBefore() {
+		return tWaitDelayBefore;
+	}
+
+	public JTextField gettRodDelayAfter() {
+		return tRodDelayAfter;
+	}
+
+	public JTextField gettRodDelayBefore() {
+		return tRodDelayBefore;
+	}
+
+	public JTextField gettKapchaDelayBefore() {
+		return tKapchaDelayBefore;
+	}
+
+	public JTextField gettKapchaDelayAfter() {
+		return tKapchaDelayAfter;
+	}
+
+	public JTextField gettFilterDelayAfter() {
+		return tFilterDelayAfter;
+	}
+
+	public JTextField gettFilterDelayBefore() {
+		return tFilterDelayBefore;
+	}
+
+	public JCheckBox getCbFish() {
+		return cbFish;
+	}
+
+	public JCheckBox getCbRock() {
+		return cbRock;
+	}
+
+	public JCheckBox getCbEvent() {
+		return cbEvent;
+	}
+
+	public JCheckBox getCbKey() {
+		return cbKey;
+	}
+
+	public JCheckBox getCbUnknown() {
+		return cbUnknown;
+	}
+
+	public JCheckBox getCbAutoOne() {
+		return cbAutoOne;
+	}
+
+	public JTextField gettHotKeyOne() {
+		return tHotKeyOne;
+	}
+
+	public JTextField gettKeyTimerOne() {
+		return tKeyTimerOne;
+	}
+
+	public JCheckBox getCbMinigame() {
+		return cbMinigame;
+	}
+
+	public JCheckBox getCbBeer() {
+		return cbBeer;
+	}
+
+	public JTextField gettCountRod() {
+		return tCountRod;
+	}
+
+	public JTextField gettTimeChangeRod() {
+		return tTimeChangeRod;
+	}
+
+	public JCheckBox getCbTelegram() {
+		return cbTelegram;
+	}
+
+	public JTextField gettTelegramKey() {
+		return tTelegramKey;
+	}
+
+	public JRadioButton getRbAutoFish() {
+		return rbAutoFish;
+	}
+
+	public JRadioButton getRbExitGame() {
+		return rbExitGame;
+	}
+
+	public JRadioButton getRbNothing() {
+		return rbNothing;
 	}
 }

@@ -76,7 +76,7 @@
 
   </dependencies>
   
-   <build>
+  <build>
 
    <resources>
    	<resource>
@@ -104,7 +104,7 @@
     </dependencies>
 	</plugin>
 
-   <plugin>
+      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>2.5.1</version>
@@ -122,12 +122,13 @@
           <archive>
             <manifest>
               <addClasspath>true</addClasspath>
-              <mainClass>ru.namibios.arduino.gui.Gui</mainClass>
+              <mainClass>ru.namibios.arduino.gui.Launcher</mainClass>
               <classpathPrefix>libs/</classpathPrefix>
             </manifest>
           </archive>
         </configuration>
       </plugin>
+      
       <plugin>
         <artifactId>maven-dependency-plugin</artifactId>
         <executions>
@@ -142,6 +143,7 @@
           </execution>
         </executions>
       </plugin>
+      
       </plugins>
    </build>
   
