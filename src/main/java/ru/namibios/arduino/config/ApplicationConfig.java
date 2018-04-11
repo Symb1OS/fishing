@@ -6,7 +6,7 @@ import org.aeonbits.owner.Mutable;
 
 import com.fazecast.jSerialComm.SerialPort;
 
-import ru.namibios.arduino.utils.SerialPortConverter;
+import ru.namibios.arduino.model.Touch;
 
 @Sources("file:resources/application.properties")
 public interface ApplicationConfig extends Accessible, Mutable{
@@ -61,10 +61,20 @@ public interface ApplicationConfig extends Accessible, Mutable{
 	@Key("bot.kapcha.noise.iteration")
 	int CNT_KAPCHA();
 	
+	@DefaultValue("0.88")
+	@Key("bot.parsing.coefidentity")
+	double COEF_IDENTITY();
+	
 	@Key("bot.port.serial")
 	@DefaultValue("${bot.key}")
 	@ConverterClass(SerialPortConverter.class)
 	SerialPort physicalPort();
+	
+	@Key("bot.loot.touch")
+	@Separator(";")
+	@DefaultValue("{1561,616};{1608,616}")
+	@ConverterClass(LootTouchConverter.class)
+	Touch[] LOOT_TOUCH();
 	
 	@Key("bot.loot.fish")
 	@DefaultValue("true")

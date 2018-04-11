@@ -135,7 +135,7 @@ public class RootView extends JFrame{
 	public static class Launcher {
 
 		public static void main(String[] args) {
-		
+			
 			UIManager.getDefaults().addResourceBundle("locale");
 			
 			try {

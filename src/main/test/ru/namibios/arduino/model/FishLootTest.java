@@ -45,7 +45,6 @@ public class FishLootTest {
 	public void OkTrash() throws IOException{
 		FishLoot fishLoot = new FishLoot("resources/loot/ok/fish/zerex.jpg","resources/loot/trash/macropod.jpg");
 		String key = fishLoot.getKey();
-		
 		assertEquals("Loot[1561,616]", key);
 	}
 	

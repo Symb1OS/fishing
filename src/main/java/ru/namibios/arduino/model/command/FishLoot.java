@@ -18,11 +18,6 @@ import ru.namibios.arduino.utils.Keyboard;
 
 public class FishLoot implements Command{
 	
-	private final static Touch[] TOUCH = {
-							new Touch(1561, 616),
-							new Touch(1608, 616)
-	};
-	
 	final static Logger logger = Logger.getLogger(FishLoot.class);
 
 	private List<Screen> scrins;
@@ -55,7 +50,7 @@ public class FishLoot implements Command{
 	private String[] getLootIndices() {
 		String loots = "";
 		for (Screen screen : scrins) {
-			imageParser = new ImageParser(screen, Loot.values(), 0.88);
+			imageParser = new ImageParser(screen, Loot.values());
 			imageParser.parse(Screen.GRAY);
 			loots+= imageParser.getKey();
 		}
@@ -86,7 +81,7 @@ public class FishLoot implements Command{
 			for(LootType type : looter.getLootTypeList()) {
 				if(type.isOk()) {
 					int index = type.getIndex();
-					Touch touch = TOUCH[index];
+					Touch touch = Application.getInstance().LOOT_TOUCH()[index];
 					return "Loot" + touch;
 				}
 			}
@@ -102,11 +97,6 @@ public class FishLoot implements Command{
 
 	public Screen getTwo() {
 		return two;
-	}
-	
-	public static void main(String[] args) throws IOException {
-		FishLoot fishLoot =new FishLoot("D:/work/photo_2017-10-29_17-48-30.jpg","D:/work/photo_2017-10-29_17-48-56.jpg");
-		System.out.println(fishLoot.getKey());
 	}
 	
 }

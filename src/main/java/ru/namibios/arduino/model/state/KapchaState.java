@@ -24,7 +24,7 @@ public class KapchaState extends State {
 		
 		try{
 			
-			Kapcha kapcha = new Kapcha(50);
+			Kapcha kapcha = new Kapcha();
 			boolean isSendToInput = Keyboard.send(kapcha);
 			
 			if(isSendToInput){

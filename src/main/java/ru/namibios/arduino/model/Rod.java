@@ -34,12 +34,4 @@ public class Rod {
 		return touch;
 	}
 	
-	public static void main(String[] args) {
-		Rod rod = new Rod(8);
-		while(rod.hasNext()) {
-			System.out.println(rod.getNext());
-		}
-		
-	}
-	
 }

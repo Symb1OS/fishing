@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
+import ru.namibios.arduino.config.Application;
 import ru.namibios.arduino.model.template.MatrixTemplate;
 
 public class ImageParser {
@@ -16,24 +17,13 @@ public class ImageParser {
 	
 	private MatrixTemplate[] collectionTemplate;
 	
-	private double coefIdentification = 0.88;
+	private double coefIdentification = Application.getInstance().COEF_IDENTITY();
 	
 	private int row;
 	private int column;
 	
-	
 	public ImageParser(Screen screen, MatrixTemplate[] matrixTemplate) {
 		this.screenShot = screen.getScreenShot();
-		this.row = screenShot.getHeight(); 
-		this.column = screenShot.getWidth();
-		this.screenMatrix = new int[row][column];
-		this.collectionTemplate = matrixTemplate;
-		this.keyList = new ArrayList<int[][]>();
-	}
-	
-	public ImageParser(Screen screen, MatrixTemplate[] matrixTemplate, double coef) {
-		this.screenShot = screen.getScreenShot();
-		this.coefIdentification = coef;
 		this.row = screenShot.getHeight(); 
 		this.column = screenShot.getWidth();
 		this.screenMatrix = new int[row][column];

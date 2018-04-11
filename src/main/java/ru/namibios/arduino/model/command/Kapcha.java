@@ -21,9 +21,9 @@ public class Kapcha implements Command{
 	private Screen screen;
 	private String key;
 	
-	public Kapcha(int iteration) throws AWTException  {
+	public Kapcha() throws AWTException  {
 		this.screen = new Screen(Screen.KAPCHA);
-		this.screen.clearNoise(iteration);
+		this.screen.clearNoise(Application.getInstance().CNT_KAPCHA());
 		this.screen.saveImage("kapcha");
 		this.key = "";
 	}
