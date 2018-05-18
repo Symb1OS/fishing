@@ -112,14 +112,12 @@ public class RootView extends JFrame{
 	    butonPanel.setLayout(new FlowLayout());
 	  
 	    JButton bStart = new JButton(UIManager.getString("rootview.button.start"));
-	    bStart.setBackground(Color.GREEN);
 	    butonPanel.add(bStart);
 	    
 	    StartController startController = new StartController(transfer, this);
 	    bStart.addActionListener(startController);
 	    
 	    JButton bStop = new JButton(UIManager.getString("rootview.button.stop"));
-	    bStop.setBackground(Color.RED);
 	    StopController stopController = new StopController(transfer);
 	    bStop.addActionListener(stopController);
 	    butonPanel.add(bStop);
