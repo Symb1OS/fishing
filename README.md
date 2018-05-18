@@ -7,4 +7,4 @@ You will need for start:
 * [Fish bot server](https://github.com/Symb1OS/fishingserver)
 * [Monitoring](https://github.com/Symb1OS/monitoring)
 
-Instruction: [google_docs](https://docs.google.com/document/d/1DkkaUYzsAG57zADdlMZyV0jzGTR5s-Vo13wi64Z0TC8/edit?usp=sharing)
+[User manual RU](https://docs.google.com/document/d/1DkkaUYzsAG57zADdlMZyV0jzGTR5s-Vo13wi64Z0TC8/edit?usp=sharing)
